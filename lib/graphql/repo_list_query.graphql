@@ -1,0 +1,49 @@
+query RepoList {
+  search(
+    query: "flutter"
+    type: REPOSITORY
+    first: 100
+  ) {
+    edges {
+      node {
+        ...RepositoryItem
+      }
+    }
+  }
+}
+
+fragment RepositoryItem on Repository {
+  id
+  name
+  nameWithOwner
+  description
+  stargazerCount
+  viewerHasStarred
+  repositoryTopics(first: 5) {
+    edges {
+      node {
+        topic {
+          ...TopicItem
+        }
+      }
+    }
+  }
+  languages(first: 1) {
+    edges {
+      node {
+        ...LanguageItem
+      }
+    }
+  }
+}
+
+fragment TopicItem on Topic {
+  id
+  name
+}
+
+fragment LanguageItem on Language {
+  id
+  name
+  color
+}
