@@ -23,6 +23,7 @@ dependencies:
   riverpod_annotation: 2.3.5
 
 dev_dependencies:
+  auto_route_generator: ^9.0.0
   build_runner: ^2.4.12
   flutter_test:
     sdk: flutter
