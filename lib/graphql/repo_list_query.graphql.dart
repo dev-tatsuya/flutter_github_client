@@ -13,7 +13,7 @@ class Fragment$RepositoryItem {
     required this.stargazerCount,
     required this.viewerHasStarred,
     required this.repositoryTopics,
-    this.languages,
+    this.primaryLanguage,
     this.$__typename = 'Repository',
   });
 
@@ -25,7 +25,7 @@ class Fragment$RepositoryItem {
     final l$stargazerCount = json['stargazerCount'];
     final l$viewerHasStarred = json['viewerHasStarred'];
     final l$repositoryTopics = json['repositoryTopics'];
-    final l$languages = json['languages'];
+    final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
     return Fragment$RepositoryItem(
       id: (l$id as String),
@@ -36,10 +36,10 @@ class Fragment$RepositoryItem {
       viewerHasStarred: (l$viewerHasStarred as bool),
       repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
-      languages: l$languages == null
+      primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$RepositoryItem$languages.fromJson(
-              (l$languages as Map<String, dynamic>)),
+          : Fragment$LanguageItem.fromJson(
+              (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -58,7 +58,7 @@ class Fragment$RepositoryItem {
 
   final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
 
-  final Fragment$RepositoryItem$languages? languages;
+  final Fragment$LanguageItem? primaryLanguage;
 
   final String $__typename;
 
@@ -78,8 +78,8 @@ class Fragment$RepositoryItem {
     _resultData['viewerHasStarred'] = l$viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
     _resultData['repositoryTopics'] = l$repositoryTopics.toJson();
-    final l$languages = languages;
-    _resultData['languages'] = l$languages?.toJson();
+    final l$primaryLanguage = primaryLanguage;
+    _resultData['primaryLanguage'] = l$primaryLanguage?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -94,7 +94,7 @@ class Fragment$RepositoryItem {
     final l$stargazerCount = stargazerCount;
     final l$viewerHasStarred = viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
-    final l$languages = languages;
+    final l$primaryLanguage = primaryLanguage;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -104,7 +104,7 @@ class Fragment$RepositoryItem {
       l$stargazerCount,
       l$viewerHasStarred,
       l$repositoryTopics,
-      l$languages,
+      l$primaryLanguage,
       l$$__typename,
     ]);
   }
@@ -153,9 +153,9 @@ class Fragment$RepositoryItem {
     if (l$repositoryTopics != lOther$repositoryTopics) {
       return false;
     }
-    final l$languages = languages;
-    final lOther$languages = other.languages;
-    if (l$languages != lOther$languages) {
+    final l$primaryLanguage = primaryLanguage;
+    final lOther$primaryLanguage = other.primaryLanguage;
+    if (l$primaryLanguage != lOther$primaryLanguage) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -192,11 +192,11 @@ abstract class CopyWith$Fragment$RepositoryItem<TRes> {
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   });
   CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages;
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Fragment$RepositoryItem<TRes>
@@ -220,7 +220,7 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
     Object? stargazerCount = _undefined,
     Object? viewerHasStarred = _undefined,
     Object? repositoryTopics = _undefined,
-    Object? languages = _undefined,
+    Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$RepositoryItem(
@@ -245,9 +245,9 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
                 repositoryTopics == null
             ? _instance.repositoryTopics
             : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
-        languages: languages == _undefined
-            ? _instance.languages
-            : (languages as Fragment$RepositoryItem$languages?),
+        primaryLanguage: primaryLanguage == _undefined
+            ? _instance.primaryLanguage
+            : (primaryLanguage as Fragment$LanguageItem?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -259,12 +259,12 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages {
-    final local$languages = _instance.languages;
-    return local$languages == null
-        ? CopyWith$Fragment$RepositoryItem$languages.stub(_then(_instance))
-        : CopyWith$Fragment$RepositoryItem$languages(
-            local$languages, (e) => call(languages: e));
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+    final local$primaryLanguage = _instance.primaryLanguage;
+    return local$primaryLanguage == null
+        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageItem(
+            local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
 
@@ -282,7 +282,7 @@ class _CopyWithStubImpl$Fragment$RepositoryItem<TRes>
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
@@ -291,8 +291,8 @@ class _CopyWithStubImpl$Fragment$RepositoryItem<TRes>
       get repositoryTopics =>
           CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages =>
-      CopyWith$Fragment$RepositoryItem$languages.stub(_res);
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
 const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
@@ -416,49 +416,14 @@ const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
-      name: NameNode(value: 'languages'),
+      name: NameNode(value: 'primaryLanguage'),
       alias: null,
-      arguments: [
-        ArgumentNode(
-          name: NameNode(value: 'first'),
-          value: IntValueNode(value: '1'),
-        )
-      ],
+      arguments: [],
       directives: [],
       selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'edges'),
-          alias: null,
-          arguments: [],
+        FragmentSpreadNode(
+          name: NameNode(value: 'LanguageItem'),
           directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'node'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FragmentSpreadNode(
-                  name: NameNode(value: 'LanguageItem'),
-                  directives: [],
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
         ),
         FieldNode(
           name: NameNode(value: '__typename'),
@@ -970,306 +935,6 @@ class _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges$node<
 
   CopyWith$Fragment$TopicItem<TRes> get topic =>
       CopyWith$Fragment$TopicItem.stub(_res);
-}
-
-class Fragment$RepositoryItem$languages {
-  Fragment$RepositoryItem$languages({
-    this.edges,
-    this.$__typename = 'LanguageConnection',
-  });
-
-  factory Fragment$RepositoryItem$languages.fromJson(
-      Map<String, dynamic> json) {
-    final l$edges = json['edges'];
-    final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem$languages(
-      edges: (l$edges as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Fragment$RepositoryItem$languages$edges.fromJson(
-                  (e as Map<String, dynamic>)))
-          .toList(),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final List<Fragment$RepositoryItem$languages$edges?>? edges;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$edges = edges;
-    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$edges = edges;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$RepositoryItem$languages) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$edges = edges;
-    final lOther$edges = other.edges;
-    if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) {
-        return false;
-      }
-      for (int i = 0; i < l$edges.length; i++) {
-        final l$edges$entry = l$edges[i];
-        final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) {
-          return false;
-        }
-      }
-    } else if (l$edges != lOther$edges) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$RepositoryItem$languages
-    on Fragment$RepositoryItem$languages {
-  CopyWith$Fragment$RepositoryItem$languages<Fragment$RepositoryItem$languages>
-      get copyWith => CopyWith$Fragment$RepositoryItem$languages(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$RepositoryItem$languages<TRes> {
-  factory CopyWith$Fragment$RepositoryItem$languages(
-    Fragment$RepositoryItem$languages instance,
-    TRes Function(Fragment$RepositoryItem$languages) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem$languages;
-
-  factory CopyWith$Fragment$RepositoryItem$languages.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem$languages;
-
-  TRes call({
-    List<Fragment$RepositoryItem$languages$edges?>? edges,
-    String? $__typename,
-  });
-  TRes edges(
-      Iterable<Fragment$RepositoryItem$languages$edges?>? Function(
-              Iterable<
-                  CopyWith$Fragment$RepositoryItem$languages$edges<
-                      Fragment$RepositoryItem$languages$edges>?>?)
-          _fn);
-}
-
-class _CopyWithImpl$Fragment$RepositoryItem$languages<TRes>
-    implements CopyWith$Fragment$RepositoryItem$languages<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem$languages(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$RepositoryItem$languages _instance;
-
-  final TRes Function(Fragment$RepositoryItem$languages) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? edges = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$RepositoryItem$languages(
-        edges: edges == _undefined
-            ? _instance.edges
-            : (edges as List<Fragment$RepositoryItem$languages$edges?>?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-
-  TRes edges(
-          Iterable<Fragment$RepositoryItem$languages$edges?>? Function(
-                  Iterable<
-                      CopyWith$Fragment$RepositoryItem$languages$edges<
-                          Fragment$RepositoryItem$languages$edges>?>?)
-              _fn) =>
-      call(
-          edges: _fn(_instance.edges?.map((e) => e == null
-              ? null
-              : CopyWith$Fragment$RepositoryItem$languages$edges(
-                  e,
-                  (i) => i,
-                )))?.toList());
-}
-
-class _CopyWithStubImpl$Fragment$RepositoryItem$languages<TRes>
-    implements CopyWith$Fragment$RepositoryItem$languages<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem$languages(this._res);
-
-  TRes _res;
-
-  call({
-    List<Fragment$RepositoryItem$languages$edges?>? edges,
-    String? $__typename,
-  }) =>
-      _res;
-
-  edges(_fn) => _res;
-}
-
-class Fragment$RepositoryItem$languages$edges {
-  Fragment$RepositoryItem$languages$edges({
-    required this.node,
-    this.$__typename = 'LanguageEdge',
-  });
-
-  factory Fragment$RepositoryItem$languages$edges.fromJson(
-      Map<String, dynamic> json) {
-    final l$node = json['node'];
-    final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem$languages$edges(
-      node: Fragment$LanguageItem.fromJson((l$node as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final Fragment$LanguageItem node;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$node = node;
-    _resultData['node'] = l$node.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$node = node;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$node,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$RepositoryItem$languages$edges) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$node = node;
-    final lOther$node = other.node;
-    if (l$node != lOther$node) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$RepositoryItem$languages$edges
-    on Fragment$RepositoryItem$languages$edges {
-  CopyWith$Fragment$RepositoryItem$languages$edges<
-          Fragment$RepositoryItem$languages$edges>
-      get copyWith => CopyWith$Fragment$RepositoryItem$languages$edges(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$RepositoryItem$languages$edges<TRes> {
-  factory CopyWith$Fragment$RepositoryItem$languages$edges(
-    Fragment$RepositoryItem$languages$edges instance,
-    TRes Function(Fragment$RepositoryItem$languages$edges) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem$languages$edges;
-
-  factory CopyWith$Fragment$RepositoryItem$languages$edges.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem$languages$edges;
-
-  TRes call({
-    Fragment$LanguageItem? node,
-    String? $__typename,
-  });
-  CopyWith$Fragment$LanguageItem<TRes> get node;
-}
-
-class _CopyWithImpl$Fragment$RepositoryItem$languages$edges<TRes>
-    implements CopyWith$Fragment$RepositoryItem$languages$edges<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem$languages$edges(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$RepositoryItem$languages$edges _instance;
-
-  final TRes Function(Fragment$RepositoryItem$languages$edges) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? node = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$RepositoryItem$languages$edges(
-        node: node == _undefined || node == null
-            ? _instance.node
-            : (node as Fragment$LanguageItem),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-
-  CopyWith$Fragment$LanguageItem<TRes> get node {
-    final local$node = _instance.node;
-    return CopyWith$Fragment$LanguageItem(local$node, (e) => call(node: e));
-  }
-}
-
-class _CopyWithStubImpl$Fragment$RepositoryItem$languages$edges<TRes>
-    implements CopyWith$Fragment$RepositoryItem$languages$edges<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem$languages$edges(this._res);
-
-  TRes _res;
-
-  call({
-    Fragment$LanguageItem? node,
-    String? $__typename,
-  }) =>
-      _res;
-
-  CopyWith$Fragment$LanguageItem<TRes> get node =>
-      CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
 class Fragment$TopicItem {
@@ -3215,7 +2880,7 @@ class Query$RepoList$search$edges$node$$Repository
     required this.stargazerCount,
     required this.viewerHasStarred,
     required this.repositoryTopics,
-    this.languages,
+    this.primaryLanguage,
     this.$__typename = 'Repository',
   });
 
@@ -3228,7 +2893,7 @@ class Query$RepoList$search$edges$node$$Repository
     final l$stargazerCount = json['stargazerCount'];
     final l$viewerHasStarred = json['viewerHasStarred'];
     final l$repositoryTopics = json['repositoryTopics'];
-    final l$languages = json['languages'];
+    final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
     return Query$RepoList$search$edges$node$$Repository(
       id: (l$id as String),
@@ -3239,10 +2904,10 @@ class Query$RepoList$search$edges$node$$Repository
       viewerHasStarred: (l$viewerHasStarred as bool),
       repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
-      languages: l$languages == null
+      primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$RepositoryItem$languages.fromJson(
-              (l$languages as Map<String, dynamic>)),
+          : Fragment$LanguageItem.fromJson(
+              (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3261,7 +2926,7 @@ class Query$RepoList$search$edges$node$$Repository
 
   final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
 
-  final Fragment$RepositoryItem$languages? languages;
+  final Fragment$LanguageItem? primaryLanguage;
 
   final String $__typename;
 
@@ -3281,8 +2946,8 @@ class Query$RepoList$search$edges$node$$Repository
     _resultData['viewerHasStarred'] = l$viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
     _resultData['repositoryTopics'] = l$repositoryTopics.toJson();
-    final l$languages = languages;
-    _resultData['languages'] = l$languages?.toJson();
+    final l$primaryLanguage = primaryLanguage;
+    _resultData['primaryLanguage'] = l$primaryLanguage?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -3297,7 +2962,7 @@ class Query$RepoList$search$edges$node$$Repository
     final l$stargazerCount = stargazerCount;
     final l$viewerHasStarred = viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
-    final l$languages = languages;
+    final l$primaryLanguage = primaryLanguage;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -3307,7 +2972,7 @@ class Query$RepoList$search$edges$node$$Repository
       l$stargazerCount,
       l$viewerHasStarred,
       l$repositoryTopics,
-      l$languages,
+      l$primaryLanguage,
       l$$__typename,
     ]);
   }
@@ -3356,9 +3021,9 @@ class Query$RepoList$search$edges$node$$Repository
     if (l$repositoryTopics != lOther$repositoryTopics) {
       return false;
     }
-    final l$languages = languages;
-    final lOther$languages = other.languages;
-    if (l$languages != lOther$languages) {
+    final l$primaryLanguage = primaryLanguage;
+    final lOther$primaryLanguage = other.primaryLanguage;
+    if (l$primaryLanguage != lOther$primaryLanguage) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3397,11 +3062,11 @@ abstract class CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   });
   CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages;
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
@@ -3425,7 +3090,7 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
     Object? stargazerCount = _undefined,
     Object? viewerHasStarred = _undefined,
     Object? repositoryTopics = _undefined,
-    Object? languages = _undefined,
+    Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$RepoList$search$edges$node$$Repository(
@@ -3450,9 +3115,9 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
                 repositoryTopics == null
             ? _instance.repositoryTopics
             : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
-        languages: languages == _undefined
-            ? _instance.languages
-            : (languages as Fragment$RepositoryItem$languages?),
+        primaryLanguage: primaryLanguage == _undefined
+            ? _instance.primaryLanguage
+            : (primaryLanguage as Fragment$LanguageItem?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -3464,12 +3129,12 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages {
-    final local$languages = _instance.languages;
-    return local$languages == null
-        ? CopyWith$Fragment$RepositoryItem$languages.stub(_then(_instance))
-        : CopyWith$Fragment$RepositoryItem$languages(
-            local$languages, (e) => call(languages: e));
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+    final local$primaryLanguage = _instance.primaryLanguage;
+    return local$primaryLanguage == null
+        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageItem(
+            local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
 
@@ -3487,7 +3152,7 @@ class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository<TRes>
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
@@ -3496,8 +3161,8 @@ class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository<TRes>
       get repositoryTopics =>
           CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages =>
-      CopyWith$Fragment$RepositoryItem$languages.stub(_res);
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
 class Query$RepoList$search$edges$node$$User

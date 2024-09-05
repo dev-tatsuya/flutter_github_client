@@ -13,8 +13,7 @@ class Repository {
 
   factory Repository.fromGraphQL(Fragment$RepositoryItem item) {
     Language? language;
-    if (item.languages?.edges?.firstOrNull?.node
-        case final Fragment$LanguageItem item) {
+    if (item.primaryLanguage case final Fragment$LanguageItem item) {
       language = Language.fromGraphQL(item);
     }
 

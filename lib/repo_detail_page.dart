@@ -4,7 +4,6 @@ import 'package:flutter_github_client/graphql/repo_detail_query.graphql.dart';
 import 'package:flutter_github_client/graphql/schema.docs.graphql.dart';
 import 'package:flutter_github_client/model.dart';
 import 'package:flutter_github_client/repo_list_page.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 @RoutePage()

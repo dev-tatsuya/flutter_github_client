@@ -1397,7 +1397,7 @@ class Mutation$Star$addStar$starrable$$Repository
     required this.stargazerCount,
     required this.viewerHasStarred,
     required this.repositoryTopics,
-    this.languages,
+    this.primaryLanguage,
     this.$__typename = 'Repository',
   });
 
@@ -1410,7 +1410,7 @@ class Mutation$Star$addStar$starrable$$Repository
     final l$stargazerCount = json['stargazerCount'];
     final l$viewerHasStarred = json['viewerHasStarred'];
     final l$repositoryTopics = json['repositoryTopics'];
-    final l$languages = json['languages'];
+    final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
     return Mutation$Star$addStar$starrable$$Repository(
       id: (l$id as String),
@@ -1421,10 +1421,10 @@ class Mutation$Star$addStar$starrable$$Repository
       viewerHasStarred: (l$viewerHasStarred as bool),
       repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
-      languages: l$languages == null
+      primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$RepositoryItem$languages.fromJson(
-              (l$languages as Map<String, dynamic>)),
+          : Fragment$LanguageItem.fromJson(
+              (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1443,7 +1443,7 @@ class Mutation$Star$addStar$starrable$$Repository
 
   final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
 
-  final Fragment$RepositoryItem$languages? languages;
+  final Fragment$LanguageItem? primaryLanguage;
 
   final String $__typename;
 
@@ -1463,8 +1463,8 @@ class Mutation$Star$addStar$starrable$$Repository
     _resultData['viewerHasStarred'] = l$viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
     _resultData['repositoryTopics'] = l$repositoryTopics.toJson();
-    final l$languages = languages;
-    _resultData['languages'] = l$languages?.toJson();
+    final l$primaryLanguage = primaryLanguage;
+    _resultData['primaryLanguage'] = l$primaryLanguage?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1479,7 +1479,7 @@ class Mutation$Star$addStar$starrable$$Repository
     final l$stargazerCount = stargazerCount;
     final l$viewerHasStarred = viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
-    final l$languages = languages;
+    final l$primaryLanguage = primaryLanguage;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -1489,7 +1489,7 @@ class Mutation$Star$addStar$starrable$$Repository
       l$stargazerCount,
       l$viewerHasStarred,
       l$repositoryTopics,
-      l$languages,
+      l$primaryLanguage,
       l$$__typename,
     ]);
   }
@@ -1538,9 +1538,9 @@ class Mutation$Star$addStar$starrable$$Repository
     if (l$repositoryTopics != lOther$repositoryTopics) {
       return false;
     }
-    final l$languages = languages;
-    final lOther$languages = other.languages;
-    if (l$languages != lOther$languages) {
+    final l$primaryLanguage = primaryLanguage;
+    final lOther$primaryLanguage = other.primaryLanguage;
+    if (l$primaryLanguage != lOther$primaryLanguage) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1579,11 +1579,11 @@ abstract class CopyWith$Mutation$Star$addStar$starrable$$Repository<TRes> {
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   });
   CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages;
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
@@ -1607,7 +1607,7 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
     Object? stargazerCount = _undefined,
     Object? viewerHasStarred = _undefined,
     Object? repositoryTopics = _undefined,
-    Object? languages = _undefined,
+    Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$Star$addStar$starrable$$Repository(
@@ -1632,9 +1632,9 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
                 repositoryTopics == null
             ? _instance.repositoryTopics
             : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
-        languages: languages == _undefined
-            ? _instance.languages
-            : (languages as Fragment$RepositoryItem$languages?),
+        primaryLanguage: primaryLanguage == _undefined
+            ? _instance.primaryLanguage
+            : (primaryLanguage as Fragment$LanguageItem?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1646,12 +1646,12 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages {
-    final local$languages = _instance.languages;
-    return local$languages == null
-        ? CopyWith$Fragment$RepositoryItem$languages.stub(_then(_instance))
-        : CopyWith$Fragment$RepositoryItem$languages(
-            local$languages, (e) => call(languages: e));
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+    final local$primaryLanguage = _instance.primaryLanguage;
+    return local$primaryLanguage == null
+        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageItem(
+            local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
 
@@ -1669,7 +1669,7 @@ class _CopyWithStubImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
@@ -1678,8 +1678,8 @@ class _CopyWithStubImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
       get repositoryTopics =>
           CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages =>
-      CopyWith$Fragment$RepositoryItem$languages.stub(_res);
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
 class Mutation$Star$addStar$starrable$$Topic
@@ -2694,7 +2694,7 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     required this.stargazerCount,
     required this.viewerHasStarred,
     required this.repositoryTopics,
-    this.languages,
+    this.primaryLanguage,
     this.$__typename = 'Repository',
   });
 
@@ -2707,7 +2707,7 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final l$stargazerCount = json['stargazerCount'];
     final l$viewerHasStarred = json['viewerHasStarred'];
     final l$repositoryTopics = json['repositoryTopics'];
-    final l$languages = json['languages'];
+    final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
     return Mutation$Unstar$removeStar$starrable$$Repository(
       id: (l$id as String),
@@ -2718,10 +2718,10 @@ class Mutation$Unstar$removeStar$starrable$$Repository
       viewerHasStarred: (l$viewerHasStarred as bool),
       repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
-      languages: l$languages == null
+      primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$RepositoryItem$languages.fromJson(
-              (l$languages as Map<String, dynamic>)),
+          : Fragment$LanguageItem.fromJson(
+              (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2740,7 +2740,7 @@ class Mutation$Unstar$removeStar$starrable$$Repository
 
   final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
 
-  final Fragment$RepositoryItem$languages? languages;
+  final Fragment$LanguageItem? primaryLanguage;
 
   final String $__typename;
 
@@ -2760,8 +2760,8 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     _resultData['viewerHasStarred'] = l$viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
     _resultData['repositoryTopics'] = l$repositoryTopics.toJson();
-    final l$languages = languages;
-    _resultData['languages'] = l$languages?.toJson();
+    final l$primaryLanguage = primaryLanguage;
+    _resultData['primaryLanguage'] = l$primaryLanguage?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -2776,7 +2776,7 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final l$stargazerCount = stargazerCount;
     final l$viewerHasStarred = viewerHasStarred;
     final l$repositoryTopics = repositoryTopics;
-    final l$languages = languages;
+    final l$primaryLanguage = primaryLanguage;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -2786,7 +2786,7 @@ class Mutation$Unstar$removeStar$starrable$$Repository
       l$stargazerCount,
       l$viewerHasStarred,
       l$repositoryTopics,
-      l$languages,
+      l$primaryLanguage,
       l$$__typename,
     ]);
   }
@@ -2835,9 +2835,9 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     if (l$repositoryTopics != lOther$repositoryTopics) {
       return false;
     }
-    final l$languages = languages;
-    final lOther$languages = other.languages;
-    if (l$languages != lOther$languages) {
+    final l$primaryLanguage = primaryLanguage;
+    final lOther$primaryLanguage = other.primaryLanguage;
+    if (l$primaryLanguage != lOther$primaryLanguage) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2877,11 +2877,11 @@ abstract class CopyWith$Mutation$Unstar$removeStar$starrable$$Repository<TRes> {
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   });
   CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages;
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
@@ -2905,7 +2905,7 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
     Object? stargazerCount = _undefined,
     Object? viewerHasStarred = _undefined,
     Object? repositoryTopics = _undefined,
-    Object? languages = _undefined,
+    Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$Unstar$removeStar$starrable$$Repository(
@@ -2930,9 +2930,9 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
                 repositoryTopics == null
             ? _instance.repositoryTopics
             : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
-        languages: languages == _undefined
-            ? _instance.languages
-            : (languages as Fragment$RepositoryItem$languages?),
+        primaryLanguage: primaryLanguage == _undefined
+            ? _instance.primaryLanguage
+            : (primaryLanguage as Fragment$LanguageItem?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -2944,12 +2944,12 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages {
-    final local$languages = _instance.languages;
-    return local$languages == null
-        ? CopyWith$Fragment$RepositoryItem$languages.stub(_then(_instance))
-        : CopyWith$Fragment$RepositoryItem$languages(
-            local$languages, (e) => call(languages: e));
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+    final local$primaryLanguage = _instance.primaryLanguage;
+    return local$primaryLanguage == null
+        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageItem(
+            local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
 
@@ -2967,7 +2967,7 @@ class _CopyWithStubImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
     int? stargazerCount,
     bool? viewerHasStarred,
     Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$RepositoryItem$languages? languages,
+    Fragment$LanguageItem? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
@@ -2976,8 +2976,8 @@ class _CopyWithStubImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
       get repositoryTopics =>
           CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$RepositoryItem$languages<TRes> get languages =>
-      CopyWith$Fragment$RepositoryItem$languages.stub(_res);
+  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
 class Mutation$Unstar$removeStar$starrable$$Topic
