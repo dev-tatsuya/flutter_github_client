@@ -28,6 +28,7 @@ fragment RepositoryItem on Repository {
       }
     }
   }
+  # todo: primaryLanguage に変更する
   languages(first: 1) {
     edges {
       node {

@@ -50,98 +50,115 @@ class RepoListPage extends HookConsumerWidget {
 }
 
 class RepoListItem extends StatelessWidget {
-  const RepoListItem({required this.item, super.key});
+  const RepoListItem({
+    required this.item,
+    this.enableOnTap = true,
+    super.key,
+  });
 
   final Repository item;
+  final bool enableOnTap;
+
+  (String, String) separate(String nameWithOwner) {
+    final list = nameWithOwner.split('/');
+    return (list[0], list[1]);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.router.push(const RepoDetailRoute());
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+    Widget child = Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            item.name,
+            style: Theme.of(context).textTheme.titleLarge,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          if (item.description case final String description) ...[
+            const Gap(8),
             Text(
-              item.name,
-              style: Theme.of(context).textTheme.titleLarge,
-              maxLines: 1,
+              description,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            if (item.description case final String description) ...[
-              const Gap(8),
-              Text(
-                description,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-            if (item.topics.isNotEmpty) ...[
-              const Gap(8),
-              Wrap(
-                spacing: 4,
-                runSpacing: 4,
-                children: item.topics
-                    .map(
-                      (e) => Container(
-                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade50,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          e.name,
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ],
+          ],
+          if (item.topics.isNotEmpty) ...[
             const Gap(8),
-            Row(
-              children: [
-                if (item.viewerHasStarred)
-                  const Icon(
-                    Icons.star,
-                    size: 20,
-                    color: Colors.orangeAccent,
+            Wrap(
+              spacing: 4,
+              runSpacing: 4,
+              children: item.topics
+                  .map(
+                    (e) => Container(
+                      padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade50,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        e.name,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    ),
                   )
-                else
-                  const Icon(
-                    Icons.star_border,
-                    size: 20,
-                    color: Colors.black54,
-                  ),
-                const Gap(1),
-                Text(
-                  '${item.starredCount}',
-                  style: const TextStyle(color: Colors.black54),
-                ),
-                if (item.language case final Language language) ...[
-                  const Gap(8),
-                  Icon(
-                    Icons.circle,
-                    size: 16,
-                    color: language.color == null
-                        ? Colors.black12
-                        : hexToColor(language.color!),
-                  ),
-                  const Gap(2),
-                  Text(
-                    language.name,
-                    style: const TextStyle(color: Colors.black45),
-                  ),
-                ],
-              ],
+                  .toList(),
             ),
           ],
-        ),
+          const Gap(8),
+          Row(
+            children: [
+              if (item.viewerHasStarred)
+                const Icon(
+                  Icons.star,
+                  size: 20,
+                  color: Colors.orangeAccent,
+                )
+              else
+                const Icon(
+                  Icons.star_border,
+                  size: 20,
+                  color: Colors.black54,
+                ),
+              const Gap(1),
+              Text(
+                '${item.starredCount}',
+                style: const TextStyle(color: Colors.black54),
+              ),
+              if (item.language case final Language language) ...[
+                const Gap(8),
+                Icon(
+                  Icons.circle,
+                  size: 16,
+                  color: language.color == null
+                      ? Colors.black12
+                      : hexToColor(language.color!),
+                ),
+                const Gap(2),
+                Text(
+                  language.name,
+                  style: const TextStyle(color: Colors.black45),
+                ),
+              ],
+            ],
+          ),
+        ],
       ),
     );
+
+    if (enableOnTap) {
+      child = InkWell(
+        onTap: () {
+          final (owner, name) = separate(item.name);
+          context.router.push(RepoDetailRoute(owner: owner, name: name));
+        },
+        child: child,
+      );
+    }
+
+    return child;
   }
 }
 

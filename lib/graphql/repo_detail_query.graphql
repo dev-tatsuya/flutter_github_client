@@ -1,0 +1,21 @@
+query RepoDetail($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    ...RepositoryItem
+  }
+}
+
+mutation Star($input: AddStarInput!) {
+  addStar(input: $input) {
+    starrable {
+      ...RepositoryItem
+    }
+  }
+}
+
+mutation Unstar($input: RemoveStarInput!) {
+  removeStar(input: $input) {
+    starrable {
+      ...RepositoryItem
+    }
+  }
+}

@@ -16,7 +16,12 @@ GraphQLClient graphQL(GraphQLRef ref) {
     },
   );
 
-  final httpLink = HttpLink('https://api.github.com/graphql');
+  final httpLink = HttpLink(
+    'https://api.github.com/graphql',
+    defaultHeaders: {
+      'X-Github-Next-Global-ID': '1',
+    },
+  );
 
   final link = Link.from([authLink, httpLink]);
 

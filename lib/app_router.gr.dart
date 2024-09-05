@@ -11,10 +11,23 @@ part of 'app_router.dart';
 
 /// generated route for
 /// [RepoDetailPage]
-class RepoDetailRoute extends PageRouteInfo<void> {
-  const RepoDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class RepoDetailRoute extends PageRouteInfo<RepoDetailRouteArgs> {
+  RepoDetailRoute({
+    required String owner,
+    required String name,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           RepoDetailRoute.name,
+          args: RepoDetailRouteArgs(
+            owner: owner,
+            name: name,
+            key: key,
+          ),
+          rawPathParams: {
+            'owner': owner,
+            'name': name,
+          },
           initialChildren: children,
         );
 
@@ -23,9 +36,38 @@ class RepoDetailRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RepoDetailPage();
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<RepoDetailRouteArgs>(
+          orElse: () => RepoDetailRouteArgs(
+                owner: pathParams.getString('owner'),
+                name: pathParams.getString('name'),
+              ));
+      return RepoDetailPage(
+        owner: args.owner,
+        name: args.name,
+        key: args.key,
+      );
     },
   );
+}
+
+class RepoDetailRouteArgs {
+  const RepoDetailRouteArgs({
+    required this.owner,
+    required this.name,
+    this.key,
+  });
+
+  final String owner;
+
+  final String name;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'RepoDetailRouteArgs{owner: $owner, name: $name, key: $key}';
+  }
 }
 
 /// generated route for
