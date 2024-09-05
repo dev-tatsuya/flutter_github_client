@@ -15,37 +15,32 @@ class RepoListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useQuery$RepoList();
     final result = query.result;
+    final edges = result.parsedData?.search.edges;
+
+    final Widget child;
     if (result.hasException) {
-      return Center(child: Text('${result.exception}'));
-    }
-    if (result.isLoading) {
-      return const Center(child: Text('Fetching ...'));
-    }
-    final data = result.parsedData?.search.edges;
-    if (data == null || data.isEmpty) {
-      return const Center(child: Text('Empty'));
+      child =  Center(child: Text('${result.exception}'));
+    } else if (result.isLoading) {
+      child =  const Center(child: Text('Fetching ...'));
+    } else if (edges == null || edges.isEmpty) {
+      child =  const Center(child: Text('Empty'));
+    } else {
+      child = ListView.separated(
+        itemCount: edges.length,
+        separatorBuilder: (_, __) => const Divider(),
+        itemBuilder: (context, index) {
+          if (edges[index]?.node case final Fragment$RepositoryItem item) {
+            return RepoListItem(item: Repository.fromGraphQL(item));
+          }
+          return null;
+        },
+      );
     }
 
     return Scaffold(
       // TODO(dev-tatsuya): REST と切り替えられるようにする + 共通化
       appBar: AppBar(title: const Text('GraphQL')),
-      body: ListView.separated(
-        itemCount: data.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return Divider(
-            indent: 16,
-            endIndent: 16,
-            height: 0,
-            color: Colors.black.withOpacity(0.1),
-          );
-        },
-        itemBuilder: (context, index) {
-          if (data[index]?.node case final Fragment$RepositoryItem item) {
-            return RepoListItem(item: Repository.fromGraphQL(item));
-          }
-          return null;
-        },
-      ),
+      body: child,
     );
   }
 }

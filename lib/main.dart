@@ -47,6 +47,12 @@ class MyApp extends HookConsumerWidget {
               side: BorderSide(color: Theme.of(context).primaryColor),
             ),
           ),
+          dividerTheme: DividerThemeData(
+            indent: 16,
+            endIndent: 16,
+            space: 0,
+            color: Theme.of(context).primaryColor.withOpacity(0.1),
+          )
         ),
       ),
     );

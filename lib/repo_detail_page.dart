@@ -29,7 +29,7 @@ class RepoDetailPage extends HookConsumerWidget {
     final result = query.result;
     final data = result.parsedData?.repository;
 
-    Widget child;
+    final Widget child;
     if (result.hasException) {
       child = Center(child: Text('${result.exception}'));
     } else if (result.isLoading) {
@@ -51,9 +51,7 @@ class RepoDetailPage extends HookConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(name),
-      ),
+      appBar: AppBar(title: Text(name)),
       body: child,
     );
   }
