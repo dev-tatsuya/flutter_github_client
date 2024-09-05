@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-
+import 'package:flutter_github_client/repo_detail_page.dart';
 import 'package:flutter_github_client/repo_list_page.dart';
 import 'package:flutter_github_client/root_page.dart';
 import 'package:flutter_github_client/starred_repo_list_page.dart';
@@ -15,13 +15,32 @@ class AppRouter extends RootStackRouter {
           page: RootRoute.page,
           children: [
             AutoRoute(
-              initial: true,
-              page: RepoListRoute.page,
+              page: RepoListTabRoute.page,
+              children: [
+                AutoRoute(
+                  page: RepoListRoute.page,
+                ),
+                AutoRoute(page: RepoDetailRoute.page),
+              ],
             ),
             AutoRoute(
-              page: StarredRepoListRoute.page,
+              page: StarredRepoListTabRoute.page,
+              children: [
+                AutoRoute(page: StarredRepoListRoute.page),
+                AutoRoute(page: RepoDetailRoute.page),
+              ],
             ),
           ],
         ),
       ];
+}
+
+@RoutePage()
+class RepoListTabPage extends AutoRouter {
+  const RepoListTabPage({super.key});
+}
+
+@RoutePage()
+class StarredRepoListTabPage extends AutoRouter {
+  const StarredRepoListTabPage({super.key});
 }

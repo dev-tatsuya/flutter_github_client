@@ -1,5 +1,6 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_github_client/app_router.dart';
 import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
 import 'package:flutter_github_client/model.dart';
 import 'package:gap/gap.dart';
@@ -24,22 +25,26 @@ class RepoListPage extends HookConsumerWidget {
       return const Center(child: Text('Empty'));
     }
 
-    return ListView.separated(
-      itemCount: data.length,
-      separatorBuilder: (BuildContext context, int index) {
-        return Divider(
-          indent: 16,
-          endIndent: 16,
-          height: 0,
-          color: Colors.black.withOpacity(0.1),
-        );
-      },
-      itemBuilder: (context, index) {
-        if (data[index]?.node case final Fragment$RepositoryItem item) {
-          return RepoListItem(item: Repository.fromGraphQL(item));
-        }
-        return null;
-      },
+    return Scaffold(
+      // TODO(dev-tatsuya): REST と切り替えられるようにする + 共通化
+      appBar: AppBar(title: const Text('GraphQL')),
+      body: ListView.separated(
+        itemCount: data.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            indent: 16,
+            endIndent: 16,
+            height: 0,
+            color: Colors.black.withOpacity(0.1),
+          );
+        },
+        itemBuilder: (context, index) {
+          if (data[index]?.node case final Fragment$RepositoryItem item) {
+            return RepoListItem(item: Repository.fromGraphQL(item));
+          }
+          return null;
+        },
+      ),
     );
   }
 }
@@ -52,7 +57,9 @@ class RepoListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context.router.push(const RepoDetailRoute());
+      },
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

@@ -25,22 +25,26 @@ class StarredRepoListPage extends HookConsumerWidget {
       return const Center(child: Text('Empty'));
     }
 
-    return ListView.separated(
-      itemCount: data.length,
-      separatorBuilder: (BuildContext context, int index) {
-        return Divider(
-          indent: 16,
-          endIndent: 16,
-          height: 0,
-          color: Colors.black.withOpacity(0.1),
-        );
-      },
-      itemBuilder: (context, index) {
-        if (data[index]?.node case final Fragment$RepositoryItem item) {
-          return RepoListItem(item: Repository.fromGraphQL(item));
-        }
-        return null;
-      },
+    return Scaffold(
+      // TODO(dev-tatsuya): REST と切り替えられるようにする + 共通化
+      appBar: AppBar(title: const Text('GraphQL')),
+      body: ListView.separated(
+        itemCount: data.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            indent: 16,
+            endIndent: 16,
+            height: 0,
+            color: Colors.black.withOpacity(0.1),
+          );
+        },
+        itemBuilder: (context, index) {
+          if (data[index]?.node case final Fragment$RepositoryItem item) {
+            return RepoListItem(item: Repository.fromGraphQL(item));
+          }
+          return null;
+        },
+      ),
     );
   }
 }

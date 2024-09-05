@@ -13,10 +13,6 @@ class RootPage extends StatelessWidget {
         RepoListRoute(),
         StarredRepoListRoute(),
       ],
-      appBarBuilder: (context, tabsRouter) {
-        // TODO(dev-tatsuya): REST と切り替えられるようにする
-        return AppBar(title: const Text('GraphQL'));
-      },
       bottomNavigationBuilder: (context, tabsRouter) {
         return BottomNavigationBar(
           onTap: tabsRouter.setActiveIndex,
