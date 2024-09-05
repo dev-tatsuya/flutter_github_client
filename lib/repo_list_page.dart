@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_github_client/api_protocol_state.dart';
 import 'package:flutter_github_client/app_router.dart';
 import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
 import 'package:flutter_github_client/model.dart';
+import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:flutter_github_client/use_star.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,11 +21,11 @@ class RepoListPage extends HookConsumerWidget {
 
     final Widget child;
     if (result.hasException) {
-      child =  Center(child: Text('${result.exception}'));
+      child = Center(child: Text('${result.exception}'));
     } else if (result.isLoading) {
-      child =  const Center(child: Text('Fetching ...'));
+      child = const Center(child: Text('Fetching ...'));
     } else if (edges == null || edges.isEmpty) {
-      child =  const Center(child: Text('Empty'));
+      child = const Center(child: Text('Empty'));
     } else {
       child = ListView.separated(
         itemCount: edges.length,
@@ -37,13 +39,60 @@ class RepoListPage extends HookConsumerWidget {
       );
     }
 
+    final restRepos = ref.watch(repoListProvider);
+    final restChild = restRepos.when(
+      data: (data) {
+        if (data.isEmpty) {
+          return const Center(child: Text('Empty'));
+        }
+
+        return ListView.separated(
+          itemCount: data.length,
+          separatorBuilder: (_, __) => const Divider(),
+          itemBuilder: (context, index) => RepoListItem(item: data[index]),
+        );
+      },
+      error: (e, st) {
+        return Center(child: Text('${result.exception}'));
+      },
+      loading: () {
+        return const Center(child: Text('Fetching ...'));
+      },
+    );
+
     return Scaffold(
-      // TODO(dev-tatsuya): REST と切り替えられるようにする + 共通化
-      appBar: AppBar(title: const Text('GraphQL')),
-      body: child,
+      appBar: const MyAppBar(),
+      body: restChild,
     );
   }
 }
+
+class MyAppBar extends HookConsumerWidget implements PreferredSizeWidget {
+  const MyAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final apiProtocol = ref.watch(apiProtocolStateProvider);
+    final apiProtocolNotifier = ref.watch(apiProtocolStateProvider.notifier);
+
+    return AppBar(
+      centerTitle: false,
+      title: Text(apiProtocol.displayName),
+      actions: [
+        TextButton(
+          onPressed: () {
+            apiProtocolNotifier.update(apiProtocol.next);
+          },
+          child: Text('Change to ${apiProtocol.next.displayName}'),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
 
 class RepoListItem extends HookConsumerWidget {
   const RepoListItem({
@@ -194,6 +243,10 @@ class StarButton extends HookConsumerWidget {
 }
 
 Color _hexToColor(String hexString) {
-  final converted = 'FF${hexString.replaceFirst('#', '')}';
-  return Color(int.parse(converted, radix: 16));
+  try {
+    final converted = 'FF${hexString.replaceFirst('#', '')}';
+    return Color(int.parse(converted, radix: 16));
+  } catch (_) {
+    return Colors.black26;
+  }
 }

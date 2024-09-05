@@ -1,4 +1,5 @@
 import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
+import 'package:flutter_github_client/rest/rest.dart';
 
 class Repository {
   Repository({
@@ -28,6 +29,23 @@ class Repository {
               .map((e) => Topic.fromGraphQL(e!.node!.topic))
               .toList() ??
           [],
+      language: language,
+    );
+  }
+
+  factory Repository.fromRest(RepoData item) {
+    Language? language;
+    if (item.language case final String item) {
+      language = Language(id: item, name: item, color: item);
+    }
+
+    return Repository(
+      id: item.nodeId,
+      name: item.fullName,
+      description: item.description,
+      viewerHasStarred: false,
+      starredCount: item.stargazersCount,
+      topics: item.topics.map((e) => Topic(id: e, name: e)).toList(),
       language: language,
     );
   }

@@ -6,6 +6,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// TODO(dev-tatsuya): PAT を指定する
+const pat = '';
+
 void main() {
   runApp(
     const ProviderScope(
@@ -52,7 +55,7 @@ class MyApp extends HookConsumerWidget {
             endIndent: 16,
             space: 0,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
-          )
+          ),
         ),
       ),
     );

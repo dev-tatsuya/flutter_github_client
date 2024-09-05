@@ -18,9 +18,7 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: RepoListTabRoute.page,
               children: [
-                AutoRoute(
-                  page: RepoListRoute.page,
-                ),
+                AutoRoute(page: RepoListRoute.page),
                 AutoRoute(page: RepoDetailRoute.page),
               ],
             ),

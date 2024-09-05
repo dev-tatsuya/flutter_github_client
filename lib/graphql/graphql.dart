@@ -1,3 +1,4 @@
+import 'package:flutter_github_client/main.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,11 +10,7 @@ part 'graphql.g.dart';
 )
 GraphQLClient graphQL(GraphQLRef ref) {
   final authLink = AuthLink(
-    getToken: () {
-      // TODO(dev-tatsuya): PAT を指定する
-      const pat = '';
-      return 'Bearer $pat';
-    },
+    getToken: () => 'Bearer $pat',
   );
 
   final httpLink = HttpLink(

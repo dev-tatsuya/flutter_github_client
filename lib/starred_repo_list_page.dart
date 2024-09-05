@@ -37,8 +37,7 @@ class StarredRepoListPage extends HookConsumerWidget {
     }
 
     return Scaffold(
-      // TODO(dev-tatsuya): REST と切り替えられるようにする + 共通化
-      appBar: AppBar(title: const Text('GraphQL')),
+      appBar: const MyAppBar(),
       body: child,
     );
   }
