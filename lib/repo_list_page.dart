@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/app_router.dart';
 import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
 import 'package:flutter_github_client/model.dart';
+import 'package:flutter_github_client/use_star.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -49,33 +50,42 @@ class RepoListPage extends HookConsumerWidget {
   }
 }
 
-class RepoListItem extends StatelessWidget {
+class RepoListItem extends HookConsumerWidget {
   const RepoListItem({
     required this.item,
-    this.enableOnTap = true,
+    this.isUsedOnDetail = false,
     super.key,
   });
 
   final Repository item;
-  final bool enableOnTap;
-
-  (String, String) separate(String nameWithOwner) {
-    final list = nameWithOwner.split('/');
-    return (list[0], list[1]);
-  }
+  final bool isUsedOnDetail;
 
   @override
-  Widget build(BuildContext context) {
-    Widget child = Padding(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final child = Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            item.name,
-            style: Theme.of(context).textTheme.titleLarge,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  item.name,
+                  style: Theme.of(context).textTheme.titleLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              if (!isUsedOnDetail) ...[
+                const Gap(8),
+                SizedBox(
+                  height: 32,
+                  child: StarButton(item: item),
+                ),
+              ],
+            ],
           ),
           if (item.description case final String description) ...[
             const Gap(8),
@@ -95,7 +105,7 @@ class RepoListItem extends StatelessWidget {
                     (e) => Container(
                       padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade50,
+                        color: Theme.of(context).primaryColor.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -134,7 +144,7 @@ class RepoListItem extends StatelessWidget {
                   size: 16,
                   color: language.color == null
                       ? Colors.black12
-                      : hexToColor(language.color!),
+                      : _hexToColor(language.color!),
                 ),
                 const Gap(2),
                 Text(
@@ -148,21 +158,50 @@ class RepoListItem extends StatelessWidget {
       ),
     );
 
-    if (enableOnTap) {
-      child = InkWell(
-        onTap: () {
-          final (owner, name) = separate(item.name);
-          context.router.push(RepoDetailRoute(owner: owner, name: name));
-        },
-        child: child,
-      );
+    if (isUsedOnDetail) {
+      return child;
     }
 
-    return child;
+    return InkWell(
+      onTap: () {
+        final (owner, name) = _separate(item.name);
+        context.router.push(RepoDetailRoute(owner: owner, name: name));
+      },
+      child: child,
+    );
   }
 }
 
-Color hexToColor(String hexString) {
+class StarButton extends HookConsumerWidget {
+  const StarButton({required this.item, super.key});
+
+  final Repository item;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final star = useStar(item.id);
+
+    return FilledButton(
+      style: ButtonStyle(
+        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+      ),
+      onPressed: () => star(viewerHasStarred: item.viewerHasStarred),
+      child: Text(item.viewerHasStarred ? 'Unstar' : 'Star'),
+    );
+  }
+}
+
+(String, String) _separate(String nameWithOwner) {
+  final list = nameWithOwner.split('/');
+  return (list[0], list[1]);
+}
+
+Color _hexToColor(String hexString) {
   final converted = 'FF${hexString.replaceFirst('#', '')}';
   return Color(int.parse(converted, radix: 16));
 }
