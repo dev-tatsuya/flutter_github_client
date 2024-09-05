@@ -181,18 +181,15 @@ class StarButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final star = useStar(item.id);
 
-    return FilledButton(
-      style: ButtonStyle(
-        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-        ),
-      ),
-      onPressed: () => star(viewerHasStarred: item.viewerHasStarred),
-      child: Text(item.viewerHasStarred ? 'Unstar' : 'Star'),
-    );
+    return item.viewerHasStarred
+        ? OutlinedButton(
+            onPressed: () => star(viewerHasStarred: true),
+            child: const Text('Unstar'),
+          )
+        : FilledButton(
+            onPressed: () => star(viewerHasStarred: false),
+            child: const Text('Star'),
+          );
   }
 }
 
