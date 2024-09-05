@@ -1,0 +1,11 @@
+query StarredRepoList {
+  viewer {
+    starredRepositories {
+      edges {
+        node {
+          ...RepositoryItem
+        }
+      }
+    }
+  }
+}
