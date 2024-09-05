@@ -24,7 +24,7 @@ class StarredRepoListPage extends HookConsumerWidget {
       result: graphqlResult,
       builder: (data) {
         final edges = data.viewer.starredRepositories.edges;
-        if (edges == null) return null;
+        if (edges == null || edges.isEmpty) return null;
         return ListView.separated(
           itemCount: edges.length,
           separatorBuilder: (_, __) => const Divider(),
@@ -41,6 +41,7 @@ class StarredRepoListPage extends HookConsumerWidget {
     final restContainer = RestContainer(
       result: restResult,
       builder: (data) {
+        if (data.isEmpty) return null;
         return ListView.separated(
           itemCount: data.length,
           separatorBuilder: (_, __) => const Divider(),

@@ -5,7 +5,10 @@ import 'package:flutter_github_client/graphql/starred_repo_list_query.graphql.da
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-void Function({required bool viewerHasStarred}) useStar(String id) {
+void Function({
+  required bool viewerHasStarred,
+  required String id,
+}) useStar() {
   final client = useGraphQLClient();
 
   final star = useMutation$Star(
@@ -16,7 +19,7 @@ void Function({required bool viewerHasStarred}) useStar(String id) {
                 .map((e) => e.node)
                 .toList() ??
             [];
-        if (data == null || items.isEmpty) return;
+        if (data == null) return;
         if (result?.parsedData?.addStar?.starrable
             case final Fragment$RepositoryItem item) {
           items.add(item);
@@ -27,7 +30,7 @@ void Function({required bool viewerHasStarred}) useStar(String id) {
                   edges: items
                       .map(
                         (e) =>
-                        // ignore: lines_longer_than_80_chars
+                            // ignore: lines_longer_than_80_chars
                             Query$StarredRepoList$viewer$starredRepositories$edges(
                           node: e,
                         ),
@@ -49,9 +52,9 @@ void Function({required bool viewerHasStarred}) useStar(String id) {
         if (data == null) return;
         final edges = data.viewer.starredRepositories.edges;
         if (result?.parsedData?.removeStar?.starrable
-        case final Fragment$RepositoryItem item) {
+            case final Fragment$RepositoryItem item) {
           final updatedEdges =
-          edges?.where((e) => e?.node.id != item.id).toList();
+              edges?.where((e) => e?.node.id != item.id).toList();
           client.writeQuery$StarredRepoList(
             data: data.copyWith(
               viewer: data.viewer.copyWith(
@@ -66,7 +69,10 @@ void Function({required bool viewerHasStarred}) useStar(String id) {
     ),
   );
 
-  return useCallback(({required bool viewerHasStarred}) {
+  return useCallback(({
+    required bool viewerHasStarred,
+    required String id,
+  }) {
     if (viewerHasStarred) {
       unstar.runMutation(
         Variables$Mutation$Unstar(

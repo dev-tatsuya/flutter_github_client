@@ -25,7 +25,7 @@ class RepoListPage extends HookConsumerWidget {
       result: graphqlResult,
       builder: (data) {
         final edges = data.search.edges;
-        if (edges == null) return null;
+        if (edges == null || edges.isEmpty) return null;
         return ListView.separated(
           itemCount: edges.length,
           separatorBuilder: (_, __) => const Divider(),
@@ -42,6 +42,7 @@ class RepoListPage extends HookConsumerWidget {
     final restContainer = RestContainer(
       result: restResult,
       builder: (data) {
+        if (data.isEmpty) return null;
         return ListView.separated(
           itemCount: data.length,
           separatorBuilder: (_, __) => const Divider(),
@@ -215,17 +216,20 @@ class StarButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final star = useStar(item.id);
+    final apiProtocol = ref.watch(apiProtocolStateProvider);
+    final starGraphQL = useStar();
+
+    Future<void> onPressed() async {
+      switch (apiProtocol) {
+        case ApiProtocolType.graphql:
+          starGraphQL(viewerHasStarred: item.viewerHasStarred, id: item.id);
+        case ApiProtocolType.rest:
+      }
+    }
 
     return item.viewerHasStarred
-        ? OutlinedButton(
-            onPressed: () => star(viewerHasStarred: true),
-            child: const Text('Unstar'),
-          )
-        : FilledButton(
-            onPressed: () => star(viewerHasStarred: false),
-            child: const Text('Star'),
-          );
+        ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
+        : FilledButton(onPressed: onPressed, child: const Text('Star'));
   }
 }
 
