@@ -9,10 +9,10 @@ part 'graphql.g.dart';
 )
 GraphQLClient graphQL(GraphQLRef ref) {
   final authLink = AuthLink(
-    getToken: () async {
-      return null;
-      // const pat = '';
-      // return 'Bearer $pat';
+    getToken: () {
+      // TODO(dev-tatsuya): PAT を指定する
+      const pat = '';
+      return 'Bearer $pat';
     },
   );
 
