@@ -41,7 +41,7 @@ class StarredRepoList extends _$StarredRepoList {
   @override
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
-    final repoListData = await client.getStarredRepoList();
+    final repoListData = await client.getStarredRepoList('asc');
     return repoListData.map(Repository.fromRest).toList();
   }
 }

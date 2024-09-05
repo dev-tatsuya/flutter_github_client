@@ -39,7 +39,9 @@ abstract class RestClient {
   );
 
   @GET('/user/starred')
-  Future<List<RepoData>> getStarredRepoList();
+  Future<List<RepoData>> getStarredRepoList(
+    @Query('direction') String direction,
+  );
 
   @PUT('/user/starred/{owner}/{repo}')
   Future<void> star(

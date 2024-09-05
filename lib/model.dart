@@ -45,7 +45,7 @@ class Repository {
       description: item.description,
       viewerHasStarred: false,
       starredCount: item.stargazersCount,
-      topics: item.topics.map((e) => Topic(id: e, name: e)).toList(),
+      topics: item.topics.take(5).map((e) => Topic(id: e, name: e)).toList(),
       language: language,
     );
   }

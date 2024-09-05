@@ -129,9 +129,9 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<RepoData>> getStarredRepoList() async {
+  Future<List<RepoData>> getStarredRepoList(String direction) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'direction': direction};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<List<RepoData>>(Options(

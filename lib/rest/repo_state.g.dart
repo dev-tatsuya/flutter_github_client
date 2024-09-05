@@ -380,7 +380,7 @@ class _RepoDetailProviderElement
   String get repo => (origin as RepoDetailProvider).repo;
 }
 
-String _$starredRepoListHash() => r'015bac740b666b94738e3ca273466fee398d5cd1';
+String _$starredRepoListHash() => r'b73f5a599edc7fe4c5d510d7e4e9d0ffb71edbee';
 
 /// See also [StarredRepoList].
 @ProviderFor(StarredRepoList)
