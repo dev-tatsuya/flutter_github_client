@@ -8,6 +8,7 @@ import 'package:flutter_github_client/model.dart';
 import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
 import 'package:flutter_github_client/use_star.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -219,13 +220,27 @@ class StarButton extends HookConsumerWidget {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
     final starGraphQL = useStar();
 
-    Future<void> onPressed() async {
-      switch (apiProtocol) {
-        case ApiProtocolType.graphql:
-          starGraphQL(viewerHasStarred: item.viewerHasStarred, id: item.id);
-        case ApiProtocolType.rest:
-      }
-    }
+    final onPressed = useCallback(
+      () {
+        switch (apiProtocol) {
+          case ApiProtocolType.graphql:
+            starGraphQL(
+              viewerHasStarred: item.viewerHasStarred,
+              id: item.id,
+            );
+          case ApiProtocolType.rest:
+            final (owner, name) = _separate(item.name);
+            ref.read(
+              starProvider(
+                viewerHasStarred: item.viewerHasStarred,
+                owner: owner,
+                repo: name,
+              ).future,
+            );
+        }
+      },
+      [apiProtocol, item],
+    );
 
     return item.viewerHasStarred
         ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
