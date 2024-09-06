@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_github_client/main.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_github_client/rest/data_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -28,19 +28,19 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('/search/repositories')
-  Future<RepoListData> getRepoList(
+  Future<RepositoryListResponseData> getRepositoryList(
     @Query('q') String query,
     @Query('per_page') int perPage,
   );
 
   @GET('/repos/{owner}/{repo}')
-  Future<RepoData> getRepoDetail(
+  Future<RepositoryResponseData> getRepoDetail(
     @Path() String owner,
     @Path() String repo,
   );
 
   @GET('/user/starred')
-  Future<List<RepoData>> getStarredRepoList(
+  Future<List<RepositoryResponseData>> getStarredRepoList(
     @Query('direction') String direction,
   );
 
@@ -61,40 +61,4 @@ abstract class RestClient {
     @Path() String owner,
     @Path() String repo,
   );
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class RepoListData {
-  RepoListData({required this.items});
-
-  factory RepoListData.fromJson(Map<String, dynamic> json) =>
-      _$RepoListDataFromJson(json);
-
-  List<RepoData> items;
-
-  Map<String, dynamic> toJson() => _$RepoListDataToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class RepoData {
-  RepoData({
-    required this.nodeId,
-    required this.fullName,
-    required this.stargazersCount,
-    required this.topics,
-    this.description,
-    this.language,
-  });
-
-  factory RepoData.fromJson(Map<String, dynamic> json) =>
-      _$RepoDataFromJson(json);
-
-  String nodeId;
-  String fullName;
-  String? description;
-  int stargazersCount;
-  String? language;
-  List<String> topics;
-
-  Map<String, dynamic> toJson() => _$RepoDataToJson(this);
 }

@@ -3,40 +3,6 @@
 part of 'rest.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-RepoListData _$RepoListDataFromJson(Map<String, dynamic> json) => RepoListData(
-      items: (json['items'] as List<dynamic>)
-          .map((e) => RepoData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$RepoListDataToJson(RepoListData instance) =>
-    <String, dynamic>{
-      'items': instance.items,
-    };
-
-RepoData _$RepoDataFromJson(Map<String, dynamic> json) => RepoData(
-      nodeId: json['node_id'] as String,
-      fullName: json['full_name'] as String,
-      stargazersCount: (json['stargazers_count'] as num).toInt(),
-      topics:
-          (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
-      description: json['description'] as String?,
-      language: json['language'] as String?,
-    );
-
-Map<String, dynamic> _$RepoDataToJson(RepoData instance) => <String, dynamic>{
-      'node_id': instance.nodeId,
-      'full_name': instance.fullName,
-      'description': instance.description,
-      'stargazers_count': instance.stargazersCount,
-      'language': instance.language,
-      'topics': instance.topics,
-    };
-
-// **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
@@ -58,7 +24,7 @@ class _RestClient implements RestClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<RepoListData> getRepoList(
+  Future<RepositoryListResponseData> getRepositoryList(
     String query,
     int perPage,
   ) async {
@@ -69,7 +35,7 @@ class _RestClient implements RestClient {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RepoListData>(Options(
+    final _options = _setStreamType<RepositoryListResponseData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -86,9 +52,9 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RepoListData _value;
+    late RepositoryListResponseData _value;
     try {
-      _value = RepoListData.fromJson(_result.data!);
+      _value = RepositoryListResponseData.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -97,7 +63,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<RepoData> getRepoDetail(
+  Future<RepositoryResponseData> getRepoDetail(
     String owner,
     String repo,
   ) async {
@@ -105,7 +71,7 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RepoData>(Options(
+    final _options = _setStreamType<RepositoryResponseData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -122,9 +88,9 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RepoData _value;
+    late RepositoryResponseData _value;
     try {
-      _value = RepoData.fromJson(_result.data!);
+      _value = RepositoryResponseData.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -133,12 +99,13 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<RepoData>> getStarredRepoList(String direction) async {
+  Future<List<RepositoryResponseData>> getStarredRepoList(
+      String direction) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'direction': direction};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<RepoData>>(Options(
+    final _options = _setStreamType<List<RepositoryResponseData>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -155,10 +122,11 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<RepoData> _value;
+    late List<RepositoryResponseData> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => RepoData.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) =>
+              RepositoryResponseData.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

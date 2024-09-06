@@ -1,9 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/api_protocol_state.dart';
+import 'package:flutter_github_client/domain_model.dart';
+import 'package:flutter_github_client/graphql/data_model.dart';
 import 'package:flutter_github_client/graphql/graphql_container.dart';
 import 'package:flutter_github_client/graphql/repo_detail_query.graphql.dart';
-import 'package:flutter_github_client/model.dart';
 import 'package:flutter_github_client/repo_list_page.dart';
 import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
@@ -50,7 +51,7 @@ class RepoDetailPage extends HookConsumerWidget {
           result: query.result,
           builder: (data) {
             if (data.repository == null) return null;
-            return builder(Repository.fromGraphQL(data.repository!));
+            return builder(data.repository!.toDomain());
           },
         );
       },

@@ -2,9 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/api_protocol_state.dart';
 import 'package:flutter_github_client/app_router.dart';
+import 'package:flutter_github_client/domain_model.dart';
+import 'package:flutter_github_client/graphql/data_model.dart';
 import 'package:flutter_github_client/graphql/graphql_container.dart';
 import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
-import 'package:flutter_github_client/model.dart';
 import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
 import 'package:flutter_github_client/use_star.dart';
@@ -35,7 +36,7 @@ class RepoListPage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 if (edges[index]?.node
                     case final Fragment$RepositoryItem item) {
-                  return RepoListItem(item: Repository.fromGraphQL(item));
+                  return RepoListItem(item: item.toDomain());
                 }
                 return null;
               },

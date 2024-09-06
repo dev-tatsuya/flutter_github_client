@@ -1,4 +1,4 @@
-import 'package:flutter_github_client/model.dart';
+import 'package:flutter_github_client/domain_model.dart';
 import 'package:flutter_github_client/rest/rest.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,8 +12,9 @@ class RepoList extends _$RepoList {
   @override
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
-    final repoListData = await client.getRepoList('dart', 10);
-    final repoList = repoListData.items.map(Repository.fromRest).toList();
+    final repoListData = await client.getRepositoryList('dart', 10);
+    final repoList =
+        repoListData.items.map((e) => e.toDomain()).toList();
 
     final result = <Repository>[];
     for (final repo in repoList) {
@@ -59,7 +60,7 @@ class RepoDetail extends _$RepoDetail {
   }) async {
     final client = ref.watch(restProvider);
     final repoData = await client.getRepoDetail(owner, repo);
-    final data = Repository.fromRest(repoData);
+    final data = repoData.toDomain();
     final starred = await client
         .viewerHasStarred(owner, repo)
         .then((_) => true)
@@ -77,7 +78,7 @@ class StarredRepoList extends _$StarredRepoList {
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
     final repoListData = await client.getStarredRepoList('asc');
-    final repoList = repoListData.map(Repository.fromRest).toList();
+    final repoList = repoListData.map((e) => e.toDomain()).toList();
     return repoList.map((e) => e.copyWith(viewerHasStarred: true)).toList();
   }
 }

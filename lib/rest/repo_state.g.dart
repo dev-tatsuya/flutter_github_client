@@ -200,7 +200,7 @@ class _StarProviderElement extends AutoDisposeFutureProviderElement<void>
   bool get viewerHasStarred => (origin as StarProvider).viewerHasStarred;
 }
 
-String _$repoListHash() => r'421a877e82dbe58c9014de94490d4715cab136fe';
+String _$repoListHash() => r'3e210ed977811a5d571f1fab369418bf566bcee0';
 
 /// See also [RepoList].
 @ProviderFor(RepoList)
@@ -218,7 +218,7 @@ final repoListProvider =
 );
 
 typedef _$RepoList = AsyncNotifier<List<Repository>>;
-String _$repoDetailHash() => r'4e27e8b309a76ed1b5208a29d6e45d2c41900ca2';
+String _$repoDetailHash() => r'75298c5a091c4529c49ed0ad6b513ebf33638099';
 
 abstract class _$RepoDetail extends BuildlessAsyncNotifier<Repository> {
   late final String owner;
@@ -389,7 +389,7 @@ class _RepoDetailProviderElement
   String get repo => (origin as RepoDetailProvider).repo;
 }
 
-String _$starredRepoListHash() => r'75e18739f05aa1755463353d4c2fb37d06f61b24';
+String _$starredRepoListHash() => r'9808c6ccba0c813f635964bed2985778fa1e98e4';
 
 /// See also [StarredRepoList].
 @ProviderFor(StarredRepoList)
