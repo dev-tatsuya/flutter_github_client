@@ -5,18 +5,18 @@ import 'package:json_annotation/json_annotation.dart';
 part 'data_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class RepositoryListResponseData {
-  RepositoryListResponseData({required this.items});
+class RepositoryListData {
+  RepositoryListData({required this.items});
 
-  factory RepositoryListResponseData.fromJson(Map<String, dynamic> json) =>
-      _$RepositoryListResponseDataFromJson(json);
+  factory RepositoryListData.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryListDataFromJson(json);
 
-  List<RepositoryResponseData> items;
+  List<RepositoryData> items;
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class RepositoryResponseData {
-  RepositoryResponseData({
+class RepositoryData {
+  RepositoryData({
     required this.nodeId,
     required this.fullName,
     required this.stargazersCount,
@@ -25,8 +25,8 @@ class RepositoryResponseData {
     this.language,
   });
 
-  factory RepositoryResponseData.fromJson(Map<String, dynamic> json) =>
-      _$RepositoryResponseDataFromJson(json);
+  factory RepositoryData.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryDataFromJson(json);
 
   String nodeId;
   String fullName;

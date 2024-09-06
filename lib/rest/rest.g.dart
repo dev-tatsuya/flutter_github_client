@@ -24,7 +24,7 @@ class _RestClient implements RestClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<RepositoryListResponseData> getRepositoryList(
+  Future<RepositoryListData> getRepositoryList(
     String query,
     int perPage,
   ) async {
@@ -35,7 +35,7 @@ class _RestClient implements RestClient {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RepositoryListResponseData>(Options(
+    final _options = _setStreamType<RepositoryListData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -52,9 +52,9 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RepositoryListResponseData _value;
+    late RepositoryListData _value;
     try {
-      _value = RepositoryListResponseData.fromJson(_result.data!);
+      _value = RepositoryListData.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -63,7 +63,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<RepositoryResponseData> getRepositoryDetail(
+  Future<RepositoryData> getRepositoryDetail(
     String owner,
     String name,
   ) async {
@@ -71,7 +71,7 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RepositoryResponseData>(Options(
+    final _options = _setStreamType<RepositoryData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -88,9 +88,9 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RepositoryResponseData _value;
+    late RepositoryData _value;
     try {
-      _value = RepositoryResponseData.fromJson(_result.data!);
+      _value = RepositoryData.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -99,13 +99,13 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<RepositoryResponseData>> getStarredRepositoryList(
+  Future<List<RepositoryData>> getStarredRepositoryList(
       String direction) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'direction': direction};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<RepositoryResponseData>>(Options(
+    final _options = _setStreamType<List<RepositoryData>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -122,11 +122,11 @@ class _RestClient implements RestClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<RepositoryResponseData> _value;
+    late List<RepositoryData> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) =>
-              RepositoryResponseData.fromJson(i as Map<String, dynamic>))
+          .map(
+              (dynamic i) => RepositoryData.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

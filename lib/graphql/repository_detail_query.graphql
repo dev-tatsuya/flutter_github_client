@@ -1,13 +1,13 @@
 query RepositoryDetail($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
-    ...RepositoryItem
+    ...RepositoryData
   }
 }
 
 mutation Star($input: AddStarInput!) {
   addStar(input: $input) {
     starrable {
-      ...RepositoryItem
+      ...RepositoryData
     }
   }
 }
@@ -15,7 +15,7 @@ mutation Star($input: AddStarInput!) {
 mutation Unstar($input: RemoveStarInput!) {
   removeStar(input: $input) {
     starrable {
-      ...RepositoryItem
+      ...RepositoryData
     }
   }
 }

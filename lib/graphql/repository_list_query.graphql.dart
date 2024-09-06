@@ -4,8 +4,8 @@ import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 
-class Fragment$RepositoryItem {
-  Fragment$RepositoryItem({
+class Fragment$RepositoryData {
+  Fragment$RepositoryData({
     required this.id,
     required this.nameWithOwner,
     this.description,
@@ -16,7 +16,7 @@ class Fragment$RepositoryItem {
     this.$__typename = 'Repository',
   });
 
-  factory Fragment$RepositoryItem.fromJson(Map<String, dynamic> json) {
+  factory Fragment$RepositoryData.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$nameWithOwner = json['nameWithOwner'];
     final l$description = json['description'];
@@ -25,17 +25,17 @@ class Fragment$RepositoryItem {
     final l$repositoryTopics = json['repositoryTopics'];
     final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem(
+    return Fragment$RepositoryData(
       id: (l$id as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
       viewerHasStarred: (l$viewerHasStarred as bool),
-      repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
+      repositoryTopics: Fragment$RepositoryData$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
       primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$LanguageItem.fromJson(
+          : Fragment$LanguageData.fromJson(
               (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -51,9 +51,9 @@ class Fragment$RepositoryItem {
 
   final bool viewerHasStarred;
 
-  final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
+  final Fragment$RepositoryData$repositoryTopics repositoryTopics;
 
-  final Fragment$LanguageItem? primaryLanguage;
+  final Fragment$LanguageData? primaryLanguage;
 
   final String $__typename;
 
@@ -105,7 +105,7 @@ class Fragment$RepositoryItem {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$RepositoryItem) ||
+    if (!(other is Fragment$RepositoryData) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -153,22 +153,22 @@ class Fragment$RepositoryItem {
   }
 }
 
-extension UtilityExtension$Fragment$RepositoryItem on Fragment$RepositoryItem {
-  CopyWith$Fragment$RepositoryItem<Fragment$RepositoryItem> get copyWith =>
-      CopyWith$Fragment$RepositoryItem(
+extension UtilityExtension$Fragment$RepositoryData on Fragment$RepositoryData {
+  CopyWith$Fragment$RepositoryData<Fragment$RepositoryData> get copyWith =>
+      CopyWith$Fragment$RepositoryData(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Fragment$RepositoryItem<TRes> {
-  factory CopyWith$Fragment$RepositoryItem(
-    Fragment$RepositoryItem instance,
-    TRes Function(Fragment$RepositoryItem) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem;
+abstract class CopyWith$Fragment$RepositoryData<TRes> {
+  factory CopyWith$Fragment$RepositoryData(
+    Fragment$RepositoryData instance,
+    TRes Function(Fragment$RepositoryData) then,
+  ) = _CopyWithImpl$Fragment$RepositoryData;
 
-  factory CopyWith$Fragment$RepositoryItem.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem;
+  factory CopyWith$Fragment$RepositoryData.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$RepositoryData;
 
   TRes call({
     String? id,
@@ -176,24 +176,24 @@ abstract class CopyWith$Fragment$RepositoryItem<TRes> {
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics;
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage;
 }
 
-class _CopyWithImpl$Fragment$RepositoryItem<TRes>
-    implements CopyWith$Fragment$RepositoryItem<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem(
+class _CopyWithImpl$Fragment$RepositoryData<TRes>
+    implements CopyWith$Fragment$RepositoryData<TRes> {
+  _CopyWithImpl$Fragment$RepositoryData(
     this._instance,
     this._then,
   );
 
-  final Fragment$RepositoryItem _instance;
+  final Fragment$RepositoryData _instance;
 
-  final TRes Function(Fragment$RepositoryItem) _then;
+  final TRes Function(Fragment$RepositoryData) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -207,7 +207,7 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
     Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$RepositoryItem(
+      _then(Fragment$RepositoryData(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
@@ -225,33 +225,33 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
         repositoryTopics: repositoryTopics == _undefined ||
                 repositoryTopics == null
             ? _instance.repositoryTopics
-            : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
+            : (repositoryTopics as Fragment$RepositoryData$repositoryTopics),
         primaryLanguage: primaryLanguage == _undefined
             ? _instance.primaryLanguage
-            : (primaryLanguage as Fragment$LanguageItem?),
+            : (primaryLanguage as Fragment$LanguageData?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics {
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics {
     final local$repositoryTopics = _instance.repositoryTopics;
-    return CopyWith$Fragment$RepositoryItem$repositoryTopics(
+    return CopyWith$Fragment$RepositoryData$repositoryTopics(
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage {
     final local$primaryLanguage = _instance.primaryLanguage;
     return local$primaryLanguage == null
-        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
-        : CopyWith$Fragment$LanguageItem(
+        ? CopyWith$Fragment$LanguageData.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageData(
             local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
 
-class _CopyWithStubImpl$Fragment$RepositoryItem<TRes>
-    implements CopyWith$Fragment$RepositoryItem<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem(this._res);
+class _CopyWithStubImpl$Fragment$RepositoryData<TRes>
+    implements CopyWith$Fragment$RepositoryData<TRes> {
+  _CopyWithStubImpl$Fragment$RepositoryData(this._res);
 
   TRes _res;
 
@@ -261,22 +261,22 @@ class _CopyWithStubImpl$Fragment$RepositoryItem<TRes>
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes>
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes>
       get repositoryTopics =>
-          CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
+          CopyWith$Fragment$RepositoryData$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
-      CopyWith$Fragment$LanguageItem.stub(_res);
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageData.stub(_res);
 }
 
-const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
-  name: NameNode(value: 'RepositoryItem'),
+const fragmentDefinitionRepositoryData = FragmentDefinitionNode(
+  name: NameNode(value: 'RepositoryData'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
     name: NameNode(value: 'Repository'),
@@ -349,7 +349,7 @@ const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
                   directives: [],
                   selectionSet: SelectionSetNode(selections: [
                     FragmentSpreadNode(
-                      name: NameNode(value: 'TopicItem'),
+                      name: NameNode(value: 'TopicData'),
                       directives: [],
                     ),
                     FieldNode(
@@ -395,7 +395,7 @@ const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
       directives: [],
       selectionSet: SelectionSetNode(selections: [
         FragmentSpreadNode(
-          name: NameNode(value: 'LanguageItem'),
+          name: NameNode(value: 'LanguageData'),
           directives: [],
         ),
         FieldNode(
@@ -416,15 +416,15 @@ const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
     ),
   ]),
 );
-const documentNodeFragmentRepositoryItem = DocumentNode(definitions: [
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+const documentNodeFragmentRepositoryData = DocumentNode(definitions: [
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 
-extension ClientExtension$Fragment$RepositoryItem on graphql.GraphQLClient {
-  void writeFragment$RepositoryItem({
-    required Fragment$RepositoryItem data,
+extension ClientExtension$Fragment$RepositoryData on graphql.GraphQLClient {
+  void writeFragment$RepositoryData({
+    required Fragment$RepositoryData data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
   }) =>
@@ -432,14 +432,14 @@ extension ClientExtension$Fragment$RepositoryItem on graphql.GraphQLClient {
         graphql.FragmentRequest(
           idFields: idFields,
           fragment: const graphql.Fragment(
-            fragmentName: 'RepositoryItem',
-            document: documentNodeFragmentRepositoryItem,
+            fragmentName: 'RepositoryData',
+            document: documentNodeFragmentRepositoryData,
           ),
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Fragment$RepositoryItem? readFragment$RepositoryItem({
+  Fragment$RepositoryData? readFragment$RepositoryData({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
@@ -447,38 +447,38 @@ extension ClientExtension$Fragment$RepositoryItem on graphql.GraphQLClient {
       graphql.FragmentRequest(
         idFields: idFields,
         fragment: const graphql.Fragment(
-          fragmentName: 'RepositoryItem',
-          document: documentNodeFragmentRepositoryItem,
+          fragmentName: 'RepositoryData',
+          document: documentNodeFragmentRepositoryData,
         ),
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Fragment$RepositoryItem.fromJson(result);
+    return result == null ? null : Fragment$RepositoryData.fromJson(result);
   }
 }
 
-class Fragment$RepositoryItem$repositoryTopics {
-  Fragment$RepositoryItem$repositoryTopics({
+class Fragment$RepositoryData$repositoryTopics {
+  Fragment$RepositoryData$repositoryTopics({
     this.edges,
     this.$__typename = 'RepositoryTopicConnection',
   });
 
-  factory Fragment$RepositoryItem$repositoryTopics.fromJson(
+  factory Fragment$RepositoryData$repositoryTopics.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem$repositoryTopics(
+    return Fragment$RepositoryData$repositoryTopics(
       edges: (l$edges as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Fragment$RepositoryItem$repositoryTopics$edges.fromJson(
+              : Fragment$RepositoryData$repositoryTopics$edges.fromJson(
                   (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Fragment$RepositoryItem$repositoryTopics$edges?>? edges;
+  final List<Fragment$RepositoryData$repositoryTopics$edges?>? edges;
 
   final String $__typename;
 
@@ -506,7 +506,7 @@ class Fragment$RepositoryItem$repositoryTopics {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$RepositoryItem$repositoryTopics) ||
+    if (!(other is Fragment$RepositoryData$repositoryTopics) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -535,47 +535,47 @@ class Fragment$RepositoryItem$repositoryTopics {
   }
 }
 
-extension UtilityExtension$Fragment$RepositoryItem$repositoryTopics
-    on Fragment$RepositoryItem$repositoryTopics {
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<
-          Fragment$RepositoryItem$repositoryTopics>
-      get copyWith => CopyWith$Fragment$RepositoryItem$repositoryTopics(
+extension UtilityExtension$Fragment$RepositoryData$repositoryTopics
+    on Fragment$RepositoryData$repositoryTopics {
+  CopyWith$Fragment$RepositoryData$repositoryTopics<
+          Fragment$RepositoryData$repositoryTopics>
+      get copyWith => CopyWith$Fragment$RepositoryData$repositoryTopics(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> {
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics(
-    Fragment$RepositoryItem$repositoryTopics instance,
-    TRes Function(Fragment$RepositoryItem$repositoryTopics) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics;
+abstract class CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> {
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics(
+    Fragment$RepositoryData$repositoryTopics instance,
+    TRes Function(Fragment$RepositoryData$repositoryTopics) then,
+  ) = _CopyWithImpl$Fragment$RepositoryData$repositoryTopics;
 
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics;
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics;
 
   TRes call({
-    List<Fragment$RepositoryItem$repositoryTopics$edges?>? edges,
+    List<Fragment$RepositoryData$repositoryTopics$edges?>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Fragment$RepositoryItem$repositoryTopics$edges?>? Function(
+      Iterable<Fragment$RepositoryData$repositoryTopics$edges?>? Function(
               Iterable<
-                  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<
-                      Fragment$RepositoryItem$repositoryTopics$edges>?>?)
+                  CopyWith$Fragment$RepositoryData$repositoryTopics$edges<
+                      Fragment$RepositoryData$repositoryTopics$edges>?>?)
           _fn);
 }
 
-class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics<TRes>
-    implements CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics(
+class _CopyWithImpl$Fragment$RepositoryData$repositoryTopics<TRes>
+    implements CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> {
+  _CopyWithImpl$Fragment$RepositoryData$repositoryTopics(
     this._instance,
     this._then,
   );
 
-  final Fragment$RepositoryItem$repositoryTopics _instance;
+  final Fragment$RepositoryData$repositoryTopics _instance;
 
-  final TRes Function(Fragment$RepositoryItem$repositoryTopics) _then;
+  final TRes Function(Fragment$RepositoryData$repositoryTopics) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -583,38 +583,38 @@ class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$RepositoryItem$repositoryTopics(
+      _then(Fragment$RepositoryData$repositoryTopics(
         edges: edges == _undefined
             ? _instance.edges
-            : (edges as List<Fragment$RepositoryItem$repositoryTopics$edges?>?),
+            : (edges as List<Fragment$RepositoryData$repositoryTopics$edges?>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Fragment$RepositoryItem$repositoryTopics$edges?>? Function(
+          Iterable<Fragment$RepositoryData$repositoryTopics$edges?>? Function(
                   Iterable<
-                      CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<
-                          Fragment$RepositoryItem$repositoryTopics$edges>?>?)
+                      CopyWith$Fragment$RepositoryData$repositoryTopics$edges<
+                          Fragment$RepositoryData$repositoryTopics$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
               ? null
-              : CopyWith$Fragment$RepositoryItem$repositoryTopics$edges(
+              : CopyWith$Fragment$RepositoryData$repositoryTopics$edges(
                   e,
                   (i) => i,
                 )))?.toList());
 }
 
-class _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics<TRes>
-    implements CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics(this._res);
+class _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics<TRes>
+    implements CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> {
+  _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics(this._res);
 
   TRes _res;
 
   call({
-    List<Fragment$RepositoryItem$repositoryTopics$edges?>? edges,
+    List<Fragment$RepositoryData$repositoryTopics$edges?>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -622,26 +622,26 @@ class _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics<TRes>
   edges(_fn) => _res;
 }
 
-class Fragment$RepositoryItem$repositoryTopics$edges {
-  Fragment$RepositoryItem$repositoryTopics$edges({
+class Fragment$RepositoryData$repositoryTopics$edges {
+  Fragment$RepositoryData$repositoryTopics$edges({
     this.node,
     this.$__typename = 'RepositoryTopicEdge',
   });
 
-  factory Fragment$RepositoryItem$repositoryTopics$edges.fromJson(
+  factory Fragment$RepositoryData$repositoryTopics$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem$repositoryTopics$edges(
+    return Fragment$RepositoryData$repositoryTopics$edges(
       node: l$node == null
           ? null
-          : Fragment$RepositoryItem$repositoryTopics$edges$node.fromJson(
+          : Fragment$RepositoryData$repositoryTopics$edges$node.fromJson(
               (l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$RepositoryItem$repositoryTopics$edges$node? node;
+  final Fragment$RepositoryData$repositoryTopics$edges$node? node;
 
   final String $__typename;
 
@@ -669,7 +669,7 @@ class Fragment$RepositoryItem$repositoryTopics$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$RepositoryItem$repositoryTopics$edges) ||
+    if (!(other is Fragment$RepositoryData$repositoryTopics$edges) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -687,43 +687,43 @@ class Fragment$RepositoryItem$repositoryTopics$edges {
   }
 }
 
-extension UtilityExtension$Fragment$RepositoryItem$repositoryTopics$edges
-    on Fragment$RepositoryItem$repositoryTopics$edges {
-  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<
-          Fragment$RepositoryItem$repositoryTopics$edges>
-      get copyWith => CopyWith$Fragment$RepositoryItem$repositoryTopics$edges(
+extension UtilityExtension$Fragment$RepositoryData$repositoryTopics$edges
+    on Fragment$RepositoryData$repositoryTopics$edges {
+  CopyWith$Fragment$RepositoryData$repositoryTopics$edges<
+          Fragment$RepositoryData$repositoryTopics$edges>
+      get copyWith => CopyWith$Fragment$RepositoryData$repositoryTopics$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<TRes> {
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics$edges(
-    Fragment$RepositoryItem$repositoryTopics$edges instance,
-    TRes Function(Fragment$RepositoryItem$repositoryTopics$edges) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges;
+abstract class CopyWith$Fragment$RepositoryData$repositoryTopics$edges<TRes> {
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics$edges(
+    Fragment$RepositoryData$repositoryTopics$edges instance,
+    TRes Function(Fragment$RepositoryData$repositoryTopics$edges) then,
+  ) = _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges;
 
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics$edges.stub(
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics$edges.stub(
           TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges;
+      _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges;
 
   TRes call({
-    Fragment$RepositoryItem$repositoryTopics$edges$node? node,
+    Fragment$RepositoryData$repositoryTopics$edges$node? node,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes> get node;
+  CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<TRes> get node;
 }
 
-class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges<TRes>
-    implements CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges(
+class _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges<TRes>
+    implements CopyWith$Fragment$RepositoryData$repositoryTopics$edges<TRes> {
+  _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges(
     this._instance,
     this._then,
   );
 
-  final Fragment$RepositoryItem$repositoryTopics$edges _instance;
+  final Fragment$RepositoryData$repositoryTopics$edges _instance;
 
-  final TRes Function(Fragment$RepositoryItem$repositoryTopics$edges) _then;
+  final TRes Function(Fragment$RepositoryData$repositoryTopics$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -731,58 +731,58 @@ class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$RepositoryItem$repositoryTopics$edges(
+      _then(Fragment$RepositoryData$repositoryTopics$edges(
         node: node == _undefined
             ? _instance.node
-            : (node as Fragment$RepositoryItem$repositoryTopics$edges$node?),
+            : (node as Fragment$RepositoryData$repositoryTopics$edges$node?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes> get node {
+  CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node.stub(
+        ? CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node.stub(
             _then(_instance))
-        : CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node(
+        : CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node(
             local$node, (e) => call(node: e));
   }
 }
 
-class _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges<TRes>
-    implements CopyWith$Fragment$RepositoryItem$repositoryTopics$edges<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges(this._res);
+class _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges<TRes>
+    implements CopyWith$Fragment$RepositoryData$repositoryTopics$edges<TRes> {
+  _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges(this._res);
 
   TRes _res;
 
   call({
-    Fragment$RepositoryItem$repositoryTopics$edges$node? node,
+    Fragment$RepositoryData$repositoryTopics$edges$node? node,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes> get node =>
-      CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node.stub(_res);
+  CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<TRes> get node =>
+      CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node.stub(_res);
 }
 
-class Fragment$RepositoryItem$repositoryTopics$edges$node {
-  Fragment$RepositoryItem$repositoryTopics$edges$node({
+class Fragment$RepositoryData$repositoryTopics$edges$node {
+  Fragment$RepositoryData$repositoryTopics$edges$node({
     required this.topic,
     this.$__typename = 'RepositoryTopic',
   });
 
-  factory Fragment$RepositoryItem$repositoryTopics$edges$node.fromJson(
+  factory Fragment$RepositoryData$repositoryTopics$edges$node.fromJson(
       Map<String, dynamic> json) {
     final l$topic = json['topic'];
     final l$$__typename = json['__typename'];
-    return Fragment$RepositoryItem$repositoryTopics$edges$node(
-      topic: Fragment$TopicItem.fromJson((l$topic as Map<String, dynamic>)),
+    return Fragment$RepositoryData$repositoryTopics$edges$node(
+      topic: Fragment$TopicData.fromJson((l$topic as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$TopicItem topic;
+  final Fragment$TopicData topic;
 
   final String $__typename;
 
@@ -810,7 +810,7 @@ class Fragment$RepositoryItem$repositoryTopics$edges$node {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$RepositoryItem$repositoryTopics$edges$node) ||
+    if (!(other is Fragment$RepositoryData$repositoryTopics$edges$node) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -828,46 +828,46 @@ class Fragment$RepositoryItem$repositoryTopics$edges$node {
   }
 }
 
-extension UtilityExtension$Fragment$RepositoryItem$repositoryTopics$edges$node
-    on Fragment$RepositoryItem$repositoryTopics$edges$node {
-  CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<
-          Fragment$RepositoryItem$repositoryTopics$edges$node>
+extension UtilityExtension$Fragment$RepositoryData$repositoryTopics$edges$node
+    on Fragment$RepositoryData$repositoryTopics$edges$node {
+  CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<
+          Fragment$RepositoryData$repositoryTopics$edges$node>
       get copyWith =>
-          CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node(
+          CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<
+abstract class CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<
     TRes> {
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node(
-    Fragment$RepositoryItem$repositoryTopics$edges$node instance,
-    TRes Function(Fragment$RepositoryItem$repositoryTopics$edges$node) then,
-  ) = _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges$node;
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node(
+    Fragment$RepositoryData$repositoryTopics$edges$node instance,
+    TRes Function(Fragment$RepositoryData$repositoryTopics$edges$node) then,
+  ) = _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges$node;
 
-  factory CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node.stub(
+  factory CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node.stub(
           TRes res) =
-      _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges$node;
+      _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges$node;
 
   TRes call({
-    Fragment$TopicItem? topic,
+    Fragment$TopicData? topic,
     String? $__typename,
   });
-  CopyWith$Fragment$TopicItem<TRes> get topic;
+  CopyWith$Fragment$TopicData<TRes> get topic;
 }
 
-class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes>
+class _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges$node<TRes>
     implements
-        CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes> {
-  _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges$node(
+        CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<TRes> {
+  _CopyWithImpl$Fragment$RepositoryData$repositoryTopics$edges$node(
     this._instance,
     this._then,
   );
 
-  final Fragment$RepositoryItem$repositoryTopics$edges$node _instance;
+  final Fragment$RepositoryData$repositoryTopics$edges$node _instance;
 
-  final TRes Function(Fragment$RepositoryItem$repositoryTopics$edges$node)
+  final TRes Function(Fragment$RepositoryData$repositoryTopics$edges$node)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -876,52 +876,52 @@ class _CopyWithImpl$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes>
     Object? topic = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$RepositoryItem$repositoryTopics$edges$node(
+      _then(Fragment$RepositoryData$repositoryTopics$edges$node(
         topic: topic == _undefined || topic == null
             ? _instance.topic
-            : (topic as Fragment$TopicItem),
+            : (topic as Fragment$TopicData),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$TopicItem<TRes> get topic {
+  CopyWith$Fragment$TopicData<TRes> get topic {
     final local$topic = _instance.topic;
-    return CopyWith$Fragment$TopicItem(local$topic, (e) => call(topic: e));
+    return CopyWith$Fragment$TopicData(local$topic, (e) => call(topic: e));
   }
 }
 
-class _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges$node<
+class _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges$node<
         TRes>
     implements
-        CopyWith$Fragment$RepositoryItem$repositoryTopics$edges$node<TRes> {
-  _CopyWithStubImpl$Fragment$RepositoryItem$repositoryTopics$edges$node(
+        CopyWith$Fragment$RepositoryData$repositoryTopics$edges$node<TRes> {
+  _CopyWithStubImpl$Fragment$RepositoryData$repositoryTopics$edges$node(
       this._res);
 
   TRes _res;
 
   call({
-    Fragment$TopicItem? topic,
+    Fragment$TopicData? topic,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$TopicItem<TRes> get topic =>
-      CopyWith$Fragment$TopicItem.stub(_res);
+  CopyWith$Fragment$TopicData<TRes> get topic =>
+      CopyWith$Fragment$TopicData.stub(_res);
 }
 
-class Fragment$TopicItem {
-  Fragment$TopicItem({
+class Fragment$TopicData {
+  Fragment$TopicData({
     required this.id,
     required this.name,
     this.$__typename = 'Topic',
   });
 
-  factory Fragment$TopicItem.fromJson(Map<String, dynamic> json) {
+  factory Fragment$TopicData.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
-    return Fragment$TopicItem(
+    return Fragment$TopicData(
       id: (l$id as String),
       name: (l$name as String),
       $__typename: (l$$__typename as String),
@@ -962,7 +962,7 @@ class Fragment$TopicItem {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$TopicItem) || runtimeType != other.runtimeType) {
+    if (!(other is Fragment$TopicData) || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -984,22 +984,22 @@ class Fragment$TopicItem {
   }
 }
 
-extension UtilityExtension$Fragment$TopicItem on Fragment$TopicItem {
-  CopyWith$Fragment$TopicItem<Fragment$TopicItem> get copyWith =>
-      CopyWith$Fragment$TopicItem(
+extension UtilityExtension$Fragment$TopicData on Fragment$TopicData {
+  CopyWith$Fragment$TopicData<Fragment$TopicData> get copyWith =>
+      CopyWith$Fragment$TopicData(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Fragment$TopicItem<TRes> {
-  factory CopyWith$Fragment$TopicItem(
-    Fragment$TopicItem instance,
-    TRes Function(Fragment$TopicItem) then,
-  ) = _CopyWithImpl$Fragment$TopicItem;
+abstract class CopyWith$Fragment$TopicData<TRes> {
+  factory CopyWith$Fragment$TopicData(
+    Fragment$TopicData instance,
+    TRes Function(Fragment$TopicData) then,
+  ) = _CopyWithImpl$Fragment$TopicData;
 
-  factory CopyWith$Fragment$TopicItem.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$TopicItem;
+  factory CopyWith$Fragment$TopicData.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$TopicData;
 
   TRes call({
     String? id,
@@ -1008,16 +1008,16 @@ abstract class CopyWith$Fragment$TopicItem<TRes> {
   });
 }
 
-class _CopyWithImpl$Fragment$TopicItem<TRes>
-    implements CopyWith$Fragment$TopicItem<TRes> {
-  _CopyWithImpl$Fragment$TopicItem(
+class _CopyWithImpl$Fragment$TopicData<TRes>
+    implements CopyWith$Fragment$TopicData<TRes> {
+  _CopyWithImpl$Fragment$TopicData(
     this._instance,
     this._then,
   );
 
-  final Fragment$TopicItem _instance;
+  final Fragment$TopicData _instance;
 
-  final TRes Function(Fragment$TopicItem) _then;
+  final TRes Function(Fragment$TopicData) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1026,7 +1026,7 @@ class _CopyWithImpl$Fragment$TopicItem<TRes>
     Object? name = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$TopicItem(
+      _then(Fragment$TopicData(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         name: name == _undefined || name == null
             ? _instance.name
@@ -1037,9 +1037,9 @@ class _CopyWithImpl$Fragment$TopicItem<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Fragment$TopicItem<TRes>
-    implements CopyWith$Fragment$TopicItem<TRes> {
-  _CopyWithStubImpl$Fragment$TopicItem(this._res);
+class _CopyWithStubImpl$Fragment$TopicData<TRes>
+    implements CopyWith$Fragment$TopicData<TRes> {
+  _CopyWithStubImpl$Fragment$TopicData(this._res);
 
   TRes _res;
 
@@ -1051,8 +1051,8 @@ class _CopyWithStubImpl$Fragment$TopicItem<TRes>
       _res;
 }
 
-const fragmentDefinitionTopicItem = FragmentDefinitionNode(
-  name: NameNode(value: 'TopicItem'),
+const fragmentDefinitionTopicData = FragmentDefinitionNode(
+  name: NameNode(value: 'TopicData'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
     name: NameNode(value: 'Topic'),
@@ -1083,13 +1083,13 @@ const fragmentDefinitionTopicItem = FragmentDefinitionNode(
     ),
   ]),
 );
-const documentNodeFragmentTopicItem = DocumentNode(definitions: [
-  fragmentDefinitionTopicItem,
+const documentNodeFragmentTopicData = DocumentNode(definitions: [
+  fragmentDefinitionTopicData,
 ]);
 
-extension ClientExtension$Fragment$TopicItem on graphql.GraphQLClient {
-  void writeFragment$TopicItem({
-    required Fragment$TopicItem data,
+extension ClientExtension$Fragment$TopicData on graphql.GraphQLClient {
+  void writeFragment$TopicData({
+    required Fragment$TopicData data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
   }) =>
@@ -1097,14 +1097,14 @@ extension ClientExtension$Fragment$TopicItem on graphql.GraphQLClient {
         graphql.FragmentRequest(
           idFields: idFields,
           fragment: const graphql.Fragment(
-            fragmentName: 'TopicItem',
-            document: documentNodeFragmentTopicItem,
+            fragmentName: 'TopicData',
+            document: documentNodeFragmentTopicData,
           ),
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Fragment$TopicItem? readFragment$TopicItem({
+  Fragment$TopicData? readFragment$TopicData({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
@@ -1112,30 +1112,30 @@ extension ClientExtension$Fragment$TopicItem on graphql.GraphQLClient {
       graphql.FragmentRequest(
         idFields: idFields,
         fragment: const graphql.Fragment(
-          fragmentName: 'TopicItem',
-          document: documentNodeFragmentTopicItem,
+          fragmentName: 'TopicData',
+          document: documentNodeFragmentTopicData,
         ),
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Fragment$TopicItem.fromJson(result);
+    return result == null ? null : Fragment$TopicData.fromJson(result);
   }
 }
 
-class Fragment$LanguageItem {
-  Fragment$LanguageItem({
+class Fragment$LanguageData {
+  Fragment$LanguageData({
     required this.id,
     required this.name,
     this.color,
     this.$__typename = 'Language',
   });
 
-  factory Fragment$LanguageItem.fromJson(Map<String, dynamic> json) {
+  factory Fragment$LanguageData.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$color = json['color'];
     final l$$__typename = json['__typename'];
-    return Fragment$LanguageItem(
+    return Fragment$LanguageData(
       id: (l$id as String),
       name: (l$name as String),
       color: (l$color as String?),
@@ -1183,7 +1183,7 @@ class Fragment$LanguageItem {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$LanguageItem) || runtimeType != other.runtimeType) {
+    if (!(other is Fragment$LanguageData) || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -1210,22 +1210,22 @@ class Fragment$LanguageItem {
   }
 }
 
-extension UtilityExtension$Fragment$LanguageItem on Fragment$LanguageItem {
-  CopyWith$Fragment$LanguageItem<Fragment$LanguageItem> get copyWith =>
-      CopyWith$Fragment$LanguageItem(
+extension UtilityExtension$Fragment$LanguageData on Fragment$LanguageData {
+  CopyWith$Fragment$LanguageData<Fragment$LanguageData> get copyWith =>
+      CopyWith$Fragment$LanguageData(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Fragment$LanguageItem<TRes> {
-  factory CopyWith$Fragment$LanguageItem(
-    Fragment$LanguageItem instance,
-    TRes Function(Fragment$LanguageItem) then,
-  ) = _CopyWithImpl$Fragment$LanguageItem;
+abstract class CopyWith$Fragment$LanguageData<TRes> {
+  factory CopyWith$Fragment$LanguageData(
+    Fragment$LanguageData instance,
+    TRes Function(Fragment$LanguageData) then,
+  ) = _CopyWithImpl$Fragment$LanguageData;
 
-  factory CopyWith$Fragment$LanguageItem.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$LanguageItem;
+  factory CopyWith$Fragment$LanguageData.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$LanguageData;
 
   TRes call({
     String? id,
@@ -1235,16 +1235,16 @@ abstract class CopyWith$Fragment$LanguageItem<TRes> {
   });
 }
 
-class _CopyWithImpl$Fragment$LanguageItem<TRes>
-    implements CopyWith$Fragment$LanguageItem<TRes> {
-  _CopyWithImpl$Fragment$LanguageItem(
+class _CopyWithImpl$Fragment$LanguageData<TRes>
+    implements CopyWith$Fragment$LanguageData<TRes> {
+  _CopyWithImpl$Fragment$LanguageData(
     this._instance,
     this._then,
   );
 
-  final Fragment$LanguageItem _instance;
+  final Fragment$LanguageData _instance;
 
-  final TRes Function(Fragment$LanguageItem) _then;
+  final TRes Function(Fragment$LanguageData) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1254,7 +1254,7 @@ class _CopyWithImpl$Fragment$LanguageItem<TRes>
     Object? color = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$LanguageItem(
+      _then(Fragment$LanguageData(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         name: name == _undefined || name == null
             ? _instance.name
@@ -1266,9 +1266,9 @@ class _CopyWithImpl$Fragment$LanguageItem<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Fragment$LanguageItem<TRes>
-    implements CopyWith$Fragment$LanguageItem<TRes> {
-  _CopyWithStubImpl$Fragment$LanguageItem(this._res);
+class _CopyWithStubImpl$Fragment$LanguageData<TRes>
+    implements CopyWith$Fragment$LanguageData<TRes> {
+  _CopyWithStubImpl$Fragment$LanguageData(this._res);
 
   TRes _res;
 
@@ -1281,8 +1281,8 @@ class _CopyWithStubImpl$Fragment$LanguageItem<TRes>
       _res;
 }
 
-const fragmentDefinitionLanguageItem = FragmentDefinitionNode(
-  name: NameNode(value: 'LanguageItem'),
+const fragmentDefinitionLanguageData = FragmentDefinitionNode(
+  name: NameNode(value: 'LanguageData'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
     name: NameNode(value: 'Language'),
@@ -1320,13 +1320,13 @@ const fragmentDefinitionLanguageItem = FragmentDefinitionNode(
     ),
   ]),
 );
-const documentNodeFragmentLanguageItem = DocumentNode(definitions: [
-  fragmentDefinitionLanguageItem,
+const documentNodeFragmentLanguageData = DocumentNode(definitions: [
+  fragmentDefinitionLanguageData,
 ]);
 
-extension ClientExtension$Fragment$LanguageItem on graphql.GraphQLClient {
-  void writeFragment$LanguageItem({
-    required Fragment$LanguageItem data,
+extension ClientExtension$Fragment$LanguageData on graphql.GraphQLClient {
+  void writeFragment$LanguageData({
+    required Fragment$LanguageData data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
   }) =>
@@ -1334,14 +1334,14 @@ extension ClientExtension$Fragment$LanguageItem on graphql.GraphQLClient {
         graphql.FragmentRequest(
           idFields: idFields,
           fragment: const graphql.Fragment(
-            fragmentName: 'LanguageItem',
-            document: documentNodeFragmentLanguageItem,
+            fragmentName: 'LanguageData',
+            document: documentNodeFragmentLanguageData,
           ),
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Fragment$LanguageItem? readFragment$LanguageItem({
+  Fragment$LanguageData? readFragment$LanguageData({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
@@ -1349,13 +1349,13 @@ extension ClientExtension$Fragment$LanguageItem on graphql.GraphQLClient {
       graphql.FragmentRequest(
         idFields: idFields,
         fragment: const graphql.Fragment(
-          fragmentName: 'LanguageItem',
-          document: documentNodeFragmentLanguageItem,
+          fragmentName: 'LanguageData',
+          document: documentNodeFragmentLanguageData,
         ),
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Fragment$LanguageItem.fromJson(result);
+    return result == null ? null : Fragment$LanguageData.fromJson(result);
   }
 }
 
@@ -1535,7 +1535,7 @@ const documentNodeQueryRepositoryList = DocumentNode(definitions: [
                 directives: [],
                 selectionSet: SelectionSetNode(selections: [
                   FragmentSpreadNode(
-                    name: NameNode(value: 'RepositoryItem'),
+                    name: NameNode(value: 'RepositoryData'),
                     directives: [],
                   ),
                   FieldNode(
@@ -1574,9 +1574,9 @@ const documentNodeQueryRepositoryList = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 Query$RepositoryList _parserFn$Query$RepositoryList(
         Map<String, dynamic> data) =>
@@ -2892,7 +2892,7 @@ class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$PullRequest<
 }
 
 class Query$RepositoryList$search$edges$node$$Repository
-    implements Fragment$RepositoryItem, Query$RepositoryList$search$edges$node {
+    implements Fragment$RepositoryData, Query$RepositoryList$search$edges$node {
   Query$RepositoryList$search$edges$node$$Repository({
     required this.id,
     required this.nameWithOwner,
@@ -2920,11 +2920,11 @@ class Query$RepositoryList$search$edges$node$$Repository
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
       viewerHasStarred: (l$viewerHasStarred as bool),
-      repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
+      repositoryTopics: Fragment$RepositoryData$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
       primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$LanguageItem.fromJson(
+          : Fragment$LanguageData.fromJson(
               (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -2940,9 +2940,9 @@ class Query$RepositoryList$search$edges$node$$Repository
 
   final bool viewerHasStarred;
 
-  final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
+  final Fragment$RepositoryData$repositoryTopics repositoryTopics;
 
-  final Fragment$LanguageItem? primaryLanguage;
+  final Fragment$LanguageData? primaryLanguage;
 
   final String $__typename;
 
@@ -3070,12 +3070,12 @@ abstract class CopyWith$Query$RepositoryList$search$edges$node$$Repository<
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics;
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Repository<TRes>
@@ -3120,26 +3120,26 @@ class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Repository<TRes>
         repositoryTopics: repositoryTopics == _undefined ||
                 repositoryTopics == null
             ? _instance.repositoryTopics
-            : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
+            : (repositoryTopics as Fragment$RepositoryData$repositoryTopics),
         primaryLanguage: primaryLanguage == _undefined
             ? _instance.primaryLanguage
-            : (primaryLanguage as Fragment$LanguageItem?),
+            : (primaryLanguage as Fragment$LanguageData?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics {
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics {
     final local$repositoryTopics = _instance.repositoryTopics;
-    return CopyWith$Fragment$RepositoryItem$repositoryTopics(
+    return CopyWith$Fragment$RepositoryData$repositoryTopics(
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage {
     final local$primaryLanguage = _instance.primaryLanguage;
     return local$primaryLanguage == null
-        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
-        : CopyWith$Fragment$LanguageItem(
+        ? CopyWith$Fragment$LanguageData.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageData(
             local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
@@ -3158,18 +3158,18 @@ class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Repository<TRes>
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes>
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes>
       get repositoryTopics =>
-          CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
+          CopyWith$Fragment$RepositoryData$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
-      CopyWith$Fragment$LanguageItem.stub(_res);
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageData.stub(_res);
 }
 
 class Query$RepositoryList$search$edges$node$$User

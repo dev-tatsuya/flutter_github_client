@@ -26,14 +26,14 @@ class RepositoryDetailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
 
-    Widget builder(Repository item) {
+    Widget builder(Repository repository) {
       return Column(
         children: [
-          RepositoryListItem(item: item, isUsedOnDetail: true),
+          RepositoryListItem(repository: repository, isUsedOnDetail: true),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             width: double.infinity,
-            child: StarButton(item: item),
+            child: StarButton(repository: repository),
           ),
         ],
       );

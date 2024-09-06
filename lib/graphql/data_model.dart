@@ -2,7 +2,7 @@ import 'package:flutter_github_client/domain_model.dart';
 import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
 import 'package:flutter_github_client/util.dart';
 
-extension Fragment$RepositoryItemExt on Fragment$RepositoryItem {
+extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
   Repository toDomain() {
     final (owner, name) = separate(nameWithOwner);
 
@@ -23,7 +23,7 @@ extension Fragment$RepositoryItemExt on Fragment$RepositoryItem {
   }
 }
 
-extension Fragment$LanguageItemExt on Fragment$LanguageItem {
+extension Fragment$LanguageDataExt on Fragment$LanguageData {
   Language toDomain() {
     return Language(name: name, color: color);
   }

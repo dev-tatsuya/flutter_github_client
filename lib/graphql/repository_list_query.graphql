@@ -6,13 +6,13 @@ query RepositoryList {
   ) {
     edges {
       node {
-        ...RepositoryItem
+        ...RepositoryData
       }
     }
   }
 }
 
-fragment RepositoryItem on Repository {
+fragment RepositoryData on Repository {
   id
   nameWithOwner
   description
@@ -22,22 +22,22 @@ fragment RepositoryItem on Repository {
     edges {
       node {
         topic {
-          ...TopicItem
+          ...TopicData
         }
       }
     }
   }
   primaryLanguage {
-    ...LanguageItem
+    ...LanguageData
   }
 }
 
-fragment TopicItem on Topic {
+fragment TopicData on Topic {
   id
   name
 }
 
-fragment LanguageItem on Language {
+fragment LanguageData on Language {
   id
   name
   color

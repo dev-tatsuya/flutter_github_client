@@ -173,7 +173,7 @@ const documentNodeQueryStarredRepositoryList = DocumentNode(definitions: [
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FragmentSpreadNode(
-                        name: NameNode(value: 'RepositoryItem'),
+                        name: NameNode(value: 'RepositoryData'),
                         directives: [],
                       ),
                       FieldNode(
@@ -221,9 +221,9 @@ const documentNodeQueryStarredRepositoryList = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 Query$StarredRepositoryList _parserFn$Query$StarredRepositoryList(
         Map<String, dynamic> data) =>
@@ -707,12 +707,12 @@ class Query$StarredRepositoryList$viewer$starredRepositories$edges {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
     return Query$StarredRepositoryList$viewer$starredRepositories$edges(
-      node: Fragment$RepositoryItem.fromJson((l$node as Map<String, dynamic>)),
+      node: Fragment$RepositoryData.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$RepositoryItem node;
+  final Fragment$RepositoryData node;
 
   final String $__typename;
 
@@ -783,10 +783,10 @@ abstract class CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$e
       _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges;
 
   TRes call({
-    Fragment$RepositoryItem? node,
+    Fragment$RepositoryData? node,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem<TRes> get node;
+  CopyWith$Fragment$RepositoryData<TRes> get node;
 }
 
 class _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges<
@@ -813,15 +813,15 @@ class _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges
       _then(Query$StarredRepositoryList$viewer$starredRepositories$edges(
         node: node == _undefined || node == null
             ? _instance.node
-            : (node as Fragment$RepositoryItem),
+            : (node as Fragment$RepositoryData),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem<TRes> get node {
+  CopyWith$Fragment$RepositoryData<TRes> get node {
     final local$node = _instance.node;
-    return CopyWith$Fragment$RepositoryItem(local$node, (e) => call(node: e));
+    return CopyWith$Fragment$RepositoryData(local$node, (e) => call(node: e));
   }
 }
 
@@ -836,11 +836,11 @@ class _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories$e
   TRes _res;
 
   call({
-    Fragment$RepositoryItem? node,
+    Fragment$RepositoryData? node,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem<TRes> get node =>
-      CopyWith$Fragment$RepositoryItem.stub(_res);
+  CopyWith$Fragment$RepositoryData<TRes> get node =>
+      CopyWith$Fragment$RepositoryData.stub(_res);
 }

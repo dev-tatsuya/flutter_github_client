@@ -14,20 +14,22 @@ void Function({
   final star = useMutation$Star(
     WidgetOptions$Mutation$Star(
       update: (_, result) {
-        final data = client.readQuery$StarredRepositoryList();
-        final items = data?.viewer.starredRepositories.edges?.nonNulls
+        final cachedQuery = client.readQuery$StarredRepositoryList();
+        final cachedList = cachedQuery
+                ?.viewer.starredRepositories.edges?.nonNulls
                 .map((e) => e.node)
                 .toList() ??
             [];
-        if (data == null) return;
+        if (cachedQuery == null) return;
         if (result?.parsedData?.addStar?.starrable
-            case final Fragment$RepositoryItem item) {
-          items.add(item);
+            case final Fragment$RepositoryData data) {
+          cachedList.add(data);
           client.writeQuery$StarredRepositoryList(
-            data: data.copyWith(
-              viewer: data.viewer.copyWith(
-                starredRepositories: data.viewer.starredRepositories.copyWith(
-                  edges: items
+            data: cachedQuery.copyWith(
+              viewer: cachedQuery.viewer.copyWith(
+                starredRepositories:
+                    cachedQuery.viewer.starredRepositories.copyWith(
+                  edges: cachedList
                       .map(
                         (e) =>
                             // ignore: lines_longer_than_80_chars
@@ -48,17 +50,18 @@ void Function({
   final unstar = useMutation$Unstar(
     WidgetOptions$Mutation$Unstar(
       update: (_, result) {
-        final data = client.readQuery$StarredRepositoryList();
-        if (data == null) return;
-        final edges = data.viewer.starredRepositories.edges;
+        final cachedQuery = client.readQuery$StarredRepositoryList();
+        if (cachedQuery == null) return;
+        final cachedEdges = cachedQuery.viewer.starredRepositories.edges;
         if (result?.parsedData?.removeStar?.starrable
-            case final Fragment$RepositoryItem item) {
+            case final Fragment$RepositoryData data) {
           final updatedEdges =
-              edges?.where((e) => e?.node.id != item.id).toList();
+              cachedEdges?.where((e) => e?.node.id != data.id).toList();
           client.writeQuery$StarredRepositoryList(
-            data: data.copyWith(
-              viewer: data.viewer.copyWith(
-                starredRepositories: data.viewer.starredRepositories.copyWith(
+            data: cachedQuery.copyWith(
+              viewer: cachedQuery.viewer.copyWith(
+                starredRepositories:
+                    cachedQuery.viewer.starredRepositories.copyWith(
                   edges: updatedEdges,
                 ),
               ),

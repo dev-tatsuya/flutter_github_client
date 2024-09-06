@@ -28,19 +28,19 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('/search/repositories')
-  Future<RepositoryListResponseData> getRepositoryList(
+  Future<RepositoryListData> getRepositoryList(
     @Query('q') String query,
     @Query('per_page') int perPage,
   );
 
   @GET('/repos/{owner}/{repo}')
-  Future<RepositoryResponseData> getRepositoryDetail(
+  Future<RepositoryData> getRepositoryDetail(
     @Path() String owner,
     @Path('repo') String name,
   );
 
   @GET('/user/starred')
-  Future<List<RepositoryResponseData>> getStarredRepositoryList(
+  Future<List<RepositoryData>> getStarredRepositoryList(
     @Query('direction') String direction,
   );
 

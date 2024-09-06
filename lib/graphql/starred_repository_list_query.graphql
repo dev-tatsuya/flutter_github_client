@@ -3,7 +3,7 @@ query StarredRepositoryList {
     starredRepositories {
       edges {
         node {
-          ...RepositoryItem
+          ...RepositoryData
         }
       }
     }

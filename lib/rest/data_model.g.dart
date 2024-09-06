@@ -6,24 +6,20 @@ part of 'data_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RepositoryListResponseData _$RepositoryListResponseDataFromJson(
-        Map<String, dynamic> json) =>
-    RepositoryListResponseData(
+RepositoryListData _$RepositoryListDataFromJson(Map<String, dynamic> json) =>
+    RepositoryListData(
       items: (json['items'] as List<dynamic>)
-          .map(
-              (e) => RepositoryResponseData.fromJson(e as Map<String, dynamic>))
+          .map((e) => RepositoryData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$RepositoryListResponseDataToJson(
-        RepositoryListResponseData instance) =>
+Map<String, dynamic> _$RepositoryListDataToJson(RepositoryListData instance) =>
     <String, dynamic>{
       'items': instance.items,
     };
 
-RepositoryResponseData _$RepositoryResponseDataFromJson(
-        Map<String, dynamic> json) =>
-    RepositoryResponseData(
+RepositoryData _$RepositoryDataFromJson(Map<String, dynamic> json) =>
+    RepositoryData(
       nodeId: json['node_id'] as String,
       fullName: json['full_name'] as String,
       stargazersCount: (json['stargazers_count'] as num).toInt(),
@@ -33,8 +29,7 @@ RepositoryResponseData _$RepositoryResponseDataFromJson(
       language: json['language'] as String?,
     );
 
-Map<String, dynamic> _$RepositoryResponseDataToJson(
-        RepositoryResponseData instance) =>
+Map<String, dynamic> _$RepositoryDataToJson(RepositoryData instance) =>
     <String, dynamic>{
       'node_id': instance.nodeId,
       'full_name': instance.fullName,

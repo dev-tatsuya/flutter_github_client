@@ -145,13 +145,13 @@ class Query$RepositoryDetail {
     return Query$RepositoryDetail(
       repository: l$repository == null
           ? null
-          : Fragment$RepositoryItem.fromJson(
+          : Fragment$RepositoryData.fromJson(
               (l$repository as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$RepositoryItem? repository;
+  final Fragment$RepositoryData? repository;
 
   final String $__typename;
 
@@ -215,10 +215,10 @@ abstract class CopyWith$Query$RepositoryDetail<TRes> {
       _CopyWithStubImpl$Query$RepositoryDetail;
 
   TRes call({
-    Fragment$RepositoryItem? repository,
+    Fragment$RepositoryData? repository,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem<TRes> get repository;
+  CopyWith$Fragment$RepositoryData<TRes> get repository;
 }
 
 class _CopyWithImpl$Query$RepositoryDetail<TRes>
@@ -241,17 +241,17 @@ class _CopyWithImpl$Query$RepositoryDetail<TRes>
       _then(Query$RepositoryDetail(
         repository: repository == _undefined
             ? _instance.repository
-            : (repository as Fragment$RepositoryItem?),
+            : (repository as Fragment$RepositoryData?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem<TRes> get repository {
+  CopyWith$Fragment$RepositoryData<TRes> get repository {
     final local$repository = _instance.repository;
     return local$repository == null
-        ? CopyWith$Fragment$RepositoryItem.stub(_then(_instance))
-        : CopyWith$Fragment$RepositoryItem(
+        ? CopyWith$Fragment$RepositoryData.stub(_then(_instance))
+        : CopyWith$Fragment$RepositoryData(
             local$repository, (e) => call(repository: e));
   }
 }
@@ -263,13 +263,13 @@ class _CopyWithStubImpl$Query$RepositoryDetail<TRes>
   TRes _res;
 
   call({
-    Fragment$RepositoryItem? repository,
+    Fragment$RepositoryData? repository,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem<TRes> get repository =>
-      CopyWith$Fragment$RepositoryItem.stub(_res);
+  CopyWith$Fragment$RepositoryData<TRes> get repository =>
+      CopyWith$Fragment$RepositoryData.stub(_res);
 }
 
 const documentNodeQueryRepositoryDetail = DocumentNode(definitions: [
@@ -314,7 +314,7 @@ const documentNodeQueryRepositoryDetail = DocumentNode(definitions: [
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FragmentSpreadNode(
-            name: NameNode(value: 'RepositoryItem'),
+            name: NameNode(value: 'RepositoryData'),
             directives: [],
           ),
           FieldNode(
@@ -335,9 +335,9 @@ const documentNodeQueryRepositoryDetail = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 Query$RepositoryDetail _parserFn$Query$RepositoryDetail(
         Map<String, dynamic> data) =>
@@ -764,7 +764,7 @@ const documentNodeMutationStar = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FragmentSpreadNode(
-                name: NameNode(value: 'RepositoryItem'),
+                name: NameNode(value: 'RepositoryData'),
                 directives: [],
               ),
               FieldNode(
@@ -794,9 +794,9 @@ const documentNodeMutationStar = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 Mutation$Star _parserFn$Mutation$Star(Map<String, dynamic> data) =>
     Mutation$Star.fromJson(data);
@@ -1396,7 +1396,7 @@ class _CopyWithStubImpl$Mutation$Star$addStar$starrable$$Gist<TRes>
 }
 
 class Mutation$Star$addStar$starrable$$Repository
-    implements Fragment$RepositoryItem, Mutation$Star$addStar$starrable {
+    implements Fragment$RepositoryData, Mutation$Star$addStar$starrable {
   Mutation$Star$addStar$starrable$$Repository({
     required this.id,
     required this.nameWithOwner,
@@ -1424,11 +1424,11 @@ class Mutation$Star$addStar$starrable$$Repository
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
       viewerHasStarred: (l$viewerHasStarred as bool),
-      repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
+      repositoryTopics: Fragment$RepositoryData$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
       primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$LanguageItem.fromJson(
+          : Fragment$LanguageData.fromJson(
               (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -1444,9 +1444,9 @@ class Mutation$Star$addStar$starrable$$Repository
 
   final bool viewerHasStarred;
 
-  final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
+  final Fragment$RepositoryData$repositoryTopics repositoryTopics;
 
-  final Fragment$LanguageItem? primaryLanguage;
+  final Fragment$LanguageData? primaryLanguage;
 
   final String $__typename;
 
@@ -1571,12 +1571,12 @@ abstract class CopyWith$Mutation$Star$addStar$starrable$$Repository<TRes> {
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics;
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
@@ -1620,26 +1620,26 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
         repositoryTopics: repositoryTopics == _undefined ||
                 repositoryTopics == null
             ? _instance.repositoryTopics
-            : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
+            : (repositoryTopics as Fragment$RepositoryData$repositoryTopics),
         primaryLanguage: primaryLanguage == _undefined
             ? _instance.primaryLanguage
-            : (primaryLanguage as Fragment$LanguageItem?),
+            : (primaryLanguage as Fragment$LanguageData?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics {
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics {
     final local$repositoryTopics = _instance.repositoryTopics;
-    return CopyWith$Fragment$RepositoryItem$repositoryTopics(
+    return CopyWith$Fragment$RepositoryData$repositoryTopics(
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage {
     final local$primaryLanguage = _instance.primaryLanguage;
     return local$primaryLanguage == null
-        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
-        : CopyWith$Fragment$LanguageItem(
+        ? CopyWith$Fragment$LanguageData.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageData(
             local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
@@ -1656,18 +1656,18 @@ class _CopyWithStubImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes>
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes>
       get repositoryTopics =>
-          CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
+          CopyWith$Fragment$RepositoryData$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
-      CopyWith$Fragment$LanguageItem.stub(_res);
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageData.stub(_res);
 }
 
 class Mutation$Star$addStar$starrable$$Topic
@@ -2036,7 +2036,7 @@ const documentNodeMutationUnstar = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FragmentSpreadNode(
-                name: NameNode(value: 'RepositoryItem'),
+                name: NameNode(value: 'RepositoryData'),
                 directives: [],
               ),
               FieldNode(
@@ -2066,9 +2066,9 @@ const documentNodeMutationUnstar = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionRepositoryItem,
-  fragmentDefinitionTopicItem,
-  fragmentDefinitionLanguageItem,
+  fragmentDefinitionRepositoryData,
+  fragmentDefinitionTopicData,
+  fragmentDefinitionLanguageData,
 ]);
 Mutation$Unstar _parserFn$Mutation$Unstar(Map<String, dynamic> data) =>
     Mutation$Unstar.fromJson(data);
@@ -2673,7 +2673,7 @@ class _CopyWithStubImpl$Mutation$Unstar$removeStar$starrable$$Gist<TRes>
 }
 
 class Mutation$Unstar$removeStar$starrable$$Repository
-    implements Fragment$RepositoryItem, Mutation$Unstar$removeStar$starrable {
+    implements Fragment$RepositoryData, Mutation$Unstar$removeStar$starrable {
   Mutation$Unstar$removeStar$starrable$$Repository({
     required this.id,
     required this.nameWithOwner,
@@ -2701,11 +2701,11 @@ class Mutation$Unstar$removeStar$starrable$$Repository
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
       viewerHasStarred: (l$viewerHasStarred as bool),
-      repositoryTopics: Fragment$RepositoryItem$repositoryTopics.fromJson(
+      repositoryTopics: Fragment$RepositoryData$repositoryTopics.fromJson(
           (l$repositoryTopics as Map<String, dynamic>)),
       primaryLanguage: l$primaryLanguage == null
           ? null
-          : Fragment$LanguageItem.fromJson(
+          : Fragment$LanguageData.fromJson(
               (l$primaryLanguage as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -2721,9 +2721,9 @@ class Mutation$Unstar$removeStar$starrable$$Repository
 
   final bool viewerHasStarred;
 
-  final Fragment$RepositoryItem$repositoryTopics repositoryTopics;
+  final Fragment$RepositoryData$repositoryTopics repositoryTopics;
 
-  final Fragment$LanguageItem? primaryLanguage;
+  final Fragment$LanguageData? primaryLanguage;
 
   final String $__typename;
 
@@ -2849,12 +2849,12 @@ abstract class CopyWith$Mutation$Unstar$removeStar$starrable$$Repository<TRes> {
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   });
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics;
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics;
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage;
 }
 
 class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
@@ -2898,26 +2898,26 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
         repositoryTopics: repositoryTopics == _undefined ||
                 repositoryTopics == null
             ? _instance.repositoryTopics
-            : (repositoryTopics as Fragment$RepositoryItem$repositoryTopics),
+            : (repositoryTopics as Fragment$RepositoryData$repositoryTopics),
         primaryLanguage: primaryLanguage == _undefined
             ? _instance.primaryLanguage
-            : (primaryLanguage as Fragment$LanguageItem?),
+            : (primaryLanguage as Fragment$LanguageData?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes> get repositoryTopics {
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes> get repositoryTopics {
     final local$repositoryTopics = _instance.repositoryTopics;
-    return CopyWith$Fragment$RepositoryItem$repositoryTopics(
+    return CopyWith$Fragment$RepositoryData$repositoryTopics(
         local$repositoryTopics, (e) => call(repositoryTopics: e));
   }
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage {
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage {
     final local$primaryLanguage = _instance.primaryLanguage;
     return local$primaryLanguage == null
-        ? CopyWith$Fragment$LanguageItem.stub(_then(_instance))
-        : CopyWith$Fragment$LanguageItem(
+        ? CopyWith$Fragment$LanguageData.stub(_then(_instance))
+        : CopyWith$Fragment$LanguageData(
             local$primaryLanguage, (e) => call(primaryLanguage: e));
   }
 }
@@ -2934,18 +2934,18 @@ class _CopyWithStubImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
     String? description,
     int? stargazerCount,
     bool? viewerHasStarred,
-    Fragment$RepositoryItem$repositoryTopics? repositoryTopics,
-    Fragment$LanguageItem? primaryLanguage,
+    Fragment$RepositoryData$repositoryTopics? repositoryTopics,
+    Fragment$LanguageData? primaryLanguage,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$RepositoryItem$repositoryTopics<TRes>
+  CopyWith$Fragment$RepositoryData$repositoryTopics<TRes>
       get repositoryTopics =>
-          CopyWith$Fragment$RepositoryItem$repositoryTopics.stub(_res);
+          CopyWith$Fragment$RepositoryData$repositoryTopics.stub(_res);
 
-  CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage =>
-      CopyWith$Fragment$LanguageItem.stub(_res);
+  CopyWith$Fragment$LanguageData<TRes> get primaryLanguage =>
+      CopyWith$Fragment$LanguageData.stub(_res);
 }
 
 class Mutation$Unstar$removeStar$starrable$$Topic

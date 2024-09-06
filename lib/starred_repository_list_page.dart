@@ -33,8 +33,8 @@ class StarredRepositoryListPage extends HookConsumerWidget {
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (context, index) {
                 if (edges[index]?.node
-                    case final Fragment$RepositoryItem item) {
-                  return RepositoryListItem(item: item.toDomain());
+                    case final Fragment$RepositoryData data) {
+                  return RepositoryListItem(repository: data.toDomain());
                 }
                 return null;
               },
@@ -50,12 +50,13 @@ class StarredRepositoryListPage extends HookConsumerWidget {
 
         return RestContainer(
           asyncValue: asyncValue,
-          builder: (data) {
-            if (data.isEmpty) return null;
+          builder: (repositoryList) {
+            if (repositoryList.isEmpty) return null;
             return ListView.separated(
-              itemCount: data.length,
+              itemCount: repositoryList.length,
               separatorBuilder: (_, __) => const Divider(),
-              itemBuilder: (_, index) => RepositoryListItem(item: data[index]),
+              itemBuilder: (_, index) =>
+                  RepositoryListItem(repository: repositoryList[index]),
             );
           },
         );

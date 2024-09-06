@@ -35,8 +35,8 @@ class RepositoryListPage extends HookConsumerWidget {
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (context, index) {
                 if (edges[index]?.node
-                    case final Fragment$RepositoryItem item) {
-                  return RepositoryListItem(item: item.toDomain());
+                    case final Fragment$RepositoryData data) {
+                  return RepositoryListItem(repository: data.toDomain());
                 }
                 return null;
               },
@@ -52,12 +52,13 @@ class RepositoryListPage extends HookConsumerWidget {
 
         return RestContainer(
           asyncValue: asyncValue,
-          builder: (data) {
-            if (data.isEmpty) return null;
+          builder: (repositoryList) {
+            if (repositoryList.isEmpty) return null;
             return ListView.separated(
-              itemCount: data.length,
+              itemCount: repositoryList.length,
               separatorBuilder: (_, __) => const Divider(),
-              itemBuilder: (_, index) => RepositoryListItem(item: data[index]),
+              itemBuilder: (_, index) =>
+                  RepositoryListItem(repository: repositoryList[index]),
             );
           },
         );
@@ -102,12 +103,12 @@ class MyAppBar extends HookConsumerWidget implements PreferredSizeWidget {
 
 class RepositoryListItem extends HookConsumerWidget {
   const RepositoryListItem({
-    required this.item,
+    required this.repository,
     this.isUsedOnDetail = false,
     super.key,
   });
 
-  final Repository item;
+  final Repository repository;
   final bool isUsedOnDetail;
 
   @override
@@ -122,7 +123,7 @@ class RepositoryListItem extends HookConsumerWidget {
             children: [
               Expanded(
                 child: Text(
-                  item.nameWithOwner,
+                  repository.nameWithOwner,
                   style: Theme.of(context).textTheme.titleLarge,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -132,12 +133,12 @@ class RepositoryListItem extends HookConsumerWidget {
                 const Gap(8),
                 SizedBox(
                   height: 32,
-                  child: StarButton(item: item),
+                  child: StarButton(repository: repository),
                 ),
               ],
             ],
           ),
-          if (item.description case final String description) ...[
+          if (repository.description case final String description) ...[
             const Gap(8),
             Text(
               description,
@@ -145,12 +146,12 @@ class RepositoryListItem extends HookConsumerWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ],
-          if (item.topics.isNotEmpty) ...[
+          if (repository.topics.isNotEmpty) ...[
             const Gap(8),
             Wrap(
               spacing: 4,
               runSpacing: 4,
-              children: item.topics
+              children: repository.topics
                   .map(
                     (e) => Container(
                       padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
@@ -170,7 +171,7 @@ class RepositoryListItem extends HookConsumerWidget {
           const Gap(8),
           Row(
             children: [
-              if (item.viewerHasStarred)
+              if (repository.viewerHasStarred)
                 const Icon(
                   Icons.star,
                   size: 20,
@@ -184,10 +185,10 @@ class RepositoryListItem extends HookConsumerWidget {
                 ),
               const Gap(1),
               Text(
-                '${item.starredCount}',
+                '${repository.starredCount}',
                 style: const TextStyle(color: Colors.black54),
               ),
-              if (item.language case final Language language) ...[
+              if (repository.language case final Language language) ...[
                 const Gap(8),
                 Icon(
                   Icons.circle,
@@ -215,7 +216,7 @@ class RepositoryListItem extends HookConsumerWidget {
     return InkWell(
       onTap: () {
         context.router.push(
-          RepositoryDetailRoute(owner: item.owner, name: item.name),
+          RepositoryDetailRoute(owner: repository.owner, name: repository.name),
         );
       },
       child: child,
@@ -224,9 +225,9 @@ class RepositoryListItem extends HookConsumerWidget {
 }
 
 class StarButton extends HookConsumerWidget {
-  const StarButton({required this.item, super.key});
+  const StarButton({required this.repository, super.key});
 
-  final Repository item;
+  final Repository repository;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -238,23 +239,23 @@ class StarButton extends HookConsumerWidget {
         switch (apiProtocol) {
           case ApiProtocolType.graphql:
             starGraphQL(
-              viewerHasStarred: item.viewerHasStarred,
-              id: item.id,
+              viewerHasStarred: repository.viewerHasStarred,
+              id: repository.id,
             );
           case ApiProtocolType.rest:
             ref.read(
               starProvider(
-                viewerHasStarred: item.viewerHasStarred,
-                owner: item.owner,
-                repositoryName: item.name,
+                viewerHasStarred: repository.viewerHasStarred,
+                owner: repository.owner,
+                repositoryName: repository.name,
               ).future,
             );
         }
       },
-      [apiProtocol, item],
+      [apiProtocol, repository],
     );
 
-    return item.viewerHasStarred
+    return repository.viewerHasStarred
         ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
         : FilledButton(onPressed: onPressed, child: const Text('Star'));
   }
