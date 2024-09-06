@@ -3,28 +3,28 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'repo_list_query.graphql.dart';
+import 'repository_list_query.graphql.dart';
 import 'schema.docs.graphql.dart';
 
-class Variables$Query$RepoDetail {
-  factory Variables$Query$RepoDetail({
+class Variables$Query$RepositoryDetail {
+  factory Variables$Query$RepositoryDetail({
     required String owner,
     required String name,
   }) =>
-      Variables$Query$RepoDetail._({
+      Variables$Query$RepositoryDetail._({
         r'owner': owner,
         r'name': name,
       });
 
-  Variables$Query$RepoDetail._(this._$data);
+  Variables$Query$RepositoryDetail._(this._$data);
 
-  factory Variables$Query$RepoDetail.fromJson(Map<String, dynamic> data) {
+  factory Variables$Query$RepositoryDetail.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$owner = data['owner'];
     result$data['owner'] = (l$owner as String);
     final l$name = data['name'];
     result$data['name'] = (l$name as String);
-    return Variables$Query$RepoDetail._(result$data);
+    return Variables$Query$RepositoryDetail._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -42,8 +42,8 @@ class Variables$Query$RepoDetail {
     return result$data;
   }
 
-  CopyWith$Variables$Query$RepoDetail<Variables$Query$RepoDetail>
-      get copyWith => CopyWith$Variables$Query$RepoDetail(
+  CopyWith$Variables$Query$RepositoryDetail<Variables$Query$RepositoryDetail>
+      get copyWith => CopyWith$Variables$Query$RepositoryDetail(
             this,
             (i) => i,
           );
@@ -53,7 +53,7 @@ class Variables$Query$RepoDetail {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$RepoDetail) ||
+    if (!(other is Variables$Query$RepositoryDetail) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -81,14 +81,14 @@ class Variables$Query$RepoDetail {
   }
 }
 
-abstract class CopyWith$Variables$Query$RepoDetail<TRes> {
-  factory CopyWith$Variables$Query$RepoDetail(
-    Variables$Query$RepoDetail instance,
-    TRes Function(Variables$Query$RepoDetail) then,
-  ) = _CopyWithImpl$Variables$Query$RepoDetail;
+abstract class CopyWith$Variables$Query$RepositoryDetail<TRes> {
+  factory CopyWith$Variables$Query$RepositoryDetail(
+    Variables$Query$RepositoryDetail instance,
+    TRes Function(Variables$Query$RepositoryDetail) then,
+  ) = _CopyWithImpl$Variables$Query$RepositoryDetail;
 
-  factory CopyWith$Variables$Query$RepoDetail.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$RepoDetail;
+  factory CopyWith$Variables$Query$RepositoryDetail.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$RepositoryDetail;
 
   TRes call({
     String? owner,
@@ -96,16 +96,16 @@ abstract class CopyWith$Variables$Query$RepoDetail<TRes> {
   });
 }
 
-class _CopyWithImpl$Variables$Query$RepoDetail<TRes>
-    implements CopyWith$Variables$Query$RepoDetail<TRes> {
-  _CopyWithImpl$Variables$Query$RepoDetail(
+class _CopyWithImpl$Variables$Query$RepositoryDetail<TRes>
+    implements CopyWith$Variables$Query$RepositoryDetail<TRes> {
+  _CopyWithImpl$Variables$Query$RepositoryDetail(
     this._instance,
     this._then,
   );
 
-  final Variables$Query$RepoDetail _instance;
+  final Variables$Query$RepositoryDetail _instance;
 
-  final TRes Function(Variables$Query$RepoDetail) _then;
+  final TRes Function(Variables$Query$RepositoryDetail) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -113,16 +113,16 @@ class _CopyWithImpl$Variables$Query$RepoDetail<TRes>
     Object? owner = _undefined,
     Object? name = _undefined,
   }) =>
-      _then(Variables$Query$RepoDetail._({
+      _then(Variables$Query$RepositoryDetail._({
         ..._instance._$data,
         if (owner != _undefined && owner != null) 'owner': (owner as String),
         if (name != _undefined && name != null) 'name': (name as String),
       }));
 }
 
-class _CopyWithStubImpl$Variables$Query$RepoDetail<TRes>
-    implements CopyWith$Variables$Query$RepoDetail<TRes> {
-  _CopyWithStubImpl$Variables$Query$RepoDetail(this._res);
+class _CopyWithStubImpl$Variables$Query$RepositoryDetail<TRes>
+    implements CopyWith$Variables$Query$RepositoryDetail<TRes> {
+  _CopyWithStubImpl$Variables$Query$RepositoryDetail(this._res);
 
   TRes _res;
 
@@ -133,16 +133,16 @@ class _CopyWithStubImpl$Variables$Query$RepoDetail<TRes>
       _res;
 }
 
-class Query$RepoDetail {
-  Query$RepoDetail({
+class Query$RepositoryDetail {
+  Query$RepositoryDetail({
     this.repository,
     this.$__typename = 'Query',
   });
 
-  factory Query$RepoDetail.fromJson(Map<String, dynamic> json) {
+  factory Query$RepositoryDetail.fromJson(Map<String, dynamic> json) {
     final l$repository = json['repository'];
     final l$$__typename = json['__typename'];
-    return Query$RepoDetail(
+    return Query$RepositoryDetail(
       repository: l$repository == null
           ? null
           : Fragment$RepositoryItem.fromJson(
@@ -179,7 +179,8 @@ class Query$RepoDetail {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoDetail) || runtimeType != other.runtimeType) {
+    if (!(other is Query$RepositoryDetail) ||
+        runtimeType != other.runtimeType) {
       return false;
     }
     final l$repository = repository;
@@ -196,22 +197,22 @@ class Query$RepoDetail {
   }
 }
 
-extension UtilityExtension$Query$RepoDetail on Query$RepoDetail {
-  CopyWith$Query$RepoDetail<Query$RepoDetail> get copyWith =>
-      CopyWith$Query$RepoDetail(
+extension UtilityExtension$Query$RepositoryDetail on Query$RepositoryDetail {
+  CopyWith$Query$RepositoryDetail<Query$RepositoryDetail> get copyWith =>
+      CopyWith$Query$RepositoryDetail(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Query$RepoDetail<TRes> {
-  factory CopyWith$Query$RepoDetail(
-    Query$RepoDetail instance,
-    TRes Function(Query$RepoDetail) then,
-  ) = _CopyWithImpl$Query$RepoDetail;
+abstract class CopyWith$Query$RepositoryDetail<TRes> {
+  factory CopyWith$Query$RepositoryDetail(
+    Query$RepositoryDetail instance,
+    TRes Function(Query$RepositoryDetail) then,
+  ) = _CopyWithImpl$Query$RepositoryDetail;
 
-  factory CopyWith$Query$RepoDetail.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoDetail;
+  factory CopyWith$Query$RepositoryDetail.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryDetail;
 
   TRes call({
     Fragment$RepositoryItem? repository,
@@ -220,16 +221,16 @@ abstract class CopyWith$Query$RepoDetail<TRes> {
   CopyWith$Fragment$RepositoryItem<TRes> get repository;
 }
 
-class _CopyWithImpl$Query$RepoDetail<TRes>
-    implements CopyWith$Query$RepoDetail<TRes> {
-  _CopyWithImpl$Query$RepoDetail(
+class _CopyWithImpl$Query$RepositoryDetail<TRes>
+    implements CopyWith$Query$RepositoryDetail<TRes> {
+  _CopyWithImpl$Query$RepositoryDetail(
     this._instance,
     this._then,
   );
 
-  final Query$RepoDetail _instance;
+  final Query$RepositoryDetail _instance;
 
-  final TRes Function(Query$RepoDetail) _then;
+  final TRes Function(Query$RepositoryDetail) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -237,7 +238,7 @@ class _CopyWithImpl$Query$RepoDetail<TRes>
     Object? repository = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$RepoDetail(
+      _then(Query$RepositoryDetail(
         repository: repository == _undefined
             ? _instance.repository
             : (repository as Fragment$RepositoryItem?),
@@ -255,9 +256,9 @@ class _CopyWithImpl$Query$RepoDetail<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$RepoDetail<TRes>
-    implements CopyWith$Query$RepoDetail<TRes> {
-  _CopyWithStubImpl$Query$RepoDetail(this._res);
+class _CopyWithStubImpl$Query$RepositoryDetail<TRes>
+    implements CopyWith$Query$RepositoryDetail<TRes> {
+  _CopyWithStubImpl$Query$RepositoryDetail(this._res);
 
   TRes _res;
 
@@ -271,10 +272,10 @@ class _CopyWithStubImpl$Query$RepoDetail<TRes>
       CopyWith$Fragment$RepositoryItem.stub(_res);
 }
 
-const documentNodeQueryRepoDetail = DocumentNode(definitions: [
+const documentNodeQueryRepositoryDetail = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
-    name: NameNode(value: 'RepoDetail'),
+    name: NameNode(value: 'RepositoryDetail'),
     variableDefinitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'owner')),
@@ -338,25 +339,27 @@ const documentNodeQueryRepoDetail = DocumentNode(definitions: [
   fragmentDefinitionTopicItem,
   fragmentDefinitionLanguageItem,
 ]);
-Query$RepoDetail _parserFn$Query$RepoDetail(Map<String, dynamic> data) =>
-    Query$RepoDetail.fromJson(data);
-typedef OnQueryComplete$Query$RepoDetail = FutureOr<void> Function(
+Query$RepositoryDetail _parserFn$Query$RepositoryDetail(
+        Map<String, dynamic> data) =>
+    Query$RepositoryDetail.fromJson(data);
+typedef OnQueryComplete$Query$RepositoryDetail = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Query$RepoDetail?,
+  Query$RepositoryDetail?,
 );
 
-class Options$Query$RepoDetail extends graphql.QueryOptions<Query$RepoDetail> {
-  Options$Query$RepoDetail({
+class Options$Query$RepositoryDetail
+    extends graphql.QueryOptions<Query$RepositoryDetail> {
+  Options$Query$RepositoryDetail({
     String? operationName,
-    required Variables$Query$RepoDetail variables,
+    required Variables$Query$RepositoryDetail variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$RepoDetail? typedOptimisticResult,
+    Query$RepositoryDetail? typedOptimisticResult,
     Duration? pollInterval,
     graphql.Context? context,
-    OnQueryComplete$Query$RepoDetail? onComplete,
+    OnQueryComplete$Query$RepositoryDetail? onComplete,
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
@@ -372,14 +375,16 @@ class Options$Query$RepoDetail extends graphql.QueryOptions<Query$RepoDetail> {
               ? null
               : (data) => onComplete(
                     data,
-                    data == null ? null : _parserFn$Query$RepoDetail(data),
+                    data == null
+                        ? null
+                        : _parserFn$Query$RepositoryDetail(data),
                   ),
           onError: onError,
-          document: documentNodeQueryRepoDetail,
-          parserFn: _parserFn$Query$RepoDetail,
+          document: documentNodeQueryRepositoryDetail,
+          parserFn: _parserFn$Query$RepositoryDetail,
         );
 
-  final OnQueryComplete$Query$RepoDetail? onCompleteWithParsed;
+  final OnQueryComplete$Query$RepositoryDetail? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -390,16 +395,16 @@ class Options$Query$RepoDetail extends graphql.QueryOptions<Query$RepoDetail> {
       ];
 }
 
-class WatchOptions$Query$RepoDetail
-    extends graphql.WatchQueryOptions<Query$RepoDetail> {
-  WatchOptions$Query$RepoDetail({
+class WatchOptions$Query$RepositoryDetail
+    extends graphql.WatchQueryOptions<Query$RepositoryDetail> {
+  WatchOptions$Query$RepositoryDetail({
     String? operationName,
-    required Variables$Query$RepoDetail variables,
+    required Variables$Query$RepositoryDetail variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$RepoDetail? typedOptimisticResult,
+    Query$RepositoryDetail? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -413,73 +418,76 @@ class WatchOptions$Query$RepoDetail
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeQueryRepoDetail,
+          document: documentNodeQueryRepositoryDetail,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Query$RepoDetail,
+          parserFn: _parserFn$Query$RepositoryDetail,
         );
 }
 
-class FetchMoreOptions$Query$RepoDetail extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$RepoDetail({
+class FetchMoreOptions$Query$RepositoryDetail extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$RepositoryDetail({
     required graphql.UpdateQuery updateQuery,
-    required Variables$Query$RepoDetail variables,
+    required Variables$Query$RepositoryDetail variables,
   }) : super(
           updateQuery: updateQuery,
           variables: variables.toJson(),
-          document: documentNodeQueryRepoDetail,
+          document: documentNodeQueryRepositoryDetail,
         );
 }
 
-extension ClientExtension$Query$RepoDetail on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$RepoDetail>> query$RepoDetail(
-          Options$Query$RepoDetail options) async =>
+extension ClientExtension$Query$RepositoryDetail on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$RepositoryDetail>> query$RepositoryDetail(
+          Options$Query$RepositoryDetail options) async =>
       await this.query(options);
-  graphql.ObservableQuery<Query$RepoDetail> watchQuery$RepoDetail(
-          WatchOptions$Query$RepoDetail options) =>
+  graphql.ObservableQuery<Query$RepositoryDetail> watchQuery$RepositoryDetail(
+          WatchOptions$Query$RepositoryDetail options) =>
       this.watchQuery(options);
-  void writeQuery$RepoDetail({
-    required Query$RepoDetail data,
-    required Variables$Query$RepoDetail variables,
+  void writeQuery$RepositoryDetail({
+    required Query$RepositoryDetail data,
+    required Variables$Query$RepositoryDetail variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-          operation: graphql.Operation(document: documentNodeQueryRepoDetail),
+          operation:
+              graphql.Operation(document: documentNodeQueryRepositoryDetail),
           variables: variables.toJson(),
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$RepoDetail? readQuery$RepoDetail({
-    required Variables$Query$RepoDetail variables,
+  Query$RepositoryDetail? readQuery$RepositoryDetail({
+    required Variables$Query$RepositoryDetail variables,
     bool optimistic = true,
   }) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(document: documentNodeQueryRepoDetail),
+        operation:
+            graphql.Operation(document: documentNodeQueryRepositoryDetail),
         variables: variables.toJson(),
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Query$RepoDetail.fromJson(result);
+    return result == null ? null : Query$RepositoryDetail.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$RepoDetail> useQuery$RepoDetail(
-        Options$Query$RepoDetail options) =>
-    graphql_flutter.useQuery(options);
-graphql.ObservableQuery<Query$RepoDetail> useWatchQuery$RepoDetail(
-        WatchOptions$Query$RepoDetail options) =>
+graphql_flutter.QueryHookResult<Query$RepositoryDetail>
+    useQuery$RepositoryDetail(Options$Query$RepositoryDetail options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$RepositoryDetail> useWatchQuery$RepositoryDetail(
+        WatchOptions$Query$RepositoryDetail options) =>
     graphql_flutter.useWatchQuery(options);
 
-class Query$RepoDetail$Widget extends graphql_flutter.Query<Query$RepoDetail> {
-  Query$RepoDetail$Widget({
+class Query$RepositoryDetail$Widget
+    extends graphql_flutter.Query<Query$RepositoryDetail> {
+  Query$RepositoryDetail$Widget({
     widgets.Key? key,
-    required Options$Query$RepoDetail options,
-    required graphql_flutter.QueryBuilder<Query$RepoDetail> builder,
+    required Options$Query$RepositoryDetail options,
+    required graphql_flutter.QueryBuilder<Query$RepositoryDetail> builder,
   }) : super(
           key: key,
           options: options,

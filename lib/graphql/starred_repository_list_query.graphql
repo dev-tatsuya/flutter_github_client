@@ -1,4 +1,4 @@
-query StarredRepoList {
+query StarredRepositoryList {
   viewer {
     starredRepositories {
       edges {

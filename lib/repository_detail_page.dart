@@ -4,16 +4,16 @@ import 'package:flutter_github_client/api_protocol_state.dart';
 import 'package:flutter_github_client/domain_model.dart';
 import 'package:flutter_github_client/graphql/data_model.dart';
 import 'package:flutter_github_client/graphql/graphql_container.dart';
-import 'package:flutter_github_client/graphql/repo_detail_query.graphql.dart';
-import 'package:flutter_github_client/repo_list_page.dart';
-import 'package:flutter_github_client/rest/repo_state.dart';
+import 'package:flutter_github_client/graphql/repository_detail_query.graphql.dart';
+import 'package:flutter_github_client/repository_list_page.dart';
+import 'package:flutter_github_client/rest/repository_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 @RoutePage()
-class RepoDetailPage extends HookConsumerWidget {
-  const RepoDetailPage({
+class RepositoryDetailPage extends HookConsumerWidget {
+  const RepositoryDetailPage({
     @pathParam required this.owner,
     @pathParam required this.name,
     super.key,
@@ -29,7 +29,7 @@ class RepoDetailPage extends HookConsumerWidget {
     Widget builder(Repository item) {
       return Column(
         children: [
-          RepoListItem(item: item, isUsedOnDetail: true),
+          RepositoryListItem(item: item, isUsedOnDetail: true),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             width: double.infinity,
@@ -41,9 +41,10 @@ class RepoDetailPage extends HookConsumerWidget {
 
     final graphQLContainer = HookBuilder(
       builder: (context) {
-        final query = useQuery$RepoDetail(
-          Options$Query$RepoDetail(
-            variables: Variables$Query$RepoDetail(owner: owner, name: name),
+        final query = useQuery$RepositoryDetail(
+          Options$Query$RepositoryDetail(
+            variables:
+                Variables$Query$RepositoryDetail(owner: owner, name: name),
           ),
         );
 
@@ -59,8 +60,9 @@ class RepoDetailPage extends HookConsumerWidget {
 
     final restContainer = Consumer(
       builder: (context, ref, child) {
-        final asyncValue =
-            ref.watch(repoDetailProvider(owner: owner, repo: name));
+        final asyncValue = ref.watch(
+          repositoryDetailProvider(owner: owner, repositoryName: name),
+        );
 
         return RestContainer(
           asyncValue: asyncValue,

@@ -10,8 +10,8 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        RepoListRoute(),
-        StarredRepoListRoute(),
+        RepositoryListRoute(),
+        StarredRepositoryListRoute(),
       ],
       bottomNavigationBuilder: (context, tabsRouter) {
         return BottomNavigationBar(
@@ -20,11 +20,11 @@ class RootPage extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.list),
-              label: 'Repo List',
+              label: 'Repository List',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.star),
-              label: 'Starred Repo List',
+              label: 'Starred Repository List',
             ),
           ],
         );

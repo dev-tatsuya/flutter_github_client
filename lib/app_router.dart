@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/repo_detail_page.dart';
-import 'package:flutter_github_client/repo_list_page.dart';
+import 'package:flutter_github_client/repository_detail_page.dart';
+import 'package:flutter_github_client/repository_list_page.dart';
 import 'package:flutter_github_client/root_page.dart';
-import 'package:flutter_github_client/starred_repo_list_page.dart';
+import 'package:flutter_github_client/starred_repository_list_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -16,17 +16,17 @@ class AppRouter extends RootStackRouter {
           page: RootRoute.page,
           children: [
             AutoRoute(
-              page: RepoListTabRoute.page,
+              page: RepositoryListTabRoute.page,
               children: [
-                AutoRoute(page: RepoListRoute.page),
-                AutoRoute(page: RepoDetailRoute.page),
+                AutoRoute(page: RepositoryListRoute.page),
+                AutoRoute(page: RepositoryDetailRoute.page),
               ],
             ),
             AutoRoute(
-              page: StarredRepoListTabRoute.page,
+              page: StarredRepositoryListTabRoute.page,
               children: [
-                AutoRoute(page: StarredRepoListRoute.page),
-                AutoRoute(page: RepoDetailRoute.page),
+                AutoRoute(page: StarredRepositoryListRoute.page),
+                AutoRoute(page: RepositoryDetailRoute.page),
               ],
             ),
           ],
@@ -35,11 +35,11 @@ class AppRouter extends RootStackRouter {
 }
 
 @RoutePage()
-class RepoListTabPage extends AutoRouter {
-  const RepoListTabPage({super.key});
+class RepositoryListTabPage extends AutoRouter {
+  const RepositoryListTabPage({super.key});
 }
 
 @RoutePage()
-class StarredRepoListTabPage extends AutoRouter {
-  const StarredRepoListTabPage({super.key});
+class StarredRepositoryListTabPage extends AutoRouter {
+  const StarredRepositoryListTabPage({super.key});
 }

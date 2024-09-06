@@ -63,9 +63,9 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<RepositoryResponseData> getRepoDetail(
+  Future<RepositoryResponseData> getRepositoryDetail(
     String owner,
-    String repo,
+    String name,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -78,7 +78,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/repos/${owner}/${repo}',
+          '/repos/${owner}/${name}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -99,7 +99,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<RepositoryResponseData>> getStarredRepoList(
+  Future<List<RepositoryResponseData>> getStarredRepositoryList(
       String direction) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'direction': direction};
@@ -138,7 +138,7 @@ class _RestClient implements RestClient {
   @override
   Future<void> viewerHasStarred(
     String owner,
-    String repo,
+    String name,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -151,7 +151,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/user/starred/${owner}/${repo}',
+          '/user/starred/${owner}/${name}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -166,7 +166,7 @@ class _RestClient implements RestClient {
   @override
   Future<void> star(
     String owner,
-    String repo,
+    String name,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -179,7 +179,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/user/starred/${owner}/${repo}',
+          '/user/starred/${owner}/${name}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -194,7 +194,7 @@ class _RestClient implements RestClient {
   @override
   Future<void> unstar(
     String owner,
-    String repo,
+    String name,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -207,7 +207,7 @@ class _RestClient implements RestClient {
     )
         .compose(
           _dio.options,
-          '/user/starred/${owner}/${repo}',
+          '/user/starred/${owner}/${name}',
           queryParameters: queryParameters,
           data: _data,
         )

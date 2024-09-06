@@ -10,16 +10,16 @@
 part of 'app_router.dart';
 
 /// generated route for
-/// [RepoDetailPage]
-class RepoDetailRoute extends PageRouteInfo<RepoDetailRouteArgs> {
-  RepoDetailRoute({
+/// [RepositoryDetailPage]
+class RepositoryDetailRoute extends PageRouteInfo<RepositoryDetailRouteArgs> {
+  RepositoryDetailRoute({
     required String owner,
     required String name,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          RepoDetailRoute.name,
-          args: RepoDetailRouteArgs(
+          RepositoryDetailRoute.name,
+          args: RepositoryDetailRouteArgs(
             owner: owner,
             name: name,
             key: key,
@@ -31,18 +31,18 @@ class RepoDetailRoute extends PageRouteInfo<RepoDetailRouteArgs> {
           initialChildren: children,
         );
 
-  static const String name = 'RepoDetailRoute';
+  static const String name = 'RepositoryDetailRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
       final pathParams = data.inheritedPathParams;
-      final args = data.argsAs<RepoDetailRouteArgs>(
-          orElse: () => RepoDetailRouteArgs(
+      final args = data.argsAs<RepositoryDetailRouteArgs>(
+          orElse: () => RepositoryDetailRouteArgs(
                 owner: pathParams.getString('owner'),
                 name: pathParams.getString('name'),
               ));
-      return RepoDetailPage(
+      return RepositoryDetailPage(
         owner: args.owner,
         name: args.name,
         key: args.key,
@@ -51,8 +51,8 @@ class RepoDetailRoute extends PageRouteInfo<RepoDetailRouteArgs> {
   );
 }
 
-class RepoDetailRouteArgs {
-  const RepoDetailRouteArgs({
+class RepositoryDetailRouteArgs {
+  const RepositoryDetailRouteArgs({
     required this.owner,
     required this.name,
     this.key,
@@ -66,44 +66,44 @@ class RepoDetailRouteArgs {
 
   @override
   String toString() {
-    return 'RepoDetailRouteArgs{owner: $owner, name: $name, key: $key}';
+    return 'RepositoryDetailRouteArgs{owner: $owner, name: $name, key: $key}';
   }
 }
 
 /// generated route for
-/// [RepoListPage]
-class RepoListRoute extends PageRouteInfo<void> {
-  const RepoListRoute({List<PageRouteInfo>? children})
+/// [RepositoryListPage]
+class RepositoryListRoute extends PageRouteInfo<void> {
+  const RepositoryListRoute({List<PageRouteInfo>? children})
       : super(
-          RepoListRoute.name,
+          RepositoryListRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'RepoListRoute';
+  static const String name = 'RepositoryListRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RepoListPage();
+      return const RepositoryListPage();
     },
   );
 }
 
 /// generated route for
-/// [RepoListTabPage]
-class RepoListTabRoute extends PageRouteInfo<void> {
-  const RepoListTabRoute({List<PageRouteInfo>? children})
+/// [RepositoryListTabPage]
+class RepositoryListTabRoute extends PageRouteInfo<void> {
+  const RepositoryListTabRoute({List<PageRouteInfo>? children})
       : super(
-          RepoListTabRoute.name,
+          RepositoryListTabRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'RepoListTabRoute';
+  static const String name = 'RepositoryListTabRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RepoListTabPage();
+      return const RepositoryListTabPage();
     },
   );
 }
@@ -128,39 +128,39 @@ class RootRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [StarredRepoListPage]
-class StarredRepoListRoute extends PageRouteInfo<void> {
-  const StarredRepoListRoute({List<PageRouteInfo>? children})
+/// [StarredRepositoryListPage]
+class StarredRepositoryListRoute extends PageRouteInfo<void> {
+  const StarredRepositoryListRoute({List<PageRouteInfo>? children})
       : super(
-          StarredRepoListRoute.name,
+          StarredRepositoryListRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'StarredRepoListRoute';
+  static const String name = 'StarredRepositoryListRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const StarredRepoListPage();
+      return const StarredRepositoryListPage();
     },
   );
 }
 
 /// generated route for
-/// [StarredRepoListTabPage]
-class StarredRepoListTabRoute extends PageRouteInfo<void> {
-  const StarredRepoListTabRoute({List<PageRouteInfo>? children})
+/// [StarredRepositoryListTabPage]
+class StarredRepositoryListTabRoute extends PageRouteInfo<void> {
+  const StarredRepositoryListTabRoute({List<PageRouteInfo>? children})
       : super(
-          StarredRepoListTabRoute.name,
+          StarredRepositoryListTabRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'StarredRepoListTabRoute';
+  static const String name = 'StarredRepositoryListTabRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const StarredRepoListTabPage();
+      return const StarredRepositoryListTabPage();
     },
   );
 }

@@ -34,31 +34,31 @@ abstract class RestClient {
   );
 
   @GET('/repos/{owner}/{repo}')
-  Future<RepositoryResponseData> getRepoDetail(
+  Future<RepositoryResponseData> getRepositoryDetail(
     @Path() String owner,
-    @Path() String repo,
+    @Path('repo') String name,
   );
 
   @GET('/user/starred')
-  Future<List<RepositoryResponseData>> getStarredRepoList(
+  Future<List<RepositoryResponseData>> getStarredRepositoryList(
     @Query('direction') String direction,
   );
 
   @GET('/user/starred/{owner}/{repo}')
   Future<void> viewerHasStarred(
     @Path() String owner,
-    @Path() String repo,
+    @Path('repo') String name,
   );
 
   @PUT('/user/starred/{owner}/{repo}')
   Future<void> star(
     @Path() String owner,
-    @Path() String repo,
+    @Path('repo') String name,
   );
 
   @DELETE('/user/starred/{owner}/{repo}')
   Future<void> unstar(
     @Path() String owner,
-    @Path() String repo,
+    @Path('repo') String name,
   );
 }

@@ -1,4 +1,4 @@
-query RepoList {
+query RepositoryList {
   search(
     query: "flutter"
     type: REPOSITORY

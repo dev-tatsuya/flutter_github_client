@@ -3,25 +3,25 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'repo_list_query.graphql.dart';
+import 'repository_list_query.graphql.dart';
 
-class Query$StarredRepoList {
-  Query$StarredRepoList({
+class Query$StarredRepositoryList {
+  Query$StarredRepositoryList({
     required this.viewer,
     this.$__typename = 'Query',
   });
 
-  factory Query$StarredRepoList.fromJson(Map<String, dynamic> json) {
+  factory Query$StarredRepositoryList.fromJson(Map<String, dynamic> json) {
     final l$viewer = json['viewer'];
     final l$$__typename = json['__typename'];
-    return Query$StarredRepoList(
-      viewer: Query$StarredRepoList$viewer.fromJson(
+    return Query$StarredRepositoryList(
+      viewer: Query$StarredRepositoryList$viewer.fromJson(
           (l$viewer as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$StarredRepoList$viewer viewer;
+  final Query$StarredRepositoryList$viewer viewer;
 
   final String $__typename;
 
@@ -49,7 +49,8 @@ class Query$StarredRepoList {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$StarredRepoList) || runtimeType != other.runtimeType) {
+    if (!(other is Query$StarredRepositoryList) ||
+        runtimeType != other.runtimeType) {
       return false;
     }
     final l$viewer = viewer;
@@ -66,40 +67,41 @@ class Query$StarredRepoList {
   }
 }
 
-extension UtilityExtension$Query$StarredRepoList on Query$StarredRepoList {
-  CopyWith$Query$StarredRepoList<Query$StarredRepoList> get copyWith =>
-      CopyWith$Query$StarredRepoList(
-        this,
-        (i) => i,
-      );
+extension UtilityExtension$Query$StarredRepositoryList
+    on Query$StarredRepositoryList {
+  CopyWith$Query$StarredRepositoryList<Query$StarredRepositoryList>
+      get copyWith => CopyWith$Query$StarredRepositoryList(
+            this,
+            (i) => i,
+          );
 }
 
-abstract class CopyWith$Query$StarredRepoList<TRes> {
-  factory CopyWith$Query$StarredRepoList(
-    Query$StarredRepoList instance,
-    TRes Function(Query$StarredRepoList) then,
-  ) = _CopyWithImpl$Query$StarredRepoList;
+abstract class CopyWith$Query$StarredRepositoryList<TRes> {
+  factory CopyWith$Query$StarredRepositoryList(
+    Query$StarredRepositoryList instance,
+    TRes Function(Query$StarredRepositoryList) then,
+  ) = _CopyWithImpl$Query$StarredRepositoryList;
 
-  factory CopyWith$Query$StarredRepoList.stub(TRes res) =
-      _CopyWithStubImpl$Query$StarredRepoList;
+  factory CopyWith$Query$StarredRepositoryList.stub(TRes res) =
+      _CopyWithStubImpl$Query$StarredRepositoryList;
 
   TRes call({
-    Query$StarredRepoList$viewer? viewer,
+    Query$StarredRepositoryList$viewer? viewer,
     String? $__typename,
   });
-  CopyWith$Query$StarredRepoList$viewer<TRes> get viewer;
+  CopyWith$Query$StarredRepositoryList$viewer<TRes> get viewer;
 }
 
-class _CopyWithImpl$Query$StarredRepoList<TRes>
-    implements CopyWith$Query$StarredRepoList<TRes> {
-  _CopyWithImpl$Query$StarredRepoList(
+class _CopyWithImpl$Query$StarredRepositoryList<TRes>
+    implements CopyWith$Query$StarredRepositoryList<TRes> {
+  _CopyWithImpl$Query$StarredRepositoryList(
     this._instance,
     this._then,
   );
 
-  final Query$StarredRepoList _instance;
+  final Query$StarredRepositoryList _instance;
 
-  final TRes Function(Query$StarredRepoList) _then;
+  final TRes Function(Query$StarredRepositoryList) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -107,42 +109,42 @@ class _CopyWithImpl$Query$StarredRepoList<TRes>
     Object? viewer = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$StarredRepoList(
+      _then(Query$StarredRepositoryList(
         viewer: viewer == _undefined || viewer == null
             ? _instance.viewer
-            : (viewer as Query$StarredRepoList$viewer),
+            : (viewer as Query$StarredRepositoryList$viewer),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$StarredRepoList$viewer<TRes> get viewer {
+  CopyWith$Query$StarredRepositoryList$viewer<TRes> get viewer {
     final local$viewer = _instance.viewer;
-    return CopyWith$Query$StarredRepoList$viewer(
+    return CopyWith$Query$StarredRepositoryList$viewer(
         local$viewer, (e) => call(viewer: e));
   }
 }
 
-class _CopyWithStubImpl$Query$StarredRepoList<TRes>
-    implements CopyWith$Query$StarredRepoList<TRes> {
-  _CopyWithStubImpl$Query$StarredRepoList(this._res);
+class _CopyWithStubImpl$Query$StarredRepositoryList<TRes>
+    implements CopyWith$Query$StarredRepositoryList<TRes> {
+  _CopyWithStubImpl$Query$StarredRepositoryList(this._res);
 
   TRes _res;
 
   call({
-    Query$StarredRepoList$viewer? viewer,
+    Query$StarredRepositoryList$viewer? viewer,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$StarredRepoList$viewer<TRes> get viewer =>
-      CopyWith$Query$StarredRepoList$viewer.stub(_res);
+  CopyWith$Query$StarredRepositoryList$viewer<TRes> get viewer =>
+      CopyWith$Query$StarredRepositoryList$viewer.stub(_res);
 }
 
-const documentNodeQueryStarredRepoList = DocumentNode(definitions: [
+const documentNodeQueryStarredRepositoryList = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
-    name: NameNode(value: 'StarredRepoList'),
+    name: NameNode(value: 'StarredRepositoryList'),
     variableDefinitions: [],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
@@ -223,26 +225,26 @@ const documentNodeQueryStarredRepoList = DocumentNode(definitions: [
   fragmentDefinitionTopicItem,
   fragmentDefinitionLanguageItem,
 ]);
-Query$StarredRepoList _parserFn$Query$StarredRepoList(
+Query$StarredRepositoryList _parserFn$Query$StarredRepositoryList(
         Map<String, dynamic> data) =>
-    Query$StarredRepoList.fromJson(data);
-typedef OnQueryComplete$Query$StarredRepoList = FutureOr<void> Function(
+    Query$StarredRepositoryList.fromJson(data);
+typedef OnQueryComplete$Query$StarredRepositoryList = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Query$StarredRepoList?,
+  Query$StarredRepositoryList?,
 );
 
-class Options$Query$StarredRepoList
-    extends graphql.QueryOptions<Query$StarredRepoList> {
-  Options$Query$StarredRepoList({
+class Options$Query$StarredRepositoryList
+    extends graphql.QueryOptions<Query$StarredRepositoryList> {
+  Options$Query$StarredRepositoryList({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$StarredRepoList? typedOptimisticResult,
+    Query$StarredRepositoryList? typedOptimisticResult,
     Duration? pollInterval,
     graphql.Context? context,
-    OnQueryComplete$Query$StarredRepoList? onComplete,
+    OnQueryComplete$Query$StarredRepositoryList? onComplete,
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
@@ -257,14 +259,16 @@ class Options$Query$StarredRepoList
               ? null
               : (data) => onComplete(
                     data,
-                    data == null ? null : _parserFn$Query$StarredRepoList(data),
+                    data == null
+                        ? null
+                        : _parserFn$Query$StarredRepositoryList(data),
                   ),
           onError: onError,
-          document: documentNodeQueryStarredRepoList,
-          parserFn: _parserFn$Query$StarredRepoList,
+          document: documentNodeQueryStarredRepositoryList,
+          parserFn: _parserFn$Query$StarredRepositoryList,
         );
 
-  final OnQueryComplete$Query$StarredRepoList? onCompleteWithParsed;
+  final OnQueryComplete$Query$StarredRepositoryList? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -275,15 +279,15 @@ class Options$Query$StarredRepoList
       ];
 }
 
-class WatchOptions$Query$StarredRepoList
-    extends graphql.WatchQueryOptions<Query$StarredRepoList> {
-  WatchOptions$Query$StarredRepoList({
+class WatchOptions$Query$StarredRepositoryList
+    extends graphql.WatchQueryOptions<Query$StarredRepositoryList> {
+  WatchOptions$Query$StarredRepositoryList({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$StarredRepoList? typedOptimisticResult,
+    Query$StarredRepositoryList? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -296,92 +300,101 @@ class WatchOptions$Query$StarredRepoList
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeQueryStarredRepoList,
+          document: documentNodeQueryStarredRepositoryList,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Query$StarredRepoList,
+          parserFn: _parserFn$Query$StarredRepositoryList,
         );
 }
 
-class FetchMoreOptions$Query$StarredRepoList extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$StarredRepoList(
+class FetchMoreOptions$Query$StarredRepositoryList
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$StarredRepositoryList(
       {required graphql.UpdateQuery updateQuery})
       : super(
           updateQuery: updateQuery,
-          document: documentNodeQueryStarredRepoList,
+          document: documentNodeQueryStarredRepositoryList,
         );
 }
 
-extension ClientExtension$Query$StarredRepoList on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$StarredRepoList>> query$StarredRepoList(
-          [Options$Query$StarredRepoList? options]) async =>
-      await this.query(options ?? Options$Query$StarredRepoList());
-  graphql.ObservableQuery<Query$StarredRepoList> watchQuery$StarredRepoList(
-          [WatchOptions$Query$StarredRepoList? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$StarredRepoList());
-  void writeQuery$StarredRepoList({
-    required Query$StarredRepoList data,
+extension ClientExtension$Query$StarredRepositoryList on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$StarredRepositoryList>>
+      query$StarredRepositoryList(
+              [Options$Query$StarredRepositoryList? options]) async =>
+          await this.query(options ?? Options$Query$StarredRepositoryList());
+  graphql.ObservableQuery<
+      Query$StarredRepositoryList> watchQuery$StarredRepositoryList(
+          [WatchOptions$Query$StarredRepositoryList? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$StarredRepositoryList());
+  void writeQuery$StarredRepositoryList({
+    required Query$StarredRepositoryList data,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-            operation:
-                graphql.Operation(document: documentNodeQueryStarredRepoList)),
+            operation: graphql.Operation(
+                document: documentNodeQueryStarredRepositoryList)),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$StarredRepoList? readQuery$StarredRepoList({bool optimistic = true}) {
+  Query$StarredRepositoryList? readQuery$StarredRepositoryList(
+      {bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
-          operation:
-              graphql.Operation(document: documentNodeQueryStarredRepoList)),
+          operation: graphql.Operation(
+              document: documentNodeQueryStarredRepositoryList)),
       optimistic: optimistic,
     );
-    return result == null ? null : Query$StarredRepoList.fromJson(result);
+    return result == null ? null : Query$StarredRepositoryList.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$StarredRepoList> useQuery$StarredRepoList(
-        [Options$Query$StarredRepoList? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$StarredRepoList());
-graphql.ObservableQuery<Query$StarredRepoList> useWatchQuery$StarredRepoList(
-        [WatchOptions$Query$StarredRepoList? options]) =>
-    graphql_flutter
-        .useWatchQuery(options ?? WatchOptions$Query$StarredRepoList());
+graphql_flutter.QueryHookResult<Query$StarredRepositoryList>
+    useQuery$StarredRepositoryList(
+            [Options$Query$StarredRepositoryList? options]) =>
+        graphql_flutter
+            .useQuery(options ?? Options$Query$StarredRepositoryList());
+graphql.ObservableQuery<Query$StarredRepositoryList>
+    useWatchQuery$StarredRepositoryList(
+            [WatchOptions$Query$StarredRepositoryList? options]) =>
+        graphql_flutter.useWatchQuery(
+            options ?? WatchOptions$Query$StarredRepositoryList());
 
-class Query$StarredRepoList$Widget
-    extends graphql_flutter.Query<Query$StarredRepoList> {
-  Query$StarredRepoList$Widget({
+class Query$StarredRepositoryList$Widget
+    extends graphql_flutter.Query<Query$StarredRepositoryList> {
+  Query$StarredRepositoryList$Widget({
     widgets.Key? key,
-    Options$Query$StarredRepoList? options,
-    required graphql_flutter.QueryBuilder<Query$StarredRepoList> builder,
+    Options$Query$StarredRepositoryList? options,
+    required graphql_flutter.QueryBuilder<Query$StarredRepositoryList> builder,
   }) : super(
           key: key,
-          options: options ?? Options$Query$StarredRepoList(),
+          options: options ?? Options$Query$StarredRepositoryList(),
           builder: builder,
         );
 }
 
-class Query$StarredRepoList$viewer {
-  Query$StarredRepoList$viewer({
+class Query$StarredRepositoryList$viewer {
+  Query$StarredRepositoryList$viewer({
     required this.starredRepositories,
     this.$__typename = 'User',
   });
 
-  factory Query$StarredRepoList$viewer.fromJson(Map<String, dynamic> json) {
+  factory Query$StarredRepositoryList$viewer.fromJson(
+      Map<String, dynamic> json) {
     final l$starredRepositories = json['starredRepositories'];
     final l$$__typename = json['__typename'];
-    return Query$StarredRepoList$viewer(
+    return Query$StarredRepositoryList$viewer(
       starredRepositories:
-          Query$StarredRepoList$viewer$starredRepositories.fromJson(
+          Query$StarredRepositoryList$viewer$starredRepositories.fromJson(
               (l$starredRepositories as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$StarredRepoList$viewer$starredRepositories starredRepositories;
+  final Query$StarredRepositoryList$viewer$starredRepositories
+      starredRepositories;
 
   final String $__typename;
 
@@ -409,7 +422,7 @@ class Query$StarredRepoList$viewer {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$StarredRepoList$viewer) ||
+    if (!(other is Query$StarredRepositoryList$viewer) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -427,42 +440,43 @@ class Query$StarredRepoList$viewer {
   }
 }
 
-extension UtilityExtension$Query$StarredRepoList$viewer
-    on Query$StarredRepoList$viewer {
-  CopyWith$Query$StarredRepoList$viewer<Query$StarredRepoList$viewer>
-      get copyWith => CopyWith$Query$StarredRepoList$viewer(
+extension UtilityExtension$Query$StarredRepositoryList$viewer
+    on Query$StarredRepositoryList$viewer {
+  CopyWith$Query$StarredRepositoryList$viewer<
+          Query$StarredRepositoryList$viewer>
+      get copyWith => CopyWith$Query$StarredRepositoryList$viewer(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$StarredRepoList$viewer<TRes> {
-  factory CopyWith$Query$StarredRepoList$viewer(
-    Query$StarredRepoList$viewer instance,
-    TRes Function(Query$StarredRepoList$viewer) then,
-  ) = _CopyWithImpl$Query$StarredRepoList$viewer;
+abstract class CopyWith$Query$StarredRepositoryList$viewer<TRes> {
+  factory CopyWith$Query$StarredRepositoryList$viewer(
+    Query$StarredRepositoryList$viewer instance,
+    TRes Function(Query$StarredRepositoryList$viewer) then,
+  ) = _CopyWithImpl$Query$StarredRepositoryList$viewer;
 
-  factory CopyWith$Query$StarredRepoList$viewer.stub(TRes res) =
-      _CopyWithStubImpl$Query$StarredRepoList$viewer;
+  factory CopyWith$Query$StarredRepositoryList$viewer.stub(TRes res) =
+      _CopyWithStubImpl$Query$StarredRepositoryList$viewer;
 
   TRes call({
-    Query$StarredRepoList$viewer$starredRepositories? starredRepositories,
+    Query$StarredRepositoryList$viewer$starredRepositories? starredRepositories,
     String? $__typename,
   });
-  CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes>
+  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<TRes>
       get starredRepositories;
 }
 
-class _CopyWithImpl$Query$StarredRepoList$viewer<TRes>
-    implements CopyWith$Query$StarredRepoList$viewer<TRes> {
-  _CopyWithImpl$Query$StarredRepoList$viewer(
+class _CopyWithImpl$Query$StarredRepositoryList$viewer<TRes>
+    implements CopyWith$Query$StarredRepositoryList$viewer<TRes> {
+  _CopyWithImpl$Query$StarredRepositoryList$viewer(
     this._instance,
     this._then,
   );
 
-  final Query$StarredRepoList$viewer _instance;
+  final Query$StarredRepositoryList$viewer _instance;
 
-  final TRes Function(Query$StarredRepoList$viewer) _then;
+  final TRes Function(Query$StarredRepositoryList$viewer) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -470,64 +484,66 @@ class _CopyWithImpl$Query$StarredRepoList$viewer<TRes>
     Object? starredRepositories = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$StarredRepoList$viewer(
+      _then(Query$StarredRepositoryList$viewer(
         starredRepositories:
             starredRepositories == _undefined || starredRepositories == null
                 ? _instance.starredRepositories
                 : (starredRepositories
-                    as Query$StarredRepoList$viewer$starredRepositories),
+                    as Query$StarredRepositoryList$viewer$starredRepositories),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes>
+  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<TRes>
       get starredRepositories {
     final local$starredRepositories = _instance.starredRepositories;
-    return CopyWith$Query$StarredRepoList$viewer$starredRepositories(
+    return CopyWith$Query$StarredRepositoryList$viewer$starredRepositories(
         local$starredRepositories, (e) => call(starredRepositories: e));
   }
 }
 
-class _CopyWithStubImpl$Query$StarredRepoList$viewer<TRes>
-    implements CopyWith$Query$StarredRepoList$viewer<TRes> {
-  _CopyWithStubImpl$Query$StarredRepoList$viewer(this._res);
+class _CopyWithStubImpl$Query$StarredRepositoryList$viewer<TRes>
+    implements CopyWith$Query$StarredRepositoryList$viewer<TRes> {
+  _CopyWithStubImpl$Query$StarredRepositoryList$viewer(this._res);
 
   TRes _res;
 
   call({
-    Query$StarredRepoList$viewer$starredRepositories? starredRepositories,
+    Query$StarredRepositoryList$viewer$starredRepositories? starredRepositories,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes>
+  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<TRes>
       get starredRepositories =>
-          CopyWith$Query$StarredRepoList$viewer$starredRepositories.stub(_res);
+          CopyWith$Query$StarredRepositoryList$viewer$starredRepositories.stub(
+              _res);
 }
 
-class Query$StarredRepoList$viewer$starredRepositories {
-  Query$StarredRepoList$viewer$starredRepositories({
+class Query$StarredRepositoryList$viewer$starredRepositories {
+  Query$StarredRepositoryList$viewer$starredRepositories({
     this.edges,
     this.$__typename = 'StarredRepositoryConnection',
   });
 
-  factory Query$StarredRepoList$viewer$starredRepositories.fromJson(
+  factory Query$StarredRepositoryList$viewer$starredRepositories.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Query$StarredRepoList$viewer$starredRepositories(
+    return Query$StarredRepositoryList$viewer$starredRepositories(
       edges: (l$edges as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Query$StarredRepoList$viewer$starredRepositories$edges.fromJson(
-                  (e as Map<String, dynamic>)))
+              : Query$StarredRepositoryList$viewer$starredRepositories$edges
+                  .fromJson((e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$StarredRepoList$viewer$starredRepositories$edges?>? edges;
+  final List<Query$StarredRepositoryList$viewer$starredRepositories$edges?>?
+      edges;
 
   final String $__typename;
 
@@ -555,7 +571,7 @@ class Query$StarredRepoList$viewer$starredRepositories {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$StarredRepoList$viewer$starredRepositories) ||
+    if (!(other is Query$StarredRepositoryList$viewer$starredRepositories) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -584,48 +600,52 @@ class Query$StarredRepoList$viewer$starredRepositories {
   }
 }
 
-extension UtilityExtension$Query$StarredRepoList$viewer$starredRepositories
-    on Query$StarredRepoList$viewer$starredRepositories {
-  CopyWith$Query$StarredRepoList$viewer$starredRepositories<
-          Query$StarredRepoList$viewer$starredRepositories>
-      get copyWith => CopyWith$Query$StarredRepoList$viewer$starredRepositories(
+extension UtilityExtension$Query$StarredRepositoryList$viewer$starredRepositories
+    on Query$StarredRepositoryList$viewer$starredRepositories {
+  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<
+          Query$StarredRepositoryList$viewer$starredRepositories>
+      get copyWith =>
+          CopyWith$Query$StarredRepositoryList$viewer$starredRepositories(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes> {
-  factory CopyWith$Query$StarredRepoList$viewer$starredRepositories(
-    Query$StarredRepoList$viewer$starredRepositories instance,
-    TRes Function(Query$StarredRepoList$viewer$starredRepositories) then,
-  ) = _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories;
+abstract class CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<
+    TRes> {
+  factory CopyWith$Query$StarredRepositoryList$viewer$starredRepositories(
+    Query$StarredRepositoryList$viewer$starredRepositories instance,
+    TRes Function(Query$StarredRepositoryList$viewer$starredRepositories) then,
+  ) = _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories;
 
-  factory CopyWith$Query$StarredRepoList$viewer$starredRepositories.stub(
+  factory CopyWith$Query$StarredRepositoryList$viewer$starredRepositories.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories;
+      _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories;
 
   TRes call({
-    List<Query$StarredRepoList$viewer$starredRepositories$edges?>? edges,
+    List<Query$StarredRepositoryList$viewer$starredRepositories$edges?>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$StarredRepoList$viewer$starredRepositories$edges?>? Function(
+      Iterable<Query$StarredRepositoryList$viewer$starredRepositories$edges?>? Function(
               Iterable<
-                  CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<
-                      Query$StarredRepoList$viewer$starredRepositories$edges>?>?)
+                  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+                      Query$StarredRepositoryList$viewer$starredRepositories$edges>?>?)
           _fn);
 }
 
-class _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories<TRes>
-    implements CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes> {
-  _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories(
+class _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories<TRes>
+    implements
+        CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<TRes> {
+  _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories(
     this._instance,
     this._then,
   );
 
-  final Query$StarredRepoList$viewer$starredRepositories _instance;
+  final Query$StarredRepositoryList$viewer$starredRepositories _instance;
 
-  final TRes Function(Query$StarredRepoList$viewer$starredRepositories) _then;
+  final TRes Function(Query$StarredRepositoryList$viewer$starredRepositories)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -633,39 +653,42 @@ class _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$StarredRepoList$viewer$starredRepositories(
+      _then(Query$StarredRepositoryList$viewer$starredRepositories(
         edges: edges == _undefined
             ? _instance.edges
             : (edges as List<
-                Query$StarredRepoList$viewer$starredRepositories$edges?>?),
+                Query$StarredRepositoryList$viewer$starredRepositories$edges?>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$StarredRepoList$viewer$starredRepositories$edges?>? Function(
+          Iterable<Query$StarredRepositoryList$viewer$starredRepositories$edges?>? Function(
                   Iterable<
-                      CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<
-                          Query$StarredRepoList$viewer$starredRepositories$edges>?>?)
+                      CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+                          Query$StarredRepositoryList$viewer$starredRepositories$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
               ? null
-              : CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges(
+              : CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges(
                   e,
                   (i) => i,
                 )))?.toList());
 }
 
-class _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories<TRes>
-    implements CopyWith$Query$StarredRepoList$viewer$starredRepositories<TRes> {
-  _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories(this._res);
+class _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories<
+        TRes>
+    implements
+        CopyWith$Query$StarredRepositoryList$viewer$starredRepositories<TRes> {
+  _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories(
+      this._res);
 
   TRes _res;
 
   call({
-    List<Query$StarredRepoList$viewer$starredRepositories$edges?>? edges,
+    List<Query$StarredRepositoryList$viewer$starredRepositories$edges?>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -673,17 +696,17 @@ class _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories<TRes>
   edges(_fn) => _res;
 }
 
-class Query$StarredRepoList$viewer$starredRepositories$edges {
-  Query$StarredRepoList$viewer$starredRepositories$edges({
+class Query$StarredRepositoryList$viewer$starredRepositories$edges {
+  Query$StarredRepositoryList$viewer$starredRepositories$edges({
     required this.node,
     this.$__typename = 'StarredRepositoryEdge',
   });
 
-  factory Query$StarredRepoList$viewer$starredRepositories$edges.fromJson(
+  factory Query$StarredRepositoryList$viewer$starredRepositories$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$StarredRepoList$viewer$starredRepositories$edges(
+    return Query$StarredRepositoryList$viewer$starredRepositories$edges(
       node: Fragment$RepositoryItem.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -717,7 +740,8 @@ class Query$StarredRepoList$viewer$starredRepositories$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$StarredRepoList$viewer$starredRepositories$edges) ||
+    if (!(other
+            is Query$StarredRepositoryList$viewer$starredRepositories$edges) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -735,27 +759,28 @@ class Query$StarredRepoList$viewer$starredRepositories$edges {
   }
 }
 
-extension UtilityExtension$Query$StarredRepoList$viewer$starredRepositories$edges
-    on Query$StarredRepoList$viewer$starredRepositories$edges {
-  CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<
-          Query$StarredRepoList$viewer$starredRepositories$edges>
+extension UtilityExtension$Query$StarredRepositoryList$viewer$starredRepositories$edges
+    on Query$StarredRepositoryList$viewer$starredRepositories$edges {
+  CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+          Query$StarredRepositoryList$viewer$starredRepositories$edges>
       get copyWith =>
-          CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges(
+          CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<
+abstract class CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
     TRes> {
-  factory CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges(
-    Query$StarredRepoList$viewer$starredRepositories$edges instance,
-    TRes Function(Query$StarredRepoList$viewer$starredRepositories$edges) then,
-  ) = _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories$edges;
+  factory CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges(
+    Query$StarredRepositoryList$viewer$starredRepositories$edges instance,
+    TRes Function(Query$StarredRepositoryList$viewer$starredRepositories$edges)
+        then,
+  ) = _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges;
 
-  factory CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges.stub(
+  factory CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories$edges;
+      _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges;
 
   TRes call({
     Fragment$RepositoryItem? node,
@@ -764,18 +789,20 @@ abstract class CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<
   CopyWith$Fragment$RepositoryItem<TRes> get node;
 }
 
-class _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories$edges<TRes>
+class _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+        TRes>
     implements
-        CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<TRes> {
-  _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories$edges(
+        CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+            TRes> {
+  _CopyWithImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges(
     this._instance,
     this._then,
   );
 
-  final Query$StarredRepoList$viewer$starredRepositories$edges _instance;
+  final Query$StarredRepositoryList$viewer$starredRepositories$edges _instance;
 
-  final TRes Function(Query$StarredRepoList$viewer$starredRepositories$edges)
-      _then;
+  final TRes Function(
+      Query$StarredRepositoryList$viewer$starredRepositories$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -783,7 +810,7 @@ class _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$StarredRepoList$viewer$starredRepositories$edges(
+      _then(Query$StarredRepositoryList$viewer$starredRepositories$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$RepositoryItem),
@@ -798,11 +825,12 @@ class _CopyWithImpl$Query$StarredRepoList$viewer$starredRepositories$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories$edges<
+class _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges<
         TRes>
     implements
-        CopyWith$Query$StarredRepoList$viewer$starredRepositories$edges<TRes> {
-  _CopyWithStubImpl$Query$StarredRepoList$viewer$starredRepositories$edges(
+        CopyWith$Query$StarredRepositoryList$viewer$starredRepositories$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$StarredRepositoryList$viewer$starredRepositories$edges(
       this._res);
 
   TRes _res;

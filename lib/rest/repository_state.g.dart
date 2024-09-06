@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'repo_state.dart';
+part of 'repository_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$starHash() => r'2644527e5e4c2842b969d27e91c74beba10c27d5';
+String _$starHash() => r'da0fef1d9ca2fbe0bb73fe84fac66fc284268043';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,12 +41,12 @@ class StarFamily extends Family<AsyncValue<void>> {
   /// See also [star].
   StarProvider call({
     required String owner,
-    required String repo,
+    required String repositoryName,
     required bool viewerHasStarred,
   }) {
     return StarProvider(
       owner: owner,
-      repo: repo,
+      repositoryName: repositoryName,
       viewerHasStarred: viewerHasStarred,
     );
   }
@@ -57,16 +57,16 @@ class StarFamily extends Family<AsyncValue<void>> {
   ) {
     return call(
       owner: provider.owner,
-      repo: provider.repo,
+      repositoryName: provider.repositoryName,
       viewerHasStarred: provider.viewerHasStarred,
     );
   }
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>{
     restProvider,
-    repoListProvider,
-    repoDetailProvider,
-    starredRepoListProvider
+    repositoryListProvider,
+    repositoryDetailProvider,
+    starredRepositoryListProvider
   };
 
   @override
@@ -76,12 +76,12 @@ class StarFamily extends Family<AsyncValue<void>> {
       <ProviderOrFamily>{
     restProvider,
     ...?restProvider.allTransitiveDependencies,
-    repoListProvider,
-    ...?repoListProvider.allTransitiveDependencies,
-    repoDetailProvider,
-    ...?repoDetailProvider.allTransitiveDependencies,
-    starredRepoListProvider,
-    ...?starredRepoListProvider.allTransitiveDependencies
+    repositoryListProvider,
+    ...?repositoryListProvider.allTransitiveDependencies,
+    repositoryDetailProvider,
+    ...?repositoryDetailProvider.allTransitiveDependencies,
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies
   };
 
   @override
@@ -97,13 +97,13 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
   /// See also [star].
   StarProvider({
     required String owner,
-    required String repo,
+    required String repositoryName,
     required bool viewerHasStarred,
   }) : this._internal(
           (ref) => star(
             ref as StarRef,
             owner: owner,
-            repo: repo,
+            repositoryName: repositoryName,
             viewerHasStarred: viewerHasStarred,
           ),
           from: starProvider,
@@ -113,7 +113,7 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
           dependencies: StarFamily._dependencies,
           allTransitiveDependencies: StarFamily._allTransitiveDependencies,
           owner: owner,
-          repo: repo,
+          repositoryName: repositoryName,
           viewerHasStarred: viewerHasStarred,
         );
 
@@ -125,12 +125,12 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.owner,
-    required this.repo,
+    required this.repositoryName,
     required this.viewerHasStarred,
   }) : super.internal();
 
   final String owner;
-  final String repo;
+  final String repositoryName;
   final bool viewerHasStarred;
 
   @override
@@ -147,7 +147,7 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         owner: owner,
-        repo: repo,
+        repositoryName: repositoryName,
         viewerHasStarred: viewerHasStarred,
       ),
     );
@@ -162,7 +162,7 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
   bool operator ==(Object other) {
     return other is StarProvider &&
         other.owner == owner &&
-        other.repo == repo &&
+        other.repositoryName == repositoryName &&
         other.viewerHasStarred == viewerHasStarred;
   }
 
@@ -170,7 +170,7 @@ class StarProvider extends AutoDisposeFutureProvider<void> {
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, owner.hashCode);
-    hash = _SystemHash.combine(hash, repo.hashCode);
+    hash = _SystemHash.combine(hash, repositoryName.hashCode);
     hash = _SystemHash.combine(hash, viewerHasStarred.hashCode);
 
     return _SystemHash.finish(hash);
@@ -181,8 +181,8 @@ mixin StarRef on AutoDisposeFutureProviderRef<void> {
   /// The parameter `owner` of this provider.
   String get owner;
 
-  /// The parameter `repo` of this provider.
-  String get repo;
+  /// The parameter `repositoryName` of this provider.
+  String get repositoryName;
 
   /// The parameter `viewerHasStarred` of this provider.
   bool get viewerHasStarred;
@@ -195,21 +195,22 @@ class _StarProviderElement extends AutoDisposeFutureProviderElement<void>
   @override
   String get owner => (origin as StarProvider).owner;
   @override
-  String get repo => (origin as StarProvider).repo;
+  String get repositoryName => (origin as StarProvider).repositoryName;
   @override
   bool get viewerHasStarred => (origin as StarProvider).viewerHasStarred;
 }
 
-String _$repoListHash() => r'3e210ed977811a5d571f1fab369418bf566bcee0';
+String _$repositoryListHash() => r'827b8e290a61ea207b0534775b1ba591aa7effb1';
 
-/// See also [RepoList].
-@ProviderFor(RepoList)
-final repoListProvider =
-    AsyncNotifierProvider<RepoList, List<Repository>>.internal(
-  RepoList.new,
-  name: r'repoListProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$repoListHash,
+/// See also [RepositoryList].
+@ProviderFor(RepositoryList)
+final repositoryListProvider =
+    AsyncNotifierProvider<RepositoryList, List<Repository>>.internal(
+  RepositoryList.new,
+  name: r'repositoryListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$repositoryListHash,
   dependencies: <ProviderOrFamily>[restProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
     restProvider,
@@ -217,46 +218,46 @@ final repoListProvider =
   },
 );
 
-typedef _$RepoList = AsyncNotifier<List<Repository>>;
-String _$repoDetailHash() => r'75298c5a091c4529c49ed0ad6b513ebf33638099';
+typedef _$RepositoryList = AsyncNotifier<List<Repository>>;
+String _$repositoryDetailHash() => r'59ef9013362635b1c9612a8af8de26277dee66aa';
 
-abstract class _$RepoDetail extends BuildlessAsyncNotifier<Repository> {
+abstract class _$RepositoryDetail extends BuildlessAsyncNotifier<Repository> {
   late final String owner;
-  late final String repo;
+  late final String repositoryName;
 
   FutureOr<Repository> build({
     required String owner,
-    required String repo,
+    required String repositoryName,
   });
 }
 
-/// See also [RepoDetail].
-@ProviderFor(RepoDetail)
-const repoDetailProvider = RepoDetailFamily();
+/// See also [RepositoryDetail].
+@ProviderFor(RepositoryDetail)
+const repositoryDetailProvider = RepositoryDetailFamily();
 
-/// See also [RepoDetail].
-class RepoDetailFamily extends Family<AsyncValue<Repository>> {
-  /// See also [RepoDetail].
-  const RepoDetailFamily();
+/// See also [RepositoryDetail].
+class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
+  /// See also [RepositoryDetail].
+  const RepositoryDetailFamily();
 
-  /// See also [RepoDetail].
-  RepoDetailProvider call({
+  /// See also [RepositoryDetail].
+  RepositoryDetailProvider call({
     required String owner,
-    required String repo,
+    required String repositoryName,
   }) {
-    return RepoDetailProvider(
+    return RepositoryDetailProvider(
       owner: owner,
-      repo: repo,
+      repositoryName: repositoryName,
     );
   }
 
   @override
-  RepoDetailProvider getProviderOverride(
-    covariant RepoDetailProvider provider,
+  RepositoryDetailProvider getProviderOverride(
+    covariant RepositoryDetailProvider provider,
   ) {
     return call(
       owner: provider.owner,
-      repo: provider.repo,
+      repositoryName: provider.repositoryName,
     );
   }
 
@@ -278,34 +279,34 @@ class RepoDetailFamily extends Family<AsyncValue<Repository>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'repoDetailProvider';
+  String? get name => r'repositoryDetailProvider';
 }
 
-/// See also [RepoDetail].
-class RepoDetailProvider
-    extends AsyncNotifierProviderImpl<RepoDetail, Repository> {
-  /// See also [RepoDetail].
-  RepoDetailProvider({
+/// See also [RepositoryDetail].
+class RepositoryDetailProvider
+    extends AsyncNotifierProviderImpl<RepositoryDetail, Repository> {
+  /// See also [RepositoryDetail].
+  RepositoryDetailProvider({
     required String owner,
-    required String repo,
+    required String repositoryName,
   }) : this._internal(
-          () => RepoDetail()
+          () => RepositoryDetail()
             ..owner = owner
-            ..repo = repo,
-          from: repoDetailProvider,
-          name: r'repoDetailProvider',
+            ..repositoryName = repositoryName,
+          from: repositoryDetailProvider,
+          name: r'repositoryDetailProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$repoDetailHash,
-          dependencies: RepoDetailFamily._dependencies,
+                  : _$repositoryDetailHash,
+          dependencies: RepositoryDetailFamily._dependencies,
           allTransitiveDependencies:
-              RepoDetailFamily._allTransitiveDependencies,
+              RepositoryDetailFamily._allTransitiveDependencies,
           owner: owner,
-          repo: repo,
+          repositoryName: repositoryName,
         );
 
-  RepoDetailProvider._internal(
+  RepositoryDetailProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -313,93 +314,95 @@ class RepoDetailProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.owner,
-    required this.repo,
+    required this.repositoryName,
   }) : super.internal();
 
   final String owner;
-  final String repo;
+  final String repositoryName;
 
   @override
   FutureOr<Repository> runNotifierBuild(
-    covariant RepoDetail notifier,
+    covariant RepositoryDetail notifier,
   ) {
     return notifier.build(
       owner: owner,
-      repo: repo,
+      repositoryName: repositoryName,
     );
   }
 
   @override
-  Override overrideWith(RepoDetail Function() create) {
+  Override overrideWith(RepositoryDetail Function() create) {
     return ProviderOverride(
       origin: this,
-      override: RepoDetailProvider._internal(
+      override: RepositoryDetailProvider._internal(
         () => create()
           ..owner = owner
-          ..repo = repo,
+          ..repositoryName = repositoryName,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         owner: owner,
-        repo: repo,
+        repositoryName: repositoryName,
       ),
     );
   }
 
   @override
-  AsyncNotifierProviderElement<RepoDetail, Repository> createElement() {
-    return _RepoDetailProviderElement(this);
+  AsyncNotifierProviderElement<RepositoryDetail, Repository> createElement() {
+    return _RepositoryDetailProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is RepoDetailProvider &&
+    return other is RepositoryDetailProvider &&
         other.owner == owner &&
-        other.repo == repo;
+        other.repositoryName == repositoryName;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, owner.hashCode);
-    hash = _SystemHash.combine(hash, repo.hashCode);
+    hash = _SystemHash.combine(hash, repositoryName.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin RepoDetailRef on AsyncNotifierProviderRef<Repository> {
+mixin RepositoryDetailRef on AsyncNotifierProviderRef<Repository> {
   /// The parameter `owner` of this provider.
   String get owner;
 
-  /// The parameter `repo` of this provider.
-  String get repo;
+  /// The parameter `repositoryName` of this provider.
+  String get repositoryName;
 }
 
-class _RepoDetailProviderElement
-    extends AsyncNotifierProviderElement<RepoDetail, Repository>
-    with RepoDetailRef {
-  _RepoDetailProviderElement(super.provider);
+class _RepositoryDetailProviderElement
+    extends AsyncNotifierProviderElement<RepositoryDetail, Repository>
+    with RepositoryDetailRef {
+  _RepositoryDetailProviderElement(super.provider);
 
   @override
-  String get owner => (origin as RepoDetailProvider).owner;
+  String get owner => (origin as RepositoryDetailProvider).owner;
   @override
-  String get repo => (origin as RepoDetailProvider).repo;
+  String get repositoryName =>
+      (origin as RepositoryDetailProvider).repositoryName;
 }
 
-String _$starredRepoListHash() => r'9808c6ccba0c813f635964bed2985778fa1e98e4';
+String _$starredRepositoryListHash() =>
+    r'b71b922b57c6dee99ce61f72897563913d8e75ba';
 
-/// See also [StarredRepoList].
-@ProviderFor(StarredRepoList)
-final starredRepoListProvider =
-    AsyncNotifierProvider<StarredRepoList, List<Repository>>.internal(
-  StarredRepoList.new,
-  name: r'starredRepoListProvider',
+/// See also [StarredRepositoryList].
+@ProviderFor(StarredRepositoryList)
+final starredRepositoryListProvider =
+    AsyncNotifierProvider<StarredRepositoryList, List<Repository>>.internal(
+  StarredRepositoryList.new,
+  name: r'starredRepositoryListProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$starredRepoListHash,
+      : _$starredRepositoryListHash,
   dependencies: <ProviderOrFamily>[restProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
     restProvider,
@@ -407,6 +410,6 @@ final starredRepoListProvider =
   },
 );
 
-typedef _$StarredRepoList = AsyncNotifier<List<Repository>>;
+typedef _$StarredRepositoryList = AsyncNotifier<List<Repository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

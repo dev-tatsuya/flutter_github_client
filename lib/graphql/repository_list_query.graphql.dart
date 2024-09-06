@@ -1359,23 +1359,23 @@ extension ClientExtension$Fragment$LanguageItem on graphql.GraphQLClient {
   }
 }
 
-class Query$RepoList {
-  Query$RepoList({
+class Query$RepositoryList {
+  Query$RepositoryList({
     required this.search,
     this.$__typename = 'Query',
   });
 
-  factory Query$RepoList.fromJson(Map<String, dynamic> json) {
+  factory Query$RepositoryList.fromJson(Map<String, dynamic> json) {
     final l$search = json['search'];
     final l$$__typename = json['__typename'];
-    return Query$RepoList(
-      search:
-          Query$RepoList$search.fromJson((l$search as Map<String, dynamic>)),
+    return Query$RepositoryList(
+      search: Query$RepositoryList$search.fromJson(
+          (l$search as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$RepoList$search search;
+  final Query$RepositoryList$search search;
 
   final String $__typename;
 
@@ -1403,7 +1403,7 @@ class Query$RepoList {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList) || runtimeType != other.runtimeType) {
+    if (!(other is Query$RepositoryList) || runtimeType != other.runtimeType) {
       return false;
     }
     final l$search = search;
@@ -1420,40 +1420,40 @@ class Query$RepoList {
   }
 }
 
-extension UtilityExtension$Query$RepoList on Query$RepoList {
-  CopyWith$Query$RepoList<Query$RepoList> get copyWith =>
-      CopyWith$Query$RepoList(
+extension UtilityExtension$Query$RepositoryList on Query$RepositoryList {
+  CopyWith$Query$RepositoryList<Query$RepositoryList> get copyWith =>
+      CopyWith$Query$RepositoryList(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Query$RepoList<TRes> {
-  factory CopyWith$Query$RepoList(
-    Query$RepoList instance,
-    TRes Function(Query$RepoList) then,
-  ) = _CopyWithImpl$Query$RepoList;
+abstract class CopyWith$Query$RepositoryList<TRes> {
+  factory CopyWith$Query$RepositoryList(
+    Query$RepositoryList instance,
+    TRes Function(Query$RepositoryList) then,
+  ) = _CopyWithImpl$Query$RepositoryList;
 
-  factory CopyWith$Query$RepoList.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList;
+  factory CopyWith$Query$RepositoryList.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList;
 
   TRes call({
-    Query$RepoList$search? search,
+    Query$RepositoryList$search? search,
     String? $__typename,
   });
-  CopyWith$Query$RepoList$search<TRes> get search;
+  CopyWith$Query$RepositoryList$search<TRes> get search;
 }
 
-class _CopyWithImpl$Query$RepoList<TRes>
-    implements CopyWith$Query$RepoList<TRes> {
-  _CopyWithImpl$Query$RepoList(
+class _CopyWithImpl$Query$RepositoryList<TRes>
+    implements CopyWith$Query$RepositoryList<TRes> {
+  _CopyWithImpl$Query$RepositoryList(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList _instance;
+  final Query$RepositoryList _instance;
 
-  final TRes Function(Query$RepoList) _then;
+  final TRes Function(Query$RepositoryList) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1461,41 +1461,42 @@ class _CopyWithImpl$Query$RepoList<TRes>
     Object? search = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$RepoList(
+      _then(Query$RepositoryList(
         search: search == _undefined || search == null
             ? _instance.search
-            : (search as Query$RepoList$search),
+            : (search as Query$RepositoryList$search),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$RepoList$search<TRes> get search {
+  CopyWith$Query$RepositoryList$search<TRes> get search {
     final local$search = _instance.search;
-    return CopyWith$Query$RepoList$search(local$search, (e) => call(search: e));
+    return CopyWith$Query$RepositoryList$search(
+        local$search, (e) => call(search: e));
   }
 }
 
-class _CopyWithStubImpl$Query$RepoList<TRes>
-    implements CopyWith$Query$RepoList<TRes> {
-  _CopyWithStubImpl$Query$RepoList(this._res);
+class _CopyWithStubImpl$Query$RepositoryList<TRes>
+    implements CopyWith$Query$RepositoryList<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList(this._res);
 
   TRes _res;
 
   call({
-    Query$RepoList$search? search,
+    Query$RepositoryList$search? search,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$RepoList$search<TRes> get search =>
-      CopyWith$Query$RepoList$search.stub(_res);
+  CopyWith$Query$RepositoryList$search<TRes> get search =>
+      CopyWith$Query$RepositoryList$search.stub(_res);
 }
 
-const documentNodeQueryRepoList = DocumentNode(definitions: [
+const documentNodeQueryRepositoryList = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
-    name: NameNode(value: 'RepoList'),
+    name: NameNode(value: 'RepositoryList'),
     variableDefinitions: [],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
@@ -1577,24 +1578,26 @@ const documentNodeQueryRepoList = DocumentNode(definitions: [
   fragmentDefinitionTopicItem,
   fragmentDefinitionLanguageItem,
 ]);
-Query$RepoList _parserFn$Query$RepoList(Map<String, dynamic> data) =>
-    Query$RepoList.fromJson(data);
-typedef OnQueryComplete$Query$RepoList = FutureOr<void> Function(
+Query$RepositoryList _parserFn$Query$RepositoryList(
+        Map<String, dynamic> data) =>
+    Query$RepositoryList.fromJson(data);
+typedef OnQueryComplete$Query$RepositoryList = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Query$RepoList?,
+  Query$RepositoryList?,
 );
 
-class Options$Query$RepoList extends graphql.QueryOptions<Query$RepoList> {
-  Options$Query$RepoList({
+class Options$Query$RepositoryList
+    extends graphql.QueryOptions<Query$RepositoryList> {
+  Options$Query$RepositoryList({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$RepoList? typedOptimisticResult,
+    Query$RepositoryList? typedOptimisticResult,
     Duration? pollInterval,
     graphql.Context? context,
-    OnQueryComplete$Query$RepoList? onComplete,
+    OnQueryComplete$Query$RepositoryList? onComplete,
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
@@ -1609,14 +1612,14 @@ class Options$Query$RepoList extends graphql.QueryOptions<Query$RepoList> {
               ? null
               : (data) => onComplete(
                     data,
-                    data == null ? null : _parserFn$Query$RepoList(data),
+                    data == null ? null : _parserFn$Query$RepositoryList(data),
                   ),
           onError: onError,
-          document: documentNodeQueryRepoList,
-          parserFn: _parserFn$Query$RepoList,
+          document: documentNodeQueryRepositoryList,
+          parserFn: _parserFn$Query$RepositoryList,
         );
 
-  final OnQueryComplete$Query$RepoList? onCompleteWithParsed;
+  final OnQueryComplete$Query$RepositoryList? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -1627,15 +1630,15 @@ class Options$Query$RepoList extends graphql.QueryOptions<Query$RepoList> {
       ];
 }
 
-class WatchOptions$Query$RepoList
-    extends graphql.WatchQueryOptions<Query$RepoList> {
-  WatchOptions$Query$RepoList({
+class WatchOptions$Query$RepositoryList
+    extends graphql.WatchQueryOptions<Query$RepositoryList> {
+  WatchOptions$Query$RepositoryList({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$RepoList? typedOptimisticResult,
+    Query$RepositoryList? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -1648,90 +1651,95 @@ class WatchOptions$Query$RepoList
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeQueryRepoList,
+          document: documentNodeQueryRepositoryList,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Query$RepoList,
+          parserFn: _parserFn$Query$RepositoryList,
         );
 }
 
-class FetchMoreOptions$Query$RepoList extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$RepoList({required graphql.UpdateQuery updateQuery})
+class FetchMoreOptions$Query$RepositoryList extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$RepositoryList(
+      {required graphql.UpdateQuery updateQuery})
       : super(
           updateQuery: updateQuery,
-          document: documentNodeQueryRepoList,
+          document: documentNodeQueryRepositoryList,
         );
 }
 
-extension ClientExtension$Query$RepoList on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$RepoList>> query$RepoList(
-          [Options$Query$RepoList? options]) async =>
-      await this.query(options ?? Options$Query$RepoList());
-  graphql.ObservableQuery<Query$RepoList> watchQuery$RepoList(
-          [WatchOptions$Query$RepoList? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$RepoList());
-  void writeQuery$RepoList({
-    required Query$RepoList data,
+extension ClientExtension$Query$RepositoryList on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$RepositoryList>> query$RepositoryList(
+          [Options$Query$RepositoryList? options]) async =>
+      await this.query(options ?? Options$Query$RepositoryList());
+  graphql.ObservableQuery<Query$RepositoryList> watchQuery$RepositoryList(
+          [WatchOptions$Query$RepositoryList? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$RepositoryList());
+  void writeQuery$RepositoryList({
+    required Query$RepositoryList data,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryRepoList)),
+            operation:
+                graphql.Operation(document: documentNodeQueryRepositoryList)),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$RepoList? readQuery$RepoList({bool optimistic = true}) {
+  Query$RepositoryList? readQuery$RepositoryList({bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
-          operation: graphql.Operation(document: documentNodeQueryRepoList)),
+          operation:
+              graphql.Operation(document: documentNodeQueryRepositoryList)),
       optimistic: optimistic,
     );
-    return result == null ? null : Query$RepoList.fromJson(result);
+    return result == null ? null : Query$RepositoryList.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$RepoList> useQuery$RepoList(
-        [Options$Query$RepoList? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$RepoList());
-graphql.ObservableQuery<Query$RepoList> useWatchQuery$RepoList(
-        [WatchOptions$Query$RepoList? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$RepoList());
+graphql_flutter.QueryHookResult<Query$RepositoryList> useQuery$RepositoryList(
+        [Options$Query$RepositoryList? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$RepositoryList());
+graphql.ObservableQuery<Query$RepositoryList> useWatchQuery$RepositoryList(
+        [WatchOptions$Query$RepositoryList? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$RepositoryList());
 
-class Query$RepoList$Widget extends graphql_flutter.Query<Query$RepoList> {
-  Query$RepoList$Widget({
+class Query$RepositoryList$Widget
+    extends graphql_flutter.Query<Query$RepositoryList> {
+  Query$RepositoryList$Widget({
     widgets.Key? key,
-    Options$Query$RepoList? options,
-    required graphql_flutter.QueryBuilder<Query$RepoList> builder,
+    Options$Query$RepositoryList? options,
+    required graphql_flutter.QueryBuilder<Query$RepositoryList> builder,
   }) : super(
           key: key,
-          options: options ?? Options$Query$RepoList(),
+          options: options ?? Options$Query$RepositoryList(),
           builder: builder,
         );
 }
 
-class Query$RepoList$search {
-  Query$RepoList$search({
+class Query$RepositoryList$search {
+  Query$RepositoryList$search({
     this.edges,
     this.$__typename = 'SearchResultItemConnection',
   });
 
-  factory Query$RepoList$search.fromJson(Map<String, dynamic> json) {
+  factory Query$RepositoryList$search.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search(
+    return Query$RepositoryList$search(
       edges: (l$edges as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Query$RepoList$search$edges.fromJson(
+              : Query$RepositoryList$search$edges.fromJson(
                   (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$RepoList$search$edges?>? edges;
+  final List<Query$RepositoryList$search$edges?>? edges;
 
   final String $__typename;
 
@@ -1759,7 +1767,8 @@ class Query$RepoList$search {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search) || runtimeType != other.runtimeType) {
+    if (!(other is Query$RepositoryList$search) ||
+        runtimeType != other.runtimeType) {
       return false;
     }
     final l$edges = edges;
@@ -1787,45 +1796,46 @@ class Query$RepoList$search {
   }
 }
 
-extension UtilityExtension$Query$RepoList$search on Query$RepoList$search {
-  CopyWith$Query$RepoList$search<Query$RepoList$search> get copyWith =>
-      CopyWith$Query$RepoList$search(
-        this,
-        (i) => i,
-      );
+extension UtilityExtension$Query$RepositoryList$search
+    on Query$RepositoryList$search {
+  CopyWith$Query$RepositoryList$search<Query$RepositoryList$search>
+      get copyWith => CopyWith$Query$RepositoryList$search(
+            this,
+            (i) => i,
+          );
 }
 
-abstract class CopyWith$Query$RepoList$search<TRes> {
-  factory CopyWith$Query$RepoList$search(
-    Query$RepoList$search instance,
-    TRes Function(Query$RepoList$search) then,
-  ) = _CopyWithImpl$Query$RepoList$search;
+abstract class CopyWith$Query$RepositoryList$search<TRes> {
+  factory CopyWith$Query$RepositoryList$search(
+    Query$RepositoryList$search instance,
+    TRes Function(Query$RepositoryList$search) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search;
 
-  factory CopyWith$Query$RepoList$search.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search;
+  factory CopyWith$Query$RepositoryList$search.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search;
 
   TRes call({
-    List<Query$RepoList$search$edges?>? edges,
+    List<Query$RepositoryList$search$edges?>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$RepoList$search$edges?>? Function(
+      Iterable<Query$RepositoryList$search$edges?>? Function(
               Iterable<
-                  CopyWith$Query$RepoList$search$edges<
-                      Query$RepoList$search$edges>?>?)
+                  CopyWith$Query$RepositoryList$search$edges<
+                      Query$RepositoryList$search$edges>?>?)
           _fn);
 }
 
-class _CopyWithImpl$Query$RepoList$search<TRes>
-    implements CopyWith$Query$RepoList$search<TRes> {
-  _CopyWithImpl$Query$RepoList$search(
+class _CopyWithImpl$Query$RepositoryList$search<TRes>
+    implements CopyWith$Query$RepositoryList$search<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search _instance;
+  final Query$RepositoryList$search _instance;
 
-  final TRes Function(Query$RepoList$search) _then;
+  final TRes Function(Query$RepositoryList$search) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1833,38 +1843,38 @@ class _CopyWithImpl$Query$RepoList$search<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$RepoList$search(
+      _then(Query$RepositoryList$search(
         edges: edges == _undefined
             ? _instance.edges
-            : (edges as List<Query$RepoList$search$edges?>?),
+            : (edges as List<Query$RepositoryList$search$edges?>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$RepoList$search$edges?>? Function(
+          Iterable<Query$RepositoryList$search$edges?>? Function(
                   Iterable<
-                      CopyWith$Query$RepoList$search$edges<
-                          Query$RepoList$search$edges>?>?)
+                      CopyWith$Query$RepositoryList$search$edges<
+                          Query$RepositoryList$search$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
               ? null
-              : CopyWith$Query$RepoList$search$edges(
+              : CopyWith$Query$RepositoryList$search$edges(
                   e,
                   (i) => i,
                 )))?.toList());
 }
 
-class _CopyWithStubImpl$Query$RepoList$search<TRes>
-    implements CopyWith$Query$RepoList$search<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search<TRes>
+    implements CopyWith$Query$RepositoryList$search<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search(this._res);
 
   TRes _res;
 
   call({
-    List<Query$RepoList$search$edges?>? edges,
+    List<Query$RepositoryList$search$edges?>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -1872,25 +1882,26 @@ class _CopyWithStubImpl$Query$RepoList$search<TRes>
   edges(_fn) => _res;
 }
 
-class Query$RepoList$search$edges {
-  Query$RepoList$search$edges({
+class Query$RepositoryList$search$edges {
+  Query$RepositoryList$search$edges({
     this.node,
     this.$__typename = 'SearchResultItemEdge',
   });
 
-  factory Query$RepoList$search$edges.fromJson(Map<String, dynamic> json) {
+  factory Query$RepositoryList$search$edges.fromJson(
+      Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges(
+    return Query$RepositoryList$search$edges(
       node: l$node == null
           ? null
-          : Query$RepoList$search$edges$node.fromJson(
+          : Query$RepositoryList$search$edges$node.fromJson(
               (l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$RepoList$search$edges$node? node;
+  final Query$RepositoryList$search$edges$node? node;
 
   final String $__typename;
 
@@ -1918,7 +1929,7 @@ class Query$RepoList$search$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges) ||
+    if (!(other is Query$RepositoryList$search$edges) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1936,41 +1947,41 @@ class Query$RepoList$search$edges {
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges
-    on Query$RepoList$search$edges {
-  CopyWith$Query$RepoList$search$edges<Query$RepoList$search$edges>
-      get copyWith => CopyWith$Query$RepoList$search$edges(
+extension UtilityExtension$Query$RepositoryList$search$edges
+    on Query$RepositoryList$search$edges {
+  CopyWith$Query$RepositoryList$search$edges<Query$RepositoryList$search$edges>
+      get copyWith => CopyWith$Query$RepositoryList$search$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges<TRes> {
-  factory CopyWith$Query$RepoList$search$edges(
-    Query$RepoList$search$edges instance,
-    TRes Function(Query$RepoList$search$edges) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges;
+abstract class CopyWith$Query$RepositoryList$search$edges<TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges(
+    Query$RepositoryList$search$edges instance,
+    TRes Function(Query$RepositoryList$search$edges) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges;
 
-  factory CopyWith$Query$RepoList$search$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges;
+  factory CopyWith$Query$RepositoryList$search$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges;
 
   TRes call({
-    Query$RepoList$search$edges$node? node,
+    Query$RepositoryList$search$edges$node? node,
     String? $__typename,
   });
-  CopyWith$Query$RepoList$search$edges$node<TRes> get node;
+  CopyWith$Query$RepositoryList$search$edges$node<TRes> get node;
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges<TRes>
-    implements CopyWith$Query$RepoList$search$edges<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges(
+class _CopyWithImpl$Query$RepositoryList$search$edges<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges _instance;
+  final Query$RepositoryList$search$edges _instance;
 
-  final TRes Function(Query$RepoList$search$edges) _then;
+  final TRes Function(Query$RepositoryList$search$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1978,73 +1989,78 @@ class _CopyWithImpl$Query$RepoList$search$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$RepoList$search$edges(
+      _then(Query$RepositoryList$search$edges(
         node: node == _undefined
             ? _instance.node
-            : (node as Query$RepoList$search$edges$node?),
+            : (node as Query$RepositoryList$search$edges$node?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$RepoList$search$edges$node<TRes> get node {
+  CopyWith$Query$RepositoryList$search$edges$node<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$RepoList$search$edges$node.stub(_then(_instance))
-        : CopyWith$Query$RepoList$search$edges$node(
+        ? CopyWith$Query$RepositoryList$search$edges$node.stub(_then(_instance))
+        : CopyWith$Query$RepositoryList$search$edges$node(
             local$node, (e) => call(node: e));
   }
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges<TRes>
-    implements CopyWith$Query$RepoList$search$edges<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges(this._res);
 
   TRes _res;
 
   call({
-    Query$RepoList$search$edges$node? node,
+    Query$RepositoryList$search$edges$node? node,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$RepoList$search$edges$node<TRes> get node =>
-      CopyWith$Query$RepoList$search$edges$node.stub(_res);
+  CopyWith$Query$RepositoryList$search$edges$node<TRes> get node =>
+      CopyWith$Query$RepositoryList$search$edges$node.stub(_res);
 }
 
-class Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node({required this.$__typename});
+class Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node({required this.$__typename});
 
-  factory Query$RepoList$search$edges$node.fromJson(Map<String, dynamic> json) {
+  factory Query$RepositoryList$search$edges$node.fromJson(
+      Map<String, dynamic> json) {
     switch (json["__typename"] as String) {
       case "App":
-        return Query$RepoList$search$edges$node$$App.fromJson(json);
+        return Query$RepositoryList$search$edges$node$$App.fromJson(json);
 
       case "Discussion":
-        return Query$RepoList$search$edges$node$$Discussion.fromJson(json);
-
-      case "Issue":
-        return Query$RepoList$search$edges$node$$Issue.fromJson(json);
-
-      case "MarketplaceListing":
-        return Query$RepoList$search$edges$node$$MarketplaceListing.fromJson(
+        return Query$RepositoryList$search$edges$node$$Discussion.fromJson(
             json);
 
+      case "Issue":
+        return Query$RepositoryList$search$edges$node$$Issue.fromJson(json);
+
+      case "MarketplaceListing":
+        return Query$RepositoryList$search$edges$node$$MarketplaceListing
+            .fromJson(json);
+
       case "Organization":
-        return Query$RepoList$search$edges$node$$Organization.fromJson(json);
+        return Query$RepositoryList$search$edges$node$$Organization.fromJson(
+            json);
 
       case "PullRequest":
-        return Query$RepoList$search$edges$node$$PullRequest.fromJson(json);
+        return Query$RepositoryList$search$edges$node$$PullRequest.fromJson(
+            json);
 
       case "Repository":
-        return Query$RepoList$search$edges$node$$Repository.fromJson(json);
+        return Query$RepositoryList$search$edges$node$$Repository.fromJson(
+            json);
 
       case "User":
-        return Query$RepoList$search$edges$node$$User.fromJson(json);
+        return Query$RepositoryList$search$edges$node$$User.fromJson(json);
 
       default:
         final l$$__typename = json['__typename'];
-        return Query$RepoList$search$edges$node(
+        return Query$RepositoryList$search$edges$node(
             $__typename: (l$$__typename as String));
     }
   }
@@ -2069,7 +2085,7 @@ class Query$RepoList$search$edges$node {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node) ||
+    if (!(other is Query$RepositoryList$search$edges$node) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2082,56 +2098,60 @@ class Query$RepoList$search$edges$node {
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node
-    on Query$RepoList$search$edges$node {
-  CopyWith$Query$RepoList$search$edges$node<Query$RepoList$search$edges$node>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node(
+extension UtilityExtension$Query$RepositoryList$search$edges$node
+    on Query$RepositoryList$search$edges$node {
+  CopyWith$Query$RepositoryList$search$edges$node<
+          Query$RepositoryList$search$edges$node>
+      get copyWith => CopyWith$Query$RepositoryList$search$edges$node(
             this,
             (i) => i,
           );
   _T when<_T>({
-    required _T Function(Query$RepoList$search$edges$node$$App) app,
-    required _T Function(Query$RepoList$search$edges$node$$Discussion)
+    required _T Function(Query$RepositoryList$search$edges$node$$App) app,
+    required _T Function(Query$RepositoryList$search$edges$node$$Discussion)
         discussion,
-    required _T Function(Query$RepoList$search$edges$node$$Issue) issue,
-    required _T Function(Query$RepoList$search$edges$node$$MarketplaceListing)
+    required _T Function(Query$RepositoryList$search$edges$node$$Issue) issue,
+    required _T Function(
+            Query$RepositoryList$search$edges$node$$MarketplaceListing)
         marketplaceListing,
-    required _T Function(Query$RepoList$search$edges$node$$Organization)
+    required _T Function(Query$RepositoryList$search$edges$node$$Organization)
         organization,
-    required _T Function(Query$RepoList$search$edges$node$$PullRequest)
+    required _T Function(Query$RepositoryList$search$edges$node$$PullRequest)
         pullRequest,
-    required _T Function(Query$RepoList$search$edges$node$$Repository)
+    required _T Function(Query$RepositoryList$search$edges$node$$Repository)
         repository,
-    required _T Function(Query$RepoList$search$edges$node$$User) user,
+    required _T Function(Query$RepositoryList$search$edges$node$$User) user,
     required _T Function() orElse,
   }) {
     switch ($__typename) {
       case "App":
-        return app(this as Query$RepoList$search$edges$node$$App);
+        return app(this as Query$RepositoryList$search$edges$node$$App);
 
       case "Discussion":
-        return discussion(this as Query$RepoList$search$edges$node$$Discussion);
+        return discussion(
+            this as Query$RepositoryList$search$edges$node$$Discussion);
 
       case "Issue":
-        return issue(this as Query$RepoList$search$edges$node$$Issue);
+        return issue(this as Query$RepositoryList$search$edges$node$$Issue);
 
       case "MarketplaceListing":
         return marketplaceListing(
-            this as Query$RepoList$search$edges$node$$MarketplaceListing);
+            this as Query$RepositoryList$search$edges$node$$MarketplaceListing);
 
       case "Organization":
         return organization(
-            this as Query$RepoList$search$edges$node$$Organization);
+            this as Query$RepositoryList$search$edges$node$$Organization);
 
       case "PullRequest":
         return pullRequest(
-            this as Query$RepoList$search$edges$node$$PullRequest);
+            this as Query$RepositoryList$search$edges$node$$PullRequest);
 
       case "Repository":
-        return repository(this as Query$RepoList$search$edges$node$$Repository);
+        return repository(
+            this as Query$RepositoryList$search$edges$node$$Repository);
 
       case "User":
-        return user(this as Query$RepoList$search$edges$node$$User);
+        return user(this as Query$RepositoryList$search$edges$node$$User);
 
       default:
         return orElse();
@@ -2139,21 +2159,23 @@ extension UtilityExtension$Query$RepoList$search$edges$node
   }
 
   _T maybeWhen<_T>({
-    _T Function(Query$RepoList$search$edges$node$$App)? app,
-    _T Function(Query$RepoList$search$edges$node$$Discussion)? discussion,
-    _T Function(Query$RepoList$search$edges$node$$Issue)? issue,
-    _T Function(Query$RepoList$search$edges$node$$MarketplaceListing)?
+    _T Function(Query$RepositoryList$search$edges$node$$App)? app,
+    _T Function(Query$RepositoryList$search$edges$node$$Discussion)? discussion,
+    _T Function(Query$RepositoryList$search$edges$node$$Issue)? issue,
+    _T Function(Query$RepositoryList$search$edges$node$$MarketplaceListing)?
         marketplaceListing,
-    _T Function(Query$RepoList$search$edges$node$$Organization)? organization,
-    _T Function(Query$RepoList$search$edges$node$$PullRequest)? pullRequest,
-    _T Function(Query$RepoList$search$edges$node$$Repository)? repository,
-    _T Function(Query$RepoList$search$edges$node$$User)? user,
+    _T Function(Query$RepositoryList$search$edges$node$$Organization)?
+        organization,
+    _T Function(Query$RepositoryList$search$edges$node$$PullRequest)?
+        pullRequest,
+    _T Function(Query$RepositoryList$search$edges$node$$Repository)? repository,
+    _T Function(Query$RepositoryList$search$edges$node$$User)? user,
     required _T Function() orElse,
   }) {
     switch ($__typename) {
       case "App":
         if (app != null) {
-          return app(this as Query$RepoList$search$edges$node$$App);
+          return app(this as Query$RepositoryList$search$edges$node$$App);
         } else {
           return orElse();
         }
@@ -2161,22 +2183,22 @@ extension UtilityExtension$Query$RepoList$search$edges$node
       case "Discussion":
         if (discussion != null) {
           return discussion(
-              this as Query$RepoList$search$edges$node$$Discussion);
+              this as Query$RepositoryList$search$edges$node$$Discussion);
         } else {
           return orElse();
         }
 
       case "Issue":
         if (issue != null) {
-          return issue(this as Query$RepoList$search$edges$node$$Issue);
+          return issue(this as Query$RepositoryList$search$edges$node$$Issue);
         } else {
           return orElse();
         }
 
       case "MarketplaceListing":
         if (marketplaceListing != null) {
-          return marketplaceListing(
-              this as Query$RepoList$search$edges$node$$MarketplaceListing);
+          return marketplaceListing(this
+              as Query$RepositoryList$search$edges$node$$MarketplaceListing);
         } else {
           return orElse();
         }
@@ -2184,7 +2206,7 @@ extension UtilityExtension$Query$RepoList$search$edges$node
       case "Organization":
         if (organization != null) {
           return organization(
-              this as Query$RepoList$search$edges$node$$Organization);
+              this as Query$RepositoryList$search$edges$node$$Organization);
         } else {
           return orElse();
         }
@@ -2192,7 +2214,7 @@ extension UtilityExtension$Query$RepoList$search$edges$node
       case "PullRequest":
         if (pullRequest != null) {
           return pullRequest(
-              this as Query$RepoList$search$edges$node$$PullRequest);
+              this as Query$RepositoryList$search$edges$node$$PullRequest);
         } else {
           return orElse();
         }
@@ -2200,14 +2222,14 @@ extension UtilityExtension$Query$RepoList$search$edges$node
       case "Repository":
         if (repository != null) {
           return repository(
-              this as Query$RepoList$search$edges$node$$Repository);
+              this as Query$RepositoryList$search$edges$node$$Repository);
         } else {
           return orElse();
         }
 
       case "User":
         if (user != null) {
-          return user(this as Query$RepoList$search$edges$node$$User);
+          return user(this as Query$RepositoryList$search$edges$node$$User);
         } else {
           return orElse();
         }
@@ -2218,55 +2240,55 @@ extension UtilityExtension$Query$RepoList$search$edges$node
   }
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node(
-    Query$RepoList$search$edges$node instance,
-    TRes Function(Query$RepoList$search$edges$node) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node;
+abstract class CopyWith$Query$RepositoryList$search$edges$node<TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node(
+    Query$RepositoryList$search$edges$node instance,
+    TRes Function(Query$RepositoryList$search$edges$node) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node;
 
-  factory CopyWith$Query$RepoList$search$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node;
+  factory CopyWith$Query$RepositoryList$search$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node _instance;
+  final Query$RepositoryList$search$edges$node _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node(
+      _then(Query$RepositoryList$search$edges$node(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node(this._res);
 
   TRes _res;
 
   call({String? $__typename}) => _res;
 }
 
-class Query$RepoList$search$edges$node$$App
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$App({this.$__typename = 'App'});
+class Query$RepositoryList$search$edges$node$$App
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$App({this.$__typename = 'App'});
 
-  factory Query$RepoList$search$edges$node$$App.fromJson(
+  factory Query$RepositoryList$search$edges$node$$App.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$App(
+    return Query$RepositoryList$search$edges$node$$App(
         $__typename: (l$$__typename as String));
   }
 
@@ -2290,7 +2312,7 @@ class Query$RepoList$search$edges$node$$App
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$App) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$App) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2303,66 +2325,66 @@ class Query$RepoList$search$edges$node$$App
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$App
-    on Query$RepoList$search$edges$node$$App {
-  CopyWith$Query$RepoList$search$edges$node$$App<
-          Query$RepoList$search$edges$node$$App>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$App(
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$App
+    on Query$RepositoryList$search$edges$node$$App {
+  CopyWith$Query$RepositoryList$search$edges$node$$App<
+          Query$RepositoryList$search$edges$node$$App>
+      get copyWith => CopyWith$Query$RepositoryList$search$edges$node$$App(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$App<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$App(
-    Query$RepoList$search$edges$node$$App instance,
-    TRes Function(Query$RepoList$search$edges$node$$App) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$App;
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$App<TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$App(
+    Query$RepositoryList$search$edges$node$$App instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$App) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$App;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$App.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$App;
+  factory CopyWith$Query$RepositoryList$search$edges$node$$App.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$App;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$App<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$App<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$App(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$App<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$App<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$App(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$App _instance;
+  final Query$RepositoryList$search$edges$node$$App _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$App) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$App) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$App(
+      _then(Query$RepositoryList$search$edges$node$$App(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$App<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$App<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$App(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$App<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$App<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$App(this._res);
 
   TRes _res;
 
   call({String? $__typename}) => _res;
 }
 
-class Query$RepoList$search$edges$node$$Discussion
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$Discussion(
+class Query$RepositoryList$search$edges$node$$Discussion
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$Discussion(
       {this.$__typename = 'Discussion'});
 
-  factory Query$RepoList$search$edges$node$$Discussion.fromJson(
+  factory Query$RepositoryList$search$edges$node$$Discussion.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$Discussion(
+    return Query$RepositoryList$search$edges$node$$Discussion(
         $__typename: (l$$__typename as String));
   }
 
@@ -2386,7 +2408,7 @@ class Query$RepoList$search$edges$node$$Discussion
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$Discussion) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$Discussion) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2399,249 +2421,56 @@ class Query$RepoList$search$edges$node$$Discussion
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$Discussion
-    on Query$RepoList$search$edges$node$$Discussion {
-  CopyWith$Query$RepoList$search$edges$node$$Discussion<
-          Query$RepoList$search$edges$node$$Discussion>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$Discussion(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$RepoList$search$edges$node$$Discussion<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$Discussion(
-    Query$RepoList$search$edges$node$$Discussion instance,
-    TRes Function(Query$RepoList$search$edges$node$$Discussion) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$Discussion;
-
-  factory CopyWith$Query$RepoList$search$edges$node$$Discussion.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$Discussion;
-
-  TRes call({String? $__typename});
-}
-
-class _CopyWithImpl$Query$RepoList$search$edges$node$$Discussion<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Discussion<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$Discussion(
-    this._instance,
-    this._then,
-  );
-
-  final Query$RepoList$search$edges$node$$Discussion _instance;
-
-  final TRes Function(Query$RepoList$search$edges$node$$Discussion) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$Discussion(
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Discussion<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Discussion<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$Discussion(this._res);
-
-  TRes _res;
-
-  call({String? $__typename}) => _res;
-}
-
-class Query$RepoList$search$edges$node$$Issue
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$Issue({this.$__typename = 'Issue'});
-
-  factory Query$RepoList$search$edges$node$$Issue.fromJson(
-      Map<String, dynamic> json) {
-    final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$Issue(
-        $__typename: (l$$__typename as String));
-  }
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Query$RepoList$search$edges$node$$Issue) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$RepoList$search$edges$node$$Issue
-    on Query$RepoList$search$edges$node$$Issue {
-  CopyWith$Query$RepoList$search$edges$node$$Issue<
-          Query$RepoList$search$edges$node$$Issue>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$Issue(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$RepoList$search$edges$node$$Issue<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$Issue(
-    Query$RepoList$search$edges$node$$Issue instance,
-    TRes Function(Query$RepoList$search$edges$node$$Issue) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$Issue;
-
-  factory CopyWith$Query$RepoList$search$edges$node$$Issue.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$Issue;
-
-  TRes call({String? $__typename});
-}
-
-class _CopyWithImpl$Query$RepoList$search$edges$node$$Issue<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Issue<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$Issue(
-    this._instance,
-    this._then,
-  );
-
-  final Query$RepoList$search$edges$node$$Issue _instance;
-
-  final TRes Function(Query$RepoList$search$edges$node$$Issue) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$Issue(
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Issue<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Issue<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$Issue(this._res);
-
-  TRes _res;
-
-  call({String? $__typename}) => _res;
-}
-
-class Query$RepoList$search$edges$node$$MarketplaceListing
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$MarketplaceListing(
-      {this.$__typename = 'MarketplaceListing'});
-
-  factory Query$RepoList$search$edges$node$$MarketplaceListing.fromJson(
-      Map<String, dynamic> json) {
-    final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$MarketplaceListing(
-        $__typename: (l$$__typename as String));
-  }
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Query$RepoList$search$edges$node$$MarketplaceListing) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$RepoList$search$edges$node$$MarketplaceListing
-    on Query$RepoList$search$edges$node$$MarketplaceListing {
-  CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing<
-          Query$RepoList$search$edges$node$$MarketplaceListing>
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$Discussion
+    on Query$RepositoryList$search$edges$node$$Discussion {
+  CopyWith$Query$RepositoryList$search$edges$node$$Discussion<
+          Query$RepositoryList$search$edges$node$$Discussion>
       get copyWith =>
-          CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing(
+          CopyWith$Query$RepositoryList$search$edges$node$$Discussion(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing<
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$Discussion<
     TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing(
-    Query$RepoList$search$edges$node$$MarketplaceListing instance,
-    TRes Function(Query$RepoList$search$edges$node$$MarketplaceListing) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$MarketplaceListing;
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Discussion(
+    Query$RepositoryList$search$edges$node$$Discussion instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$Discussion) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$Discussion;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing.stub(
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Discussion.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$MarketplaceListing;
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Discussion;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$MarketplaceListing<TRes>
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Discussion<TRes>
     implements
-        CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$MarketplaceListing(
+        CopyWith$Query$RepositoryList$search$edges$node$$Discussion<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$Discussion(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$MarketplaceListing _instance;
+  final Query$RepositoryList$search$edges$node$$Discussion _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$MarketplaceListing)
-      _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$Discussion) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$MarketplaceListing(
+      _then(Query$RepositoryList$search$edges$node$$Discussion(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$MarketplaceListing<
-        TRes>
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Discussion<TRes>
     implements
-        CopyWith$Query$RepoList$search$edges$node$$MarketplaceListing<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$MarketplaceListing(
+        CopyWith$Query$RepositoryList$search$edges$node$$Discussion<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Discussion(
       this._res);
 
   TRes _res;
@@ -2649,15 +2478,220 @@ class _CopyWithStubImpl$Query$RepoList$search$edges$node$$MarketplaceListing<
   call({String? $__typename}) => _res;
 }
 
-class Query$RepoList$search$edges$node$$Organization
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$Organization(
+class Query$RepositoryList$search$edges$node$$Issue
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$Issue({this.$__typename = 'Issue'});
+
+  factory Query$RepositoryList$search$edges$node$$Issue.fromJson(
+      Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
+    return Query$RepositoryList$search$edges$node$$Issue(
+        $__typename: (l$$__typename as String));
+  }
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$RepositoryList$search$edges$node$$Issue) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$Issue
+    on Query$RepositoryList$search$edges$node$$Issue {
+  CopyWith$Query$RepositoryList$search$edges$node$$Issue<
+          Query$RepositoryList$search$edges$node$$Issue>
+      get copyWith => CopyWith$Query$RepositoryList$search$edges$node$$Issue(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$Issue<TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Issue(
+    Query$RepositoryList$search$edges$node$$Issue instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$Issue) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$Issue;
+
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Issue.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Issue;
+
+  TRes call({String? $__typename});
+}
+
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Issue<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$Issue<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$Issue(
+    this._instance,
+    this._then,
+  );
+
+  final Query$RepositoryList$search$edges$node$$Issue _instance;
+
+  final TRes Function(Query$RepositoryList$search$edges$node$$Issue) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? $__typename = _undefined}) =>
+      _then(Query$RepositoryList$search$edges$node$$Issue(
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Issue<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$Issue<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Issue(this._res);
+
+  TRes _res;
+
+  call({String? $__typename}) => _res;
+}
+
+class Query$RepositoryList$search$edges$node$$MarketplaceListing
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$MarketplaceListing(
+      {this.$__typename = 'MarketplaceListing'});
+
+  factory Query$RepositoryList$search$edges$node$$MarketplaceListing.fromJson(
+      Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
+    return Query$RepositoryList$search$edges$node$$MarketplaceListing(
+        $__typename: (l$$__typename as String));
+  }
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Query$RepositoryList$search$edges$node$$MarketplaceListing) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$MarketplaceListing
+    on Query$RepositoryList$search$edges$node$$MarketplaceListing {
+  CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+          Query$RepositoryList$search$edges$node$$MarketplaceListing>
+      get copyWith =>
+          CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+    TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing(
+    Query$RepositoryList$search$edges$node$$MarketplaceListing instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$MarketplaceListing)
+        then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing;
+
+  factory CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing;
+
+  TRes call({String? $__typename});
+}
+
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+        TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+            TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing(
+    this._instance,
+    this._then,
+  );
+
+  final Query$RepositoryList$search$edges$node$$MarketplaceListing _instance;
+
+  final TRes Function(
+      Query$RepositoryList$search$edges$node$$MarketplaceListing) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? $__typename = _undefined}) =>
+      _then(Query$RepositoryList$search$edges$node$$MarketplaceListing(
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+        TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$MarketplaceListing<
+            TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$MarketplaceListing(
+      this._res);
+
+  TRes _res;
+
+  call({String? $__typename}) => _res;
+}
+
+class Query$RepositoryList$search$edges$node$$Organization
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$Organization(
       {this.$__typename = 'Organization'});
 
-  factory Query$RepoList$search$edges$node$$Organization.fromJson(
+  factory Query$RepositoryList$search$edges$node$$Organization.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$Organization(
+    return Query$RepositoryList$search$edges$node$$Organization(
         $__typename: (l$$__typename as String));
   }
 
@@ -2681,7 +2715,7 @@ class Query$RepoList$search$edges$node$$Organization
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$Organization) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$Organization) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2694,67 +2728,74 @@ class Query$RepoList$search$edges$node$$Organization
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$Organization
-    on Query$RepoList$search$edges$node$$Organization {
-  CopyWith$Query$RepoList$search$edges$node$$Organization<
-          Query$RepoList$search$edges$node$$Organization>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$Organization(
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$Organization
+    on Query$RepositoryList$search$edges$node$$Organization {
+  CopyWith$Query$RepositoryList$search$edges$node$$Organization<
+          Query$RepositoryList$search$edges$node$$Organization>
+      get copyWith =>
+          CopyWith$Query$RepositoryList$search$edges$node$$Organization(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$Organization<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$Organization(
-    Query$RepoList$search$edges$node$$Organization instance,
-    TRes Function(Query$RepoList$search$edges$node$$Organization) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$Organization;
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$Organization<
+    TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Organization(
+    Query$RepositoryList$search$edges$node$$Organization instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$Organization) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$Organization;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$Organization.stub(
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Organization.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$Organization;
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Organization;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$Organization<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Organization<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$Organization(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Organization<TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$Organization<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$Organization(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$Organization _instance;
+  final Query$RepositoryList$search$edges$node$$Organization _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$Organization) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$Organization)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$Organization(
+      _then(Query$RepositoryList$search$edges$node$$Organization(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Organization<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Organization<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$Organization(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Organization<
+        TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$Organization<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Organization(
+      this._res);
 
   TRes _res;
 
   call({String? $__typename}) => _res;
 }
 
-class Query$RepoList$search$edges$node$$PullRequest
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$PullRequest(
+class Query$RepositoryList$search$edges$node$$PullRequest
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$PullRequest(
       {this.$__typename = 'PullRequest'});
 
-  factory Query$RepoList$search$edges$node$$PullRequest.fromJson(
+  factory Query$RepositoryList$search$edges$node$$PullRequest.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$PullRequest(
+    return Query$RepositoryList$search$edges$node$$PullRequest(
         $__typename: (l$$__typename as String));
   }
 
@@ -2778,7 +2819,7 @@ class Query$RepoList$search$edges$node$$PullRequest
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$PullRequest) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$PullRequest) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2791,61 +2832,68 @@ class Query$RepoList$search$edges$node$$PullRequest
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$PullRequest
-    on Query$RepoList$search$edges$node$$PullRequest {
-  CopyWith$Query$RepoList$search$edges$node$$PullRequest<
-          Query$RepoList$search$edges$node$$PullRequest>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$PullRequest(
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$PullRequest
+    on Query$RepositoryList$search$edges$node$$PullRequest {
+  CopyWith$Query$RepositoryList$search$edges$node$$PullRequest<
+          Query$RepositoryList$search$edges$node$$PullRequest>
+      get copyWith =>
+          CopyWith$Query$RepositoryList$search$edges$node$$PullRequest(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$PullRequest<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$PullRequest(
-    Query$RepoList$search$edges$node$$PullRequest instance,
-    TRes Function(Query$RepoList$search$edges$node$$PullRequest) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$PullRequest;
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$PullRequest<
+    TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$PullRequest(
+    Query$RepositoryList$search$edges$node$$PullRequest instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$PullRequest) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$PullRequest;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$PullRequest.stub(
+  factory CopyWith$Query$RepositoryList$search$edges$node$$PullRequest.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$PullRequest;
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$PullRequest;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$PullRequest<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$PullRequest<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$PullRequest(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$PullRequest<TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$PullRequest<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$PullRequest(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$PullRequest _instance;
+  final Query$RepositoryList$search$edges$node$$PullRequest _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$PullRequest) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$PullRequest)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$PullRequest(
+      _then(Query$RepositoryList$search$edges$node$$PullRequest(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$PullRequest<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$PullRequest<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$PullRequest(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$PullRequest<
+        TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$PullRequest<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$PullRequest(
+      this._res);
 
   TRes _res;
 
   call({String? $__typename}) => _res;
 }
 
-class Query$RepoList$search$edges$node$$Repository
-    implements Fragment$RepositoryItem, Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$Repository({
+class Query$RepositoryList$search$edges$node$$Repository
+    implements Fragment$RepositoryItem, Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$Repository({
     required this.id,
     required this.nameWithOwner,
     this.description,
@@ -2856,7 +2904,7 @@ class Query$RepoList$search$edges$node$$Repository
     this.$__typename = 'Repository',
   });
 
-  factory Query$RepoList$search$edges$node$$Repository.fromJson(
+  factory Query$RepositoryList$search$edges$node$$Repository.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$nameWithOwner = json['nameWithOwner'];
@@ -2866,7 +2914,7 @@ class Query$RepoList$search$edges$node$$Repository
     final l$repositoryTopics = json['repositoryTopics'];
     final l$primaryLanguage = json['primaryLanguage'];
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$Repository(
+    return Query$RepositoryList$search$edges$node$$Repository(
       id: (l$id as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
@@ -2946,7 +2994,7 @@ class Query$RepoList$search$edges$node$$Repository
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$Repository) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$Repository) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2994,24 +3042,27 @@ class Query$RepoList$search$edges$node$$Repository
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$Repository
-    on Query$RepoList$search$edges$node$$Repository {
-  CopyWith$Query$RepoList$search$edges$node$$Repository<
-          Query$RepoList$search$edges$node$$Repository>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$Repository(
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$Repository
+    on Query$RepositoryList$search$edges$node$$Repository {
+  CopyWith$Query$RepositoryList$search$edges$node$$Repository<
+          Query$RepositoryList$search$edges$node$$Repository>
+      get copyWith =>
+          CopyWith$Query$RepositoryList$search$edges$node$$Repository(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$Repository(
-    Query$RepoList$search$edges$node$$Repository instance,
-    TRes Function(Query$RepoList$search$edges$node$$Repository) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$Repository;
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$Repository<
+    TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Repository(
+    Query$RepositoryList$search$edges$node$$Repository instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$Repository) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$Repository;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$Repository.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository;
+  factory CopyWith$Query$RepositoryList$search$edges$node$$Repository.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Repository;
 
   TRes call({
     String? id,
@@ -3027,16 +3078,17 @@ abstract class CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
   CopyWith$Fragment$LanguageItem<TRes> get primaryLanguage;
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$Repository(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$Repository<TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$Repository<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$Repository(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$Repository _instance;
+  final Query$RepositoryList$search$edges$node$$Repository _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$Repository) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$Repository) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3050,7 +3102,7 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
     Object? primaryLanguage = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$RepoList$search$edges$node$$Repository(
+      _then(Query$RepositoryList$search$edges$node$$Repository(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
@@ -3092,9 +3144,11 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Repository<TRes>
+    implements
+        CopyWith$Query$RepositoryList$search$edges$node$$Repository<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$Repository(
+      this._res);
 
   TRes _res;
 
@@ -3118,14 +3172,14 @@ class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository<TRes>
       CopyWith$Fragment$LanguageItem.stub(_res);
 }
 
-class Query$RepoList$search$edges$node$$User
-    implements Query$RepoList$search$edges$node {
-  Query$RepoList$search$edges$node$$User({this.$__typename = 'User'});
+class Query$RepositoryList$search$edges$node$$User
+    implements Query$RepositoryList$search$edges$node {
+  Query$RepositoryList$search$edges$node$$User({this.$__typename = 'User'});
 
-  factory Query$RepoList$search$edges$node$$User.fromJson(
+  factory Query$RepositoryList$search$edges$node$$User.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
-    return Query$RepoList$search$edges$node$$User(
+    return Query$RepositoryList$search$edges$node$$User(
         $__typename: (l$$__typename as String));
   }
 
@@ -3149,7 +3203,7 @@ class Query$RepoList$search$edges$node$$User
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$RepoList$search$edges$node$$User) ||
+    if (!(other is Query$RepositoryList$search$edges$node$$User) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3162,51 +3216,51 @@ class Query$RepoList$search$edges$node$$User
   }
 }
 
-extension UtilityExtension$Query$RepoList$search$edges$node$$User
-    on Query$RepoList$search$edges$node$$User {
-  CopyWith$Query$RepoList$search$edges$node$$User<
-          Query$RepoList$search$edges$node$$User>
-      get copyWith => CopyWith$Query$RepoList$search$edges$node$$User(
+extension UtilityExtension$Query$RepositoryList$search$edges$node$$User
+    on Query$RepositoryList$search$edges$node$$User {
+  CopyWith$Query$RepositoryList$search$edges$node$$User<
+          Query$RepositoryList$search$edges$node$$User>
+      get copyWith => CopyWith$Query$RepositoryList$search$edges$node$$User(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$RepoList$search$edges$node$$User<TRes> {
-  factory CopyWith$Query$RepoList$search$edges$node$$User(
-    Query$RepoList$search$edges$node$$User instance,
-    TRes Function(Query$RepoList$search$edges$node$$User) then,
-  ) = _CopyWithImpl$Query$RepoList$search$edges$node$$User;
+abstract class CopyWith$Query$RepositoryList$search$edges$node$$User<TRes> {
+  factory CopyWith$Query$RepositoryList$search$edges$node$$User(
+    Query$RepositoryList$search$edges$node$$User instance,
+    TRes Function(Query$RepositoryList$search$edges$node$$User) then,
+  ) = _CopyWithImpl$Query$RepositoryList$search$edges$node$$User;
 
-  factory CopyWith$Query$RepoList$search$edges$node$$User.stub(TRes res) =
-      _CopyWithStubImpl$Query$RepoList$search$edges$node$$User;
+  factory CopyWith$Query$RepositoryList$search$edges$node$$User.stub(TRes res) =
+      _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$User;
 
   TRes call({String? $__typename});
 }
 
-class _CopyWithImpl$Query$RepoList$search$edges$node$$User<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$User<TRes> {
-  _CopyWithImpl$Query$RepoList$search$edges$node$$User(
+class _CopyWithImpl$Query$RepositoryList$search$edges$node$$User<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$User<TRes> {
+  _CopyWithImpl$Query$RepositoryList$search$edges$node$$User(
     this._instance,
     this._then,
   );
 
-  final Query$RepoList$search$edges$node$$User _instance;
+  final Query$RepositoryList$search$edges$node$$User _instance;
 
-  final TRes Function(Query$RepoList$search$edges$node$$User) _then;
+  final TRes Function(Query$RepositoryList$search$edges$node$$User) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({Object? $__typename = _undefined}) =>
-      _then(Query$RepoList$search$edges$node$$User(
+      _then(Query$RepositoryList$search$edges$node$$User(
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$RepoList$search$edges$node$$User<TRes>
-    implements CopyWith$Query$RepoList$search$edges$node$$User<TRes> {
-  _CopyWithStubImpl$Query$RepoList$search$edges$node$$User(this._res);
+class _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$User<TRes>
+    implements CopyWith$Query$RepositoryList$search$edges$node$$User<TRes> {
+  _CopyWithStubImpl$Query$RepositoryList$search$edges$node$$User(this._res);
 
   TRes _res;
 

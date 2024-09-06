@@ -1,5 +1,5 @@
 import 'package:flutter_github_client/domain_model.dart';
-import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
+import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
 import 'package:flutter_github_client/util.dart';
 
 extension Fragment$RepositoryItemExt on Fragment$RepositoryItem {

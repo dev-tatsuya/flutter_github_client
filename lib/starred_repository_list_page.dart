@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/api_protocol_state.dart';
 import 'package:flutter_github_client/graphql/data_model.dart';
 import 'package:flutter_github_client/graphql/graphql_container.dart';
-import 'package:flutter_github_client/graphql/repo_list_query.graphql.dart';
-import 'package:flutter_github_client/graphql/starred_repo_list_query.graphql.dart';
-import 'package:flutter_github_client/repo_list_page.dart';
-import 'package:flutter_github_client/rest/repo_state.dart';
+import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
+import 'package:flutter_github_client/graphql/starred_repository_list_query.graphql.dart';
+import 'package:flutter_github_client/repository_list_page.dart';
+import 'package:flutter_github_client/rest/repository_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 @RoutePage()
-class StarredRepoListPage extends HookConsumerWidget {
-  const StarredRepoListPage({super.key});
+class StarredRepositoryListPage extends HookConsumerWidget {
+  const StarredRepositoryListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +21,7 @@ class StarredRepoListPage extends HookConsumerWidget {
 
     final graphQLContainer = HookBuilder(
       builder: (context) {
-        final query = useQuery$StarredRepoList();
+        final query = useQuery$StarredRepositoryList();
 
         return GraphQLContainer(
           result: query.result,
@@ -34,7 +34,7 @@ class StarredRepoListPage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 if (edges[index]?.node
                     case final Fragment$RepositoryItem item) {
-                  return RepoListItem(item: item.toDomain());
+                  return RepositoryListItem(item: item.toDomain());
                 }
                 return null;
               },
@@ -46,7 +46,7 @@ class StarredRepoListPage extends HookConsumerWidget {
 
     final restContainer = Consumer(
       builder: (context, ref, child) {
-        final asyncValue = ref.watch(starredRepoListProvider);
+        final asyncValue = ref.watch(starredRepositoryListProvider);
 
         return RestContainer(
           asyncValue: asyncValue,
@@ -55,7 +55,7 @@ class StarredRepoListPage extends HookConsumerWidget {
             return ListView.separated(
               itemCount: data.length,
               separatorBuilder: (_, __) => const Divider(),
-              itemBuilder: (context, index) => RepoListItem(item: data[index]),
+              itemBuilder: (_, index) => RepositoryListItem(item: data[index]),
             );
           },
         );

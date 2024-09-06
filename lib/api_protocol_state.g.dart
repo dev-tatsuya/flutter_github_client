@@ -6,7 +6,7 @@ part of 'api_protocol_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiProtocolStateHash() => r'aae4ce9115e1b97f861c39cb4ca3116687b04e88';
+String _$apiProtocolStateHash() => r'85c11468799ce3ff3a538cf92646d6cce55535e2';
 
 /// See also [ApiProtocolState].
 @ProviderFor(ApiProtocolState)
@@ -18,17 +18,17 @@ final apiProtocolStateProvider =
       ? null
       : _$apiProtocolStateHash,
   dependencies: <ProviderOrFamily>[
-    repoListProvider,
-    starredRepoListProvider,
-    repoDetailProvider
+    repositoryListProvider,
+    starredRepositoryListProvider,
+    repositoryDetailProvider
   ],
   allTransitiveDependencies: <ProviderOrFamily>{
-    repoListProvider,
-    ...?repoListProvider.allTransitiveDependencies,
-    starredRepoListProvider,
-    ...?starredRepoListProvider.allTransitiveDependencies,
-    repoDetailProvider,
-    ...?repoDetailProvider.allTransitiveDependencies
+    repositoryListProvider,
+    ...?repositoryListProvider.allTransitiveDependencies,
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies,
+    repositoryDetailProvider,
+    ...?repositoryDetailProvider.allTransitiveDependencies
   },
 );
 

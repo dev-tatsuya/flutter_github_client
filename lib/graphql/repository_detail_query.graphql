@@ -1,4 +1,4 @@
-query RepoDetail($owner: String!, $name: String!) {
+query RepositoryDetail($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     ...RepositoryItem
   }
