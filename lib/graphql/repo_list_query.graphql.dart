@@ -7,7 +7,6 @@ import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 class Fragment$RepositoryItem {
   Fragment$RepositoryItem({
     required this.id,
-    required this.name,
     required this.nameWithOwner,
     this.description,
     required this.stargazerCount,
@@ -19,7 +18,6 @@ class Fragment$RepositoryItem {
 
   factory Fragment$RepositoryItem.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$name = json['name'];
     final l$nameWithOwner = json['nameWithOwner'];
     final l$description = json['description'];
     final l$stargazerCount = json['stargazerCount'];
@@ -29,7 +27,6 @@ class Fragment$RepositoryItem {
     final l$$__typename = json['__typename'];
     return Fragment$RepositoryItem(
       id: (l$id as String),
-      name: (l$name as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
@@ -45,8 +42,6 @@ class Fragment$RepositoryItem {
   }
 
   final String id;
-
-  final String name;
 
   final String nameWithOwner;
 
@@ -66,8 +61,6 @@ class Fragment$RepositoryItem {
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
-    final l$name = name;
-    _resultData['name'] = l$name;
     final l$nameWithOwner = nameWithOwner;
     _resultData['nameWithOwner'] = l$nameWithOwner;
     final l$description = description;
@@ -88,7 +81,6 @@ class Fragment$RepositoryItem {
   @override
   int get hashCode {
     final l$id = id;
-    final l$name = name;
     final l$nameWithOwner = nameWithOwner;
     final l$description = description;
     final l$stargazerCount = stargazerCount;
@@ -98,7 +90,6 @@ class Fragment$RepositoryItem {
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$name,
       l$nameWithOwner,
       l$description,
       l$stargazerCount,
@@ -121,11 +112,6 @@ class Fragment$RepositoryItem {
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) {
       return false;
     }
     final l$nameWithOwner = nameWithOwner;
@@ -186,7 +172,6 @@ abstract class CopyWith$Fragment$RepositoryItem<TRes> {
 
   TRes call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -214,7 +199,6 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? name = _undefined,
     Object? nameWithOwner = _undefined,
     Object? description = _undefined,
     Object? stargazerCount = _undefined,
@@ -225,9 +209,6 @@ class _CopyWithImpl$Fragment$RepositoryItem<TRes>
   }) =>
       _then(Fragment$RepositoryItem(
         id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
             : (nameWithOwner as String),
@@ -276,7 +257,6 @@ class _CopyWithStubImpl$Fragment$RepositoryItem<TRes>
 
   call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -306,13 +286,6 @@ const fragmentDefinitionRepositoryItem = FragmentDefinitionNode(
   selectionSet: SelectionSetNode(selections: [
     FieldNode(
       name: NameNode(value: 'id'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'name'),
       alias: null,
       arguments: [],
       directives: [],
@@ -2874,7 +2847,6 @@ class Query$RepoList$search$edges$node$$Repository
     implements Fragment$RepositoryItem, Query$RepoList$search$edges$node {
   Query$RepoList$search$edges$node$$Repository({
     required this.id,
-    required this.name,
     required this.nameWithOwner,
     this.description,
     required this.stargazerCount,
@@ -2887,7 +2859,6 @@ class Query$RepoList$search$edges$node$$Repository
   factory Query$RepoList$search$edges$node$$Repository.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$name = json['name'];
     final l$nameWithOwner = json['nameWithOwner'];
     final l$description = json['description'];
     final l$stargazerCount = json['stargazerCount'];
@@ -2897,7 +2868,6 @@ class Query$RepoList$search$edges$node$$Repository
     final l$$__typename = json['__typename'];
     return Query$RepoList$search$edges$node$$Repository(
       id: (l$id as String),
-      name: (l$name as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
@@ -2913,8 +2883,6 @@ class Query$RepoList$search$edges$node$$Repository
   }
 
   final String id;
-
-  final String name;
 
   final String nameWithOwner;
 
@@ -2934,8 +2902,6 @@ class Query$RepoList$search$edges$node$$Repository
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
-    final l$name = name;
-    _resultData['name'] = l$name;
     final l$nameWithOwner = nameWithOwner;
     _resultData['nameWithOwner'] = l$nameWithOwner;
     final l$description = description;
@@ -2956,7 +2922,6 @@ class Query$RepoList$search$edges$node$$Repository
   @override
   int get hashCode {
     final l$id = id;
-    final l$name = name;
     final l$nameWithOwner = nameWithOwner;
     final l$description = description;
     final l$stargazerCount = stargazerCount;
@@ -2966,7 +2931,6 @@ class Query$RepoList$search$edges$node$$Repository
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$name,
       l$nameWithOwner,
       l$description,
       l$stargazerCount,
@@ -2989,11 +2953,6 @@ class Query$RepoList$search$edges$node$$Repository
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) {
       return false;
     }
     final l$nameWithOwner = nameWithOwner;
@@ -3056,7 +3015,6 @@ abstract class CopyWith$Query$RepoList$search$edges$node$$Repository<TRes> {
 
   TRes call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -3084,7 +3042,6 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? name = _undefined,
     Object? nameWithOwner = _undefined,
     Object? description = _undefined,
     Object? stargazerCount = _undefined,
@@ -3095,9 +3052,6 @@ class _CopyWithImpl$Query$RepoList$search$edges$node$$Repository<TRes>
   }) =>
       _then(Query$RepoList$search$edges$node$$Repository(
         id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
             : (nameWithOwner as String),
@@ -3146,7 +3100,6 @@ class _CopyWithStubImpl$Query$RepoList$search$edges$node$$Repository<TRes>
 
   call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,

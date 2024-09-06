@@ -110,7 +110,7 @@ class RepoListItem extends HookConsumerWidget {
             children: [
               Expanded(
                 child: Text(
-                  item.name,
+                  item.nameWithOwner,
                   style: Theme.of(context).textTheme.titleLarge,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -202,8 +202,9 @@ class RepoListItem extends HookConsumerWidget {
 
     return InkWell(
       onTap: () {
-        final (owner, name) = _separate(item.name);
-        context.router.push(RepoDetailRoute(owner: owner, name: name));
+        context.router.push(
+          RepoDetailRoute(owner: item.ownerName, name: item.name),
+        );
       },
       child: child,
     );
@@ -229,12 +230,11 @@ class StarButton extends HookConsumerWidget {
               id: item.id,
             );
           case ApiProtocolType.rest:
-            final (owner, name) = _separate(item.name);
             ref.read(
               starProvider(
                 viewerHasStarred: item.viewerHasStarred,
-                owner: owner,
-                repo: name,
+                owner: item.ownerName,
+                repo: item.name,
               ).future,
             );
         }
@@ -246,11 +246,6 @@ class StarButton extends HookConsumerWidget {
         ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
         : FilledButton(onPressed: onPressed, child: const Text('Star'));
   }
-}
-
-(String, String) _separate(String nameWithOwner) {
-  final list = nameWithOwner.split('/');
-  return (list[0], list[1]);
 }
 
 Color _hexToColor(String hexString) {

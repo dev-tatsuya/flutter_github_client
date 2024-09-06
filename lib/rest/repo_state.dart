@@ -13,6 +13,9 @@ class RepoList extends _$RepoList {
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
     final repoListData = await client.getRepoList('dart');
+    // for (final repo in repoListData.items) {
+    //   client.viewerHasStarred(repo., repo);
+    // }
     return repoListData.items.map(Repository.fromRest).toList();
   }
 }
@@ -62,6 +65,7 @@ Future<void> star(
     await ref.read(restProvider).star(owner, repo);
   }
 
+  // todo: 更新されてない？
   ref
     ..invalidate(repoListProvider)
     ..invalidate(repoDetailProvider)

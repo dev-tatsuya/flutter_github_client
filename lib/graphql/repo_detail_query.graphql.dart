@@ -1391,7 +1391,6 @@ class Mutation$Star$addStar$starrable$$Repository
     implements Fragment$RepositoryItem, Mutation$Star$addStar$starrable {
   Mutation$Star$addStar$starrable$$Repository({
     required this.id,
-    required this.name,
     required this.nameWithOwner,
     this.description,
     required this.stargazerCount,
@@ -1404,7 +1403,6 @@ class Mutation$Star$addStar$starrable$$Repository
   factory Mutation$Star$addStar$starrable$$Repository.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$name = json['name'];
     final l$nameWithOwner = json['nameWithOwner'];
     final l$description = json['description'];
     final l$stargazerCount = json['stargazerCount'];
@@ -1414,7 +1412,6 @@ class Mutation$Star$addStar$starrable$$Repository
     final l$$__typename = json['__typename'];
     return Mutation$Star$addStar$starrable$$Repository(
       id: (l$id as String),
-      name: (l$name as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
@@ -1430,8 +1427,6 @@ class Mutation$Star$addStar$starrable$$Repository
   }
 
   final String id;
-
-  final String name;
 
   final String nameWithOwner;
 
@@ -1451,8 +1446,6 @@ class Mutation$Star$addStar$starrable$$Repository
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
-    final l$name = name;
-    _resultData['name'] = l$name;
     final l$nameWithOwner = nameWithOwner;
     _resultData['nameWithOwner'] = l$nameWithOwner;
     final l$description = description;
@@ -1473,7 +1466,6 @@ class Mutation$Star$addStar$starrable$$Repository
   @override
   int get hashCode {
     final l$id = id;
-    final l$name = name;
     final l$nameWithOwner = nameWithOwner;
     final l$description = description;
     final l$stargazerCount = stargazerCount;
@@ -1483,7 +1475,6 @@ class Mutation$Star$addStar$starrable$$Repository
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$name,
       l$nameWithOwner,
       l$description,
       l$stargazerCount,
@@ -1506,11 +1497,6 @@ class Mutation$Star$addStar$starrable$$Repository
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) {
       return false;
     }
     final l$nameWithOwner = nameWithOwner;
@@ -1573,7 +1559,6 @@ abstract class CopyWith$Mutation$Star$addStar$starrable$$Repository<TRes> {
 
   TRes call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -1601,7 +1586,6 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? name = _undefined,
     Object? nameWithOwner = _undefined,
     Object? description = _undefined,
     Object? stargazerCount = _undefined,
@@ -1612,9 +1596,6 @@ class _CopyWithImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
   }) =>
       _then(Mutation$Star$addStar$starrable$$Repository(
         id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
             : (nameWithOwner as String),
@@ -1663,7 +1644,6 @@ class _CopyWithStubImpl$Mutation$Star$addStar$starrable$$Repository<TRes>
 
   call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -2688,7 +2668,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     implements Fragment$RepositoryItem, Mutation$Unstar$removeStar$starrable {
   Mutation$Unstar$removeStar$starrable$$Repository({
     required this.id,
-    required this.name,
     required this.nameWithOwner,
     this.description,
     required this.stargazerCount,
@@ -2701,7 +2680,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
   factory Mutation$Unstar$removeStar$starrable$$Repository.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$name = json['name'];
     final l$nameWithOwner = json['nameWithOwner'];
     final l$description = json['description'];
     final l$stargazerCount = json['stargazerCount'];
@@ -2711,7 +2689,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final l$$__typename = json['__typename'];
     return Mutation$Unstar$removeStar$starrable$$Repository(
       id: (l$id as String),
-      name: (l$name as String),
       nameWithOwner: (l$nameWithOwner as String),
       description: (l$description as String?),
       stargazerCount: (l$stargazerCount as int),
@@ -2727,8 +2704,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
   }
 
   final String id;
-
-  final String name;
 
   final String nameWithOwner;
 
@@ -2748,8 +2723,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
-    final l$name = name;
-    _resultData['name'] = l$name;
     final l$nameWithOwner = nameWithOwner;
     _resultData['nameWithOwner'] = l$nameWithOwner;
     final l$description = description;
@@ -2770,7 +2743,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
   @override
   int get hashCode {
     final l$id = id;
-    final l$name = name;
     final l$nameWithOwner = nameWithOwner;
     final l$description = description;
     final l$stargazerCount = stargazerCount;
@@ -2780,7 +2752,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$name,
       l$nameWithOwner,
       l$description,
       l$stargazerCount,
@@ -2803,11 +2774,6 @@ class Mutation$Unstar$removeStar$starrable$$Repository
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) {
       return false;
     }
     final l$nameWithOwner = nameWithOwner;
@@ -2871,7 +2837,6 @@ abstract class CopyWith$Mutation$Unstar$removeStar$starrable$$Repository<TRes> {
 
   TRes call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,
@@ -2899,7 +2864,6 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? name = _undefined,
     Object? nameWithOwner = _undefined,
     Object? description = _undefined,
     Object? stargazerCount = _undefined,
@@ -2910,9 +2874,6 @@ class _CopyWithImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
   }) =>
       _then(Mutation$Unstar$removeStar$starrable$$Repository(
         id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
         nameWithOwner: nameWithOwner == _undefined || nameWithOwner == null
             ? _instance.nameWithOwner
             : (nameWithOwner as String),
@@ -2961,7 +2922,6 @@ class _CopyWithStubImpl$Mutation$Unstar$removeStar$starrable$$Repository<TRes>
 
   call({
     String? id,
-    String? name,
     String? nameWithOwner,
     String? description,
     int? stargazerCount,

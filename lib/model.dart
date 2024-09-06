@@ -5,6 +5,7 @@ class Repository {
   Repository({
     required this.id,
     required this.name,
+    required this.ownerName,
     required this.description,
     required this.viewerHasStarred,
     required this.starredCount,
@@ -18,9 +19,12 @@ class Repository {
       language = Language.fromGraphQL(item);
     }
 
+    final (owner, name) = _separate(item.nameWithOwner);
+
     return Repository(
       id: item.id,
-      name: item.nameWithOwner,
+      name: name,
+      ownerName: owner,
       description: item.description,
       viewerHasStarred: item.viewerHasStarred,
       starredCount: item.stargazerCount,
@@ -39,9 +43,12 @@ class Repository {
       language = Language(id: item, name: item, color: item);
     }
 
+    final (owner, name) = _separate(item.fullName);
+
     return Repository(
       id: item.nodeId,
-      name: item.fullName,
+      name: name,
+      ownerName: owner,
       description: item.description,
       viewerHasStarred: false,
       starredCount: item.stargazersCount,
@@ -52,11 +59,14 @@ class Repository {
 
   final String id;
   final String name;
+  final String ownerName;
   final String? description;
   final bool viewerHasStarred;
   final int starredCount;
   final List<Topic> topics;
   final Language? language;
+
+  String get nameWithOwner => '$ownerName/$name';
 }
 
 class Topic {
@@ -87,4 +97,9 @@ class Language {
   final String id;
   final String name;
   final String? color;
+}
+
+(String, String) _separate(String nameWithOwner) {
+  final list = nameWithOwner.split('/');
+  return (list[0], list[1]);
 }

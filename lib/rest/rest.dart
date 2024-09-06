@@ -43,6 +43,12 @@ abstract class RestClient {
     @Query('direction') String direction,
   );
 
+  @GET('/user/starred/{owner}/{repo}')
+  Future<void> viewerHasStarred(
+    @Path() String owner,
+    @Path() String repo,
+  );
+
   @PUT('/user/starred/{owner}/{repo}')
   Future<void> star(
     @Path() String owner,
@@ -72,7 +78,6 @@ class RepoListData {
 class RepoData {
   RepoData({
     required this.nodeId,
-    required this.name,
     required this.fullName,
     required this.stargazersCount,
     required this.topics,
@@ -84,7 +89,6 @@ class RepoData {
       _$RepoDataFromJson(json);
 
   String nodeId;
-  String name;
   String fullName;
   String? description;
   int stargazersCount;

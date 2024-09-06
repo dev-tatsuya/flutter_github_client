@@ -19,7 +19,6 @@ Map<String, dynamic> _$RepoListDataToJson(RepoListData instance) =>
 
 RepoData _$RepoDataFromJson(Map<String, dynamic> json) => RepoData(
       nodeId: json['node_id'] as String,
-      name: json['name'] as String,
       fullName: json['full_name'] as String,
       stargazersCount: (json['stargazers_count'] as num).toInt(),
       topics:
@@ -30,7 +29,6 @@ RepoData _$RepoDataFromJson(Map<String, dynamic> json) => RepoData(
 
 Map<String, dynamic> _$RepoDataToJson(RepoData instance) => <String, dynamic>{
       'node_id': instance.nodeId,
-      'name': instance.name,
       'full_name': instance.fullName,
       'description': instance.description,
       'stargazers_count': instance.stargazersCount,
@@ -161,6 +159,34 @@ class _RestClient implements RestClient {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> viewerHasStarred(
+    String owner,
+    String repo,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/user/starred/${owner}/${repo}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    await _dio.fetch<void>(_options);
   }
 
   @override
