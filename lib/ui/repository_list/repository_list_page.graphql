@@ -1,0 +1,13 @@
+query RepositoryList {
+  search(
+    query: "flutter"
+    type: REPOSITORY
+    first: 10
+  ) {
+    edges {
+      node {
+        ...RepositoryData
+      }
+    }
+  }
+}

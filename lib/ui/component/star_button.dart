@@ -1,14 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/schema.docs.graphql.dart';
-import 'package:flutter_github_client/ui/repository_detail/repository_detail_query.graphql.dart';
-import 'package:flutter_github_client/ui/repository_list/repository_list_query.graphql.dart';
-import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_query.graphql.dart';
+import 'package:flutter_github_client/state/api_protocol_state.dart';
+import 'package:flutter_github_client/state/repository_state.dart';
+import 'package:flutter_github_client/ui/component/star_button.graphql.dart';
+import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_page.graphql.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+class StarButton extends HookConsumerWidget {
+  const StarButton({required this.repository, super.key});
+
+  final Repository repository;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final apiProtocol = ref.watch(apiProtocolStateProvider);
+    final starGraphQL = _useStar();
+
+    final onPressed = useCallback(
+      () {
+        switch (apiProtocol) {
+          case ApiProtocolType.graphql:
+            starGraphQL(
+              viewerHasStarred: repository.viewerHasStarred,
+              id: repository.id,
+            );
+          case ApiProtocolType.rest:
+            ref.read(
+              starProvider(
+                viewerHasStarred: repository.viewerHasStarred,
+                owner: repository.owner,
+                repositoryName: repository.name,
+              ).future,
+            );
+        }
+      },
+      [apiProtocol, repository],
+    );
+
+    return repository.viewerHasStarred
+        ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
+        : FilledButton(onPressed: onPressed, child: const Text('Star'));
+  }
+}
 
 void Function({
   required bool viewerHasStarred,
   required String id,
-}) useStar() {
+}) _useStar() {
   final client = useGraphQLClient();
 
   final star = useMutation$Star(

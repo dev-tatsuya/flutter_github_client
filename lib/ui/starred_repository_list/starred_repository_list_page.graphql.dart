@@ -1,4 +1,4 @@
-import '../repository_list/repository_list_query.graphql.dart';
+import '../../foundation/graphql/data_model.graphql.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';

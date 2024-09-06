@@ -5,9 +5,10 @@ import 'package:flutter_github_client/foundation/graphql/data_model.dart';
 import 'package:flutter_github_client/state/api_protocol_state.dart';
 import 'package:flutter_github_client/state/repository_state.dart';
 import 'package:flutter_github_client/ui/component/graphql_container.dart';
+import 'package:flutter_github_client/ui/component/repository_list_item.dart';
 import 'package:flutter_github_client/ui/component/rest_container.dart';
-import 'package:flutter_github_client/ui/repository_detail/repository_detail_query.graphql.dart';
-import 'package:flutter_github_client/ui/repository_list/repository_list_page.dart';
+import 'package:flutter_github_client/ui/component/star_button.dart';
+import 'package:flutter_github_client/ui/repository_detail/repository_detail_page.graphql.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

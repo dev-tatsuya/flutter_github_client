@@ -1,9 +1,3 @@
-query RepositoryDetail($owner: String!, $name: String!) {
-  repository(owner: $owner, name: $name) {
-    ...RepositoryData
-  }
-}
-
 mutation Star($input: AddStarInput!) {
   addStar(input: $input) {
     starrable {
