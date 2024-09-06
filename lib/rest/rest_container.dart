@@ -3,19 +3,19 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RestContainer<T> extends StatelessWidget {
   const RestContainer({
-    required this.result,
+    required this.asyncValue,
     required this.builder,
     super.key,
   });
 
-  final AsyncValue<T> result;
+  final AsyncValue<T> asyncValue;
   final Widget? Function(T data) builder;
 
   @override
   Widget build(BuildContext context) {
     const empty = Center(child: Text('Empty'));
 
-    return result.when(
+    return asyncValue.when(
       data: (data) {
         if (data == null) return empty;
         return builder(data) ?? empty;

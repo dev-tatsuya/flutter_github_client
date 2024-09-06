@@ -7,6 +7,7 @@ import 'package:flutter_github_client/model.dart';
 import 'package:flutter_github_client/repo_list_page.dart';
 import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:flutter_github_client/rest/rest_container.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 @RoutePage()
@@ -23,15 +24,6 @@ class RepoDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
-    final graphqlResult = useQuery$RepoDetail(
-      Options$Query$RepoDetail(
-        variables: Variables$Query$RepoDetail(
-          owner: owner,
-          name: name,
-        ),
-      ),
-    ).result;
-    final restResult = ref.watch(repoDetailProvider(owner: owner, repo: name));
 
     Widget builder(Repository item) {
       return Column(
@@ -46,17 +38,34 @@ class RepoDetailPage extends HookConsumerWidget {
       );
     }
 
-    final graphQLContainer = GraphQLContainer(
-      result: graphqlResult,
-      builder: (data) {
-        if (data.repository == null) return null;
-        return builder(Repository.fromGraphQL(data.repository!));
+    final graphQLContainer = HookBuilder(
+      builder: (context) {
+        final query = useQuery$RepoDetail(
+          Options$Query$RepoDetail(
+            variables: Variables$Query$RepoDetail(owner: owner, name: name),
+          ),
+        );
+
+        return GraphQLContainer(
+          result: query.result,
+          builder: (data) {
+            if (data.repository == null) return null;
+            return builder(Repository.fromGraphQL(data.repository!));
+          },
+        );
       },
     );
 
-    final restContainer = RestContainer(
-      result: restResult,
-      builder: builder,
+    final restContainer = Consumer(
+      builder: (context, ref, child) {
+        final asyncValue =
+            ref.watch(repoDetailProvider(owner: owner, repo: name));
+
+        return RestContainer(
+          asyncValue: asyncValue,
+          builder: builder,
+        );
+      },
     );
 
     return Scaffold(
