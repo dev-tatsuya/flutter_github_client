@@ -1,7 +1,7 @@
-import 'package:flutter_github_client/graphql/repository_detail_query.graphql.dart';
-import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
-import 'package:flutter_github_client/graphql/schema.docs.graphql.dart';
-import 'package:flutter_github_client/graphql/starred_repository_list_query.graphql.dart';
+import 'package:flutter_github_client/foundation/graphql/schema.docs.graphql.dart';
+import 'package:flutter_github_client/ui/repository_detail/repository_detail_query.graphql.dart';
+import 'package:flutter_github_client/ui/repository_list/repository_list_query.graphql.dart';
+import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_query.graphql.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 

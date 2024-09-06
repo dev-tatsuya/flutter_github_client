@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_github_client/foundation/rest/data_model.dart';
 import 'package:flutter_github_client/main.dart';
-import 'package:flutter_github_client/rest/data_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'rest.g.dart';
+part 'rest_client.g.dart';
 
 @Riverpod(
   keepAlive: true,
   dependencies: [],
 )
-RestClient rest(RestRef ref) {
+RestClient restClient(RestClientRef ref) {
   final dio = Dio(
     BaseOptions(
       headers: {

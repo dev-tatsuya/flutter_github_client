@@ -1,17 +1,17 @@
-import 'package:flutter_github_client/domain_model.dart';
-import 'package:flutter_github_client/rest/rest.dart';
+import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/foundation/rest/rest_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository_state.g.dart';
 
 @Riverpod(
   keepAlive: true,
-  dependencies: [rest],
+  dependencies: [restClient],
 )
 class RepositoryList extends _$RepositoryList {
   @override
   Future<List<Repository>> build() async {
-    final client = ref.watch(restProvider);
+    final client = ref.watch(restClientProvider);
     final listData = await client.getRepositoryList('dart', 10);
     final repositoryList = listData.items.map((e) => e.toDomain()).toList();
 
@@ -49,7 +49,7 @@ class RepositoryList extends _$RepositoryList {
 
 @Riverpod(
   keepAlive: true,
-  dependencies: [rest],
+  dependencies: [restClient],
 )
 class RepositoryDetail extends _$RepositoryDetail {
   @override
@@ -57,7 +57,7 @@ class RepositoryDetail extends _$RepositoryDetail {
     required String owner,
     required String repositoryName,
   }) async {
-    final client = ref.watch(restProvider);
+    final client = ref.watch(restClientProvider);
     final data = await client.getRepositoryDetail(owner, repositoryName);
     final repository = data.toDomain();
     final starred = await client
@@ -70,12 +70,12 @@ class RepositoryDetail extends _$RepositoryDetail {
 
 @Riverpod(
   keepAlive: true,
-  dependencies: [rest],
+  dependencies: [restClient],
 )
 class StarredRepositoryList extends _$StarredRepositoryList {
   @override
   Future<List<Repository>> build() async {
-    final client = ref.watch(restProvider);
+    final client = ref.watch(restClientProvider);
     final listData = await client.getStarredRepositoryList('asc');
     return listData
         .map((e) => e.toDomain().copyWith(viewerHasStarred: true))
@@ -85,7 +85,12 @@ class StarredRepositoryList extends _$StarredRepositoryList {
 
 @Riverpod(
   keepAlive: false,
-  dependencies: [rest, RepositoryList, RepositoryDetail, StarredRepositoryList],
+  dependencies: [
+    restClient,
+    RepositoryList,
+    RepositoryDetail,
+    StarredRepositoryList,
+  ],
 )
 Future<void> star(
   StarRef ref, {
@@ -94,9 +99,9 @@ Future<void> star(
   required bool viewerHasStarred,
 }) async {
   if (viewerHasStarred) {
-    await ref.read(restProvider).unstar(owner, repositoryName);
+    await ref.read(restClientProvider).unstar(owner, repositoryName);
   } else {
-    await ref.read(restProvider).star(owner, repositoryName);
+    await ref.read(restClientProvider).star(owner, repositoryName);
   }
 
   ref.read(repositoryListProvider.notifier).sync(

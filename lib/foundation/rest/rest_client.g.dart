@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rest.dart';
+part of 'rest_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -254,19 +254,19 @@ class _RestClient implements RestClient {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$restHash() => r'5f6da945328e684792e018be8bf23b8499d96ce7';
+String _$restClientHash() => r'd8fd5d9928c246aa97ae631727a478a42b432a8e';
 
-/// See also [rest].
-@ProviderFor(rest)
-final restProvider = Provider<RestClient>.internal(
-  rest,
-  name: r'restProvider',
+/// See also [restClient].
+@ProviderFor(restClient)
+final restClientProvider = Provider<RestClient>.internal(
+  restClient,
+  name: r'restClientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$restHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$restClientHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
-typedef RestRef = ProviderRef<RestClient>;
+typedef RestClientRef = ProviderRef<RestClient>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

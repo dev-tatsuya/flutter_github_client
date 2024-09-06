@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_github_client/app_router.dart';
-import 'package:flutter_github_client/graphql/graphql.dart';
+import 'package:flutter_github_client/foundation/graphql/graphql_client.dart';
+import 'package:flutter_github_client/router/app_router.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -22,7 +21,7 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final client = useValueNotifier(ref.read(graphQLProvider));
+    final client = useValueNotifier(ref.read(graphQLClientProvider));
     final router = useMemoized(AppRouter.new);
 
     return GraphQLProvider(

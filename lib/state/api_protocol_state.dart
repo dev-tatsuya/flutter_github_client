@@ -1,4 +1,4 @@
-import 'package:flutter_github_client/rest/repository_state.dart';
+import 'package:flutter_github_client/state/repository_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'api_protocol_state.g.dart';

@@ -1,13 +1,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/api_protocol_state.dart';
-import 'package:flutter_github_client/graphql/data_model.dart';
-import 'package:flutter_github_client/graphql/graphql_container.dart';
-import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
-import 'package:flutter_github_client/graphql/starred_repository_list_query.graphql.dart';
-import 'package:flutter_github_client/repository_list_page.dart';
-import 'package:flutter_github_client/rest/repository_state.dart';
-import 'package:flutter_github_client/rest/rest_container.dart';
+import 'package:flutter_github_client/foundation/graphql/data_model.dart';
+import 'package:flutter_github_client/state/api_protocol_state.dart';
+import 'package:flutter_github_client/state/repository_state.dart';
+import 'package:flutter_github_client/ui/component/graphql_container.dart';
+import 'package:flutter_github_client/ui/component/rest_container.dart';
+import 'package:flutter_github_client/ui/repository_list/repository_list_page.dart';
+import 'package:flutter_github_client/ui/repository_list/repository_list_query.graphql.dart';
+import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_query.graphql.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

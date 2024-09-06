@@ -1,5 +1,5 @@
-import 'package:flutter_github_client/domain_model.dart';
-import 'package:flutter_github_client/util.dart';
+import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/foundation/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'data_model.g.dart';

@@ -1,9 +1,9 @@
+import '../repository_list/repository_list_query.graphql.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'repository_list_query.graphql.dart';
 
 class Query$StarredRepositoryList {
   Query$StarredRepositoryList({

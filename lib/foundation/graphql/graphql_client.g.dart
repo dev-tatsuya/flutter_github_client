@@ -1,24 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'graphql.dart';
+part of 'graphql_client.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$graphQLHash() => r'50d7a6cab8ccd2c5c41e34821c21b36deab9ca2f';
+String _$graphQLClientHash() => r'37a7c2dcb11a2cab18f8a83b882562ae41de25f0';
 
-/// See also [graphQL].
-@ProviderFor(graphQL)
-final graphQLProvider = Provider<GraphQLClient>.internal(
-  graphQL,
-  name: r'graphQLProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$graphQLHash,
+/// See also [graphQLClient].
+@ProviderFor(graphQLClient)
+final graphQLClientProvider = Provider<GraphQLClient>.internal(
+  graphQLClient,
+  name: r'graphQLClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$graphQLClientHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
-typedef GraphQLRef = ProviderRef<GraphQLClient>;
+typedef GraphQLClientRef = ProviderRef<GraphQLClient>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

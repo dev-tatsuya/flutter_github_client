@@ -1,6 +1,6 @@
-import 'package:flutter_github_client/domain_model.dart';
-import 'package:flutter_github_client/graphql/repository_list_query.graphql.dart';
-import 'package:flutter_github_client/util.dart';
+import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/foundation/util.dart';
+import 'package:flutter_github_client/ui/repository_list/repository_list_query.graphql.dart';
 
 extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
   Repository toDomain() {

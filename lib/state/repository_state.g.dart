@@ -6,7 +6,7 @@ part of 'repository_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$starHash() => r'da0fef1d9ca2fbe0bb73fe84fac66fc284268043';
+String _$starHash() => r'3920894b46ca3570cb3d64f6068d0a5b0def04f1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -63,7 +63,7 @@ class StarFamily extends Family<AsyncValue<void>> {
   }
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>{
-    restProvider,
+    restClientProvider,
     repositoryListProvider,
     repositoryDetailProvider,
     starredRepositoryListProvider
@@ -74,8 +74,8 @@ class StarFamily extends Family<AsyncValue<void>> {
 
   static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
       <ProviderOrFamily>{
-    restProvider,
-    ...?restProvider.allTransitiveDependencies,
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies,
     repositoryListProvider,
     ...?repositoryListProvider.allTransitiveDependencies,
     repositoryDetailProvider,
@@ -200,7 +200,7 @@ class _StarProviderElement extends AutoDisposeFutureProviderElement<void>
   bool get viewerHasStarred => (origin as StarProvider).viewerHasStarred;
 }
 
-String _$repositoryListHash() => r'827b8e290a61ea207b0534775b1ba591aa7effb1';
+String _$repositoryListHash() => r'4811affcc7907ca253fadd0f06ed26d73e85d437';
 
 /// See also [RepositoryList].
 @ProviderFor(RepositoryList)
@@ -211,15 +211,15 @@ final repositoryListProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$repositoryListHash,
-  dependencies: <ProviderOrFamily>[restProvider],
+  dependencies: <ProviderOrFamily>[restClientProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
-    restProvider,
-    ...?restProvider.allTransitiveDependencies
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies
   },
 );
 
 typedef _$RepositoryList = AsyncNotifier<List<Repository>>;
-String _$repositoryDetailHash() => r'59ef9013362635b1c9612a8af8de26277dee66aa';
+String _$repositoryDetailHash() => r'c8e44a2dfccb7cfcb4e8c75a702975fbaa52c366';
 
 abstract class _$RepositoryDetail extends BuildlessAsyncNotifier<Repository> {
   late final String owner;
@@ -262,7 +262,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
   }
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
-    restProvider
+    restClientProvider
   ];
 
   @override
@@ -270,8 +270,8 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 
   static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
       <ProviderOrFamily>{
-    restProvider,
-    ...?restProvider.allTransitiveDependencies
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies
   };
 
   @override
@@ -392,7 +392,7 @@ class _RepositoryDetailProviderElement
 }
 
 String _$starredRepositoryListHash() =>
-    r'b71b922b57c6dee99ce61f72897563913d8e75ba';
+    r'1d533cc0c928f4e10174e99c8caf07b0dfb903bf';
 
 /// See also [StarredRepositoryList].
 @ProviderFor(StarredRepositoryList)
@@ -403,10 +403,10 @@ final starredRepositoryListProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$starredRepositoryListHash,
-  dependencies: <ProviderOrFamily>[restProvider],
+  dependencies: <ProviderOrFamily>[restClientProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
-    restProvider,
-    ...?restProvider.allTransitiveDependencies
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies
   },
 );
 
