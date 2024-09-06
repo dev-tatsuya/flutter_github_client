@@ -6,7 +6,7 @@ part of 'api_protocol_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiProtocolStateHash() => r'1dd0d5020db4cfa30fba25f0bb4d1603479c0852';
+String _$apiProtocolStateHash() => r'cf5a394801da2a548deaf2dbf6b50642f732d7d7';
 
 /// See also [ApiProtocolState].
 @ProviderFor(ApiProtocolState)
@@ -17,8 +17,13 @@ final apiProtocolStateProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$apiProtocolStateHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
+  dependencies: <ProviderOrFamily>[repoListProvider, starredRepoListProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    repoListProvider,
+    ...?repoListProvider.allTransitiveDependencies,
+    starredRepoListProvider,
+    ...?starredRepoListProvider.allTransitiveDependencies
+  },
 );
 
 typedef _$ApiProtocolState = Notifier<ApiProtocolType>;

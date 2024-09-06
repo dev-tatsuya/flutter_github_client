@@ -66,8 +66,6 @@ class RepoDetail extends _$RepoDetail {
         .catchError((_) => false);
     return data.copyWith(viewerHasStarred: starred);
   }
-
-  void sync() => ref.invalidateSelf();
 }
 
 @Riverpod(
@@ -82,13 +80,11 @@ class StarredRepoList extends _$StarredRepoList {
     final repoList = repoListData.map(Repository.fromRest).toList();
     return repoList.map((e) => e.copyWith(viewerHasStarred: true)).toList();
   }
-
-  void sync() => ref.invalidateSelf();
 }
 
 @Riverpod(
   keepAlive: false,
-  dependencies: [rest],
+  dependencies: [rest, RepoList, RepoDetail, StarredRepoList],
 )
 Future<void> star(
   StarRef ref, {
@@ -105,6 +101,7 @@ Future<void> star(
   ref
       .read(repoListProvider.notifier)
       .sync(owner: owner, repo: repo, viewerHasStarred: viewerHasStarred);
-  ref.read(repoDetailProvider(owner: owner, repo: repo).notifier).sync();
-  ref.read(starredRepoListProvider.notifier).sync();
+  ref
+    ..invalidate(starredRepoListProvider)
+    ..invalidate(repoDetailProvider(owner: owner, repo: repo));
 }

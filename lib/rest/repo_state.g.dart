@@ -6,7 +6,7 @@ part of 'repo_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$starHash() => r'119e878b948f3be8bec342aadf2a533356b6f3df';
+String _$starHash() => r'2644527e5e4c2842b969d27e91c74beba10c27d5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -62,9 +62,12 @@ class StarFamily extends Family<AsyncValue<void>> {
     );
   }
 
-  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
-    restProvider
-  ];
+  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>{
+    restProvider,
+    repoListProvider,
+    repoDetailProvider,
+    starredRepoListProvider
+  };
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
@@ -72,7 +75,13 @@ class StarFamily extends Family<AsyncValue<void>> {
   static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
       <ProviderOrFamily>{
     restProvider,
-    ...?restProvider.allTransitiveDependencies
+    ...?restProvider.allTransitiveDependencies,
+    repoListProvider,
+    ...?repoListProvider.allTransitiveDependencies,
+    repoDetailProvider,
+    ...?repoDetailProvider.allTransitiveDependencies,
+    starredRepoListProvider,
+    ...?starredRepoListProvider.allTransitiveDependencies
   };
 
   @override
@@ -209,7 +218,7 @@ final repoListProvider =
 );
 
 typedef _$RepoList = AsyncNotifier<List<Repository>>;
-String _$repoDetailHash() => r'9fc6a35cf52527fb4eb24e23c945aa78cfe7463f';
+String _$repoDetailHash() => r'4e27e8b309a76ed1b5208a29d6e45d2c41900ca2';
 
 abstract class _$RepoDetail extends BuildlessAsyncNotifier<Repository> {
   late final String owner;
@@ -380,7 +389,7 @@ class _RepoDetailProviderElement
   String get repo => (origin as RepoDetailProvider).repo;
 }
 
-String _$starredRepoListHash() => r'87f84077512fb969eda0be8cb9a81c9ebe5aaf89';
+String _$starredRepoListHash() => r'75e18739f05aa1755463353d4c2fb37d06f61b24';
 
 /// See also [StarredRepoList].
 @ProviderFor(StarredRepoList)

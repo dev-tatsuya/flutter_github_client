@@ -1,3 +1,4 @@
+import 'package:flutter_github_client/rest/repo_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'api_protocol_state.g.dart';
@@ -20,12 +21,19 @@ enum ApiProtocolType {
 
 @Riverpod(
   keepAlive: true,
-  dependencies: [],
+  dependencies: [RepoList, StarredRepoList],
 )
 class ApiProtocolState extends _$ApiProtocolState {
   @override
   ApiProtocolType build() => ApiProtocolType.rest;
 
-  // ignore: use_setters_to_change_properties
-  void update(ApiProtocolType type) => state = type;
+  void update(ApiProtocolType type) {
+    state = type;
+
+    if (type == ApiProtocolType.rest) {
+      ref
+        ..invalidate(starredRepoListProvider)
+        ..invalidate(repoListProvider);
+    }
+  }
 }
