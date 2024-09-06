@@ -158,7 +158,7 @@ class RepoListItem extends HookConsumerWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        e.name,
+                        e,
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                     ),

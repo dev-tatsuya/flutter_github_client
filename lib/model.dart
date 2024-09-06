@@ -30,7 +30,7 @@ class Repository {
       starredCount: item.stargazerCount,
       topics: item.repositoryTopics.edges
               ?.where((e) => e != null && e.node != null)
-              .map((e) => Topic.fromGraphQL(e!.node!.topic))
+              .map((e) => e!.node!.topic.name)
               .toList() ??
           [],
       language: language,
@@ -40,7 +40,7 @@ class Repository {
   factory Repository.fromRest(RepoData item) {
     Language? language;
     if (item.language case final String item) {
-      language = Language(id: item, name: item, color: item);
+      language = Language(name: item, color: item);
     }
 
     final (owner, name) = _separate(item.fullName);
@@ -52,7 +52,7 @@ class Repository {
       description: item.description,
       viewerHasStarred: false,
       starredCount: item.stargazersCount,
-      topics: item.topics.take(5).map((e) => Topic(id: e, name: e)).toList(),
+      topics: item.topics.take(5).toList(),
       language: language,
     );
   }
@@ -63,7 +63,7 @@ class Repository {
   final String? description;
   final bool viewerHasStarred;
   final int starredCount;
-  final List<Topic> topics;
+  final List<String> topics;
   final Language? language;
 
   String get nameWithOwner => '$ownerName/$name';
@@ -75,7 +75,7 @@ class Repository {
     String? description,
     bool? viewerHasStarred,
     int? starredCount,
-    List<Topic>? topics,
+    List<String>? topics,
     Language? language,
   }) {
     return Repository(
@@ -91,42 +91,21 @@ class Repository {
   }
 }
 
-class Topic {
-  Topic({
-    required this.id,
-    required this.name,
-  });
-
-  factory Topic.fromGraphQL(Fragment$TopicItem item) {
-    return Topic(id: item.id, name: item.name);
-  }
-
-  final String id;
-  final String name;
-
-  Topic copyWith({String? id, String? name}) {
-    return Topic(id: id ?? this.id, name: name ?? this.name);
-  }
-}
-
 class Language {
   Language({
-    required this.id,
     required this.name,
     required this.color,
   });
 
   factory Language.fromGraphQL(Fragment$LanguageItem item) {
-    return Language(id: item.id, name: item.name, color: item.color);
+    return Language(name: item.name, color: item.color);
   }
 
-  final String id;
   final String name;
   final String? color;
 
-  Language copyWith({String? id, String? name, String? color}) {
+  Language copyWith({String? name, String? color}) {
     return Language(
-      id: id ?? this.id,
       name: name ?? this.name,
       color: color ?? this.color,
     );
