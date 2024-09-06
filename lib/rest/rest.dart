@@ -30,6 +30,7 @@ abstract class RestClient {
   @GET('/search/repositories')
   Future<RepoListData> getRepoList(
     @Query('q') String query,
+    @Query('per_page') int perPage,
   );
 
   @GET('/repos/{owner}/{repo}')

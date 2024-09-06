@@ -21,7 +21,7 @@ enum ApiProtocolType {
 
 @Riverpod(
   keepAlive: true,
-  dependencies: [RepoList, StarredRepoList],
+  dependencies: [RepoList, StarredRepoList, RepoDetail],
 )
 class ApiProtocolState extends _$ApiProtocolState {
   @override
@@ -33,6 +33,7 @@ class ApiProtocolState extends _$ApiProtocolState {
     if (type == ApiProtocolType.rest) {
       ref
         ..invalidate(starredRepoListProvider)
+        ..invalidate(repoDetailProvider)
         ..invalidate(repoListProvider);
     }
   }

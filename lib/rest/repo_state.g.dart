@@ -200,7 +200,7 @@ class _StarProviderElement extends AutoDisposeFutureProviderElement<void>
   bool get viewerHasStarred => (origin as StarProvider).viewerHasStarred;
 }
 
-String _$repoListHash() => r'2e32f314532cf74a5e83c0e86784a0b88cd0a423';
+String _$repoListHash() => r'91c4e0bba0349e31bf2ee620800de56d1800d85e';
 
 /// See also [RepoList].
 @ProviderFor(RepoList)

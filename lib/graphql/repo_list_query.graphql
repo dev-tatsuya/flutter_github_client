@@ -2,7 +2,7 @@ query RepoList {
   search(
     query: "flutter"
     type: REPOSITORY
-    first: 100
+    first: 10
   ) {
     edges {
       node {

@@ -12,7 +12,7 @@ class RepoList extends _$RepoList {
   @override
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
-    final repoListData = await client.getRepoList('dart');
+    final repoListData = await client.getRepoList('dart', 10);
     final repoList = repoListData.items.map(Repository.fromRest).toList();
 
     final result = <Repository>[];

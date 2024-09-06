@@ -1516,7 +1516,7 @@ const documentNodeQueryRepoList = DocumentNode(definitions: [
           ),
           ArgumentNode(
             name: NameNode(value: 'first'),
-            value: IntValueNode(value: '100'),
+            value: IntValueNode(value: '10'),
           ),
         ],
         directives: [],
