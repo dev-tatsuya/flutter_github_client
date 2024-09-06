@@ -214,7 +214,7 @@ class RepoListItem extends HookConsumerWidget {
     return InkWell(
       onTap: () {
         context.router.push(
-          RepoDetailRoute(owner: item.ownerName, name: item.name),
+          RepoDetailRoute(owner: item.owner, name: item.name),
         );
       },
       child: child,
@@ -244,7 +244,7 @@ class StarButton extends HookConsumerWidget {
             ref.read(
               starProvider(
                 viewerHasStarred: item.viewerHasStarred,
-                owner: item.ownerName,
+                owner: item.owner,
                 repo: item.name,
               ).future,
             );

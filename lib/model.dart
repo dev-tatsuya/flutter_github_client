@@ -5,7 +5,7 @@ class Repository {
   Repository({
     required this.id,
     required this.name,
-    required this.ownerName,
+    required this.owner,
     required this.description,
     required this.viewerHasStarred,
     required this.starredCount,
@@ -24,7 +24,7 @@ class Repository {
     return Repository(
       id: item.id,
       name: name,
-      ownerName: owner,
+      owner: owner,
       description: item.description,
       viewerHasStarred: item.viewerHasStarred,
       starredCount: item.stargazerCount,
@@ -39,8 +39,11 @@ class Repository {
 
   factory Repository.fromRest(RepoData item) {
     Language? language;
-    if (item.language case final String item) {
-      language = Language(name: item, color: item);
+    if (item.language case final String languageName) {
+      language = Language(
+        name: languageName,
+        color: _toHexColorCode(languageName),
+      );
     }
 
     final (owner, name) = _separate(item.fullName);
@@ -48,7 +51,7 @@ class Repository {
     return Repository(
       id: item.nodeId,
       name: name,
-      ownerName: owner,
+      owner: owner,
       description: item.description,
       viewerHasStarred: false,
       starredCount: item.stargazersCount,
@@ -59,19 +62,19 @@ class Repository {
 
   final String id;
   final String name;
-  final String ownerName;
+  final String owner;
   final String? description;
   final bool viewerHasStarred;
   final int starredCount;
   final List<String> topics;
   final Language? language;
 
-  String get nameWithOwner => '$ownerName/$name';
+  String get nameWithOwner => '$owner/$name';
 
   Repository copyWith({
     String? id,
     String? name,
-    String? ownerName,
+    String? owner,
     String? description,
     bool? viewerHasStarred,
     int? starredCount,
@@ -81,7 +84,7 @@ class Repository {
     return Repository(
       id: id ?? this.id,
       name: name ?? this.name,
-      ownerName: ownerName ?? this.ownerName,
+      owner: owner ?? this.owner,
       description: description ?? this.description,
       viewerHasStarred: viewerHasStarred ?? this.viewerHasStarred,
       starredCount: starredCount ?? this.starredCount,
@@ -116,3 +119,16 @@ class Language {
   final list = nameWithOwner.split('/');
   return (list[0], list[1]);
 }
+
+String? _toHexColorCode(String languageName) {
+  return _languageColorPalette[languageName];
+}
+
+// Extract from https://github.com/ozh/github-colors/blob/master/colors.json
+const _languageColorPalette = <String, String>{
+  'Dart': '#00B4AB',
+  'C++': '#f34b7d',
+  'Python': '#3572A5',
+  'Java': '#b07219',
+  'Fortran': '#4d41b1',
+};

@@ -18,7 +18,7 @@ class RepoList extends _$RepoList {
     final result = <Repository>[];
     for (final repo in repoList) {
       final starred = await client
-          .viewerHasStarred(repo.ownerName, repo.name)
+          .viewerHasStarred(repo.owner, repo.name)
           .then((_) => true)
           .catchError((_) => false);
       final item = repo.copyWith(viewerHasStarred: starred);
@@ -37,7 +37,7 @@ class RepoList extends _$RepoList {
     if (cachedData == null) return;
 
     final result = cachedData.map((e) {
-      if (e.ownerName == owner && e.name == repo) {
+      if (e.owner == owner && e.name == repo) {
         return e.copyWith(viewerHasStarred: !viewerHasStarred);
       }
       return e;
