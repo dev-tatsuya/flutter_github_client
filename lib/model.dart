@@ -67,6 +67,28 @@ class Repository {
   final Language? language;
 
   String get nameWithOwner => '$ownerName/$name';
+
+  Repository copyWith({
+    String? id,
+    String? name,
+    String? ownerName,
+    String? description,
+    bool? viewerHasStarred,
+    int? starredCount,
+    List<Topic>? topics,
+    Language? language,
+  }) {
+    return Repository(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      ownerName: ownerName ?? this.ownerName,
+      description: description ?? this.description,
+      viewerHasStarred: viewerHasStarred ?? this.viewerHasStarred,
+      starredCount: starredCount ?? this.starredCount,
+      topics: topics ?? this.topics,
+      language: language ?? this.language,
+    );
+  }
 }
 
 class Topic {
@@ -81,6 +103,10 @@ class Topic {
 
   final String id;
   final String name;
+
+  Topic copyWith({String? id, String? name}) {
+    return Topic(id: id ?? this.id, name: name ?? this.name);
+  }
 }
 
 class Language {
@@ -97,6 +123,14 @@ class Language {
   final String id;
   final String name;
   final String? color;
+
+  Language copyWith({String? id, String? name, String? color}) {
+    return Language(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      color: color ?? this.color,
+    );
+  }
 }
 
 (String, String) _separate(String nameWithOwner) {

@@ -13,10 +13,37 @@ class RepoList extends _$RepoList {
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
     final repoListData = await client.getRepoList('dart');
-    // for (final repo in repoListData.items) {
-    //   client.viewerHasStarred(repo., repo);
-    // }
-    return repoListData.items.map(Repository.fromRest).toList();
+    final repoList = repoListData.items.map(Repository.fromRest).toList();
+
+    final result = <Repository>[];
+    for (final repo in repoList) {
+      final starred = await client
+          .viewerHasStarred(repo.ownerName, repo.name)
+          .then((_) => true)
+          .catchError((_) => false);
+      final item = repo.copyWith(viewerHasStarred: starred);
+      result.add(item);
+    }
+
+    return result;
+  }
+
+  void sync({
+    required String owner,
+    required String repo,
+    required bool viewerHasStarred,
+  }) {
+    final cachedData = state.value;
+    if (cachedData == null) return;
+
+    final result = cachedData.map((e) {
+      if (e.ownerName == owner && e.name == repo) {
+        return e.copyWith(viewerHasStarred: !viewerHasStarred);
+      }
+      return e;
+    }).toList();
+
+    state = AsyncData(result);
   }
 }
 
@@ -32,8 +59,15 @@ class RepoDetail extends _$RepoDetail {
   }) async {
     final client = ref.watch(restProvider);
     final repoData = await client.getRepoDetail(owner, repo);
-    return Repository.fromRest(repoData);
+    final data = Repository.fromRest(repoData);
+    final starred = await client
+        .viewerHasStarred(owner, repo)
+        .then((_) => true)
+        .catchError((_) => false);
+    return data.copyWith(viewerHasStarred: starred);
   }
+
+  void sync() => ref.invalidateSelf();
 }
 
 @Riverpod(
@@ -45,8 +79,11 @@ class StarredRepoList extends _$StarredRepoList {
   Future<List<Repository>> build() async {
     final client = ref.watch(restProvider);
     final repoListData = await client.getStarredRepoList('asc');
-    return repoListData.map(Repository.fromRest).toList();
+    final repoList = repoListData.map(Repository.fromRest).toList();
+    return repoList.map((e) => e.copyWith(viewerHasStarred: true)).toList();
   }
+
+  void sync() => ref.invalidateSelf();
 }
 
 @Riverpod(
@@ -65,9 +102,9 @@ Future<void> star(
     await ref.read(restProvider).star(owner, repo);
   }
 
-  // todo: 更新されてない？
   ref
-    ..invalidate(repoListProvider)
-    ..invalidate(repoDetailProvider)
-    ..invalidate(starredRepoListProvider);
+      .read(repoListProvider.notifier)
+      .sync(owner: owner, repo: repo, viewerHasStarred: viewerHasStarred);
+  ref.read(repoDetailProvider(owner: owner, repo: repo).notifier).sync();
+  ref.read(starredRepoListProvider.notifier).sync();
 }

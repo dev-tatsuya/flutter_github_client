@@ -6,7 +6,7 @@ part of 'api_protocol_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiProtocolStateHash() => r'1b26bba5a8cbecc28abda86eb7a0a1b250cdb5fe';
+String _$apiProtocolStateHash() => r'1dd0d5020db4cfa30fba25f0bb4d1603479c0852';
 
 /// See also [ApiProtocolState].
 @ProviderFor(ApiProtocolState)

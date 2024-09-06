@@ -24,7 +24,7 @@ enum ApiProtocolType {
 )
 class ApiProtocolState extends _$ApiProtocolState {
   @override
-  ApiProtocolType build() => ApiProtocolType.graphql;
+  ApiProtocolType build() => ApiProtocolType.rest;
 
   // ignore: use_setters_to_change_properties
   void update(ApiProtocolType type) => state = type;
