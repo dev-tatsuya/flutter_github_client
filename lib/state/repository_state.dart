@@ -50,72 +50,31 @@ class RepositoryList extends _$RepositoryList {
   keepAlive: true,
   dependencies: [restClient],
 )
-class RepositoryDetail extends _$RepositoryDetail {
-  @override
-  Future<Repository> build({
-    required String owner,
-    required String repositoryName,
-  }) async {
-    final client = ref.watch(restClientProvider);
-    final data = await client.getRepositoryDetail(owner, repositoryName);
-    final repository = data.toDomain();
-    final starred = await client
-        .viewerHasStarred(owner, repositoryName)
-        .then((_) => true)
-        .catchError((_) => false);
-    return repository.copyWith(viewerHasStarred: starred);
-  }
+Future<Repository> repositoryDetail(
+  RepositoryDetailRef ref, {
+  required String owner,
+  required String repositoryName,
+}) async {
+  final client = ref.watch(restClientProvider);
+  final data = await client.getRepositoryDetail(owner, repositoryName);
+  final repository = data.toDomain();
+  final starred = await client
+      .viewerHasStarred(owner, repositoryName)
+      .then((_) => true)
+      .catchError((_) => false);
+  return repository.copyWith(viewerHasStarred: starred);
 }
 
 @Riverpod(
   keepAlive: false,
   dependencies: [restClient],
 )
-class StarredRepositoryList extends _$StarredRepositoryList {
-  @override
-  Future<List<Repository>> build() async {
-    final client = ref.watch(restClientProvider);
-    final listData = await client.getStarredRepositoryList('asc');
-    return listData
-        .map((e) => e.toDomain().copyWith(viewerHasStarred: true))
-        .toList();
-  }
-}
-
-@Riverpod(
-  keepAlive: false,
-  dependencies: [
-    restClient,
-    RepositoryList,
-    RepositoryDetail,
-    StarredRepositoryList,
-  ],
-)
-Future<void> star(
-  StarRef ref, {
-  required String owner,
-  required String repositoryName,
-  required bool viewerHasStarred,
-}) async {
-  if (viewerHasStarred) {
-    await ref.read(restClientProvider).unstar(owner, repositoryName);
-  } else {
-    await ref.read(restClientProvider).star(owner, repositoryName);
-  }
-
-  // RepositoryList の取得が N+1 でパフォーマンスが悪いので
-  // provider を invalidate せずキャッシュを同期している
-  ref.read(repositoryListProvider.notifier).syncCache(
-        owner: owner,
-        name: repositoryName,
-        viewerHasStarred: viewerHasStarred,
-      );
-  ref
-    ..invalidate(starredRepositoryListProvider)
-    ..invalidate(
-      repositoryDetailProvider(
-        owner: owner,
-        repositoryName: repositoryName,
-      ),
-    );
+Future<List<Repository>> starredRepositoryList(
+  StarredRepositoryListRef ref,
+) async {
+  final client = ref.watch(restClientProvider);
+  final listData = await client.getStarredRepositoryList('asc');
+  return listData
+      .map((e) => e.toDomain().copyWith(viewerHasStarred: true))
+      .toList();
 }

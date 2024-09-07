@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/core/domain_model.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/schema.docs.graphql.dart';
+import 'package:flutter_github_client/foundation/rest/rest_client.dart';
 import 'package:flutter_github_client/state/api_protocol_state.dart';
 import 'package:flutter_github_client/state/repository_state.dart';
 import 'package:flutter_github_client/ui/component/star_button.graphql.dart';
@@ -17,46 +18,33 @@ class StarButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final apiProtocol = ref.watch(apiProtocolStateProvider);
-    final starGraphQL = _useStar();
-
-    final onPressed = useCallback(
-      () {
-        switch (apiProtocol) {
-          case ApiProtocolType.graphql:
-            starGraphQL(
-              viewerHasStarred: repository.viewerHasStarred,
-              id: repository.id,
-            );
-          case ApiProtocolType.rest:
-            ref.read(
-              starProvider(
-                viewerHasStarred: repository.viewerHasStarred,
-                owner: repository.owner,
-                repositoryName: repository.name,
-              ).future,
-            );
-        }
-      },
-      [apiProtocol, repository],
-    );
+    final star = _useStar();
 
     return repository.viewerHasStarred
-        ? OutlinedButton(onPressed: onPressed, child: const Text('Unstar'))
-        : FilledButton(onPressed: onPressed, child: const Text('Star'));
+        ? OutlinedButton(
+            onPressed: () => star(repository: repository),
+            child: const Text('Unstar'),
+          )
+        : FilledButton(
+            onPressed: () => star(repository: repository),
+            child: const Text('Star'),
+          );
   }
 }
 
 void Function({
-  required bool viewerHasStarred,
-  required String id,
+  required Repository repository,
 }) _useStar() {
-  final client = useGraphQLClient();
+  final ref = useContext() as WidgetRef;
+  final apiProtocol = ref.watch(apiProtocolStateProvider);
+
+  final graphQLClient = useGraphQLClient();
+  final restClient = ref.read(restClientProvider);
 
   final star = useMutation$Star(
     WidgetOptions$Mutation$Star(
       update: (_, result) {
-        final cachedQuery = client.readQuery$StarredRepositoryList();
+        final cachedQuery = graphQLClient.readQuery$StarredRepositoryList();
         final cachedList = cachedQuery
                 ?.viewer.starredRepositories.edges?.nonNulls
                 .map((e) => e.node)
@@ -66,7 +54,7 @@ void Function({
         if (result?.parsedData?.addStar?.starrable
             case final Fragment$RepositoryData data) {
           cachedList.add(data);
-          client.writeQuery$StarredRepositoryList(
+          graphQLClient.writeQuery$StarredRepositoryList(
             data: cachedQuery.copyWith(
               viewer: cachedQuery.viewer.copyWith(
                 starredRepositories:
@@ -92,14 +80,14 @@ void Function({
   final unstar = useMutation$Unstar(
     WidgetOptions$Mutation$Unstar(
       update: (_, result) {
-        final cachedQuery = client.readQuery$StarredRepositoryList();
+        final cachedQuery = graphQLClient.readQuery$StarredRepositoryList();
         if (cachedQuery == null) return;
         final cachedEdges = cachedQuery.viewer.starredRepositories.edges;
         if (result?.parsedData?.removeStar?.starrable
             case final Fragment$RepositoryData data) {
           final updatedEdges =
               cachedEdges?.where((e) => e?.node.id != data.id).toList();
-          client.writeQuery$StarredRepositoryList(
+          graphQLClient.writeQuery$StarredRepositoryList(
             data: cachedQuery.copyWith(
               viewer: cachedQuery.viewer.copyWith(
                 starredRepositories:
@@ -115,21 +103,47 @@ void Function({
   );
 
   return useCallback(({
-    required bool viewerHasStarred,
-    required String id,
-  }) {
-    if (viewerHasStarred) {
-      unstar.runMutation(
-        Variables$Mutation$Unstar(
-          input: Input$RemoveStarInput(starrableId: id),
-        ),
-      );
-    } else {
-      star.runMutation(
-        Variables$Mutation$Star(
-          input: Input$AddStarInput(starrableId: id),
-        ),
-      );
+    required Repository repository,
+  }) async {
+    switch (apiProtocol) {
+      case ApiProtocolType.graphql:
+        if (repository.viewerHasStarred) {
+          unstar.runMutation(
+            Variables$Mutation$Unstar(
+              input: Input$RemoveStarInput(starrableId: repository.id),
+            ),
+          );
+        } else {
+          star.runMutation(
+            Variables$Mutation$Star(
+              input: Input$AddStarInput(starrableId: repository.id),
+            ),
+          );
+        }
+      case ApiProtocolType.rest:
+        if (repository.viewerHasStarred) {
+          await restClient.unstar(repository.owner, repository.name);
+        } else {
+          await restClient.star(repository.owner, repository.name);
+        }
+
+        // RepositoryList の取得が N+1 でパフォーマンスが悪いので
+        // provider を invalidate せずキャッシュを同期している
+        ref.read(repositoryListProvider.notifier).syncCache(
+              owner: repository.owner,
+              name: repository.name,
+              viewerHasStarred: repository.viewerHasStarred,
+            );
+        ref
+          ..invalidate(starredRepositoryListProvider)
+          ..invalidate(
+            repositoryDetailProvider(
+              owner: repository.owner,
+              repositoryName: repository.name,
+            ),
+          );
     }
-  });
+  }, [
+    apiProtocol,
+  ]);
 }
