@@ -60,7 +60,11 @@ String? _toHexColorCode(String languageName) {
   return _languageColorPalette[languageName];
 }
 
-// Extract from https://github.com/ozh/github-colors/blob/master/colors.json
+/// 言語カラーコード対応表
+///
+/// GraphQL では Language の Color を取得することができたが、
+/// REST では Color を取得する方法が見当たらなかったので、静的な対応表を用意している。
+/// See also: https://github.com/ozh/github-colors/blob/master/colors.json
 const _languageColorPalette = <String, String>{
   'Dart': '#00B4AB',
   'C++': '#f34b7d',

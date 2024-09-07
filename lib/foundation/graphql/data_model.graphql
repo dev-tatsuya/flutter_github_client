@@ -1,3 +1,7 @@
+# Fragment Colocation を導入する場合には、一般的にこのファイルの配置場所は
+# ここで定義している Fragment を利用する Widget (RepositoryListItem) の近くを選択する。
+# しかし、今回その Widget の引数は複数のAPI通信プロトコル (REST, GraphQL) の
+# レスポンスのデータ型を吸収するオブジェクトにしたかったため、ここでは DTO 的な扱いとしている。
 fragment RepositoryData on Repository {
   id
   nameWithOwner

@@ -6,7 +6,7 @@ part of 'repository_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$starHash() => r'3920894b46ca3570cb3d64f6068d0a5b0def04f1';
+String _$starHash() => r'd34a6509b42a8503a08c8e5e8dfea475256a6496';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -200,12 +200,12 @@ class _StarProviderElement extends AutoDisposeFutureProviderElement<void>
   bool get viewerHasStarred => (origin as StarProvider).viewerHasStarred;
 }
 
-String _$repositoryListHash() => r'4811affcc7907ca253fadd0f06ed26d73e85d437';
+String _$repositoryListHash() => r'512d909f693213fcbe58c5c303552b3e2c130735';
 
 /// See also [RepositoryList].
 @ProviderFor(RepositoryList)
 final repositoryListProvider =
-    AsyncNotifierProvider<RepositoryList, List<Repository>>.internal(
+    AutoDisposeAsyncNotifierProvider<RepositoryList, List<Repository>>.internal(
   RepositoryList.new,
   name: r'repositoryListProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -218,7 +218,7 @@ final repositoryListProvider =
   },
 );
 
-typedef _$RepositoryList = AsyncNotifier<List<Repository>>;
+typedef _$RepositoryList = AutoDisposeAsyncNotifier<List<Repository>>;
 String _$repositoryDetailHash() => r'c8e44a2dfccb7cfcb4e8c75a702975fbaa52c366';
 
 abstract class _$RepositoryDetail extends BuildlessAsyncNotifier<Repository> {
@@ -392,12 +392,12 @@ class _RepositoryDetailProviderElement
 }
 
 String _$starredRepositoryListHash() =>
-    r'1d533cc0c928f4e10174e99c8caf07b0dfb903bf';
+    r'55c78b7cf642ef13f75715cb87db4c67824ec1bd';
 
 /// See also [StarredRepositoryList].
 @ProviderFor(StarredRepositoryList)
-final starredRepositoryListProvider =
-    AsyncNotifierProvider<StarredRepositoryList, List<Repository>>.internal(
+final starredRepositoryListProvider = AutoDisposeAsyncNotifierProvider<
+    StarredRepositoryList, List<Repository>>.internal(
   StarredRepositoryList.new,
   name: r'starredRepositoryListProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -410,6 +410,6 @@ final starredRepositoryListProvider =
   },
 );
 
-typedef _$StarredRepositoryList = AsyncNotifier<List<Repository>>;
+typedef _$StarredRepositoryList = AutoDisposeAsyncNotifier<List<Repository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

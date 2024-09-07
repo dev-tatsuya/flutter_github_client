@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'repository_state.g.dart';
 
 @Riverpod(
-  keepAlive: true,
+  keepAlive: false,
   dependencies: [restClient],
 )
 class RepositoryList extends _$RepositoryList {
@@ -28,22 +28,21 @@ class RepositoryList extends _$RepositoryList {
     return result;
   }
 
-  void sync({
+  void syncCache({
     required String owner,
     required String name,
     required bool viewerHasStarred,
   }) {
-    final cachedData = state.value;
-    if (cachedData == null) return;
+    final cachedState = state.value;
+    if (cachedState == null) return;
 
-    final result = cachedData.map((e) {
-      if (e.owner == owner && e.name == name) {
-        return e.copyWith(viewerHasStarred: !viewerHasStarred);
-      }
-      return e;
+    final updatedState = cachedState.map((e) {
+      return (e.owner == owner && e.name == name)
+          ? e.copyWith(viewerHasStarred: !viewerHasStarred)
+          : e;
     }).toList();
 
-    state = AsyncData(result);
+    state = AsyncData(updatedState);
   }
 }
 
@@ -69,7 +68,7 @@ class RepositoryDetail extends _$RepositoryDetail {
 }
 
 @Riverpod(
-  keepAlive: true,
+  keepAlive: false,
   dependencies: [restClient],
 )
 class StarredRepositoryList extends _$StarredRepositoryList {
@@ -104,7 +103,9 @@ Future<void> star(
     await ref.read(restClientProvider).star(owner, repositoryName);
   }
 
-  ref.read(repositoryListProvider.notifier).sync(
+  // RepositoryList の取得が N+1 でパフォーマンスが悪いので
+  // provider を invalidate せずキャッシュを同期している
+  ref.read(repositoryListProvider.notifier).syncCache(
         owner: owner,
         name: repositoryName,
         viewerHasStarred: viewerHasStarred,

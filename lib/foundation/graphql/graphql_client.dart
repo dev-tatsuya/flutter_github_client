@@ -9,21 +9,14 @@ part 'graphql_client.g.dart';
   dependencies: [],
 )
 GraphQLClient graphQLClient(GraphQLClientRef ref) {
-  final authLink = AuthLink(
-    getToken: () => 'Bearer $pat',
-  );
-
-  final httpLink = HttpLink(
-    'https://api.github.com/graphql',
-    defaultHeaders: {
-      'X-Github-Next-Global-ID': '1',
-    },
-  );
-
-  final link = Link.from([authLink, httpLink]);
-
   return GraphQLClient(
-    link: link,
+    link: Link.from([
+      AuthLink(getToken: () => 'Bearer $pat'),
+      HttpLink(
+        'https://api.github.com/graphql',
+        defaultHeaders: {'X-Github-Next-Global-ID': '1'},
+      ),
+    ]),
     cache: GraphQLCache(
       store: InMemoryStore(),
     ),
