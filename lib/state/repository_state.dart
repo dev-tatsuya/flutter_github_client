@@ -6,7 +6,7 @@ part 'repository_state.g.dart';
 
 @Riverpod(
   keepAlive: false,
-  dependencies: [restClient],
+  dependencies: [restClient, starredRepositoryList],
 )
 class RepositoryList extends _$RepositoryList {
   @override
@@ -14,55 +14,29 @@ class RepositoryList extends _$RepositoryList {
     final client = ref.watch(restClientProvider);
     final listData = await client.getRepositoryList('dart', 10);
     final repositoryList = listData.items.map((e) => e.toDomain()).toList();
-
-    final result = <Repository>[];
-    for (final repository in repositoryList) {
-      final starred = await client
-          .viewerHasStarred(repository.owner, repository.name)
-          .then((_) => true)
-          .catchError((_) => false);
-      final item = repository.copyWith(viewerHasStarred: starred);
-      result.add(item);
-    }
-
-    return result;
-  }
-
-  void syncCache({
-    required String owner,
-    required String name,
-    required bool viewerHasStarred,
-  }) {
-    final cachedState = state.value;
-    if (cachedState == null) return;
-
-    final updatedState = cachedState.map((e) {
-      return (e.owner == owner && e.name == name)
-          ? e.copyWith(viewerHasStarred: !viewerHasStarred)
+    final starredRepositoryList =
+        await ref.watch(starredRepositoryListProvider.future);
+    final starredIdList = starredRepositoryList.map((e) => e.id).toList();
+    return repositoryList.map((e) {
+      return starredIdList.contains(e.id)
+          ? e.copyWith(viewerHasStarred: true)
           : e;
     }).toList();
-
-    state = AsyncData(updatedState);
   }
 }
 
 @Riverpod(
-  keepAlive: true,
-  dependencies: [restClient],
+  keepAlive: false,
+  dependencies: [RepositoryList],
 )
 Future<Repository> repositoryDetail(
   RepositoryDetailRef ref, {
   required String owner,
   required String repositoryName,
 }) async {
-  final client = ref.watch(restClientProvider);
-  final data = await client.getRepositoryDetail(owner, repositoryName);
-  final repository = data.toDomain();
-  final starred = await client
-      .viewerHasStarred(owner, repositoryName)
-      .then((_) => true)
-      .catchError((_) => false);
-  return repository.copyWith(viewerHasStarred: starred);
+  final repositoryList = await ref.watch(repositoryListProvider.future);
+  return repositoryList
+      .firstWhere((e) => e.owner == owner && e.name == repositoryName);
 }
 
 @Riverpod(

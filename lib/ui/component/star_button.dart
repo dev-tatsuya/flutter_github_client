@@ -127,21 +127,7 @@ void Function({
           await restClient.star(repository.owner, repository.name);
         }
 
-        // RepositoryList の取得が N+1 でパフォーマンスが悪いので
-        // provider を invalidate せずキャッシュを同期している
-        ref.read(repositoryListProvider.notifier).syncCache(
-              owner: repository.owner,
-              name: repository.name,
-              viewerHasStarred: repository.viewerHasStarred,
-            );
-        ref
-          ..invalidate(starredRepositoryListProvider)
-          ..invalidate(
-            repositoryDetailProvider(
-              owner: repository.owner,
-              repositoryName: repository.name,
-            ),
-          );
+        ref.invalidate(starredRepositoryListProvider);
     }
   }, [
     apiProtocol,

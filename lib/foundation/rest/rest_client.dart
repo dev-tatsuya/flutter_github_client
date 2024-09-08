@@ -33,21 +33,9 @@ abstract class RestClient {
     @Query('per_page') int perPage,
   );
 
-  @GET('/repos/{owner}/{repo}')
-  Future<RepositoryData> getRepositoryDetail(
-    @Path() String owner,
-    @Path('repo') String name,
-  );
-
   @GET('/user/starred')
   Future<List<RepositoryData>> getStarredRepositoryList(
     @Query('direction') String direction,
-  );
-
-  @GET('/user/starred/{owner}/{repo}')
-  Future<void> viewerHasStarred(
-    @Path() String owner,
-    @Path('repo') String name,
   );
 
   @PUT('/user/starred/{owner}/{repo}')

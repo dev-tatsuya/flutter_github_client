@@ -6,7 +6,7 @@ part of 'repository_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryDetailHash() => r'0b69c76b4fd97df8c1bffa13d78cba36cc15f058';
+String _$repositoryDetailHash() => r'550334bbb13ca0d1d5da4b198cc99b6faf7c009b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -60,7 +60,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
   }
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
-    restClientProvider
+    repositoryListProvider
   ];
 
   @override
@@ -68,8 +68,8 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 
   static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
       <ProviderOrFamily>{
-    restClientProvider,
-    ...?restClientProvider.allTransitiveDependencies
+    repositoryListProvider,
+    ...?repositoryListProvider.allTransitiveDependencies
   };
 
   @override
@@ -81,7 +81,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 }
 
 /// See also [repositoryDetail].
-class RepositoryDetailProvider extends FutureProvider<Repository> {
+class RepositoryDetailProvider extends AutoDisposeFutureProvider<Repository> {
   /// See also [repositoryDetail].
   RepositoryDetailProvider({
     required String owner,
@@ -139,7 +139,7 @@ class RepositoryDetailProvider extends FutureProvider<Repository> {
   }
 
   @override
-  FutureProviderElement<Repository> createElement() {
+  AutoDisposeFutureProviderElement<Repository> createElement() {
     return _RepositoryDetailProviderElement(this);
   }
 
@@ -160,7 +160,7 @@ class RepositoryDetailProvider extends FutureProvider<Repository> {
   }
 }
 
-mixin RepositoryDetailRef on FutureProviderRef<Repository> {
+mixin RepositoryDetailRef on AutoDisposeFutureProviderRef<Repository> {
   /// The parameter `owner` of this provider.
   String get owner;
 
@@ -168,7 +168,8 @@ mixin RepositoryDetailRef on FutureProviderRef<Repository> {
   String get repositoryName;
 }
 
-class _RepositoryDetailProviderElement extends FutureProviderElement<Repository>
+class _RepositoryDetailProviderElement
+    extends AutoDisposeFutureProviderElement<Repository>
     with RepositoryDetailRef {
   _RepositoryDetailProviderElement(super.provider);
 
@@ -200,7 +201,7 @@ final starredRepositoryListProvider =
 
 typedef StarredRepositoryListRef
     = AutoDisposeFutureProviderRef<List<Repository>>;
-String _$repositoryListHash() => r'512d909f693213fcbe58c5c303552b3e2c130735';
+String _$repositoryListHash() => r'29b774af35b51711e4e6e1aa3bad97dd4c2d0915';
 
 /// See also [RepositoryList].
 @ProviderFor(RepositoryList)
@@ -211,10 +212,15 @@ final repositoryListProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$repositoryListHash,
-  dependencies: <ProviderOrFamily>[restClientProvider],
+  dependencies: <ProviderOrFamily>[
+    restClientProvider,
+    starredRepositoryListProvider
+  ],
   allTransitiveDependencies: <ProviderOrFamily>{
     restClientProvider,
-    ...?restClientProvider.allTransitiveDependencies
+    ...?restClientProvider.allTransitiveDependencies,
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies
   },
 );
 

@@ -51,7 +51,6 @@ class RepositoryListPage extends HookConsumerWidget {
 
         return RestContainer(
           asyncValue: asyncValue,
-          skipLoadingOnRefresh: false,
           builder: (repositoryList) {
             if (repositoryList.isEmpty) return null;
             return ListView.separated(
