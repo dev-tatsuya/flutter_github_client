@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-class GraphQLContainer<TParsed> extends StatelessWidget {
+class GraphQLContainer<TParsed, R> extends StatelessWidget {
   const GraphQLContainer({
     required this.result,
     required this.builder,
+    required this.converter,
     super.key,
   });
 
   final QueryResult<TParsed> result;
-  final Widget? Function(TParsed data) builder;
+  final Widget? Function(R data) builder;
+  final R Function(TParsed data) converter;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,8 @@ class GraphQLContainer<TParsed> extends StatelessWidget {
     } else if (data == null) {
       return empty;
     } else {
-      return builder(data) ?? empty;
+      final result = converter(data);
+      return builder(result) ?? empty;
     }
   }
 }

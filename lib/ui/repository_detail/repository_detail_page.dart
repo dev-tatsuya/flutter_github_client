@@ -27,7 +27,9 @@ class RepositoryDetailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
 
-    Widget builder(Repository repository) {
+    Widget? builder(Repository? repository) {
+      if (repository == null) return null;
+
       return Column(
         children: [
           RepositoryListItem(repository: repository, isUsedOnDetail: true),
@@ -49,12 +51,10 @@ class RepositoryDetailPage extends HookConsumerWidget {
           ),
         );
 
-        return GraphQLContainer(
+        return GraphQLContainer<Query$RepositoryDetail, Repository?>(
           result: query.result,
-          builder: (data) {
-            if (data.repository == null) return null;
-            return builder(data.repository!.toDomain());
-          },
+          converter: (data) => data.repository?.toDomain(),
+          builder: builder,
         );
       },
     );
