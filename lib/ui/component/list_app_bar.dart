@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/state/api_protocol_state.dart';
+import 'package:flutter_github_client/ui/state/api_protocol_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {

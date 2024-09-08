@@ -20,10 +20,7 @@ enum ApiProtocolType {
       };
 }
 
-@Riverpod(
-  keepAlive: true,
-  dependencies: [],
-)
+@Riverpod(keepAlive: true, dependencies: [])
 class ApiProtocolState extends _$ApiProtocolState {
   @override
   ApiProtocolType build() => ApiProtocolType.rest;

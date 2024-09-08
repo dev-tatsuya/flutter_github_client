@@ -1,36 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'repository_state.dart';
+part of 'repository_detail_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryListHash() => r'9c0a0c10fe56d40a51504f3cad8f13677a4aa706';
-
-/// See also [repositoryList].
-@ProviderFor(repositoryList)
-final repositoryListProvider =
-    AutoDisposeFutureProvider<List<Repository>>.internal(
-  repositoryList,
-  name: r'repositoryListProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$repositoryListHash,
-  dependencies: <ProviderOrFamily>[
-    restClientProvider,
-    starredRepositoryListProvider
-  ],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    restClientProvider,
-    ...?restClientProvider.allTransitiveDependencies,
-    starredRepositoryListProvider,
-    ...?starredRepositoryListProvider.allTransitiveDependencies
-  },
-);
-
-typedef RepositoryListRef = AutoDisposeFutureProviderRef<List<Repository>>;
-String _$repositoryDetailHash() => r'2a5a26a2972d65ff80049421230a48830f7600be';
+String _$repositoryDetailHash() => r'006fe7fd3a0d5c58c8c2c679bc9fecf3473d6512';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -203,27 +179,5 @@ class _RepositoryDetailProviderElement
   String get repositoryName =>
       (origin as RepositoryDetailProvider).repositoryName;
 }
-
-String _$starredRepositoryListHash() =>
-    r'1f05935b78e21b821b217399801fc4c20a881785';
-
-/// See also [starredRepositoryList].
-@ProviderFor(starredRepositoryList)
-final starredRepositoryListProvider =
-    AutoDisposeFutureProvider<List<Repository>>.internal(
-  starredRepositoryList,
-  name: r'starredRepositoryListProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$starredRepositoryListHash,
-  dependencies: <ProviderOrFamily>[restClientProvider],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    restClientProvider,
-    ...?restClientProvider.allTransitiveDependencies
-  },
-);
-
-typedef StarredRepositoryListRef
-    = AutoDisposeFutureProviderRef<List<Repository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
