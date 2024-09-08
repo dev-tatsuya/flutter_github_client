@@ -6,7 +6,31 @@ part of 'repository_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryDetailHash() => r'550334bbb13ca0d1d5da4b198cc99b6faf7c009b';
+String _$repositoryListHash() => r'9c0a0c10fe56d40a51504f3cad8f13677a4aa706';
+
+/// See also [repositoryList].
+@ProviderFor(repositoryList)
+final repositoryListProvider =
+    AutoDisposeFutureProvider<List<Repository>>.internal(
+  repositoryList,
+  name: r'repositoryListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$repositoryListHash,
+  dependencies: <ProviderOrFamily>[
+    restClientProvider,
+    starredRepositoryListProvider
+  ],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies,
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies
+  },
+);
+
+typedef RepositoryListRef = AutoDisposeFutureProviderRef<List<Repository>>;
+String _$repositoryDetailHash() => r'2a5a26a2972d65ff80049421230a48830f7600be';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -201,29 +225,5 @@ final starredRepositoryListProvider =
 
 typedef StarredRepositoryListRef
     = AutoDisposeFutureProviderRef<List<Repository>>;
-String _$repositoryListHash() => r'29b774af35b51711e4e6e1aa3bad97dd4c2d0915';
-
-/// See also [RepositoryList].
-@ProviderFor(RepositoryList)
-final repositoryListProvider =
-    AutoDisposeAsyncNotifierProvider<RepositoryList, List<Repository>>.internal(
-  RepositoryList.new,
-  name: r'repositoryListProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$repositoryListHash,
-  dependencies: <ProviderOrFamily>[
-    restClientProvider,
-    starredRepositoryListProvider
-  ],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    restClientProvider,
-    ...?restClientProvider.allTransitiveDependencies,
-    starredRepositoryListProvider,
-    ...?starredRepositoryListProvider.allTransitiveDependencies
-  },
-);
-
-typedef _$RepositoryList = AutoDisposeAsyncNotifier<List<Repository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

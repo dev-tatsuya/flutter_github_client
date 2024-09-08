@@ -14,9 +14,7 @@ class ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       title: Text(apiProtocol.displayName),
       actions: [
         TextButton(
-          onPressed: () => ref
-              .read(apiProtocolStateProvider.notifier)
-              .update(apiProtocol.next),
+          onPressed: () => ref.read(apiProtocolStateProvider.notifier).next(),
           child: Text('Change to ${apiProtocol.next.displayName}'),
         ),
       ],

@@ -8,26 +8,25 @@ part 'repository_state.g.dart';
   keepAlive: false,
   dependencies: [restClient, starredRepositoryList],
 )
-class RepositoryList extends _$RepositoryList {
-  @override
-  Future<List<Repository>> build() async {
-    final client = ref.watch(restClientProvider);
-    final listData = await client.getRepositoryList('dart', 10);
-    final repositoryList = listData.items.map((e) => e.toDomain()).toList();
-    final starredRepositoryList =
-        await ref.watch(starredRepositoryListProvider.future);
-    final starredIdList = starredRepositoryList.map((e) => e.id).toList();
-    return repositoryList.map((e) {
-      return starredIdList.contains(e.id)
-          ? e.copyWith(viewerHasStarred: true)
-          : e;
-    }).toList();
-  }
+Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
+  final client = ref.watch(restClientProvider);
+  final listData = await client.getRepositoryList('dart', 10);
+  final repositoryList = listData.items.map((e) => e.toDomain()).toList();
+
+  final starredRepositoryList =
+      await ref.watch(starredRepositoryListProvider.future);
+  final starredIdList = starredRepositoryList.map((e) => e.id).toList();
+
+  return repositoryList.map((e) {
+    return starredIdList.contains(e.id)
+        ? e.copyWith(viewerHasStarred: true)
+        : e;
+  }).toList();
 }
 
 @Riverpod(
   keepAlive: false,
-  dependencies: [RepositoryList],
+  dependencies: [repositoryList],
 )
 Future<Repository> repositoryDetail(
   RepositoryDetailRef ref, {
