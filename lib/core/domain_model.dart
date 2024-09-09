@@ -8,6 +8,8 @@ class Repository {
     required this.starredCount,
     required this.topics,
     required this.language,
+    required this.issueCount,
+    required this.licenseName,
   });
 
   final String id;
@@ -18,6 +20,8 @@ class Repository {
   final int starredCount;
   final List<String> topics;
   final Language? language;
+  final int? issueCount;
+  final String? licenseName;
 
   String get nameWithOwner => '$owner/$name';
 
@@ -30,6 +34,8 @@ class Repository {
     int? starredCount,
     List<String>? topics,
     Language? language,
+    int? issueCount,
+    String? licenseName,
   }) {
     return Repository(
       id: id ?? this.id,
@@ -40,6 +46,8 @@ class Repository {
       starredCount: starredCount ?? this.starredCount,
       topics: topics ?? this.topics,
       language: language ?? this.language,
+      issueCount: issueCount ?? this.issueCount,
+      licenseName: licenseName ?? this.licenseName,
     );
   }
 }

@@ -12,7 +12,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository_list_page.g.dart';
 
-@Riverpod(dependencies: [restClient, starredRepositoryList])
+@Riverpod(keepAlive: true, dependencies: [restClient, starredRepositoryList])
 Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getRepositoryList('dart', 10);

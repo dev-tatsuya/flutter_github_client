@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/core/domain_model.dart';
 import 'package:flutter_github_client/router/app_router.dart';
 import 'package:flutter_github_client/ui/component/star_button.dart';
+import 'package:flutter_github_client/util/util.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -86,11 +87,11 @@ class RepositoryListItem extends HookConsumerWidget {
                 const Icon(
                   Icons.star_border,
                   size: 20,
-                  color: Colors.black54,
+                  color: Colors.black38,
                 ),
               const Gap(1),
               Text(
-                '${repository.starredCount}',
+                repository.starredCount.format,
                 style: const TextStyle(color: Colors.black54),
               ),
               if (repository.language case final Language language) ...[
@@ -103,7 +104,7 @@ class RepositoryListItem extends HookConsumerWidget {
                 const Gap(2),
                 Text(
                   language.name,
-                  style: const TextStyle(color: Colors.black45),
+                  style: const TextStyle(color: Colors.black54),
                 ),
               ],
             ],

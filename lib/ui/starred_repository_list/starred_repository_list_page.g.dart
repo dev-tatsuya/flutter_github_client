@@ -7,12 +7,11 @@ part of 'starred_repository_list_page.dart';
 // **************************************************************************
 
 String _$starredRepositoryListHash() =>
-    r'c338146dbabaf6248d1fb9ce5cdfc97b67ec8bb1';
+    r'944cd73160ea837c70014c8fc3c88fcc57172121';
 
 /// See also [starredRepositoryList].
 @ProviderFor(starredRepositoryList)
-final starredRepositoryListProvider =
-    AutoDisposeFutureProvider<List<Repository>>.internal(
+final starredRepositoryListProvider = FutureProvider<List<Repository>>.internal(
   starredRepositoryList,
   name: r'starredRepositoryListProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -25,7 +24,6 @@ final starredRepositoryListProvider =
   },
 );
 
-typedef StarredRepositoryListRef
-    = AutoDisposeFutureProviderRef<List<Repository>>;
+typedef StarredRepositoryListRef = FutureProviderRef<List<Repository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

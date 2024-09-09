@@ -6,7 +6,7 @@ part of 'repository_detail_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryDetailHash() => r'006fe7fd3a0d5c58c8c2c679bc9fecf3473d6512';
+String _$repositoryDetailHash() => r'b4e95130bfe0783ebf5f3aaf34dba84c957c6ce1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -60,6 +60,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
   }
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
+    restClientProvider,
     repositoryListProvider
   ];
 
@@ -68,6 +69,8 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 
   static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
       <ProviderOrFamily>{
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies,
     repositoryListProvider,
     ...?repositoryListProvider.allTransitiveDependencies
   };
@@ -81,7 +84,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 }
 
 /// See also [repositoryDetail].
-class RepositoryDetailProvider extends AutoDisposeFutureProvider<Repository> {
+class RepositoryDetailProvider extends FutureProvider<Repository> {
   /// See also [repositoryDetail].
   RepositoryDetailProvider({
     required String owner,
@@ -139,7 +142,7 @@ class RepositoryDetailProvider extends AutoDisposeFutureProvider<Repository> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<Repository> createElement() {
+  FutureProviderElement<Repository> createElement() {
     return _RepositoryDetailProviderElement(this);
   }
 
@@ -160,7 +163,7 @@ class RepositoryDetailProvider extends AutoDisposeFutureProvider<Repository> {
   }
 }
 
-mixin RepositoryDetailRef on AutoDisposeFutureProviderRef<Repository> {
+mixin RepositoryDetailRef on FutureProviderRef<Repository> {
   /// The parameter `owner` of this provider.
   String get owner;
 
@@ -168,8 +171,7 @@ mixin RepositoryDetailRef on AutoDisposeFutureProviderRef<Repository> {
   String get repositoryName;
 }
 
-class _RepositoryDetailProviderElement
-    extends AutoDisposeFutureProviderElement<Repository>
+class _RepositoryDetailProviderElement extends FutureProviderElement<Repository>
     with RepositoryDetailRef {
   _RepositoryDetailProviderElement(super.provider);
 

@@ -1,6 +1,6 @@
 import 'package:flutter_github_client/core/domain_model.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
-import 'package:flutter_github_client/foundation/util.dart';
+import 'package:flutter_github_client/util/util.dart';
 
 extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
   Repository toDomain() {
@@ -19,6 +19,8 @@ extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
               .toList() ??
           [],
       language: primaryLanguage?.toDomain(),
+      issueCount: null,
+      licenseName: null,
     );
   }
 }

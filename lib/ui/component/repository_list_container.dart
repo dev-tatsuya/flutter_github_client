@@ -19,7 +19,7 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
 
   final QueryHookResult<T> Function() useGraphQLQuery;
   final List<Repository> Function(T data) graphQLQueryConverter;
-  final AutoDisposeFutureProvider<List<Repository>> restRepositoryListProvider;
+  final FutureProvider<List<Repository>> restRepositoryListProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

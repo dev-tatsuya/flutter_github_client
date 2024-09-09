@@ -10,7 +10,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'starred_repository_list_page.g.dart';
 
-@Riverpod(dependencies: [restClient])
+@Riverpod(keepAlive: true, dependencies: [restClient])
 Future<List<Repository>> starredRepositoryList(
   StarredRepositoryListRef ref,
 ) async {

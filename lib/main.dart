@@ -55,6 +55,12 @@ class MyApp extends HookConsumerWidget {
             space: 0,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
           ),
+          listTileTheme: ListTileThemeData(
+            leadingAndTrailingTextStyle: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: Colors.black54),
+          ),
         ),
       ),
     );

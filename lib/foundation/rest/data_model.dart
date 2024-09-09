@@ -1,5 +1,5 @@
 import 'package:flutter_github_client/core/domain_model.dart';
-import 'package:flutter_github_client/foundation/util.dart';
+import 'package:flutter_github_client/util/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'data_model.g.dart';
@@ -23,6 +23,8 @@ class RepositoryData {
     required this.topics,
     this.description,
     this.language,
+    this.openIssuesCount,
+    this.license,
   });
 
   factory RepositoryData.fromJson(Map<String, dynamic> json) =>
@@ -34,6 +36,8 @@ class RepositoryData {
   int stargazersCount;
   String? language;
   List<String> topics;
+  int? openIssuesCount;
+  LicenseData? license;
 
   Repository toDomain() {
     final (owner, name) = separate(fullName);
@@ -52,8 +56,68 @@ class RepositoryData {
               name: language!,
               color: _toHexColorCode(language!),
             ),
+      issueCount: openIssuesCount ?? 0,
+      licenseName: license?.spdxId,
     );
   }
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class RepositoryDetailData {
+  RepositoryDetailData({
+    required this.nodeId,
+    required this.fullName,
+    required this.stargazersCount,
+    required this.topics,
+    this.description,
+    this.language,
+    this.openIssuesCount,
+    this.license,
+  });
+
+  factory RepositoryDetailData.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryDetailDataFromJson(json);
+
+  String nodeId;
+  String fullName;
+  String? description;
+  int stargazersCount;
+  String? language;
+  List<String> topics;
+  int? openIssuesCount;
+  LicenseData? license;
+
+  Repository toDomain() {
+    final (owner, name) = separate(fullName);
+
+    return Repository(
+      id: nodeId,
+      name: name,
+      owner: owner,
+      description: description,
+      viewerHasStarred: false,
+      starredCount: stargazersCount,
+      topics: topics.take(5).toList(),
+      language: language == null
+          ? null
+          : Language(
+        name: language!,
+        color: _toHexColorCode(language!),
+      ),
+      issueCount: openIssuesCount ?? 0,
+      licenseName: license?.spdxId,
+    );
+  }
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class LicenseData {
+  LicenseData({required this.spdxId});
+
+  factory LicenseData.fromJson(Map<String, dynamic> json) =>
+      _$LicenseDataFromJson(json);
+
+  String? spdxId;
 }
 
 String? _toHexColorCode(String languageName) {

@@ -1,5 +1,11 @@
 query RepositoryDetail($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     ...RepositoryData
+    issues {
+      totalCount
+    }
+    licenseInfo {
+      spdxId
+    }
   }
 }

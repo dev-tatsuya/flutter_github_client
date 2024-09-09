@@ -38,6 +38,12 @@ abstract class RestClient {
     @Query('direction') String direction,
   );
 
+  @GET('/repos/{owner}/{repo}')
+  Future<RepositoryDetailData> getRepository(
+    @Path() String owner,
+    @Path('repo') String name,
+  );
+
   @PUT('/user/starred/{owner}/{repo}')
   Future<void> star(
     @Path() String owner,
