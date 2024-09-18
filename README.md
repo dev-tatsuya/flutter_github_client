@@ -14,7 +14,7 @@ page2[RepositoryListPage]
 page3[RepositoryDetailPage]
 star([useStar])
 
-api === cache -. useQuery .- page1 & page2 & page3 --- star --- api & cache
+api == writeNormalized ==> cache -. useQuery .- page1 & page2 & page3 --- star --- api & cache
 ```
 
 ```mermaid
