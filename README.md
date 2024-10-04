@@ -4,10 +4,10 @@
 
 | スコープ | SSOT | 命名例 | 説明 | 管理方法例 |
 |--------|--------|--------|--------|--------|
-| ephemeral | メモリ内<br>（Widget 内） | ephemeral state | 単一のWidgetに閉じた<br>一時的な状態 | flutter_hooks |
-| app | メモリ内<br>（ランタイム） | in memory state | 複数のWidgetで共有されるが、<br>アプリの再起動やリロードでは<br>保持されない状態。 | riverpod (Provider) |
-| app | ローカルストレージ | persistent state | 複数のWidgetで共有され、<br>ローカルストレージに<br>永続化される状態。 | riverpod (Future/StreamProvider) |
-| app | サーバやクラウド | remote state | サーバーやクラウドから<br>取得・管理される状態。 | REST: riverpod (FutureProvider)<br>GraphQL: graphql_flutter (useQuery)<br>Firestore: riverpod (StreamProvider) | 
+| ephemeral | メモリ内<br>（Widget 内） | ephemeral state | 単一のWidgetに閉じた一時的な状態 | flutter_hooks |
+| app | メモリ内<br>（ランタイム） | in memory state | 複数のWidgetで共有されるが、アプリの再起動やリロードでは保持されない状態。 | riverpod (Provider) |
+| app | ローカルストレージ | persistent state | 複数のWidgetで共有され、ローカルストレージに永続化される状態。 | riverpod (Future/StreamProvider) |
+| app | サーバやクラウド | remote state | サーバーやクラウドから取得・管理される状態。 | REST: riverpod (FutureProvider)<br>GraphQL: graphql_flutter (useQuery)<br>Firestore: riverpod (StreamProvider) | 
 
 ## Data Flow Design
 ```mermaid
