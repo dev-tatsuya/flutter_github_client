@@ -1,5 +1,5 @@
-import '../../foundation/graphql/data_model.graphql.dart';
-import '../../foundation/graphql/schema.docs.graphql.dart';
+import '../foundation/graphql/data_model.graphql.dart';
+import '../foundation/graphql/schema.docs.graphql.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';

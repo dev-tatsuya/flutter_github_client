@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/ui/state/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/api_protocol_state.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {
@@ -14,7 +15,13 @@ class ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       title: Text(apiProtocol.displayName),
       actions: [
         TextButton(
-          onPressed: () => ref.read(apiProtocolStateProvider.notifier).next(),
+          onPressed: () => ref.read(apiProtocolStateProvider.notifier).next(
+            onRefresh: (next) {
+              if (next.isRest) {
+                ref.invalidate(starredRepositoryListProvider);
+              }
+            },
+          ),
           child: Text('Change to ${apiProtocol.next.displayName}'),
         ),
       ],

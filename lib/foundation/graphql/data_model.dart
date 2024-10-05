@@ -1,4 +1,4 @@
-import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/domain_model.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
 import 'package:flutter_github_client/util/util.dart';
 

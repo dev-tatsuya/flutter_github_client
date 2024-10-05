@@ -1,10 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/component/repository_list_container.dart';
+import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.dart';
 import 'package:flutter_github_client/foundation/rest/rest_client.dart';
-import 'package:flutter_github_client/ui/component/repository_list_container.dart';
-import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_page.graphql.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

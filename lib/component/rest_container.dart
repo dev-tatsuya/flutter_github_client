@@ -5,15 +5,22 @@ class RestContainer<T> extends StatelessWidget {
   const RestContainer({
     required this.asyncValue,
     required this.builder,
+    this.emptyWidget,
+    this.loadingWidget,
+    this.errorWidgetBuilder,
     super.key,
   });
 
   final AsyncValue<T> asyncValue;
   final Widget? Function(T data) builder;
+  final Widget? emptyWidget;
+  final Widget? loadingWidget;
+  final Widget Function(Object, StackTrace)? errorWidgetBuilder;
 
   @override
   Widget build(BuildContext context) {
-    const empty = Center(child: Text('Empty'));
+    final empty = emptyWidget ?? const Center(child: Text('Empty'));
+    final loading = loadingWidget ?? const Center(child: Text('Fetching ...'));
 
     return asyncValue.when(
       skipLoadingOnReload: true,
@@ -21,8 +28,9 @@ class RestContainer<T> extends StatelessWidget {
         if (data == null) return empty;
         return builder(data) ?? empty;
       },
-      error: (e, st) => Center(child: Text('$e')),
-      loading: () => const Center(child: Text('Fetching ...')),
+      loading: () => loading,
+      error: (e, st) =>
+          errorWidgetBuilder?.call(e, st) ?? Center(child: Text('$e, $st')),
     );
   }
 }

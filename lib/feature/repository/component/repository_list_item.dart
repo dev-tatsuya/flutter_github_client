@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/component/star_button.dart';
+import 'package:flutter_github_client/feature/repository/domain_model.dart';
 import 'package:flutter_github_client/router/app_router.dart';
-import 'package:flutter_github_client/ui/component/star_button.dart';
 import 'package:flutter_github_client/util/util.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

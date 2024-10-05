@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/core/domain_model.dart';
+import 'package:flutter_github_client/app_state/api_protocol_state.dart';
+import 'package:flutter_github_client/component/star_button.graphql.dart';
+import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/schema.docs.graphql.dart';
 import 'package:flutter_github_client/foundation/rest/rest_client.dart';
-import 'package:flutter_github_client/ui/component/star_button.graphql.dart';
-import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_page.dart';
-import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_page.graphql.dart';
-import 'package:flutter_github_client/ui/state/api_protocol_state.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

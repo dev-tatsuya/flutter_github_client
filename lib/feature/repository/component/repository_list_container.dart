@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/core/domain_model.dart';
-import 'package:flutter_github_client/ui/component/graphql_container.dart';
-import 'package:flutter_github_client/ui/component/list_app_bar.dart';
-import 'package:flutter_github_client/ui/component/repository_list_item.dart';
-import 'package:flutter_github_client/ui/component/rest_container.dart';
-import 'package:flutter_github_client/ui/state/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/api_protocol_state.dart';
+import 'package:flutter_github_client/component/graphql_container.dart';
+import 'package:flutter_github_client/component/rest_container.dart';
+import 'package:flutter_github_client/feature/repository/component/list_app_bar.dart';
+import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
+import 'package:flutter_github_client/feature/repository/domain_model.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

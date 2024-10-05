@@ -1,4 +1,3 @@
-import 'package:flutter_github_client/ui/starred_repository_list/starred_repository_list_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'api_protocol_state.g.dart';
@@ -21,18 +20,14 @@ enum ApiProtocolType {
       };
 }
 
-@Riverpod(keepAlive: true, dependencies: [starredRepositoryList])
+@Riverpod(keepAlive: true, dependencies: [])
 class ApiProtocolState extends _$ApiProtocolState {
   @override
   ApiProtocolType build() => ApiProtocolType.rest;
 
-  void next() {
+  void next({void Function(ApiProtocolType)? onRefresh}) {
     final next = state.next;
-
     state = next;
-
-    if (next.isRest) {
-      ref.invalidate(starredRepositoryListProvider);
-    }
+    onRefresh?.call(state);
   }
 }
