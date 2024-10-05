@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/in_memory/api_protocol.dart';
 import 'package:flutter_github_client/feature/repository/component/star_button.graphql.dart';
 import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
@@ -36,7 +36,7 @@ void Function({
   required Repository repository,
 }) _useStar() {
   final ref = useContext() as WidgetRef;
-  final apiProtocol = ref.watch(apiProtocolStateProvider);
+  final apiProtocol = ref.watch(apiProtocolProvider);
 
   final graphQLClient = useGraphQLClient();
   final restClient = ref.read(restClientProvider);

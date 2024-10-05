@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'api_protocol_state.g.dart';
+part 'api_protocol.g.dart';
 
 enum ApiProtocolType {
   graphql,
@@ -21,7 +21,7 @@ enum ApiProtocolType {
 }
 
 @Riverpod(keepAlive: true, dependencies: [])
-class ApiProtocolState extends _$ApiProtocolState {
+class ApiProtocol extends _$ApiProtocol {
   @override
   ApiProtocolType build() => ApiProtocolType.rest;
 

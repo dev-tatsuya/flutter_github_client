@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/in_memory/api_protocol.dart';
 import 'package:flutter_github_client/component/async_value_container.dart';
 import 'package:flutter_github_client/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
@@ -23,7 +23,7 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final apiProtocol = ref.watch(apiProtocolStateProvider);
+    final apiProtocol = ref.watch(apiProtocolProvider);
 
     Widget builder(List<Repository> repositoryList) {
       return ListView.separated(
@@ -73,14 +73,14 @@ class _ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final apiProtocol = ref.watch(apiProtocolStateProvider);
+    final apiProtocol = ref.watch(apiProtocolProvider);
 
     return AppBar(
       centerTitle: false,
       title: Text(apiProtocol.displayName),
       actions: [
         TextButton(
-          onPressed: () => ref.read(apiProtocolStateProvider.notifier).next(
+          onPressed: () => ref.read(apiProtocolProvider.notifier).next(
             onRefresh: (next) {
               if (next.isRest) {
                 ref.invalidate(starredRepositoryListProvider);
