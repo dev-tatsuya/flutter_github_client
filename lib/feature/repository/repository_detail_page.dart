@@ -18,7 +18,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository_detail_page.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [restClient, starredRepositoryList])
+@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
 Future<Repository> repositoryDetail(
   RepositoryDetailRef ref, {
   required String owner,
@@ -28,11 +28,11 @@ Future<Repository> repositoryDetail(
       await ref.watch(restClientProvider).getRepository(owner, repositoryName);
   final repository = data.toDomain();
 
-  final starredList = await ref.watch(starredRepositoryListProvider.future);
-  final starredIdList = starredList.map((e) => e.id).toList();
-  final viewerHasStarred = starredIdList.contains(repository.id);
+  final starredIdList = await ref.watch(starredIdListProvider.future);
 
-  return repository.copyWith(viewerHasStarred: viewerHasStarred);
+  return repository.copyWith(
+    viewerHasStarred: starredIdList.contains(repository.id),
+  );
 }
 
 @RoutePage()
@@ -69,9 +69,9 @@ class RepositoryDetailPage extends HookConsumerWidget {
           converter: (detail) {
             final data = detail.repository;
             return data?.toDomain().copyWith(
-              issueCount: data.issues.totalCount,
-              licenseName: data.licenseInfo?.spdxId,
-            );
+                  issueCount: data.issues.totalCount,
+                  licenseName: data.licenseInfo?.spdxId,
+                );
           },
           builder: builder,
         );

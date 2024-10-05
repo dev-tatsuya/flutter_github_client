@@ -12,14 +12,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository_list_page.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [restClient, starredRepositoryList])
+@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
 Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getRepositoryList('dart', 10);
   final repositoryList = listData.items.map((e) => e.toDomain()).toList();
 
-  final starredList = await ref.watch(starredRepositoryListProvider.future);
-  final starredIdList = starredList.map((e) => e.id).toList();
+  final starredIdList = await ref.watch(starredIdListProvider.future);
 
   return repositoryList.map((e) {
     return starredIdList.contains(e.id)

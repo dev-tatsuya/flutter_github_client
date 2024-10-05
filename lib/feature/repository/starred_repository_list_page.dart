@@ -21,6 +21,12 @@ Future<List<Repository>> starredRepositoryList(
       .toList();
 }
 
+@Riverpod(keepAlive: true, dependencies: [starredRepositoryList])
+Future<List<String>> starredIdList(StarredIdListRef ref) async {
+  final starredList = await ref.watch(starredRepositoryListProvider.future);
+  return starredList.map((e) => e.id).toList();
+}
+
 @RoutePage()
 class StarredRepositoryListPage extends HookConsumerWidget {
   const StarredRepositoryListPage({super.key});

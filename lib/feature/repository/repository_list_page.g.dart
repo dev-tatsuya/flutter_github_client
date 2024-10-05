@@ -6,7 +6,7 @@ part of 'repository_list_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryListHash() => r'ebaa46790ccf11a1768d4becafca783225d6b1c1';
+String _$repositoryListHash() => r'75c6171f2d57003c00e4973aff367ce0afcd4012';
 
 /// See also [repositoryList].
 @ProviderFor(repositoryList)
@@ -16,15 +16,12 @@ final repositoryListProvider = FutureProvider<List<Repository>>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$repositoryListHash,
-  dependencies: <ProviderOrFamily>[
-    restClientProvider,
-    starredRepositoryListProvider
-  ],
+  dependencies: <ProviderOrFamily>[restClientProvider, starredIdListProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
     restClientProvider,
     ...?restClientProvider.allTransitiveDependencies,
-    starredRepositoryListProvider,
-    ...?starredRepositoryListProvider.allTransitiveDependencies
+    starredIdListProvider,
+    ...?starredIdListProvider.allTransitiveDependencies
   },
 );
 
