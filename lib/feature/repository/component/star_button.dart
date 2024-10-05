@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/app_state/api_protocol_state.dart';
-import 'package:flutter_github_client/component/star_button.graphql.dart';
-import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
+import 'package:flutter_github_client/feature/repository/component/star_button.graphql.dart';
+import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';

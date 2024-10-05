@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_container.dart';
-import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.graphql.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.dart';
 import 'package:flutter_github_client/foundation/rest/rest_client.dart';
@@ -17,7 +17,7 @@ Future<List<Repository>> starredRepositoryList(
   final client = ref.watch(restClientProvider);
   final listData = await client.getStarredRepositoryList('asc');
   return listData
-      .map((e) => e.toDomain().copyWith(viewerHasStarred: true))
+      .map((e) => e.toEntity().copyWith(viewerHasStarred: true))
       .toList();
 }
 
@@ -37,7 +37,7 @@ class StarredRepositoryListPage extends HookConsumerWidget {
       useGraphQLQuery: useQuery$StarredRepositoryList,
       graphQLQueryConverter: (data) =>
           data.viewer.starredRepositories.edges
-              ?.map((e) => e?.node.toDomain())
+              ?.map((e) => e?.node.toEntity())
               .nonNulls
               .toList() ??
           [],

@@ -1,11 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/app_state/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
+import 'package:flutter_github_client/component/async_value_container.dart';
 import 'package:flutter_github_client/component/graphql_container.dart';
-import 'package:flutter_github_client/component/rest_container.dart';
-import 'package:flutter_github_client/component/star_button.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
-import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/component/star_button.dart';
+import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/repository_detail_page.graphql.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.dart';
@@ -26,7 +26,7 @@ Future<Repository> repositoryDetail(
 }) async {
   final data =
       await ref.watch(restClientProvider).getRepository(owner, repositoryName);
-  final repository = data.toDomain();
+  final repository = data.toEntity();
 
   final starredIdList = await ref.watch(starredIdListProvider.future);
 
@@ -67,7 +67,7 @@ class RepositoryDetailPage extends HookConsumerWidget {
           result: query.result,
           converter: (detail) {
             final data = detail.repository;
-            return data!.toDomain().copyWith(
+            return data!.toEntity().copyWith(
                   issueCount: data.issues.totalCount,
                   licenseName: data.licenseInfo?.spdxId,
                 );
@@ -83,7 +83,7 @@ class RepositoryDetailPage extends HookConsumerWidget {
           repositoryDetailProvider(owner: owner, repositoryName: name),
         );
 
-        return RestContainer(
+        return AsyncValueContainer(
           asyncValue: asyncValue,
           builder: builder,
         );

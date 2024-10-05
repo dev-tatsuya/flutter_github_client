@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_container.dart';
-import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/repository_list_page.graphql.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.dart';
@@ -16,7 +16,7 @@ part 'repository_list_page.g.dart';
 Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getRepositoryList('dart', 10);
-  final repositoryList = listData.items.map((e) => e.toDomain()).toList();
+  final repositoryList = listData.items.map((e) => e.toEntity()).toList();
 
   final starredIdList = await ref.watch(starredIdListProvider.future);
 
@@ -39,7 +39,7 @@ class RepositoryListPage extends HookConsumerWidget {
           data.search.edges
               ?.map((e) {
                 if (e?.node case final Fragment$RepositoryData data) {
-                  return data.toDomain();
+                  return data.toEntity();
                 }
                 return null;
               })

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/app_state/api_protocol_state.dart';
+import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
+import 'package:flutter_github_client/component/async_value_container.dart';
 import 'package:flutter_github_client/component/graphql_container.dart';
-import 'package:flutter_github_client/component/rest_container.dart';
-import 'package:flutter_github_client/feature/repository/component/list_app_bar.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
-import 'package:flutter_github_client/feature/repository/domain_model.dart';
+import 'package:flutter_github_client/feature/repository/repository.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -51,7 +51,7 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
 
     final restContainer = Consumer(
       builder: (context, ref, child) {
-        return RestContainer(
+        return AsyncValueContainer(
           asyncValue: ref.watch(restRepositoryListProvider),
           builder: builder,
         );
@@ -59,11 +59,40 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
     );
 
     return Scaffold(
-      appBar: const ListAppBar(),
+      appBar: const _ListAppBar(),
       body: switch (apiProtocol) {
         ApiProtocolType.graphql => graphQLContainer,
         ApiProtocolType.rest => restContainer,
       },
     );
   }
+}
+
+class _ListAppBar extends HookConsumerWidget implements PreferredSizeWidget {
+  const _ListAppBar();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final apiProtocol = ref.watch(apiProtocolStateProvider);
+
+    return AppBar(
+      centerTitle: false,
+      title: Text(apiProtocol.displayName),
+      actions: [
+        TextButton(
+          onPressed: () => ref.read(apiProtocolStateProvider.notifier).next(
+            onRefresh: (next) {
+              if (next.isRest) {
+                ref.invalidate(starredRepositoryListProvider);
+              }
+            },
+          ),
+          child: Text('Change to ${apiProtocol.next.displayName}'),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

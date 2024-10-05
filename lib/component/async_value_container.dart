@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class RestContainer<T> extends StatelessWidget {
-  const RestContainer({
+class AsyncValueContainer<T> extends StatelessWidget {
+  const AsyncValueContainer({
     required this.asyncValue,
     required this.builder,
     this.emptyWidget,
