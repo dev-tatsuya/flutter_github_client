@@ -19,8 +19,6 @@ extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
               .toList() ??
           [],
       language: primaryLanguage?.toDomain(),
-      issueCount: null,
-      licenseName: null,
     );
   }
 }

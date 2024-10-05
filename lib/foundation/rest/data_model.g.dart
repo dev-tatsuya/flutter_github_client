@@ -27,10 +27,6 @@ RepositoryData _$RepositoryDataFromJson(Map<String, dynamic> json) =>
           (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
       description: json['description'] as String?,
       language: json['language'] as String?,
-      openIssuesCount: (json['open_issues_count'] as num?)?.toInt(),
-      license: json['license'] == null
-          ? null
-          : LicenseData.fromJson(json['license'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$RepositoryDataToJson(RepositoryData instance) =>
@@ -41,8 +37,6 @@ Map<String, dynamic> _$RepositoryDataToJson(RepositoryData instance) =>
       'stargazers_count': instance.stargazersCount,
       'language': instance.language,
       'topics': instance.topics,
-      'open_issues_count': instance.openIssuesCount,
-      'license': instance.license,
     };
 
 RepositoryDetailData _$RepositoryDetailDataFromJson(

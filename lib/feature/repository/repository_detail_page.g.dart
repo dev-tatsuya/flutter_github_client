@@ -6,7 +6,7 @@ part of 'repository_detail_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repositoryDetailHash() => r'b4e95130bfe0783ebf5f3aaf34dba84c957c6ce1';
+String _$repositoryDetailHash() => r'f225d75966407c40c9b992d92ea4fb3cf435367f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -61,7 +61,7 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
 
   static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
     restClientProvider,
-    repositoryListProvider
+    starredRepositoryListProvider
   ];
 
   @override
@@ -71,8 +71,8 @@ class RepositoryDetailFamily extends Family<AsyncValue<Repository>> {
       <ProviderOrFamily>{
     restClientProvider,
     ...?restClientProvider.allTransitiveDependencies,
-    repositoryListProvider,
-    ...?repositoryListProvider.allTransitiveDependencies
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies
   };
 
   @override

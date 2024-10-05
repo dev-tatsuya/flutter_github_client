@@ -8,8 +8,8 @@ class Repository {
     required this.starredCount,
     required this.topics,
     required this.language,
-    required this.issueCount,
-    required this.licenseName,
+    this.issueCount,
+    this.licenseName,
   });
 
   final String id;

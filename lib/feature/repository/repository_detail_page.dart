@@ -7,7 +7,7 @@ import 'package:flutter_github_client/component/star_button.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
 import 'package:flutter_github_client/feature/repository/domain_model.dart';
 import 'package:flutter_github_client/feature/repository/repository_detail_page.graphql.dart';
-import 'package:flutter_github_client/feature/repository/repository_list_page.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/foundation/graphql/data_model.dart';
 import 'package:flutter_github_client/foundation/rest/rest_client.dart';
 import 'package:flutter_github_client/util/util.dart';
@@ -18,22 +18,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository_detail_page.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [restClient, repositoryList])
+@Riverpod(keepAlive: true, dependencies: [restClient, starredRepositoryList])
 Future<Repository> repositoryDetail(
   RepositoryDetailRef ref, {
   required String owner,
   required String repositoryName,
 }) async {
-  final repositoryList = await ref.watch(repositoryListProvider.future);
-  final repository = repositoryList
-      .firstWhere((e) => e.owner == owner && e.name == repositoryName);
-
-  final detail =
+  final data =
       await ref.watch(restClientProvider).getRepository(owner, repositoryName);
-  return repository.copyWith(
-    issueCount: detail.openIssuesCount,
-    licenseName: detail.license?.spdxId,
-  );
+  final repository = data.toDomain();
+
+  final starredList = await ref.watch(starredRepositoryListProvider.future);
+  final starredIdList = starredList.map((e) => e.id).toList();
+  final viewerHasStarred = starredIdList.contains(repository.id);
+
+  return repository.copyWith(viewerHasStarred: viewerHasStarred);
 }
 
 @RoutePage()

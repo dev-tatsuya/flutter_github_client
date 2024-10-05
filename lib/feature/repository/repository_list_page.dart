@@ -18,9 +18,8 @@ Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
   final listData = await client.getRepositoryList('dart', 10);
   final repositoryList = listData.items.map((e) => e.toDomain()).toList();
 
-  final starredRepositoryList =
-      await ref.watch(starredRepositoryListProvider.future);
-  final starredIdList = starredRepositoryList.map((e) => e.id).toList();
+  final starredList = await ref.watch(starredRepositoryListProvider.future);
+  final starredIdList = starredList.map((e) => e.id).toList();
 
   return repositoryList.map((e) {
     return starredIdList.contains(e.id)

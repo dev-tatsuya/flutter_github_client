@@ -23,8 +23,6 @@ class RepositoryData {
     required this.topics,
     this.description,
     this.language,
-    this.openIssuesCount,
-    this.license,
   });
 
   factory RepositoryData.fromJson(Map<String, dynamic> json) =>
@@ -36,8 +34,6 @@ class RepositoryData {
   int stargazersCount;
   String? language;
   List<String> topics;
-  int? openIssuesCount;
-  LicenseData? license;
 
   Repository toDomain() {
     final (owner, name) = separate(fullName);
@@ -56,8 +52,6 @@ class RepositoryData {
               name: language!,
               color: _toHexColorCode(language!),
             ),
-      issueCount: openIssuesCount ?? 0,
-      licenseName: license?.spdxId,
     );
   }
 }
@@ -101,9 +95,9 @@ class RepositoryDetailData {
       language: language == null
           ? null
           : Language(
-        name: language!,
-        color: _toHexColorCode(language!),
-      ),
+              name: language!,
+              color: _toHexColorCode(language!),
+            ),
       issueCount: openIssuesCount ?? 0,
       licenseName: license?.spdxId,
     );
