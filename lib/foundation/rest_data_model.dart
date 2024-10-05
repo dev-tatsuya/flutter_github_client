@@ -2,7 +2,7 @@ import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/util/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'data_model.g.dart';
+part 'rest_data_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class RepositoryListData {

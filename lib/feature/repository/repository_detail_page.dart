@@ -2,14 +2,14 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
 import 'package:flutter_github_client/component/async_value_container.dart';
-import 'package:flutter_github_client/component/graphql_container.dart';
+import 'package:flutter_github_client/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
 import 'package:flutter_github_client/feature/repository/component/star_button.dart';
 import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/repository_detail_page.graphql.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
-import 'package:flutter_github_client/foundation/graphql/data_model.dart';
-import 'package:flutter_github_client/foundation/rest/rest_client.dart';
+import 'package:flutter_github_client/foundation/graphql_data_model.dart';
+import 'package:flutter_github_client/foundation/rest_client.dart';
 import 'package:flutter_github_client/util/util.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -63,7 +63,7 @@ class RepositoryDetailPage extends HookConsumerWidget {
           ),
         );
 
-        return GraphQLContainer<Query$RepositoryDetail, Repository>(
+        return GraphQLQueryContainer<Query$RepositoryDetail, Repository>(
           result: query.result,
           converter: (detail) {
             final data = detail.repository;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-class GraphQLContainer<T, R> extends StatelessWidget {
-  const GraphQLContainer({
+class GraphQLQueryContainer<T, R> extends StatelessWidget {
+  const GraphQLQueryContainer({
     required this.result,
     required this.builder,
     required this.converter,

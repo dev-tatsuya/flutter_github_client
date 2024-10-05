@@ -4,10 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'graphql_client.g.dart';
 
-@Riverpod(
-  keepAlive: true,
-  dependencies: [],
-)
+@Riverpod(keepAlive: true, dependencies: [])
 GraphQLClient graphQLClient(GraphQLClientRef ref) {
   return GraphQLClient(
     link: Link.from([

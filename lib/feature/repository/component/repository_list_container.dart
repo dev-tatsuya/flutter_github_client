@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/app_state/in_memory/api_protocol_state.dart';
 import 'package:flutter_github_client/component/async_value_container.dart';
-import 'package:flutter_github_client/component/graphql_container.dart';
+import 'package:flutter_github_client/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
 import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
@@ -41,7 +41,7 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
 
     final graphQLContainer = HookBuilder(
       builder: (context) {
-        return GraphQLContainer<T, List<Repository>>(
+        return GraphQLQueryContainer<T, List<Repository>>(
           result: useGraphQLQuery().result,
           converter: graphQLQueryConverter,
           builder: builder,

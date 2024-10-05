@@ -4,9 +4,9 @@ import 'package:flutter_github_client/feature/repository/component/repository_li
 import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/repository_list_page.graphql.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
-import 'package:flutter_github_client/foundation/graphql/data_model.dart';
-import 'package:flutter_github_client/foundation/graphql/data_model.graphql.dart';
-import 'package:flutter_github_client/foundation/rest/rest_client.dart';
+import 'package:flutter_github_client/foundation/graphql_data_model.dart';
+import 'package:flutter_github_client/foundation/graphql_data_model.graphql.dart';
+import 'package:flutter_github_client/foundation/rest_client.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
