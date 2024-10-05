@@ -12,7 +12,7 @@ class RestContainer<T> extends StatelessWidget {
   });
 
   final AsyncValue<T> asyncValue;
-  final Widget? Function(T data) builder;
+  final Widget Function(T data) builder;
   final Widget? emptyWidget;
   final Widget? loadingWidget;
   final Widget Function(Object, StackTrace)? errorWidgetBuilder;
@@ -25,8 +25,8 @@ class RestContainer<T> extends StatelessWidget {
     return asyncValue.when(
       skipLoadingOnReload: true,
       data: (data) {
-        if (data == null) return empty;
-        return builder(data) ?? empty;
+        if (data == null || (data is List && data.isEmpty)) return empty;
+        return builder(data);
       },
       loading: () => loading,
       error: (e, st) =>

@@ -1,32 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-class GraphQLContainer<TParsed, R> extends StatelessWidget {
+class GraphQLContainer<T, R> extends StatelessWidget {
   const GraphQLContainer({
     required this.result,
     required this.builder,
     required this.converter,
+    this.emptyWidget,
+    this.loadingWidget,
+    this.errorWidgetBuilder,
     super.key,
   });
 
-  final QueryResult<TParsed> result;
-  final Widget? Function(R data) builder;
-  final R Function(TParsed data) converter;
+  final QueryResult<T> result;
+  final Widget Function(R data) builder;
+  final R Function(T data) converter;
+  final Widget? emptyWidget;
+  final Widget? loadingWidget;
+  final Widget Function(Object, StackTrace)? errorWidgetBuilder;
 
   @override
   Widget build(BuildContext context) {
     final data = result.parsedData;
-    const empty = Center(child: Text('Empty'));
+    final empty = emptyWidget ?? const Center(child: Text('Empty'));
+    final loading = loadingWidget ?? const Center(child: Text('Fetching ...'));
 
     if (result.hasException) {
-      return Center(child: Text('${result.exception}'));
+      return errorWidgetBuilder?.call(result.exception!, StackTrace.current) ??
+          Center(child: Text('${result.exception}'));
     } else if (result.isLoading) {
-      return const Center(child: Text('Fetching ...'));
+      return loading;
     } else if (data == null) {
       return empty;
     } else {
       final result = converter(data);
-      return builder(result) ?? empty;
+      if (result == null || (result is List && result.isEmpty)) return empty;
+
+      return builder(result);
     }
   }
 }

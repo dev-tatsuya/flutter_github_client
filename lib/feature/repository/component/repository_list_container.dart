@@ -25,8 +25,7 @@ class RepositoryListContainer<T> extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
 
-    Widget? builder(List<Repository> repositoryList) {
-      if (repositoryList.isEmpty) return null;
+    Widget builder(List<Repository> repositoryList) {
       return ListView.separated(
         itemCount: repositoryList.length,
         separatorBuilder: (_, __) => const Divider(),

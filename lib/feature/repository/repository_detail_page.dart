@@ -50,8 +50,7 @@ class RepositoryDetailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final apiProtocol = ref.watch(apiProtocolStateProvider);
 
-    Widget? builder(Repository? repository) {
-      if (repository == null) return null;
+    Widget builder(Repository repository) {
       return _RepositoryDetailContainer(repository: repository);
     }
 
@@ -64,11 +63,11 @@ class RepositoryDetailPage extends HookConsumerWidget {
           ),
         );
 
-        return GraphQLContainer<Query$RepositoryDetail, Repository?>(
+        return GraphQLContainer<Query$RepositoryDetail, Repository>(
           result: query.result,
           converter: (detail) {
             final data = detail.repository;
-            return data?.toDomain().copyWith(
+            return data!.toDomain().copyWith(
                   issueCount: data.issues.totalCount,
                   licenseName: data.licenseInfo?.spdxId,
                 );
