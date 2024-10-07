@@ -6,8 +6,8 @@ part 'remote.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [restClient])
 Future<List<Repository>> starredRepositoryList(
-    StarredRepositoryListRef ref,
-    ) async {
+  StarredRepositoryListRef ref,
+) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getStarredRepositoryList('asc');
   return listData
@@ -38,12 +38,12 @@ Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
 
 @Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
 Future<Repository> repositoryDetail(
-    RepositoryDetailRef ref, {
-      required String owner,
-      required String repositoryName,
-    }) async {
+  RepositoryDetailRef ref, {
+  required String owner,
+  required String repositoryName,
+}) async {
   final data =
-  await ref.watch(restClientProvider).getRepository(owner, repositoryName);
+      await ref.watch(restClientProvider).getRepository(owner, repositoryName);
   final repository = data.toEntity();
 
   final starredIdList = await ref.watch(starredIdListProvider.future);
