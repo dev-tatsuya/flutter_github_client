@@ -35,20 +35,3 @@ Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
         : e;
   }).toList();
 }
-
-@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
-Future<Repository> repositoryDetail(
-  RepositoryDetailRef ref, {
-  required String owner,
-  required String repositoryName,
-}) async {
-  final data =
-      await ref.watch(restClientProvider).getRepository(owner, repositoryName);
-  final repository = data.toEntity();
-
-  final starredIdList = await ref.watch(starredIdListProvider.future);
-
-  return repository.copyWith(
-    viewerHasStarred: starredIdList.contains(repository.id),
-  );
-}
