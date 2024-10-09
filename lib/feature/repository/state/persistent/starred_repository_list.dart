@@ -2,7 +2,7 @@ import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/foundation/rest_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'remote.g.dart';
+part 'starred_repository_list.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [restClient])
 Future<List<Repository>> starredRepositoryList(

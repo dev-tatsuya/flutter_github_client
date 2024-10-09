@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'in_memory.g.dart';
+part 'api_protocol.g.dart';
 
 enum ApiProtocolType {
   graphql,

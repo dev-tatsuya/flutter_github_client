@@ -1,13 +1,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/feature/repository/app_state/in_memory.dart';
-import 'package:flutter_github_client/feature/repository/app_state/remote.dart';
 import 'package:flutter_github_client/feature/repository/component/async_value_container.dart';
 import 'package:flutter_github_client/feature/repository/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
 import 'package:flutter_github_client/feature/repository/component/star_button.dart';
 import 'package:flutter_github_client/feature/repository/repository.dart';
 import 'package:flutter_github_client/feature/repository/repository_detail_page.graphql.dart';
+import 'package:flutter_github_client/feature/repository/state/ephemeral/api_protocol.dart';
+import 'package:flutter_github_client/feature/repository/state/persistent/starred_repository_list.dart';
 import 'package:flutter_github_client/foundation/graphql_data_model.dart';
 import 'package:flutter_github_client/foundation/rest_client.dart';
 import 'package:flutter_github_client/util/util.dart';

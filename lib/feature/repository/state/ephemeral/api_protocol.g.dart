@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'in_memory.dart';
+part of 'api_protocol.dart';
 
 // **************************************************************************
 // RiverpodGenerator
