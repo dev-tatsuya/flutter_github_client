@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/feature/repository/repository_detail_page.dart';
-import 'package:flutter_github_client/feature/repository/repository_list_page.dart';
-import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
+import 'package:flutter_github_client/feature/repository/repository_detail/repository_detail_page.dart';
+import 'package:flutter_github_client/feature/repository/repository_list/repository_list_page.dart';
+import 'package:flutter_github_client/feature/repository/starred_repository_list/starred_repository_list_page.dart';
 import 'package:flutter_github_client/feature/root/root_page.dart';
 import 'package:flutter_github_client/state/persistent/bottom_navi_tab.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
