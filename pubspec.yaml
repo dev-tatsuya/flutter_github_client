@@ -23,6 +23,7 @@ dependencies:
   json_annotation: ^4.9.0
   retrofit: ^4.3.0
   riverpod_annotation: 2.3.5
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   auto_route_generator: ^9.0.0

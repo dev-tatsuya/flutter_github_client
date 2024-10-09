@@ -4,11 +4,25 @@ import 'package:flutter_github_client/feature/repository/repository_detail_page.
 import 'package:flutter_github_client/feature/repository/repository_list_page.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/feature/root/root_page.dart';
+import 'package:flutter_github_client/state/persistent/local_storage.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'app_router.g.dart';
 
 part 'app_router.gr.dart';
 
+@Riverpod(keepAlive: true, dependencies: [bottomNaviTab])
+AppRouter appRouter(AppRouterRef ref) {
+  final initialBottomNaviTab = ref.watch(bottomNaviTabProvider);
+  return AppRouter(initialBottomNaviTab);
+}
+
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
+  AppRouter(this.initialBottomNaviTab);
+
+  final BottomNaviTab initialBottomNaviTab;
+
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
@@ -16,16 +30,24 @@ class AppRouter extends RootStackRouter {
           page: RootRoute.page,
           children: [
             AutoRoute(
+              initial: initialBottomNaviTab.isRepositoryList,
               page: RepositoryListTabRoute.page,
               children: [
-                AutoRoute(page: RepositoryListRoute.page),
+                AutoRoute(
+                  initial: true,
+                  page: RepositoryListRoute.page,
+                ),
                 AutoRoute(page: RepositoryDetailRoute.page),
               ],
             ),
             AutoRoute(
+              initial: initialBottomNaviTab.isStarredRepositoryList,
               page: StarredRepositoryListTabRoute.page,
               children: [
-                AutoRoute(page: StarredRepositoryListRoute.page),
+                AutoRoute(
+                  initial: true,
+                  page: StarredRepositoryListRoute.page,
+                ),
                 AutoRoute(page: RepositoryDetailRoute.page),
               ],
             ),
