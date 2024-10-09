@@ -2,7 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/feature/repository/app_state/in_memory.dart';
 import 'package:flutter_github_client/feature/repository/app_state/remote.dart';
-import 'package:flutter_github_client/feature/repository/component/async_snapshot_container.dart';
+import 'package:flutter_github_client/feature/repository/component/async_value_container.dart';
 import 'package:flutter_github_client/feature/repository/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
 import 'package:flutter_github_client/feature/repository/component/star_button.dart';
@@ -14,24 +14,26 @@ import 'package:flutter_github_client/util/util.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-// FutureProvider を使う場合
-// @Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
-// Future<Repository> repositoryDetail(
-//     RepositoryDetailRef ref, {
-//       required String owner,
-//       required String repositoryName,
-//     }) async {
-//   final data =
-//   await ref.watch(restClientProvider).getRepository(owner, repositoryName);
-//   final repository = data.toEntity();
-//
-//   final starredIdList = await ref.watch(starredIdListProvider.future);
-//
-//   return repository.copyWith(
-//     viewerHasStarred: starredIdList.contains(repository.id),
-//   );
-// }
+part 'repository_detail_page.g.dart';
+
+@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
+Future<Repository> repositoryDetail(
+  RepositoryDetailRef ref, {
+  required String owner,
+  required String repositoryName,
+}) async {
+  final data =
+      await ref.watch(restClientProvider).getRepository(owner, repositoryName);
+  final repository = data.toEntity();
+
+  final starredIdList = await ref.watch(starredIdListProvider.future);
+
+  return repository.copyWith(
+    viewerHasStarred: starredIdList.contains(repository.id),
+  );
+}
 
 @RoutePage()
 class RepositoryDetailPage extends HookConsumerWidget {
@@ -77,39 +79,37 @@ class RepositoryDetailPage extends HookConsumerWidget {
 
     final restContainer = HookConsumer(
       builder: (context, ref, child) {
-        // FutureProvider を使う場合
-        // final asyncValue = ref.watch(
-        //   repositoryDetailProvider(owner: owner, repositoryName: name),
-        // );
-        // return AsyncValueContainer(
-        //   asyncValue: asyncValue,
-        //   builder: builder,
-        // );
-
-        // useFuture を使う場合
-        final asyncSnapshot = useFuture(
-          useMemoized(
-            () async {
-              final data = await ref
-                  .watch(restClientProvider)
-                  .getRepository(owner, name);
-              final repository = data.toEntity();
-
-              final starredIdList =
-                  await ref.watch(starredIdListProvider.future);
-
-              return repository.copyWith(
-                viewerHasStarred: starredIdList.contains(repository.id),
-              );
-            },
-            [ref.watch(starredIdListProvider)],
-          ),
+        final asyncValue = ref.watch(
+          repositoryDetailProvider(owner: owner, repositoryName: name),
         );
-
-        return AsyncSnapshotContainer(
-          asyncSnapshot: asyncSnapshot,
+        return AsyncValueContainer(
+          asyncValue: asyncValue,
           builder: builder,
         );
+
+        // useFuture を使う場合
+        // final asyncSnapshot = useFuture(
+        //   useMemoized(
+        //     () async {
+        //       final data = await ref
+        //           .watch(restClientProvider)
+        //           .getRepository(owner, name);
+        //       final repository = data.toEntity();
+        //
+        //       final starredIdList =
+        //           await ref.watch(starredIdListProvider.future);
+        //
+        //       return repository.copyWith(
+        //         viewerHasStarred: starredIdList.contains(repository.id),
+        //       );
+        //     },
+        //     [ref.watch(starredIdListProvider)],
+        //   ),
+        // );
+        // return AsyncSnapshotContainer(
+        //   asyncSnapshot: asyncSnapshot,
+        //   builder: builder,
+        // );
       },
     );
 
