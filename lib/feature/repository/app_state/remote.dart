@@ -20,18 +20,3 @@ Future<List<String>> starredIdList(StarredIdListRef ref) async {
   final starredList = await ref.watch(starredRepositoryListProvider.future);
   return starredList.map((e) => e.id).toList();
 }
-
-@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
-Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
-  final client = ref.watch(restClientProvider);
-  final listData = await client.getRepositoryList('dart', 10);
-  final repositoryList = listData.items.map((e) => e.toEntity()).toList();
-
-  final starredIdList = await ref.watch(starredIdListProvider.future);
-
-  return repositoryList.map((e) {
-    return starredIdList.contains(e.id)
-        ? e.copyWith(viewerHasStarred: true)
-        : e;
-  }).toList();
-}
