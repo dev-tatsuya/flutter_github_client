@@ -38,7 +38,7 @@ class RootPage extends HookConsumerWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.star),
-                  label: 'Starred Repository List',
+                  label: 'Starred List',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.minimize),
