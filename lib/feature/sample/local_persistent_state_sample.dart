@@ -20,7 +20,9 @@ class LocalPersistentStateSample extends HookWidget {
     final asyncSnapshot = useFuture(
       useMemoized(
         () async {
-          await pendingUpdate.value;
+          if (pendingUpdate.value != null) {
+            await pendingUpdate.value;
+          }
           return _getSsot();
         },
         [pendingUpdate.value],
