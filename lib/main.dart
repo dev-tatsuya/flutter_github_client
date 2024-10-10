@@ -7,7 +7,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// TODO(dev-tatsuya): PAT を指定する
+// TODO(dev-tatsuya): PAT を設定する
 const pat = '';
 
 Future<void> main() async {

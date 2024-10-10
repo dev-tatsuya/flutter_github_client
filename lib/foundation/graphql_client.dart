@@ -8,7 +8,14 @@ part 'graphql_client.g.dart';
 GraphQLClient graphQLClient(GraphQLClientRef ref) {
   return GraphQLClient(
     link: Link.from([
-      AuthLink(getToken: () => 'Bearer $pat'),
+      AuthLink(
+        getToken: () {
+          if (pat.isEmpty) {
+            throw UnimplementedError('main.dart で PAT を設定してください');
+          }
+          return 'Bearer $pat';
+        },
+      ),
       HttpLink(
         'https://api.github.com/graphql',
         defaultHeaders: {'X-Github-Next-Global-ID': '1'},

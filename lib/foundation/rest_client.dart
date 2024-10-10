@@ -8,6 +8,10 @@ part 'rest_client.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [])
 RestClient restClient(RestClientRef ref) {
+  if (pat.isEmpty) {
+    throw UnimplementedError('main.dart で PAT を設定してください');
+  }
+
   final dio = Dio(
     BaseOptions(
       headers: {
