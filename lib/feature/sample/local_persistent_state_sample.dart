@@ -39,7 +39,7 @@ class LocalPersistentStateSample extends HookWidget {
         TextButton(
           onPressed: (asyncSnapshot.connectionState == ConnectionState.waiting)
               ? null
-              : () async {
+              : () {
                   // SSOT に変更を促す + 再評価
                   pendingUpdate.value = _updateSsot();
                 },
