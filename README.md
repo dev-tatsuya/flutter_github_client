@@ -1,13 +1,11 @@
 # GitHub REST and GraphQL API Client Flutter App
 
-## Flutter アプリの状態の分類と管理例
+## 状態の分類と管理例
 
-| スコープ | SSOT | 命名例 | 説明 | 管理方法例 |
-|--------|--------|--------|--------|--------|
-| ephemeral | メモリ内<br>（Widget 内） | ephemeral state | 単一のWidgetに閉じた一時的な状態 | flutter_hooks |
-| app | メモリ内<br>（ランタイム） | in memory state | 複数のWidgetで共有されるが、アプリの再起動やリロードでは保持されない状態。 | riverpod (Provider) |
-| app | ローカルストレージ | persistent state | 複数のWidgetで共有され、ローカルストレージに永続化される状態。 | riverpod (Future/StreamProvider) |
-| app | サーバやクラウド | remote state | サーバーやクラウドから取得・管理される状態。 | REST: riverpod (FutureProvider)<br>GraphQL: graphql_flutter (useQuery)<br>Firestore: riverpod (StreamProvider) | 
+| scope \ lifetime | 一時的 (ephemeral) | 永続的 (persistent) |
+|--------|--------|--------|
+| 単一の Widget に閉じた<br>(local) | ① local ephemeral state<br>- useState etc...<br>(- StatefulWidget) | ② local persistent state<br>- useFuture + useMemorized + 再評価<br>- useStream/useQuery<br>(- FutureProvider + invalidate)<br>(- StreamProvider) |
+| アプリの多くの部分で共有される<br>(global) | ③ global ephemeral state<br>- Notifier/Provider | ④ global persistent state<br>- FutureProvider/Provider + invalidate<br>- StreamProvider | 
 
 ## Data Flow Design
 ```mermaid
