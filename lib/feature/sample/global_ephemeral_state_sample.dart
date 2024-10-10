@@ -9,7 +9,7 @@ class GlobalEphemeralState extends _$GlobalEphemeralState {
   @override
   int build() => 0;
 
-  void increment() => state++;
+  void updateSsot() => state++;
 }
 
 class GlobalEphemeralStateSample extends ConsumerWidget {
@@ -25,7 +25,7 @@ class GlobalEphemeralStateSample extends ConsumerWidget {
         Text('$state'),
         TextButton(
           onPressed: () =>
-              ref.read(globalEphemeralStateProvider.notifier).increment(),
+              ref.read(globalEphemeralStateProvider.notifier).updateSsot(),
           child: const Text('Increment'),
         ),
       ],

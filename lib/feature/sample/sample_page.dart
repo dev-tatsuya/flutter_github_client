@@ -4,6 +4,7 @@ import 'package:flutter_github_client/feature/sample/global_ephemeral_state_samp
 import 'package:flutter_github_client/feature/sample/global_persistent_state_sample.dart';
 import 'package:flutter_github_client/feature/sample/local_ephemeral_state_sample.dart';
 import 'package:flutter_github_client/feature/sample/local_persistent_state_sample.dart';
+import 'package:flutter_github_client/feature/sample/update_local_cache_sample.dart';
 
 @RoutePage()
 class SamplePage extends StatelessWidget {
@@ -26,6 +27,8 @@ class SamplePage extends StatelessWidget {
             GlobalEphemeralStateSample(),
             Text('④ GlobalPersistentStateSample'),
             GlobalPersistentStateSample(),
+            Text('⑤ UpdateLocalCacheSample'),
+            UpdateLocalCacheSample(),
           ],
         ),
       ),
