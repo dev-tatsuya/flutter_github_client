@@ -17,10 +17,12 @@ BottomNaviTab bottomNaviTab(BottomNaviTabRef ref) {
 enum BottomNaviTab {
   repositoryList,
   starredRepositoryList,
+  sample,
   ;
 
   static String get key => 'bottomNaviTab';
 
   bool get isRepositoryList => this == repositoryList;
   bool get isStarredRepositoryList => this == starredRepositoryList;
+  bool get isSample => this == sample;
 }

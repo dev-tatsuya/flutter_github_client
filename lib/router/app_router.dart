@@ -4,6 +4,7 @@ import 'package:flutter_github_client/feature/repository/repository_detail/repos
 import 'package:flutter_github_client/feature/repository/repository_list/repository_list_page.dart';
 import 'package:flutter_github_client/feature/repository/starred_repository_list/starred_repository_list_page.dart';
 import 'package:flutter_github_client/feature/root/root_page.dart';
+import 'package:flutter_github_client/feature/sample/sample_page.dart';
 import 'package:flutter_github_client/state/persistent/bottom_navi_tab.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -50,6 +51,10 @@ class AppRouter extends RootStackRouter {
                 ),
                 AutoRoute(page: RepositoryDetailRoute.page),
               ],
+            ),
+            AutoRoute(
+              initial: initialBottomNaviTab.isSample,
+              page: SampleRoute.page,
             ),
           ],
         ),

@@ -17,6 +17,7 @@ class RootPage extends HookConsumerWidget {
       routes: const [
         RepositoryListRoute(),
         StarredRepositoryListRoute(),
+        SampleRoute(),
       ],
       bottomNavigationBuilder: (context, tabsRouter) {
         return HookConsumer(
@@ -38,6 +39,10 @@ class RootPage extends HookConsumerWidget {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.star),
                   label: 'Starred Repository List',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.minimize),
+                  label: 'Sample',
                 ),
               ],
             );

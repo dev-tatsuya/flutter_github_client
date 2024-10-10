@@ -128,6 +128,25 @@ class RootRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SamplePage]
+class SampleRoute extends PageRouteInfo<void> {
+  const SampleRoute({List<PageRouteInfo>? children})
+      : super(
+          SampleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SampleRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SamplePage();
+    },
+  );
+}
+
+/// generated route for
 /// [StarredRepositoryListPage]
 class StarredRepositoryListRoute extends PageRouteInfo<void> {
   const StarredRepositoryListRoute({List<PageRouteInfo>? children})
