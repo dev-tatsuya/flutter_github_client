@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_github_client/foundation/rest_data_model.dart';
+import 'package:flutter_github_client/feature/repository/model/rest_data_model.dart';
 import 'package:flutter_github_client/main.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

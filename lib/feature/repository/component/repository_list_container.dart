@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/component/async_value_container.dart';
 import 'package:flutter_github_client/component/graphql_query_container.dart';
 import 'package:flutter_github_client/feature/repository/component/repository_list_item.dart';
-import 'package:flutter_github_client/feature/repository/repository.dart';
+import 'package:flutter_github_client/feature/repository/model/entity.dart';
 import 'package:flutter_github_client/feature/repository/state/persistent/starred_repository_list.dart';
 import 'package:flutter_github_client/state/ephemeral/api_protocol.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

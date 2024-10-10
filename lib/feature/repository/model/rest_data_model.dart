@@ -1,5 +1,5 @@
-import 'package:flutter_github_client/feature/repository/repository.dart';
-import 'package:flutter_github_client/util/util.dart';
+import 'package:flutter_github_client/feature/repository/model/entity.dart';
+import 'package:flutter_github_client/feature/repository/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rest_data_model.g.dart';
