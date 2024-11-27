@@ -1,13 +1,12 @@
 import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/provider/service/api/rest_client.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repository.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [restClient])
-Future<List<Repository>> starredRepositoryList(
-  StarredRepositoryListRef ref,
-) async {
+Future<List<Repository>> starredRepositoryList(Ref ref) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getStarredRepositoryList('asc');
   return listData
@@ -16,13 +15,13 @@ Future<List<Repository>> starredRepositoryList(
 }
 
 @Riverpod(keepAlive: true, dependencies: [starredRepositoryList])
-Future<List<String>> starredIdList(StarredIdListRef ref) async {
+Future<List<String>> starredIdList(Ref ref) async {
   final starredList = await ref.watch(starredRepositoryListProvider.future);
   return starredList.map((e) => e.id).toList();
 }
 
 @Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
-Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
+Future<List<Repository>> repositoryList(Ref ref) async {
   final client = ref.watch(restClientProvider);
   final listData = await client.getRepositoryList('dart', 10);
   final repositoryList = listData.items.map((e) => e.toDomain()).toList();
@@ -38,7 +37,7 @@ Future<List<Repository>> repositoryList(RepositoryListRef ref) async {
 
 @Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
 Future<Repository> repositoryDetail(
-  RepositoryDetailRef ref, {
+  Ref ref, {
   required String owner,
   required String repositoryName,
 }) async {

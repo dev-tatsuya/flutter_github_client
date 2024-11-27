@@ -1,11 +1,12 @@
 import 'package:flutter_github_client/main.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'graphql_client.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [])
-GraphQLClient graphQLClient(GraphQLClientRef ref) {
+GraphQLClient graphQLClient(Ref ref) {
   return GraphQLClient(
     link: Link.from([
       AuthLink(

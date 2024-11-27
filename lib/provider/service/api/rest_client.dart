@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_github_client/main.dart';
 import 'package:flutter_github_client/provider/service/api/model/rest_data_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'rest_client.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [])
-RestClient restClient(RestClientRef ref) {
+RestClient restClient(Ref ref) {
   if (pat.isEmpty) {
     throw UnimplementedError('main.dart で PAT を設定してください');
   }

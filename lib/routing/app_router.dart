@@ -6,13 +6,14 @@ import 'package:flutter_github_client/ui/repository/repository_list_page.dart';
 import 'package:flutter_github_client/ui/repository/starred_repository_list_page.dart';
 import 'package:flutter_github_client/ui/root/root_page.dart';
 import 'package:flutter_github_client/ui/sample/sample_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
 part 'app_router.gr.dart';
 
 @Riverpod(keepAlive: true, dependencies: [bottomNaviTab])
-AppRouter appRouter(AppRouterRef ref) {
+AppRouter appRouter(Ref ref) {
   final initialBottomNaviTab = ref.watch(bottomNaviTabProvider);
   return AppRouter(initialBottomNaviTab);
 }
