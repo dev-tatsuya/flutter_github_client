@@ -1,5 +1,5 @@
-import 'package:flutter_github_client/feature/repository/model/entity.dart';
-import 'package:flutter_github_client/state/ephemeral/rest_client.dart';
+import 'package:flutter_github_client/provider/rest_client.dart';
+import 'package:flutter_github_client/ui/repository/model/entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'starred_repository_list.g.dart';

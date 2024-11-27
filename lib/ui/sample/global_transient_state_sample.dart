@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'global_ephemeral_state_sample.g.dart';
+part 'global_transient_state_sample.g.dart';
 
 @Riverpod(dependencies: [])
-class GlobalEphemeralState extends _$GlobalEphemeralState {
+class GlobalTransientState extends _$GlobalTransientState {
   @override
   int build() => 0;
 
   void updateSsot() => state++;
 }
 
-class GlobalEphemeralStateSample extends ConsumerWidget {
-  const GlobalEphemeralStateSample({super.key});
+class GlobalTransientStateSample extends ConsumerWidget {
+  const GlobalTransientStateSample({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(globalEphemeralStateProvider);
+    final state = ref.watch(globalTransientStateProvider);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +25,7 @@ class GlobalEphemeralStateSample extends ConsumerWidget {
         Text('$state'),
         TextButton(
           onPressed: () =>
-              ref.read(globalEphemeralStateProvider.notifier).updateSsot(),
+              ref.read(globalTransientStateProvider.notifier).updateSsot(),
           child: const Text('Increment'),
         ),
       ],

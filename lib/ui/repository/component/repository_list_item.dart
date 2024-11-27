@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/feature/repository/component/star_button.dart';
-import 'package:flutter_github_client/feature/repository/model/entity.dart';
-import 'package:flutter_github_client/feature/repository/util.dart';
-import 'package:flutter_github_client/router/app_router.dart';
+import 'package:flutter_github_client/routing/app_router.dart';
+import 'package:flutter_github_client/ui/repository/component/star_button.dart';
+import 'package:flutter_github_client/ui/repository/model/entity.dart';
+import 'package:flutter_github_client/ui/repository/util.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

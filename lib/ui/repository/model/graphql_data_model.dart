@@ -1,6 +1,6 @@
-import 'package:flutter_github_client/feature/repository/model/entity.dart';
-import 'package:flutter_github_client/feature/repository/model/graphql_data_model.graphql.dart';
-import 'package:flutter_github_client/feature/repository/util.dart';
+import 'package:flutter_github_client/ui/repository/model/entity.dart';
+import 'package:flutter_github_client/ui/repository/model/graphql_data_model.graphql.dart';
+import 'package:flutter_github_client/ui/repository/util.dart';
 
 extension Fragment$RepositoryDataExt on Fragment$RepositoryData {
   Repository toEntity() {

@@ -1,10 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/feature/sample/global_ephemeral_state_sample.dart';
-import 'package:flutter_github_client/feature/sample/global_persistent_state_sample.dart';
-import 'package:flutter_github_client/feature/sample/local_ephemeral_state_sample.dart';
-import 'package:flutter_github_client/feature/sample/local_persistent_state_sample.dart';
-import 'package:flutter_github_client/feature/sample/update_local_cache_sample.dart';
+import 'package:flutter_github_client/ui/sample/global_persistent_state_sample.dart';
+import 'package:flutter_github_client/ui/sample/global_transient_state_sample.dart';
+import 'package:flutter_github_client/ui/sample/local_persistent_state_sample.dart';
+import 'package:flutter_github_client/ui/sample/local_transient_state_sample.dart';
+import 'package:flutter_github_client/ui/sample/update_local_cache_sample.dart';
 
 @RoutePage()
 class SamplePage extends StatelessWidget {
@@ -19,12 +19,12 @@ class SamplePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('① LocalEphemeralStateSample'),
-            LocalEphemeralStateSample(),
+            Text('① LocalTransientStateSample'),
+            LocalTransientStateSample(),
             Text('② LocalPersistentStateSample'),
             LocalPersistentStateSample(),
-            Text('③ GlobalEphemeralStateSample'),
-            GlobalEphemeralStateSample(),
+            Text('③ GlobalTransientStateSample'),
+            GlobalTransientStateSample(),
             Text('④ GlobalPersistentStateSample'),
             GlobalPersistentStateSample(),
             Text('⑤ UpdateLocalCacheSample'),
