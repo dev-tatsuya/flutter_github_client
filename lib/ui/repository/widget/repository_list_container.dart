@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/notifier/api_protocol.dart';
-import 'package:flutter_github_client/provider/repository/starred_repository_list.dart';
+import 'package:flutter_github_client/provider/repository/repository.dart';
 import 'package:flutter_github_client/ui/repository/widget/repository_list_item.dart';
 import 'package:flutter_github_client/ui/widget/async_value_container.dart';
 import 'package:flutter_github_client/ui/widget/graphql_query_container.dart';

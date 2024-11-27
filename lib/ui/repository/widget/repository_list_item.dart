@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_client/domain/model/language.dart';
 import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/routing/app_router.dart';
-import 'package:flutter_github_client/ui/repository/util.dart';
 import 'package:flutter_github_client/ui/repository/widget/star_button.dart';
+import 'package:flutter_github_client/util/int_ext.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

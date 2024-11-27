@@ -1,11 +1,68 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'repository_detail.dart';
+part of 'repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
+String _$starredRepositoryListHash() =>
+    r'944cd73160ea837c70014c8fc3c88fcc57172121';
+
+/// See also [starredRepositoryList].
+@ProviderFor(starredRepositoryList)
+final starredRepositoryListProvider = FutureProvider<List<Repository>>.internal(
+  starredRepositoryList,
+  name: r'starredRepositoryListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$starredRepositoryListHash,
+  dependencies: <ProviderOrFamily>[restClientProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies
+  },
+);
+
+typedef StarredRepositoryListRef = FutureProviderRef<List<Repository>>;
+String _$starredIdListHash() => r'0333c017a42dea05f50cb7703d837f4ae40e5230';
+
+/// See also [starredIdList].
+@ProviderFor(starredIdList)
+final starredIdListProvider = FutureProvider<List<String>>.internal(
+  starredIdList,
+  name: r'starredIdListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$starredIdListHash,
+  dependencies: <ProviderOrFamily>[starredRepositoryListProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    starredRepositoryListProvider,
+    ...?starredRepositoryListProvider.allTransitiveDependencies
+  },
+);
+
+typedef StarredIdListRef = FutureProviderRef<List<String>>;
+String _$repositoryListHash() => r'75c6171f2d57003c00e4973aff367ce0afcd4012';
+
+/// See also [repositoryList].
+@ProviderFor(repositoryList)
+final repositoryListProvider = FutureProvider<List<Repository>>.internal(
+  repositoryList,
+  name: r'repositoryListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$repositoryListHash,
+  dependencies: <ProviderOrFamily>[restClientProvider, starredIdListProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    restClientProvider,
+    ...?restClientProvider.allTransitiveDependencies,
+    starredIdListProvider,
+    ...?starredIdListProvider.allTransitiveDependencies
+  },
+);
+
+typedef RepositoryListRef = FutureProviderRef<List<Repository>>;
 String _$repositoryDetailHash() => r'7bf8d8b629687a7bbff36cb1b9963cde5581fea0';
 
 /// Copied from Dart SDK

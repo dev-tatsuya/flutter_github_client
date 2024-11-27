@@ -6,21 +6,7 @@ part of 'bottom_navi_tab.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$localStorageHash() => r'2c19dd0aeb6ef3085d0644a8b9bc96e0285db8f1';
-
-/// See also [localStorage].
-@ProviderFor(localStorage)
-final localStorageProvider = Provider<SharedPreferencesWithCache>.internal(
-  localStorage,
-  name: r'localStorageProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$localStorageHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
-);
-
-typedef LocalStorageRef = ProviderRef<SharedPreferencesWithCache>;
-String _$bottomNaviTabHash() => r'5a1ce61fd440fe953be9f2a07ca3f2f054676729';
+String _$bottomNaviTabHash() => r'872e74d32192a9b71e3cba87dd2f5b71441b93cb';
 
 /// See also [bottomNaviTab].
 @ProviderFor(bottomNaviTab)
@@ -30,10 +16,10 @@ final bottomNaviTabProvider = Provider<BottomNaviTab>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$bottomNaviTabHash,
-  dependencies: <ProviderOrFamily>[localStorageProvider],
+  dependencies: <ProviderOrFamily>[sharedPreferencesProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
-    localStorageProvider,
-    ...?localStorageProvider.allTransitiveDependencies
+    sharedPreferencesProvider,
+    ...?sharedPreferencesProvider.allTransitiveDependencies
   },
 );
 

@@ -1,6 +1,6 @@
 import 'package:flutter_github_client/domain/model/language.dart';
 import 'package:flutter_github_client/domain/model/repository.dart';
-import 'package:flutter_github_client/ui/repository/util.dart';
+import 'package:flutter_github_client/provider/service/api/model/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rest_data_model.g.dart';
