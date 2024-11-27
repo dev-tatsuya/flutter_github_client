@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/provider/bottom_navi_tab.dart';
+import 'package:flutter_github_client/provider/repository/bottom_navi_tab.dart';
 import 'package:flutter_github_client/routing/app_router.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

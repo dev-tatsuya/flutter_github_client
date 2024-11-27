@@ -7,7 +7,7 @@ part of 'starred_repository_list.dart';
 // **************************************************************************
 
 String _$starredRepositoryListHash() =>
-    r'f7be7870bf51eda1bfb2542519f604e5c7d5bb44';
+    r'944cd73160ea837c70014c8fc3c88fcc57172121';
 
 /// See also [starredRepositoryList].
 @ProviderFor(starredRepositoryList)

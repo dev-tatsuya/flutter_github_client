@@ -1,39 +1,18 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/notifier/api_protocol.dart';
-import 'package:flutter_github_client/provider/rest_client.dart';
-import 'package:flutter_github_client/ui/component/async_value_container.dart';
-import 'package:flutter_github_client/ui/component/graphql_query_container.dart';
-import 'package:flutter_github_client/ui/repository/component/repository_list_item.dart';
-import 'package:flutter_github_client/ui/repository/component/star_button.dart';
-import 'package:flutter_github_client/ui/repository/model/entity.dart';
-import 'package:flutter_github_client/ui/repository/model/graphql_data_model.dart';
-import 'package:flutter_github_client/ui/repository/repository_detail/repository_detail_page.graphql.dart';
-import 'package:flutter_github_client/ui/repository/state/persistent/starred_repository_list.dart';
+import 'package:flutter_github_client/provider/repository/repository_detail.dart';
+import 'package:flutter_github_client/provider/service/api/model/graphql_data_model.dart';
+import 'package:flutter_github_client/ui/repository/repository_detail_page.graphql.dart';
 import 'package:flutter_github_client/ui/repository/util.dart';
+import 'package:flutter_github_client/ui/repository/widget/repository_list_item.dart';
+import 'package:flutter_github_client/ui/repository/widget/star_button.dart';
+import 'package:flutter_github_client/ui/widget/async_value_container.dart';
+import 'package:flutter_github_client/ui/widget/graphql_query_container.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-part 'repository_detail_page.g.dart';
-
-@Riverpod(keepAlive: true, dependencies: [restClient, starredIdList])
-Future<Repository> repositoryDetail(
-  RepositoryDetailRef ref, {
-  required String owner,
-  required String repositoryName,
-}) async {
-  final data =
-      await ref.watch(restClientProvider).getRepository(owner, repositoryName);
-  final repository = data.toEntity();
-
-  final starredIdList = await ref.watch(starredIdListProvider.future);
-
-  return repository.copyWith(
-    viewerHasStarred: starredIdList.contains(repository.id),
-  );
-}
 
 @RoutePage()
 class RepositoryDetailPage extends HookConsumerWidget {
@@ -67,7 +46,7 @@ class RepositoryDetailPage extends HookConsumerWidget {
           result: query.result,
           converter: (detail) {
             final data = detail.repository;
-            return data!.toEntity().copyWith(
+            return data!.toDomain().copyWith(
                   issueCount: data.issues.totalCount,
                   licenseName: data.licenseInfo?.spdxId,
                 );

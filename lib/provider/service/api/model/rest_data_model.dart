@@ -1,4 +1,5 @@
-import 'package:flutter_github_client/ui/repository/model/entity.dart';
+import 'package:flutter_github_client/domain/model/language.dart';
+import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/ui/repository/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -35,7 +36,7 @@ class RepositoryData {
   String? language;
   List<String> topics;
 
-  Repository toEntity() {
+  Repository toDomain() {
     final (owner, name) = separate(fullName);
 
     return Repository(
@@ -81,7 +82,7 @@ class RepositoryDetailData {
   int? openIssuesCount;
   LicenseData? license;
 
-  Repository toEntity() {
+  Repository toDomain() {
     final (owner, name) = separate(fullName);
 
     return Repository(

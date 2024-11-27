@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_client/provider/bottom_navi_tab.dart';
-import 'package:flutter_github_client/provider/graphql_client.dart';
+import 'package:flutter_github_client/provider/repository/bottom_navi_tab.dart';
+import 'package:flutter_github_client/provider/service/api/graphql_client.dart';
 import 'package:flutter_github_client/routing/app_router.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';

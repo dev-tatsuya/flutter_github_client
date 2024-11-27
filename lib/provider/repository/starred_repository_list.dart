@@ -1,5 +1,5 @@
-import 'package:flutter_github_client/provider/rest_client.dart';
-import 'package:flutter_github_client/ui/repository/model/entity.dart';
+import 'package:flutter_github_client/domain/model/repository.dart';
+import 'package:flutter_github_client/provider/service/api/rest_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'starred_repository_list.g.dart';
@@ -11,7 +11,7 @@ Future<List<Repository>> starredRepositoryList(
   final client = ref.watch(restClientProvider);
   final listData = await client.getStarredRepositoryList('asc');
   return listData
-      .map((e) => e.toEntity().copyWith(viewerHasStarred: true))
+      .map((e) => e.toDomain().copyWith(viewerHasStarred: true))
       .toList();
 }
 

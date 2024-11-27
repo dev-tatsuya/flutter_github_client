@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github_client/domain/model/repository.dart';
 import 'package:flutter_github_client/notifier/api_protocol.dart';
-import 'package:flutter_github_client/ui/component/async_value_container.dart';
-import 'package:flutter_github_client/ui/component/graphql_query_container.dart';
-import 'package:flutter_github_client/ui/repository/component/repository_list_item.dart';
-import 'package:flutter_github_client/ui/repository/model/entity.dart';
-import 'package:flutter_github_client/ui/repository/state/persistent/starred_repository_list.dart';
+import 'package:flutter_github_client/provider/repository/starred_repository_list.dart';
+import 'package:flutter_github_client/ui/repository/widget/repository_list_item.dart';
+import 'package:flutter_github_client/ui/widget/async_value_container.dart';
+import 'package:flutter_github_client/ui/widget/graphql_query_container.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
