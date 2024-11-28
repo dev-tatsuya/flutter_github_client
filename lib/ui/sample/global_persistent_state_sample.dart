@@ -8,7 +8,7 @@ part 'global_persistent_state_sample.g.dart';
 int _ssot = 0;
 
 @Riverpod(dependencies: [])
-Future<int> globalPersistentState(GlobalPersistentStateRef ref) async {
+Future<int> globalPersistentState(Ref ref) async {
   return Future.delayed(const Duration(milliseconds: 500), () => _ssot);
 }
 
