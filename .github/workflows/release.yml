@@ -99,9 +99,9 @@ jobs:
         shell: bash
         run: |
           git fetch origin main "${{ steps.main-pr-meta.outputs.source_release_branch }}"
-          # create-pull-request が作成する PR branch とは別名の一時 branch で
-          # 差分を準備し、working base の衝突を避ける
-          git checkout -B release-main-pr-working-base origin/main
+          # create-pull-request は working base として origin/<current-branch> を参照するため、
+          # origin に存在する main を working base として使用する
+          git checkout -B main origin/main
           if git rev-list "origin/main..origin/${{ steps.main-pr-meta.outputs.source_release_branch }}" | grep -q .; then
             git cherry-pick -n "origin/${{ steps.main-pr-meta.outputs.source_release_branch }}"
           fi
