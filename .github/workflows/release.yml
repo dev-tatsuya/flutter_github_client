@@ -1,0 +1,151 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: 'Choose a version to bump'
+        default: 'build: x.x.x+1 → x.x.x+2'
+        options:
+          - 'build: x.x.x+1 → x.x.x+2'
+          - 'patch: x.x.0+1 → x.x.1+2'
+          - 'minor: x.0.x+1 → x.1.x+2'
+          - 'major: 1.x.x+1 → 2.x.x+2'
+      build_number:
+        type: string
+        required: false
+        description: '(Option) ビルドナンバーを指定したい場合のみ'
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.1'
+          cache: true
+
+      - name: Install cider
+        shell: bash
+        run: |
+          dart pub global activate cider
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+      # workflow_dispatch からバージョンを取得
+      - name: Get Semantic Version from workflow_dispatch
+        id: wd
+        run: |
+          echo "version=$(echo "${{ github.event.inputs.choice }}" | cut -d ':' -f 1)" >> $GITHUB_OUTPUT
+
+      # pubspec のバージョンを更新する
+      # ビルドナンバーが指定されている場合はそれを使う
+      - name: Bump up
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.build_number }}" ]; then
+            cider bump ${{ steps.wd.outputs.version }} --build=${{ github.event.inputs.build_number }}
+          else
+            cider bump ${{ steps.wd.outputs.version }} --bump-build
+          fi
+
+          dart pub get
+
+      # pubspec.yaml からビルド番号を取得
+      - name: Get version from pubspec.yaml
+        id: pubspec
+        run: |
+          echo "number=$(grep 'version:' pubspec.yaml | sed 's/version: //g' | tr -d ' ')" >> $GITHUB_OUTPUT
+
+      - uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7.0.5
+        id: pr
+        with:
+          token: ${{ github.token }}
+          branch: release-bump-up-${{ steps.wd.outputs.version }}-${{ steps.pubspec.outputs.number }}
+          title: 'release: Bump up ${{ steps.pubspec.outputs.number }}'
+          commit-message: 'release: Bump up ${{ steps.pubspec.outputs.number }}'
+          body: |
+            - バージョン ${{ steps.pubspec.outputs.number }} にバンプアップ
+          delete-branch: true
+          add-paths: |
+            **/pubspec.yaml
+            **/pubspec.lock
+
+      - name: Set main PR metadata
+        id: main-pr-meta
+        shell: bash
+        run: |
+          source_release_branch="release-bump-up-${{ steps.wd.outputs.version }}-${{ steps.pubspec.outputs.number }}"
+          main_mirror_branch="release-bump-up-main-${{ steps.wd.outputs.version }}-${{ steps.pubspec.outputs.number }}"
+
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            needs_main_pr=false
+          else
+            needs_main_pr=true
+          fi
+
+          echo "needs_main_pr=${needs_main_pr}" >> "$GITHUB_OUTPUT"
+          echo "source_release_branch=${source_release_branch}" >> "$GITHUB_OUTPUT"
+          echo "main_mirror_branch=${main_mirror_branch}" >> "$GITHUB_OUTPUT"
+
+      - name: Create main mirror branch
+        id: main-mirror-branch
+        if: steps.main-pr-meta.outputs.needs_main_pr == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          git fetch origin main "${{ steps.main-pr-meta.outputs.source_release_branch }}"
+          # create-pull-request が作成する PR branch とは別名の一時 branch で
+          # 差分を準備し、working base の衝突を避ける
+          git checkout -B release-main-pr-working-base origin/main
+          if git rev-list "origin/main..origin/${{ steps.main-pr-meta.outputs.source_release_branch }}" | grep -q .; then
+            git cherry-pick -n "origin/${{ steps.main-pr-meta.outputs.source_release_branch }}"
+          fi
+
+      - name: Create main PR
+        id: main-pr
+        if: steps.main-pr-meta.outputs.needs_main_pr == 'true' && steps.main-mirror-branch.outcome == 'success'
+        continue-on-error: true
+        uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7.0.5
+        with:
+          token: ${{ github.token }}
+          base: main
+          branch: ${{ steps.main-pr-meta.outputs.main_mirror_branch }}
+          title: 'release: Bump up ${{ steps.pubspec.outputs.number }} (main 反映用)'
+          commit-message: 'release: Bump up ${{ steps.pubspec.outputs.number }} (main mirror)'
+          body: |
+            - ${{ steps.main-pr-meta.outputs.source_release_branch }} と同じ変更差分を main に反映します。
+            - 対象バージョン: ${{ steps.pubspec.outputs.number }}
+          delete-branch: true
+          add-paths: |
+            **/pubspec.yaml
+            **/pubspec.lock
+
+      - name: Comment main PR creation failure
+        if: steps.main-pr-meta.outputs.needs_main_pr == 'true' && (steps.main-mirror-branch.outcome == 'failure' || steps.main-pr.outcome == 'failure')
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: ${{ steps.pr.outputs.pull-request-number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: [
+                ':warning: main 向け PR の自動作成に失敗しました。',
+                '',
+                'お手数ですが、この PR と同じ変更差分で main へマージする PR を手動で作成してください。',
+                '',
+                '- 元 PR: #${{ steps.pr.outputs.pull-request-number }}',
+                '- 元 PR ブランチ: `${{ steps.main-pr-meta.outputs.source_release_branch }}`',
+                '- マージ先ブランチ: `main`',
+              ].join('\n')
+            });
