@@ -74,9 +74,6 @@ jobs:
           body: |
             - バージョン ${{ steps.pubspec.outputs.number }} にバンプアップ
           delete-branch: true
-          add-paths: |
-            **/pubspec.yaml
-            **/pubspec.lock
 
       - name: Set main PR metadata
         id: main-pr-meta
@@ -124,9 +121,6 @@ jobs:
             - ${{ steps.main-pr-meta.outputs.source_release_branch }} と同じ変更差分を main に反映します。
             - 対象バージョン: ${{ steps.pubspec.outputs.number }}
           delete-branch: true
-          add-paths: |
-            **/pubspec.yaml
-            **/pubspec.lock
 
       - name: Comment main PR creation failure
         if: steps.main-pr-meta.outputs.needs_main_pr == 'true' && (steps.main-mirror-branch.outcome == 'failure' || steps.main-pr.outcome == 'failure')
